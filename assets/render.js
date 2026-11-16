@@ -81,7 +81,7 @@
     // Sections shared by every page: announcement bars above the menu bar, the rest at the top and bottom of the page.
     function groupHtml(where, ann) {
       return (((PAGES.groups || {})[where]) || []).filter(function (sec) { return sec && sec.visible !== false && S[sec.type] && (where !== "top" || (sec.type === "announcement") === !!ann); })
-        .map(function (sec) { return mark(S[sec.type](sec.settings || {}, { id: sec.id, page: "every" }), sec.id); }).join("\n");
+        .map(function (sec) { return mark(cssMark(S[sec.type](sec.settings || {}, { id: sec.id, page: "every" }), sec), sec.id); }).join("\n");
     }
     function page(path, title, desc, main, o) {
       o = o || {};
@@ -118,7 +118,7 @@
         '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n' +
         '<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Libre+Franklin:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">\n' +
         (o.head || "") + '<link rel="icon" href="' + r + 'assets/brand/favicon.svg" type="image/svg+xml">\n<link rel="icon" href="' + r + 'assets/brand/favicon-32.png" sizes="32x32" type="image/png">\n' +
-        '<link rel="apple-touch-icon" href="' + r + 'assets/brand/sad-tile-180.png">\n<link rel="stylesheet" href="' + r + 'assets/site.css">\n' + (THEME || "") +
+        '<link rel="apple-touch-icon" href="' + r + 'assets/brand/sad-tile-180.png">\n<link rel="stylesheet" href="' + r + 'assets/site.css">\n' + (THEME || "") + secCssTag() +
         '</head>\n<body>\n<a class="skip" href="#main">Skip to content</a>\n' + plate + '\n' + (o.top ? String(o.top).split("@@").join(r) + "\n" : "") + nav + '\n<main id="main">\n' + main + '\n</main>\n' + foot + '\n' +
         '<script src="' + r + 'assets/site.js" defer></script>\n</body>\n</html>\n';
       return { path: o.file || path, url: urlPath, html: html };
@@ -395,6 +395,28 @@
     };
 
     // In the editor each section is marked, so a click on the page can find it.
+    var SEC_CSS;
+    // A section's own CSS (set in the editor), kept inside that section: every rule is limited to it.
+    function scopeCss(css, scope) {
+      var s = String(css || "").replace(/[<>\\]/g, "").replace(/url\s*\(/gi, "none("), out = "", i = 0;
+      while (i < s.length) {
+        var open = s.indexOf("{", i); if (open < 0) break;
+        var sel = s.slice(i, open).replace(/[;}]/g, " ").trim(), depth = 1, j = open + 1;
+        while (j < s.length && depth) { if (s[j] === "{") depth++; else if (s[j] === "}") depth--; j++; }
+        var body = s.slice(open + 1, depth ? j : j - 1);
+        if (/^@(media|supports|container)\b/i.test(sel)) out += sel + "{" + scopeCss(body, scope) + "}\n";
+        else if (/^@(-webkit-)?keyframes\b/i.test(sel)) out += sel + "{" + body + "}\n";
+        else if (sel && sel.charAt(0) !== "@") out += sel.split(",").map(function (x) { x = x.trim(); return /^:scope\b/.test(x) ? scope + x.slice(6) : /^&/.test(x) ? scope + x.slice(1) : scope + " " + x; }).join(", ") + " {" + body + "}\n";
+        i = j;
+      }
+      return out;
+    }
+    function cssMark(html, sec) {
+      if (!sec || !sec.css || !String(sec.css).trim()) return html;
+      (SEC_CSS = SEC_CSS || []).push(scopeCss(sec.css, '[data-css="' + sec.id + '"]'));
+      return html.replace(/^(\s*<[a-z]+)/, '$1 data-css="' + sec.id + '"');
+    }
+    function secCssTag() { var t = SEC_CSS && SEC_CSS.length ? '<style data-sec-css>\n' + SEC_CSS.join("") + '</style>\n' : ""; SEC_CSS = []; return t; }
     function mark(html, id) { return opts.mark ? html.replace(/^(\s*<[a-z]+)/, '$1 data-adh="' + id + '"') : html; }
     // A second copy of a section gets its own names for anything already used
     // higher up the page, so its filters, form and links work on their own.
@@ -414,7 +436,7 @@
       var pg = PAGES.pages[key], parts = [], top = [], lead = true, seen = {};
       (pg.sections || []).forEach(function (sec) {
         if (!sec || sec.visible === false || !S[sec.type]) return;
-        var html = mark(own(S[sec.type](sec.settings || {}, { id: sec.id, page: key }), sec.id, seen), sec.id);
+        var html = mark(cssMark(own(S[sec.type](sec.settings || {}, { id: sec.id, page: key }), sec.id, seen), sec), sec.id);
         if (lead && sec.type === "announcement") top.push(html); else { lead = false; parts.push(html); }
       });
       return page(pg.path, pg.title || "", pg.description || "", (pg.own ? top.concat(parts) : parts).join("\n  "), { home: !!pg.home, top: pg.own ? "" : top.join("\n"), own: !!pg.own });
