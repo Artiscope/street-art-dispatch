@@ -3,14 +3,10 @@ name: Publish to GitHub Pages
 # Builds the pages from data/content.json and publishes the website only.
 # The working files (brief, voice guide, log, content calendar, photo
 # inbox, data and tools) stay in the repository and off the public site.
-#
-# For now only claude/homepage-prototype is allowed to publish, because
-# the github-pages environment on GitHub refuses other branches. Once
-# main is allowed there, change the branch below to main.
 
 on:
   push:
-    branches: [claude/homepage-prototype]
+    branches: [main]
     paths-ignore: ['inbox/**']
   workflow_dispatch:
 

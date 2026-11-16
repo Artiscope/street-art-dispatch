@@ -9,10 +9,8 @@ This file is your standing brief. Read all of it before doing anything.
 - Live at: https://streetartdispatch.com (and
   https://artiscope.github.io/street-art-dispatch/ until the domain is
   connected).
-- Repository: Artiscope/street-art-dispatch. The home of the site is
-  the main branch. Until main is allowed to publish, each change is also
-  pushed to claude/homepage-prototype, which is the branch that
-  publishes.
+- Repository: Artiscope/street-art-dispatch, main branch. Every push to
+  main is published.
 - What it is: an editorial site about art made beyond the gallery, with
   a dated archive of public interventions.
 - Artists with profiles: Konn Artiss, Banksy, Invader and Shepard
