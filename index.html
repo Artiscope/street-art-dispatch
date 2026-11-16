@@ -765,8 +765,8 @@ $('#results').addEventListener('click',e=>{
 });
 renderArchive();
 
-/* ---------- Newsletter (demo: connect to the email provider in production) ---------- */
-$('#nl').addEventListener('submit',e=>{e.preventDefault();$('#nlMsg').textContent='Thanks, you’re on the list for the next dispatch.';e.target.reset()});
+/* ---------- Newsletter: sends a mailto request until an email provider is connected ---------- */
+$('#nl').addEventListener('submit',e=>{e.preventDefault();const em=$('#nlEmail').value;location.href='mailto:editor@streetartdispatch.com?subject='+encodeURIComponent('Subscribe to the Dispatch')+'&body='+encodeURIComponent('Please add '+em+' to the weekly dispatch.');$('#nlMsg').textContent='Your email app should open with a subscription request. Send it and we’ll add you.'});
 
 /* ---------- Sticky nav ---------- */
 new IntersectionObserver(([e])=>$('#nav').classList.toggle('stuck',!e.isIntersecting)).observe($('#navSentinel'));
