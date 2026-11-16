@@ -1,8 +1,17 @@
-name: Deploy to GitHub Pages
+name: Publish to GitHub Pages
+
+# Builds the pages from data/content.json and publishes the website only.
+# The working files (brief, voice guide, log, content calendar, photo
+# inbox, data and tools) stay in the repository and off the public site.
+#
+# For now only claude/homepage-prototype is allowed to publish, because
+# the github-pages environment on GitHub refuses other branches. Once
+# main is allowed there, change the branch below to main.
 
 on:
   push:
-    branches: [main, claude/homepage-prototype]
+    branches: [claude/homepage-prototype]
+    paths-ignore: ['inbox/**']
   workflow_dispatch:
 
 permissions:
@@ -21,23 +30,12 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Check out
-        uses: actions/checkout@v4
-
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-
-      # Publish only the public site files; DEVELOPMENT.md and repo config stay off the site.
-      - name: Collect site files
-        run: |
-          mkdir _site
-          cp index.html CNAME _site/
-
-      - name: Upload site
-        uses: actions/upload-pages-artifact@v3
+      - uses: actions/checkout@v4
+      - name: Build the pages
+        run: python3 tools/build.py _site
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
-
-      - name: Deploy
-        id: deployment
+      - id: deployment
         uses: actions/deploy-pages@v4
