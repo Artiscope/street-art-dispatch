@@ -2,6 +2,12 @@
 
 A record of what the website agent did on each run, newest first.
 
+## Monday 16 November 2026, smaller header
+Published: the home page header is now a compact centred masthead, with the stamp beside the name on one line and the name at under half its earlier size. Chosen by the owner from two samples.
+Drafts waiting: none.
+Checked: the site builds, links work, and the header holds at phone, tablet and desktop width.
+Needs you: nothing.
+
 ## Monday 16 November 2026, logo added
 Published: the new logo, chosen by the owner. It is a postage stamp showing a brick wall with one painted mark. It now appears above the name on the home page, beside the name in the menu bar, in the footer and as the browser tab icon. The site name now ends with a ruby full stop.
 Drafts waiting: none.

@@ -284,3 +284,11 @@ section[id],footer[id]{scroll-margin-top:88px}
 .nav-mark{display:inline-flex;align-items:center;gap:12px}
 .nav-mark img{flex:none}
 .foot-mark{display:block;margin-bottom:18px}
+
+/* ---------- Compact centred masthead: the stamp beside the name ---------- */
+.nameplate{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;column-gap:clamp(12px,1.6vw,20px);padding:clamp(22px,3vw,36px) var(--pad) 6px}
+.nameplate a{font-size:clamp(2rem,4.4vw,3.5rem);line-height:1}
+.plate-mark{margin:0;width:clamp(38px,4.2vw,56px)}
+.nameplate p{flex-basis:100%;margin-top:10px;font-size:.9375rem}
+.hero{padding-top:clamp(24px,3.5vw,48px)}
+@media (max-width:359px){.nameplate{column-gap:10px}.nameplate a{font-size:1.5625rem}.plate-mark{width:30px}}
