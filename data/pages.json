@@ -1,0 +1,420 @@
+{
+  "_how_to_edit": "Each page is a list of sections shown top to bottom. 'visible' hides a section without deleting it. 'settings' holds the words and choices for that section. Articles, columns, artists, the archive, exhibitions, the collecting figures and the glossary are in data/content.json. Edit this from Artiscope Digital Home.",
+  "shared": {
+    "header": {
+      "type": "header",
+      "visible": true,
+      "settings": {
+        "name": "Street Art Dispatch",
+        "tagline": "The Urban Art and Culture Publication",
+        "links": [
+          [
+            "Dispatches",
+            "dispatches/"
+          ],
+          [
+            "Artists",
+            "artists/"
+          ],
+          [
+            "Interventions",
+            "interventions/"
+          ],
+          [
+            "Urban Culture",
+            "urban-culture/"
+          ],
+          [
+            "Exhibitions",
+            "exhibitions/"
+          ],
+          [
+            "Collecting",
+            "collecting/"
+          ]
+        ],
+        "subscribe": "Subscribe",
+        "subscribe_href": "#newsletter",
+        "logos": []
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "visible": true,
+      "settings": {
+        "tagline": "The Urban Art and Culture Publication.",
+        "sections_heading": "Sections",
+        "about_heading": "About",
+        "about_links": [
+          [
+            "About and standards",
+            "about/"
+          ],
+          [
+            "Contact",
+            "contact/"
+          ],
+          [
+            "Subscribe",
+            "#newsletter"
+          ]
+        ],
+        "legal": "© 2026 Street Art Dispatch · streetartdispatch.com"
+      }
+    }
+  },
+  "pages": {
+    "home": {
+      "title": "Street Art Dispatch | The Urban Art and Culture Publication",
+      "path": "index.html",
+      "home": true,
+      "description": "Street Art Dispatch follows artists taking their work beyond conventional gallery spaces: public interventions, urban installations, experimental materials and collectable artworks.",
+      "sections": [
+        {
+          "id": "hero",
+          "type": "hero",
+          "visible": true,
+          "settings": {
+            "eyebrow": "From the editors",
+            "headline": "Art Doesn’t Always Wait for an Invitation.",
+            "intro": "Street Art Dispatch follows artists taking their work beyond conventional gallery spaces. From public interventions and urban installations to experimental materials and collectable artworks, we document the evolving relationship between contemporary art, the city and its audience.",
+            "button": "Read Issue 01",
+            "button_href": "dispatches/",
+            "link": "Search the archive",
+            "link_href": "interventions/",
+            "photo": "Lead image: Konn Artiss, the Venice intervention",
+            "caption": "On the cover: Konn Artiss in Venice.",
+            "caption_link": "Read the profile",
+            "caption_href": "dispatches/konn-artiss/"
+          }
+        },
+        {
+          "id": "dispatches",
+          "type": "features",
+          "visible": true,
+          "settings": {
+            "heading": "Dispatches",
+            "intro": "Six commissioned features for our first issue.",
+            "which": "dispatches",
+            "look": "grid",
+            "top": false,
+            "flush": true
+          }
+        },
+        {
+          "id": "artists",
+          "type": "profiles",
+          "visible": true,
+          "settings": {
+            "heading": "Artists",
+            "intro": "The people taking art beyond the gallery. We start with Konn Artiss and add a new profile from the Grove Gallery roster every week.",
+            "artists": [],
+            "top": false,
+            "flush": true
+          }
+        },
+        {
+          "id": "interventions",
+          "type": "archive",
+          "visible": true,
+          "settings": {
+            "heading": "The Intervention Archive",
+            "intro": "Art made in public, documented and dated. Search by artist, city or year.",
+            "show": "recent",
+            "count": 6,
+            "button": "Search all {count} interventions",
+            "button_href": "interventions/",
+            "search_hint": "",
+            "note": "",
+            "note_link": "",
+            "top": false,
+            "flush": true
+          }
+        },
+        {
+          "id": "culture",
+          "type": "features",
+          "visible": true,
+          "settings": {
+            "heading": "Urban Culture",
+            "intro": "Short columns on attention, virality and the crowd.",
+            "which": "columns",
+            "look": "list",
+            "top": false,
+            "flush": true
+          }
+        },
+        {
+          "id": "exhibitions",
+          "type": "exhibition-list",
+          "visible": true,
+          "settings": {
+            "heading": "Exhibitions",
+            "intro": "Where the street meets the gallery. Listings are provisional until venues confirm dates.",
+            "top": false,
+            "flush": true
+          }
+        },
+        {
+          "id": "collecting",
+          "type": "collecting",
+          "visible": true,
+          "settings": {
+            "heading": "Collecting Street Art",
+            "intro": "Originals, editions and auction results, and what to check before you buy.",
+            "primer_heading": "A collector’s primer",
+            "primer": "Art made in public is hard to own, so the objects that carry it into a collection need to be understood exactly. Four things to know before you buy.",
+            "button": "Read the collecting guide",
+            "button_href": "collecting/",
+            "top": false
+          }
+        },
+        {
+          "id": "newsletter",
+          "type": "signup",
+          "visible": true,
+          "settings": {
+            "heading": "Get the Dispatch",
+            "text": "One email a week with new interventions, artist profiles and collecting news.",
+            "button": "Subscribe",
+            "pitch": "Pitches, tips and press:"
+          }
+        }
+      ]
+    },
+    "dispatches": {
+      "title": "Dispatches | Street Art Dispatch",
+      "path": "dispatches/index.html",
+      "description": "Six commissioned features for the first issue of Street Art Dispatch.",
+      "sections": [
+        {
+          "id": "dispatches",
+          "type": "features",
+          "visible": true,
+          "settings": {
+            "heading": "Dispatches",
+            "intro": "Six commissioned features for our first issue.",
+            "which": "dispatches",
+            "look": "grid",
+            "top": true,
+            "flush": false
+          }
+        }
+      ]
+    },
+    "urban-culture": {
+      "title": "Urban Culture | Street Art Dispatch",
+      "path": "urban-culture/index.html",
+      "description": "Short columns on attention, virality and the crowd.",
+      "sections": [
+        {
+          "id": "culture",
+          "type": "features",
+          "visible": true,
+          "settings": {
+            "heading": "Urban Culture",
+            "intro": "Short columns on attention, virality and the crowd.",
+            "which": "columns",
+            "look": "list",
+            "top": true,
+            "flush": false
+          }
+        }
+      ]
+    },
+    "artists": {
+      "title": "Artists | Street Art Dispatch",
+      "path": "artists/index.html",
+      "description": "Profiles of artists taking their work beyond the gallery, starting with Konn Artiss.",
+      "sections": [
+        {
+          "id": "artists",
+          "type": "profiles",
+          "visible": true,
+          "settings": {
+            "heading": "Artists",
+            "intro": "The people taking art beyond the gallery. We start with Konn Artiss and add a new profile from the Grove Gallery roster every week.",
+            "artists": [],
+            "top": true,
+            "flush": false
+          }
+        }
+      ]
+    },
+    "interventions": {
+      "title": "The Intervention Archive | Street Art Dispatch",
+      "path": "interventions/index.html",
+      "description": "A dated record of art made in public. Search by artist, city or year.",
+      "sections": [
+        {
+          "id": "archive",
+          "type": "archive",
+          "visible": true,
+          "settings": {
+            "heading": "The Intervention Archive",
+            "intro": "Art made in public, documented and dated. Search by artist, city or year.",
+            "show": "all",
+            "count": 0,
+            "button": "",
+            "button_href": "",
+            "search_hint": "Try “Venice” or “mosaic”",
+            "note": "Every entry is sourced and dated. Entries marked “Awaiting confirmation” are being checked with the artist or gallery. Know of one we’ve missed?",
+            "note_link": "Send it to the archive",
+            "top": true,
+            "flush": false
+          }
+        }
+      ]
+    },
+    "exhibitions": {
+      "title": "Exhibitions | Street Art Dispatch",
+      "path": "exhibitions/index.html",
+      "description": "Exhibition listings from Street Art Dispatch. Listings are provisional until venues confirm dates.",
+      "sections": [
+        {
+          "id": "exhibitions",
+          "type": "exhibition-list",
+          "visible": true,
+          "settings": {
+            "heading": "Exhibitions",
+            "intro": "Where the street meets the gallery. Listings are provisional until venues confirm dates.",
+            "top": true,
+            "flush": false
+          }
+        }
+      ]
+    },
+    "collecting": {
+      "title": "Collecting Street Art | Street Art Dispatch",
+      "path": "collecting/index.html",
+      "description": "Originals, editions and auction results, and what to check before you buy street art.",
+      "sections": [
+        {
+          "id": "collecting",
+          "type": "collecting",
+          "visible": true,
+          "settings": {
+            "heading": "Collecting Street Art",
+            "intro": "Originals, editions and auction results, and what to check before you buy.",
+            "primer_heading": "A collector’s primer",
+            "primer": "Art made in public is hard to own, so the objects that carry it into a collection need to be understood exactly. Four things to know before you buy.",
+            "button": "",
+            "button_href": "",
+            "top": true
+          }
+        },
+        {
+          "id": "guide",
+          "type": "features",
+          "visible": true,
+          "settings": {
+            "heading": "The collecting guide",
+            "intro": "",
+            "which": [
+              "spectacle-to-collectable"
+            ],
+            "look": "grid",
+            "top": false,
+            "flush": false
+          }
+        }
+      ]
+    },
+    "about": {
+      "title": "About and standards | Street Art Dispatch",
+      "path": "about/index.html",
+      "description": "Street Art Dispatch is the urban art and culture publication. We follow artists working beyond conventional gallery spaces.",
+      "sections": [
+        {
+          "id": "text",
+          "type": "text-page",
+          "visible": true,
+          "settings": {
+            "heading": "About and standards",
+            "stand": "Street Art Dispatch is the urban art and culture publication. We follow artists working beyond conventional gallery spaces.",
+            "intro": [
+              "We cover public interventions, urban installations, experimental materials and the collectable works that come out of them.",
+              "We write for three kinds of reader: culturally curious people who meet street art on their phones, collectors from first-time buyers to established ones, and the trade, meaning galleries, curators, press and auction specialists.",
+              "We explain, give context and take a view. We do not deal in hype, and we do not glamorise damage to property.",
+              "We document things as well as comment on them. The <a href=\"{root}interventions/\">Intervention Archive</a> is a dated, searchable record of art made in public.",
+              "We launch around Konn Artiss and are expanding across the artists shown by Grove Gallery. Any gallery relationship is disclosed on the page."
+            ],
+            "list_heading": "Editorial standards",
+            "list_anchor": "standards",
+            "items": [
+              {
+                "term": "Accuracy",
+                "text": "Every factual claim about a living artist is confirmed with the artist, their studio or their gallery before publication. Auction figures are cited with sale, date and whether they include buyer’s premium."
+              },
+              {
+                "term": "Disclosure",
+                "text": "Where Street Art Dispatch has a commercial relationship with a gallery, for example Grove Gallery, it is stated on every page that features that gallery’s artists."
+              },
+              {
+                "term": "Image rights",
+                "text": "We commission or license every image and credit it. Photographs of public works still carry a photographer credit."
+              },
+              {
+                "term": "Legality",
+                "text": "We document unsanctioned work as cultural history. We don’t encourage criminal damage or the removal of public works."
+              },
+              {
+                "term": "Quotes",
+                "text": "We never invent quotes. Quotes from artists come from interviews or attributable published sources."
+              },
+              {
+                "term": "Corrections",
+                "text": "Corrections are dated and shown at the foot of the article."
+              }
+            ],
+            "end_heading": "Get in touch",
+            "end_text": "Pitches, tips, press and corrections go to <a href=\"mailto:info@grovegallery.com\">info@grovegallery.com</a>. More ways to reach us are on the <a href=\"{root}contact/\">contact page</a>."
+          }
+        }
+      ]
+    },
+    "contact": {
+      "title": "Contact | Street Art Dispatch",
+      "path": "contact/index.html",
+      "description": "Pitches, tips, corrections and additions to the archive are all welcome.",
+      "sections": [
+        {
+          "id": "text",
+          "type": "text-page",
+          "visible": true,
+          "settings": {
+            "heading": "Contact",
+            "stand": "Pitches, tips, corrections and additions to the archive are all welcome.",
+            "intro": [],
+            "list_heading": "",
+            "list_anchor": "",
+            "items": [
+              {
+                "term": "Pitches, tips and press",
+                "text": "<a href=\"mailto:info@grovegallery.com\">info@grovegallery.com</a>"
+              },
+              {
+                "term": "Corrections",
+                "text": "Send the page address and the correction to <a href=\"mailto:info@grovegallery.com\">info@grovegallery.com</a>."
+              },
+              {
+                "term": "The Intervention Archive",
+                "text": "Know of an intervention we’ve missed? Send it, with a source, to <a href=\"mailto:info@grovegallery.com\">info@grovegallery.com</a>."
+              },
+              {
+                "term": "Suggest an artist",
+                "text": "Tell us who we should cover at <a href=\"mailto:info@grovegallery.com\">info@grovegallery.com</a>."
+              },
+              {
+                "term": "The weekly email",
+                "text": "<a href=\"{root}#newsletter\">Subscribe to the Dispatch</a>."
+              }
+            ],
+            "end_heading": "",
+            "end_text": ""
+          }
+        }
+      ]
+    }
+  }
+}

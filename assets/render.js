@@ -1,0 +1,472 @@
+/* Street Art Dispatch: draws every page from the site's data.
+   Used twice: by tools/build.mjs to write the published pages, and by the
+   page editor in Artiscope Digital Home to redraw a page as it is edited.
+   The data is data/content.json (articles, columns, artists, the archive,
+   exhibitions, collecting figures and glossary), the page list is
+   data/pages.json, and the theme block goes in the head of every page. */
+(function (root) {
+  "use strict";
+  var SITE_URL = "https://streetartdispatch.com/";
+
+  // ----- small helpers, written to match the old build exactly -----
+  // Python's html.escape(quote=True)
+  function esc(v) { return String(v).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#x27;"); }
+  // words typed in the console: shown as written, never as markup
+  function txt(v) { return String(v == null ? "" : v).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+  function slug(s) { return String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""); }
+  function get(o, k, d) { return o && Object.prototype.hasOwnProperty.call(o, k) && o[k] !== undefined && o[k] !== null ? o[k] : d; }
+  function stripTags(s) { return String(s).replace(/<[^>]+>/g, ""); }
+  function mins(a) { var w = stripTags(String(a.body || "").replace(/<[^>]+>/g, " ")).split(/\s+/).filter(Boolean).length; return Math.max(1, Math.round(w / 225)); }
+  // an address typed in the console: a page of this site, or a full address
+  function addrOk(h) { return /^(#|\/|[a-z0-9-]+\/|https?:\/\/|mailto:)/i.test(String(h || "")); }
+  function hrefOf(h) { h = String(h || ""); return /^(https?:|mailto:|\/)/i.test(h) ? h : "@@" + h; }
+
+  // The data file as one object, the same shape Artiscope Digital Home edits:
+  // every article (dispatches and columns) in one list with its section, every artist with a web address and its note.
+  function fromFiles(content) {
+    var c = JSON.parse(JSON.stringify(content || {})), notes = c.artist_notes || {};
+    return {
+      site: { desk: c.desk || "", date: c.date || "" },
+      photos: c.photos || {}, artist_photos: c.artist_photos || {},
+      articles: (c.features || []).map(function (f) { return Object.assign({}, f, { section: "dispatches" }); })
+        .concat((c.columns || []).map(function (f) { return Object.assign({}, f, { section: "urban-culture" }); })),
+      artists: (c.artists || []).map(function (a) { return Object.assign({ slug: a.slug || slug(a.name) }, a, { note: notes[a.name] || "" }); }),
+      archive: c.archive || [], exhibitions: c.exhibitions || [], stats: c.stats || [], glossary: c.glossary || [],
+    };
+  }
+
+  function Site(D, PAGES, THEME, opts) {
+    opts = opts || {};
+    D = D || {}; PAGES = PAGES || { shared: {}, pages: {} };
+    var SITE = D.site || {};
+    // a hidden article is kept but not shown, except when it is being edited
+    var LIVE = (D.articles || []).filter(function (a) { return !a.hidden || (opts.show && a.slug === opts.show); });
+    var FEATURES = LIVE.filter(function (a) { return a.section !== "urban-culture"; }), COLUMNS = LIVE.filter(function (a) { return a.section === "urban-culture"; }), ALL = FEATURES.concat(COLUMNS);
+    var COLS = {}; COLUMNS.forEach(function (c) { COLS[c.slug] = 1; });
+    var BY_SLUG = {}; ALL.forEach(function (a) { BY_SLUG[a.slug] = a; });
+    var PHOTOS = D.photos || {}, ART_PHOTOS = D.artist_photos || {};
+    function hasPage(x) { return !!(x.read && BY_SLUG[x.read]) || !!opts.mark; }
+    var ARCHIVE = D.archive || [];
+
+    function shared(key) { var part = (PAGES.shared || {})[key] || {}; return [part.settings || {}, get(part, "visible", true) !== false]; }
+    function hd() { return shared("header")[0]; }
+    function NAME() { return get(hd(), "name", "Street Art Dispatch"); }
+    function navLinks() { return (get(hd(), "links", []) || []).filter(function (l) { return Array.isArray(l) && l[0]; }); }
+    function pathOf(s) { return (COLS[s] ? "urban-culture/" : "dispatches/") + s + "/"; }
+    function photo(desc, ratio) {
+      var st = ratio ? ' style="aspect-ratio:' + ratio + '"' : "";
+      return '<div class="ph" role="img" aria-label="Photograph to come: ' + esc(desc) + '"' + st + '><span class="ph-t">Photo to come</span><span class="ph-d">' + esc(desc) + '</span></div>';
+    }
+    function fixLinks(body, r) {
+      return String(body).replace(/href="#read\/([\w-]+)"/g, function (m, s) { return 'href="' + r + pathOf(s) + '"'; })
+        .replace(/href="#artist\/([\w-]+)"/g, function (m, s) { return 'href="' + r + "artists/" + s + '/"'; })
+        .split('href="#interventions"').join('href="' + r + 'interventions/"');
+    }
+    function yearOf(x) { return typeof x.y === "number" ? x.y : -1; }
+    function newestFirst(list) { return list.map(function (x, i) { return [x, i]; }).sort(function (a, b) { return yearOf(b[0]) - yearOf(a[0]) || a[1] - b[1]; }).map(function (p) { return p[0]; }); }
+
+    // logos added in the console: each on the left, in the centre or on the right of the menu bar
+    function headLogos(st, r, where) {
+      return (get(st, "logos", []) || []).map(function (g, k) { return { g: g, k: k }; }).filter(function (x) { return x.g && x.g.hidden !== true && (x.g.place || "L") === where; }).map(function (x) {
+        var g = x.g, src = g.image ? (opts.imageSrc ? opts.imageSrc(g.image) : r + "assets/images/" + g.image) : "";
+        var inner = src ? '<img src="' + esc(src) + '" alt="' + esc(g.alt || "") + '">' : (opts.mark ? '<span class="hlogo-empty">' + txt(g.alt || "Logo") + '</span>' : "");
+        if (!inner) return "";
+        var h = String(g.href || ""), cls = "hlogo hlogo--" + ({ S: "s", L: "l" }[g.size] || "m"), tag = opts.mark ? ' data-adh-b="logos.' + x.k + '"' : "";
+        if (!addrOk(h)) h = ""; else h = hrefOf(h).split("@@").join(r);
+        return h ? '<a class="' + cls + '" href="' + esc(h) + '"' + tag + '>' + inner + '</a>' : '<span class="' + cls + '"' + tag + '>' + inner + '</span>';
+      }).join("");
+    }
+
+    // ----- the frame of every page -----
+    function page(path, title, desc, main, o) {
+      o = o || {};
+      var urlPath = /index\.html$/.test(path) ? path.slice(0, -"index.html".length) : (o.file ? "" : path);
+      var depth = (urlPath.match(/\//g) || []).length, r = o.file ? "" : new Array(depth + 1).join("../");
+      var home = !!o.home, name = esc(NAME()), st = hd(), hon = shared("header")[1];
+      main = String(main).split("@@").join(r);
+      var links = navLinks().map(function (l) { return '<li><a href="' + r + l[1] + '"' + (urlPath.indexOf(l[1]) === 0 ? ' aria-current="page"' : "") + '>' + txt(l[0]) + '</a></li>'; }).join("");
+      var sub = hrefOf(get(st, "subscribe_href", "#newsletter")).split("@@").join(r), subWords = txt(get(st, "subscribe", "Subscribe"));
+      var plate = home ? '<header class="nameplate"><img class="plate-mark" src="assets/brand/sad-tile.svg" alt="" width="72" height="72"><a href="' + (r || "./") + '">' + name + '<i class="stop"></i></a><p>' + txt(get(st, "tagline", "")) + '</p></header>' +
+        '<div id="navSentinel" aria-hidden="true"></div>' : "";
+      var nav = !hon ? "" : '<nav class="nav' + (home ? "" : " nav--inner") + '" id="nav" aria-label="Sections">\n  <div class="wrap">\n' +
+        '    <a class="nav-mark" href="' + (r || "./") + '"><img src="' + r + 'assets/brand/sad-tile.svg" alt="" width="34" height="34"><span>' + name + '<i class="stop"></i></span></a>\n' +
+        (headLogos(st, r, "L") ? '    <span class="hlogos">' + headLogos(st, r, "L") + '</span>\n' : "") +
+        '    <ul class="nav-links">' + links + '</ul>\n' + (headLogos(st, r, "C") ? '    <span class="hlogos">' + headLogos(st, r, "C") + '</span>\n' : "") + '    <div class="nav-right">\n' + (headLogos(st, r, "R") ? '      <span class="hlogos">' + headLogos(st, r, "R") + '</span>\n' : "") + '      <a class="btn btn--sm" href="' + sub + '">' + subWords + '</a>\n' +
+        '      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="sheet"><i aria-hidden="true"></i>Menu</button>\n    </div>\n  </div>\n</nav>\n' +
+        '<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Menu">\n  <div class="sheet-top"><span>' + name + '<i class="stop"></i></span><button class="close-btn" id="sheetClose">Close <b aria-hidden="true">×</b></button></div>\n' +
+        '  <ul>' + links + '</ul>\n  <a class="btn" href="' + sub + '">' + subWords + '</a>\n</div>';
+      var ft = shared("footer"), f = ft[0];
+      var foot = !ft[1] ? "" : '<footer class="on-pine foot" id="contact">\n  <div class="wrap">\n    <div class="foot-grid">\n' +
+        '      <div><img class="foot-mark" src="' + r + 'assets/brand/sad-mark-on-dark.svg" alt="" width="64" height="64"><p class="mark">' + name + '<i class="stop"></i></p><p class="tag">' + txt(get(f, "tagline", "")) + '</p></div>\n' +
+        '      <nav aria-labelledby="f-sec"><h2 id="f-sec">' + txt(get(f, "sections_heading", "Sections")) + '</h2><ul>' + navLinks().map(function (l) { return '<li><a href="' + r + l[1] + '">' + txt(l[0]) + '</a></li>'; }).join("") + '</ul></nav>\n' +
+        '      <nav aria-labelledby="f-abt"><h2 id="f-abt">' + txt(get(f, "about_heading", "About")) + '</h2><ul>\n        ' +
+        (get(f, "about_links", []) || []).filter(function (l) { return Array.isArray(l) && l[0]; }).map(function (l) { return '<li><a href="' + hrefOf(l[1]).split("@@").join(r) + '">' + txt(l[0]) + '</a></li>'; }).join("") + '</ul></nav>\n' +
+        '    </div>\n    <p class="legal">' + txt(get(f, "legal", "")) + '</p>\n  </div>\n</footer>';
+      var html = '<!doctype html>\n<html lang="en-GB">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n' +
+        '<title>' + esc(title) + '</title>\n<meta name="description" content="' + esc(desc) + '">\n<link rel="canonical" href="' + SITE_URL + urlPath + '">\n' +
+        '<meta property="og:type" content="' + (home ? "website" : "article") + '">\n<meta property="og:site_name" content="' + name + '">\n' +
+        '<meta property="og:title" content="' + esc(title) + '">\n<meta property="og:description" content="' + esc(desc) + '">\n<meta property="og:url" content="' + SITE_URL + urlPath + '">\n' +
+        '<meta name="twitter:card" content="summary_large_image">\n<meta name="theme-color" content="#163A30">\n' +
+        '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n' +
+        '<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Libre+Franklin:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">\n' +
+        (o.head || "") + '<link rel="icon" href="' + r + 'assets/brand/favicon.svg" type="image/svg+xml">\n<link rel="icon" href="' + r + 'assets/brand/favicon-32.png" sizes="32x32" type="image/png">\n' +
+        '<link rel="apple-touch-icon" href="' + r + 'assets/brand/sad-tile-180.png">\n<link rel="stylesheet" href="' + r + 'assets/site.css">\n' + (THEME || "") +
+        '</head>\n<body>\n<a class="skip" href="#main">Skip to content</a>\n' + plate + '\n' + (o.top ? String(o.top).split("@@").join(r) + "\n" : "") + nav + '\n<main id="main">\n' + main + '\n</main>\n' + foot + '\n' +
+        '<script src="' + r + 'assets/site.js" defer></script>\n</body>\n</html>\n';
+      return { path: o.file || path, url: urlPath, html: html };
+    }
+
+    // ----- shared pieces -----
+    function story(f, cls) {
+      var stand = cls !== "s-side" ? '<p class="stand">' + f.standfirst + '</p>' : "";
+      return '<article class="story ' + cls + '">' + photo(PHOTOS[f.slug] || f.title) + '<p class="kicker">' + f.kicker + '</p>' +
+        '<h3><a href="@@' + pathOf(f.slug) + '">' + f.title + '</a></h3>' + stand + '<p class="byline">By ' + SITE.desk + ' · ' + mins(f) + ' min read</p></article>';
+    }
+    function icard(x) {
+      var badge = x.pending ? '<span class="badge">Awaiting confirmation</span>' : "";
+      var more = x.read && BY_SLUG[x.read] ? '<a class="tlink" href="@@' + pathOf(x.read) + '">Read the story</a>' : "";
+      return '<li class="icard"><p class="kicker"><span>' + esc(x.type) + '</span>' + badge + '</p><h4>' + esc(x.title) + '</h4>' +
+        '<p class="who"><a href="@@interventions/?artist=' + slug(x.artist) + '">' + esc(x.artist) + '</a> · ' + esc(x.city) + ', ' + esc(x.country) + '</p>' +
+        '<p>' + esc(x.note) + '</p>' + more + '</li>';
+    }
+    function acard(x) {
+      var inner = photo(ART_PHOTOS[x.name] || x.name) + '<h3>' + x.name + '</h3><p>' + x.role + '</p>';
+      if (x.read && BY_SLUG[x.read]) return '<li><a class="acard" href="@@artists/' + x.slug + '/">' + inner + '<span class="more">Open profile</span></a></li>';
+      return '<li><div class="acard acard--soon">' + inner + '<span class="soon">Coming soon</span></div></li>';
+    }
+    function ccard(c) {
+      return '<li class="ccard"><p class="kicker">' + c.kicker + ' · ' + mins(c) + ' min</p><h3><a href="@@' + pathOf(c.slug) + '">' + c.title + '</a></h3><p>' + c.standfirst + '</p>' +
+        '<span class="more" aria-hidden="true">' + (COLS[c.slug] ? "Read the column" : "Read the dispatch") + '</span></li>';
+    }
+    function ecard(x) {
+      return '<li class="ecard"><p class="kicker">' + x.venue + '</p><h3>' + x.t + '</h3><p>' + x.sub + '</p><dl><div><dt>Dates: </dt><dd>' + x.when + '</dd></div></dl><span class="badge">' + x.status + '</span></li>';
+    }
+    function dgrid(list) {
+      if (!list.length) return "";
+      var out = story(list[0], "s-lead"), side = list.slice(1, 3), rest = list.slice(3);
+      if (side.length) out += '<div class="side">' + side.map(function (f) { return story(f, "s-side"); }).join("") + '</div>';
+      return out + rest.map(function (f) { return story(f, "s-small"); }).join("");
+    }
+    // A section's heading. At the top of a page it is the page's own heading; further down it is a section heading.
+    function wrapSec(st, ctx, inner, o) {
+      o = o || {};
+      var h = txt(get(st, "heading", "")), d = get(st, "intro", ""), dek = d ? '<p class="dek">' + txt(d) + '</p>' : "", cls = "sec" + (o.pine ? " on-pine" : "");
+      if (get(st, "top", false)) return '<section class="sec sec--top' + (o.pine ? " on-pine" : "") + '"' + (o.id ? ' id="' + o.id + '"' : "") + (o.attrs || "") + '><div class="wrap">' + (h || dek ? '<div class="sec-head">' + (h ? "<h1>" + h + "</h1>" : "") + dek + '</div>' : "") + inner + '</div></section>';
+      var id = o.id || ctx.id, hid = "h-" + id;
+      return '<section class="' + cls + '" id="' + id + '"' + (h ? ' aria-labelledby="' + hid + '"' : "") + (get(st, "flush", false) ? ' style="padding-top:0"' : "") + (o.attrs || "") + '><div class="wrap">\n    ' +
+        (h || dek ? '<div class="sec-head">' + (h ? '<h2 id="' + hid + '">' + h + '</h2>' : "") + dek + '</div>\n    ' : "") + inner + '</div></section>';
+    }
+
+    // ----- sections -----
+    var S = {};
+    S.hero = function (st) {
+      var btn = get(st, "button", "") && addrOk(get(st, "button_href", "")) ? '<a class="btn" href="' + hrefOf(st.button_href) + '">' + txt(st.button) + '</a>' : "";
+      var lnk = get(st, "link", "") && addrOk(get(st, "link_href", "")) ? '<a class="tlink" href="' + hrefOf(st.link_href) + '">' + txt(st.link) + '</a>' : "";
+      var cap = txt(get(st, "caption", "")) + (get(st, "caption_link", "") && addrOk(get(st, "caption_href", "")) ? ' <a href="' + hrefOf(st.caption_href) + '">' + txt(st.caption_link) + '</a>.' : "");
+      return '<div class="wrap">\n    <section class="hero" aria-labelledby="heroTitle">\n      <div>\n' +
+        (get(st, "eyebrow", "") ? '        <p class="kicker">' + txt(st.eyebrow) + '</p>\n' : "") +
+        '        <h1 id="heroTitle">' + txt(get(st, "headline", "")) + '</h1>\n' +
+        (get(st, "intro", "") ? '        <p class="hero-intro">' + txt(st.intro) + '</p>\n' : "") +
+        (btn || lnk ? '        <div class="actions">' + btn + lnk + '</div>\n' : "") +
+        '      </div>\n      <figure>' + photo(get(st, "photo", "Lead image")) + (cap ? '<figcaption>' + cap + '</figcaption>' : "") + '</figure>\n    </section>\n  </div>';
+    };
+    function articlesFor(which) {
+      if (which === "dispatches") return FEATURES.slice();
+      if (which === "columns") return COLUMNS.slice();
+      if (which === "all") return ALL.slice();
+      return (Array.isArray(which) ? which : []).filter(function (s) { return BY_SLUG[s]; }).map(function (s) { return BY_SLUG[s]; });
+    }
+    S.features = function (st, ctx) {
+      var list = articlesFor(get(st, "which", "dispatches"));
+      var inner = get(st, "look", "grid") === "list" ? '<ul class="cgrid">' + list.map(ccard).join("") + '</ul>' : '<div class="dgrid">' + dgrid(list) + '</div>';
+      return wrapSec(st, ctx, inner);
+    };
+    S.profiles = function (st, ctx) {
+      var want = (get(st, "artists", []) || []).filter(function (x) { return typeof x === "string"; }), list = (D.artists || []).filter(function (x) { return !want.length || want.indexOf(x.slug) >= 0; });
+      return wrapSec(st, ctx, '<ul class="agrid">' + list.map(acard).join("") + '</ul>');
+    };
+    S.archive = function (st, ctx) {
+      if (get(st, "show", "recent") !== "all") {
+        var n = Math.max(1, Math.min(60, Number(get(st, "count", 6)) || 6)), recent = newestFirst(ARCHIVE).slice(0, n);
+        var b = get(st, "button", ""), more = b && addrOk(get(st, "button_href", "")) ? '\n    <p class="amore"><a class="btn" href="' + hrefOf(st.button_href) + '">' + txt(b).split("{count}").join(String(ARCHIVE.length)) + '</a></p>' : "";
+        return wrapSec(st, ctx, '<ul class="cards">' + recent.map(icard).join("") + '</ul>' + more);
+      }
+      var names = Array.from(new Set(ARCHIVE.map(function (x) { return x.artist; }))).sort(), cities = Array.from(new Set(ARCHIVE.map(function (x) { return x.city; }))).sort();
+      var dec = function (x) { return typeof x.y === "number" ? String(Math.floor(x.y / 10) * 10) : "tbc"; };
+      var groups = [], at = {};
+      newestFirst(ARCHIVE).forEach(function (x) { var k = String(x.y); if (!(k in at)) { at[k] = groups.length; groups.push([k, []]); } groups[at[k]][1].push(x); });
+      var card = function (x) {
+        var text = esc(["title", "artist", "city", "country", "type", "note", "y"].map(function (k) { return String(x[k]); }).join(" ").toLowerCase());
+        return icard(x).replace('<li class="icard">', '<li class="icard" data-artist="' + slug(x.artist) + '" data-city="' + esc(x.city) + '" data-dec="' + dec(x) + '" data-text="' + text + '">');
+      };
+      var label = function (y) { return y === "TBC" ? "Date to confirm" : y; };
+      var out = groups.map(function (g) { return '<section class="yr" aria-label="' + label(g[0]) + '"><h2>' + label(g[0]) + '</h2><ul class="cards">' + g[1].map(card).join("") + '</ul></section>'; }).join("");
+      var chips = [["", "All years"], ["2020", "2020s"], ["2010", "2010s"], ["2000", "2000s"], ["1990", "1990s"], ["1980", "1980s"], ["tbc", "Date to confirm"]].map(function (c) {
+        return '<button type="button" class="chip" data-dec="' + c[0] + '" aria-pressed="' + (c[0] === "" ? "true" : "false") + '">' + c[1] + '</button>';
+      }).join("");
+      var aopts = names.map(function (n) { return '<option value="' + slug(n) + '">' + esc(n) + '</option>'; }).join(""), copts = cities.map(function (c) { return '<option>' + esc(c) + '</option>'; }).join("");
+      var email = get(st, "email", "") || mailTo(), note = get(st, "note", "");
+      var inner = '\n    <form class="atools" role="search" onsubmit="return false">\n' +
+        '      <div class="field"><label for="fQ">Search</label><input id="fQ" type="search" placeholder="' + txt(get(st, "search_hint", "")) + '" autocomplete="off"></div>\n' +
+        '      <div class="field"><label for="fArtist">Artist</label><select id="fArtist"><option value="">All artists</option>' + aopts + '</select></div>\n' +
+        '      <div class="field"><label for="fCity">City</label><select id="fCity"><option value="">All cities</option>' + copts + '</select></div>\n' +
+        '      <div class="field decades" role="group" aria-labelledby="decLbl"><span class="lbl" id="decLbl">Year</span><div class="chips" id="decades">' + chips + '</div></div>\n    </form>\n' +
+        '    <div class="astatus"><p id="aCount" aria-live="polite">' + ARCHIVE.length + ' interventions, newest first</p><button class="tlink" id="aClear" type="button" hidden>Clear filters</button></div>\n' +
+        '    <div class="results" id="results">' + out + '</div>\n    <p class="empty" id="aEmpty" hidden>Nothing matches those filters yet.</p>\n' +
+        (note || email ? '    <p class="anote">' + txt(note) + (email && get(st, "note_link", "") ? ' <a class="tlink" href="mailto:' + esc(email) + '" style="min-height:0">' + txt(st.note_link) + '</a>' : "") + '</p>\n  ' : "  ");
+      return wrapSec(st, ctx, inner, { id: "archive", attrs: ' data-total="' + ARCHIVE.length + '"' });
+    };
+    S["exhibition-list"] = function (st, ctx) { return wrapSec(st, ctx, '<ul class="egrid">' + (D.exhibitions || []).map(ecard).join("") + '</ul>'); };
+    S.collecting = function (st, ctx) {
+      var top = !!get(st, "top", false), h2 = top ? "h2" : "h3", h3 = top ? "h3" : "h4";
+      var facts = (D.stats || []).map(function (p) { return '<li class="fact"><strong>' + p[0] + '</strong><span>' + p[1] + '</span></li>'; }).join("");
+      var terms = (D.glossary || []).map(function (p) { return '<div><' + h3 + '>' + p[0] + '</' + h3 + '><p>' + p[1] + '</p></div>'; }).join("");
+      var b = get(st, "button", ""), btn = b && addrOk(get(st, "button_href", "")) ? '\n      <a class="btn" href="' + hrefOf(st.button_href) + '">' + txt(b) + '</a>' : "";
+      var inner = '<ul class="facts">' + facts + '</ul>\n    <div class="primer"><div class="intro"><' + h2 + '>' + txt(get(st, "primer_heading", "")) + '</' + h2 + '>\n      <p>' + txt(get(st, "primer", "")) + '</p>' + btn + '</div>\n' +
+        '      <div class="terms">' + terms + '</div></div>';
+      return wrapSec(st, ctx, inner, { pine: true });
+    };
+    S.signup = function (st, ctx) {
+      var email = get(st, "email", "") || mailTo(), id = ctx.id;
+      return '<section class="sec" id="' + id + '" aria-labelledby="h-' + id + '">\n    <div class="wrap news">\n' +
+        '      <div><h2 id="h-' + id + '">' + txt(get(st, "heading", "")) + '</h2>' + (get(st, "text", "") ? '<p class="dek">' + txt(st.text) + '</p>' : "") + '</div>\n      <div>\n' +
+        '        <form class="nl" id="nl"><label class="sr" for="nlEmail">Email address</label><input id="nlEmail" type="email" required placeholder="you@example.com" autocomplete="email"><button class="btn" type="submit">' + txt(get(st, "button", "Subscribe")) + '</button></form>\n' +
+        '        <p class="nl-msg" id="nlMsg" aria-live="polite"></p>\n' +
+        '        <p class="mf-note">This opens your own email app with a message ready to send to ' + esc(mailTo()) + '.</p>\n' +
+        (get(st, "pitch", "") || email ? '        <p class="pitch">' + txt(get(st, "pitch", "")) + (email ? ' <a class="tlink" style="min-height:0" href="mailto:' + esc(email) + '">' + esc(email) + '</a>' : "") + '</p>\n' : "") +
+        '      </div>\n    </div>\n  </section>';
+    };
+    S["text-page"] = function (st) {
+      var body = (get(st, "intro", []) || []).map(function (p) { return "<p>" + (typeof p === "object" && p ? p.v : p) + "</p>"; }).join("");
+      var items = (get(st, "items", []) || []).filter(function (x) { return x && x.hidden !== true && (x.term || x.text); });
+      var lh = get(st, "list_heading", ""), anchor = get(st, "list_anchor", "");
+      if (items.length) body += (lh ? '<h2' + (anchor ? ' id="' + esc(anchor) + '"' : "") + '>' + txt(lh) + '</h2>' : "") + '<dl class="stds">' + items.map(function (x) { return '<div><dt>' + x.term + '</dt><dd>' + x.text + '</dd></div>'; }).join("") + '</dl>';
+      if (get(st, "end_heading", "") || get(st, "end_text", "")) body += (get(st, "end_heading", "") ? '<h2>' + txt(st.end_heading) + '</h2>' : "") + (get(st, "end_text", "") ? '<p>' + st.end_text + '</p>' : "");
+      return '<article><header class="r-head"><h1>' + txt(get(st, "heading", "")) + '</h1>' + (get(st, "stand", "") ? '<p class="r-stand">' + st.stand + '</p>' : "") + '</header><div class="r-body r-body--page">' + body.split("{root}").join("@@") + '</div></article>';
+    };
+
+    // ----- sections any page can use, the same set as the other sites, drawn in this site's look -----
+    function liveRows(list) { return (Array.isArray(list) ? list : []).map(function (x, i) { return { x: x, i: i }; }).filter(function (r) { return r.x && r.x.hidden !== true; }); }
+    function paras(t) { t = String(t || "").trim(); return t ? "<p>" + txt(t).split(/\n\s*\n/).join("</p><p>").replace(/\n/g, "<br>") + "</p>" : ""; }
+    function headBlock(st) {
+      var e = get(st, "eyebrow", ""), h = get(st, "heading", "");
+      if (!e && !h) return "";
+      return '<div class="sec-head">' + (e ? '<p class="kicker">' + txt(e) + '</p>' : "") + (h ? '<h2>' + txt(h) + '</h2>' : "") + '</div>';
+    }
+    function libSec(cls, inner) { return '<section class="sec sec--lib' + (cls ? " " + cls : "") + '"><div class="wrap">' + inner + '</div></section>'; }
+    // a photo, or the frame that waits for one
+    function picOf(x, desc, ratio) {
+      if (x && x.image) return '<img class="ph-img" src="' + esc(opts.imageSrc ? opts.imageSrc(x.image) : "@@assets/images/" + x.image) + '" alt="' + esc(x.alt || "") + '" loading="lazy"' + (ratio ? ' style="aspect-ratio:' + ratio + '"' : "") + '>';
+      return photo((x && x.alt) || desc || "Photograph", ratio);
+    }
+    function link(words, h, cls) { return words && addrOk(h) ? '<a class="' + (cls || "tlink") + '" href="' + esc(hrefOf(h)) + '"' + (/^https?:/i.test(String(h)) ? ' rel="noopener"' : "") + '>' + txt(words) + '</a>' : ""; }
+    function rep(x) { return x && x.reported ? '<span class="badge">Reported</span> ' : ""; }
+    function per(st) { return { "2": 2, "3": 3, "4": 4 }[String(get(st, "per_row", "3"))] || 3; }
+    function mailTo() { return "info@grovegallery.com"; }
+
+    S.announcement = function (st) {
+      var rows = liveRows(get(st, "messages", [])).filter(function (r) { return r.x.text || r.x.link; });
+      var look = get(st, "style", "pine") === "linen" ? "ann--linen" : "ann--pine";
+      var secs = Math.max(3, Math.min(30, Number(get(st, "seconds", 6)) || 6));
+      var msgs = rows.map(function (r, k) { return '<p class="ann-msg' + (k ? "" : " on") + '" data-adh-b="messages.' + r.i + '"><span>' + txt(r.x.text || "") + '</span>' + link(r.x.link, r.x.href, "ann-link") + '</p>'; }).join("");
+      return '<div class="ann ' + look + '" data-announce data-secs="' + secs + '"><div class="wrap ann-in"><div class="ann-msgs">' + msgs + '</div>' + (rows.length > 1 ? '<span class="ann-count" aria-hidden="true">1 of ' + rows.length + '</span>' : "") + '</div></div>';
+    };
+    S.columns = function (st) {
+      var num = get(st, "numbered", true) !== false;
+      var cards = liveRows(get(st, "columns", [])).map(function (r, k) {
+        var c = r.x;
+        return '<div class="lcard" data-adh-b="columns.' + r.i + '">' + (num ? '<p class="kicker">' + (k < 9 ? "0" : "") + (k + 1) + '</p>' : "") + (c.title ? '<h3>' + txt(c.title) + '</h3>' : "") +
+          (c.text ? '<div class="lcard-text">' + paras(c.text) + '</div>' : "") + link(c.link, c.href) + '</div>';
+      }).join("");
+      return libSec("", headBlock(st) + '<div class="lgrid lgrid--' + per(st) + '">' + cards + '</div>');
+    };
+    S.space = function (st) { return '<div class="space space--' + ({ S: "s", L: "l" }[get(st, "size", "M")] || "m") + '" aria-hidden="true"></div>'; };
+    S.quote = function (st) {
+      var who = get(st, "who", "");
+      return libSec("", '<figure class="bigq"><blockquote>' + txt(String(get(st, "text", "")).trim()).replace(/\n+/g, "<br>") + '</blockquote>' + (who ? '<figcaption>' + txt(who) + '</figcaption>' : "") + '</figure>');
+    };
+    S.faq = function (st) {
+      var items = liveRows(get(st, "items", [])).map(function (r) {
+        return '<details class="qa" data-adh-b="items.' + r.i + '"><summary><span class="qa-q">' + txt(r.x.q || "") + '</span><span class="qa-word" aria-hidden="true"></span></summary><div class="qa-a">' + paras(r.x.a) + '</div></details>';
+      }).join("");
+      return libSec("", headBlock(st) + '<div class="qa-list">' + items + '</div>');
+    };
+    S.button = function (st) {
+      var inner = (get(st, "heading", "") ? '<h2>' + txt(st.heading) + '</h2>' : "") + (get(st, "text", "") ? '<p class="dek">' + txt(st.text) + '</p>' : "") + link(get(st, "label", ""), get(st, "href", ""), "btn");
+      return get(st, "panel", true) === false ? libSec("", '<div class="cta cta--plain">' + inner + '</div>') : libSec("on-pine", '<div class="cta">' + inner + '</div>');
+    };
+    S["picture-banner"] = function (st) {
+      var place = { C: "pb--c", R: "pb--r" }[get(st, "place", "L")] || "pb--l", box = get(st, "box", "pine") === "linen" ? "pb-box--linen" : "pb-box--pine";
+      var e = get(st, "eyebrow", ""), h = get(st, "heading", ""), t = get(st, "text", "");
+      return libSec("", '<div class="pb ' + place + (get(st, "fit", "fill") === "whole" ? " pb--whole" : "") + '"><div class="pb-pic">' + picOf(st, "Banner photograph") + '</div>' +
+        '<div class="pb-box ' + box + '">' + (e ? '<p class="kicker">' + txt(e) + '</p>' : "") + (h ? '<h2>' + txt(h) + '</h2>' : "") + (t ? '<p>' + txt(t) + '</p>' : "") + link(get(st, "label", ""), get(st, "href", ""), "btn") + '</div></div>');
+    };
+    S.slideshow = function (st) {
+      var rows = liveRows(get(st, "slides", [])), n = rows.length, secs = Math.max(3, Math.min(30, Number(get(st, "seconds", 6)) || 6));
+      var slides = rows.map(function (r, k) { return '<figure class="ss-slide' + (k ? "" : " on") + '" data-adh-b="slides.' + r.i + '">' + picOf(r.x, "Slide " + (k + 1), "16/9") + (r.x.caption ? '<figcaption>' + txt(r.x.caption) + '</figcaption>' : "") + '</figure>'; }).join("");
+      var nav = n > 1 ? '<div class="ss-nav"><button type="button" class="tlink" data-ss="prev">Previous</button><span class="ss-at" aria-live="polite">1 of ' + n + '</span><button type="button" class="tlink" data-ss="next">Next</button></div>' : "";
+      return libSec("", headBlock(st) + '<div class="ss" data-slides data-auto="' + (get(st, "auto", true) === false ? 0 : 1) + '" data-secs="' + secs + '" aria-roledescription="slideshow">' + slides + nav + '</div>');
+    };
+    S.gallery = function (st) {
+      var items = liveRows(get(st, "photos", [])).map(function (r, k) {
+        return '<button type="button" class="gl-item" data-adh-b="photos.' + r.i + '">' + picOf(r.x, "Photograph " + (k + 1), "4/5") + (r.x.caption ? '<span class="gl-t">' + txt(r.x.caption) + '</span>' : "") + (r.x.sub ? '<span class="gl-d">' + txt(r.x.sub) + '</span>' : "") + '</button>';
+      }).join("");
+      return libSec("", headBlock(st) + '<div class="lgrid lgrid--' + per(st) + ' gl" data-gallery>' + items + '</div>');
+    };
+    S["logo-row"] = function (st) {
+      var items = liveRows(get(st, "logos", [])).filter(function (r) { return r.x.image || r.x.alt; }).map(function (r) {
+        var g = r.x, inner = g.image ? '<img src="' + esc(opts.imageSrc ? opts.imageSrc(g.image) : "@@assets/images/" + g.image) + '" alt="' + esc(g.alt || "") + '">' : '<span class="lg-name">' + txt(g.alt) + '</span>';
+        return addrOk(g.href) ? '<a class="lg" href="' + esc(hrefOf(g.href)) + '" data-adh-b="logos.' + r.i + '">' + inner + '</a>' : '<span class="lg" data-adh-b="logos.' + r.i + '">' + inner + '</span>';
+      }).join("");
+      var e = get(st, "eyebrow", "");
+      return libSec("", '<div class="lgrow' + (get(st, "colour", "one") === "own" ? " lgrow--own" : "") + '">' + (e ? '<p class="kicker">' + txt(e) + '</p>' : "") + '<div class="lgs">' + items + '</div></div>');
+    };
+    S.picture = function (st) {
+      var cap = get(st, "caption", "");
+      return libSec("", '<figure class="pic' + (get(st, "size", "") === "contained" ? " pic--narrow" : "") + '">' + picOf(st, "Photograph", "16/9") + (cap ? '<figcaption>' + txt(cap) + '</figcaption>' : "") + '</figure>');
+    };
+    S["text-picture"] = function (st) {
+      var cap = get(st, "caption", "");
+      return libSec("", '<div class="tp' + (get(st, "side", "right") === "left" ? " tp--flip" : "") + '"><div class="tp-words">' + headBlock(st) + '<div class="tp-body">' + paras(get(st, "body", "")) + '</div>' + link(get(st, "link", ""), get(st, "href", "")) + '</div>' +
+        '<figure class="tp-pic">' + picOf(st, "Photograph", "4/5") + (cap ? '<figcaption>' + txt(cap) + '</figcaption>' : "") + '</figure></div>');
+    };
+    S.artworks = function (st) {
+      var items = liveRows(get(st, "artworks", [])).map(function (r, k) {
+        var w = r.x, tag = addrOk(w.href) ? "a" : "div", line = [w.year, w.medium].filter(Boolean).join(", ");
+        return '<' + tag + ' class="aw"' + (tag === "a" ? ' href="' + esc(hrefOf(w.href)) + '"' : "") + ' data-adh-b="artworks.' + r.i + '">' + picOf(w, w.title || "Artwork " + (k + 1), "4/5") +
+          '<h3>' + (w.title ? txt(w.title) : '<span class="tbc">Title to confirm</span>') + '</h3>' + (line ? '<p class="aw-d">' + txt(line) + '</p>' : "") + (w.size ? '<p class="aw-d">' + txt(w.size) + '</p>' : "") + (w.note ? '<p class="aw-n">' + txt(w.note) + '</p>' : "") + '</' + tag + '>';
+      }).join("");
+      return libSec("", headBlock(st) + '<div class="lgrid lgrid--' + per(st) + '">' + items + '</div>');
+    };
+    S.exhibitions = function (st) {
+      var cards = liveRows(get(st, "shows", [])).map(function (r) {
+        var x = r.x;
+        return '<li class="ecard" data-adh-b="shows.' + r.i + '"><p class="kicker">' + txt(x.place || "") + '</p><h3>' + rep(x) + txt(x.title || "") + '</h3><dl><div><dt>Dates: </dt><dd>' + (x.dates ? txt(x.dates) : "To confirm") + '</dd></div></dl>' +
+          (x.kind ? '<span class="badge">' + txt(x.kind) + '</span>' : "") + (x.href && addrOk(x.href) ? ' <a class="tlink ecard-src" href="' + esc(hrefOf(x.href)) + '" rel="noopener">Source</a>' : "") + '</li>';
+      }).join("");
+      return libSec("", headBlock(st) + '<ul class="egrid">' + cards + '</ul>');
+    };
+    S.career = function (st) {
+      var rows = liveRows(get(st, "events", [])).map(function (r) {
+        var x = r.x;
+        return '<li class="car-row" data-adh-b="events.' + r.i + '"><span class="car-when">' + (x.when ? txt(x.when) : '<span class="tbc">To confirm</span>') + '</span><span class="car-what">' + rep(x) + txt(x.what || "") +
+          (x.href && addrOk(x.href) ? ' <a class="tlink" href="' + esc(hrefOf(x.href)) + '" rel="noopener">Source</a>' : "") + '</span></li>';
+      }).join("");
+      return libSec("", headBlock(st) + '<ol class="car">' + rows + '</ol>');
+    };
+    S.press = function (st) {
+      var items = liveRows(get(st, "quotes", [])).filter(function (r) { return r.x.quote; }).map(function (r) {
+        var x = r.x, by = [x.who, x.publication, x.date].filter(Boolean).map(txt).join(", ");
+        return '<figure class="lcard pq" data-adh-b="quotes.' + r.i + '"><blockquote>“' + txt(String(x.quote).trim()) + '”</blockquote>' + (by ? '<figcaption>' + by + '</figcaption>' : "") + (x.href && addrOk(x.href) ? '<a class="tlink" href="' + esc(hrefOf(x.href)) + '" rel="noopener">Read it at the source</a>' : "") + '</figure>';
+      }).join("");
+      return libSec("", headBlock(st) + '<div class="lgrid lgrid--2">' + items + '</div>');
+    };
+    S.visit = function (st) {
+      var mw = get(st, "map_words", ""), m = String(get(st, "map", "") || ""), map = mw && /^https:\/\//i.test(m) ? '<a class="tlink" href="' + esc(m) + '" target="_blank" rel="noopener">' + txt(mw) + '</a>' : "";
+      var cards = liveRows(get(st, "details", [])).map(function (r, k) {
+        return '<div class="lcard vis" data-adh-b="details.' + r.i + '"><p class="kicker">' + txt(r.x.title || "") + '</p><p class="vis-words">' + (r.x.text ? txt(String(r.x.text).trim()).replace(/\n/g, "<br>") : '<span class="tbc">To add</span>') + '</p>' + (k === 0 ? map : "") + '</div>';
+      }).join("");
+      return libSec("", headBlock(st) + '<div class="lgrid lgrid--3">' + cards + '</div>' + (cards ? "" : map));
+    };
+    S["contact-form"] = function (st) {
+      var topics = (Array.isArray(get(st, "topics", [])) ? st.topics : []).map(function (t, i) { return { t: t, i: i }; }).filter(function (x) { return typeof x.t === "string" && x.t.trim(); });
+      var t = get(st, "text", "");
+      return libSec("", '<div class="mform"><div>' + headBlock(st) + (t ? '<p class="dek">' + txt(String(t).trim()) + '</p>' : "") + '</div>' +
+        '<form class="mf" data-mailform="contact" data-email="' + esc(mailTo()) + '" novalidate><div class="mf-row"><div class="field"><label>Your name<input name="name" type="text" autocomplete="name"></label></div><div class="field"><label>Your email<input name="email" type="email" autocomplete="email" required></label></div></div>' +
+        (topics.length ? '<div class="field"><label>What it is about<select name="topic">' + topics.map(function (x) { return '<option data-adh-b="topics.' + x.i + '">' + txt(x.t.trim()) + '</option>'; }).join("") + '</select></label></div>' : "") +
+        '<div class="field"><label>Your message<textarea name="message" rows="5" required></textarea></label></div>' +
+        '<div><button class="btn" type="submit">' + txt(get(st, "button", "") || "Write the email") + '</button><p class="mf-note" role="status">This opens your own email app with your message ready to send to ' + esc(mailTo()) + '.</p></div></form></div>');
+    };
+
+    // In the editor each section is marked, so a click on the page can find it.
+    function mark(html, id) { return opts.mark ? html.replace(/^(\s*<[a-z]+)/, '$1 data-adh="' + id + '"') : html; }
+    // A second copy of a section gets its own names for anything already used
+    // higher up the page, so its filters, form and links work on their own.
+    function own(html, sid, seen) {
+      var clash = {};
+      html.replace(/ id="([^"]+)"/g, function (m, x) { if (seen[x]) clash[x] = 1; return m; });
+      var names = Object.keys(clash);
+      if (names.length) {
+        var pre = String(sid).replace(/[^a-z0-9-]/gi, "-") + "--";
+        html = html.replace(/ (id|for|aria-labelledby|aria-describedby|aria-controls)="([^"]+)"/g, function (m, a, x) { return clash[x] ? " " + a + '="' + pre + x + '"' : m; })
+          .replace(/ href="#([^"]+)"/g, function (m, x) { return clash[x] ? ' href="#' + pre + x + '"' : m; });
+      }
+      html.replace(/ id="([^"]+)"/g, function (m, x) { seen[x] = 1; return m; });
+      return html;
+    }
+    function sectionsPage(key) {
+      var pg = PAGES.pages[key], parts = [], top = [], lead = true, seen = {};
+      (pg.sections || []).forEach(function (sec) {
+        if (!sec || sec.visible === false || !S[sec.type]) return;
+        var html = mark(own(S[sec.type](sec.settings || {}, { id: sec.id, page: key }), sec.id, seen), sec.id);
+        if (lead && sec.type === "announcement") top.push(html); else { lead = false; parts.push(html); }
+      });
+      return page(pg.path, pg.title || "", pg.description || "", parts.join("\n  "), { home: !!pg.home, top: top.join("\n") });
+    }
+
+    // ----- articles, columns and artists, each on its own page -----
+    function M(h, id) { return opts.mark ? h.replace(/^(\s*<[a-z]+)/, '$1 data-adh="' + id + '"') : h; }
+    function articlePage(a) {
+      var p = pathOf(a.slug), isCol = !!COLS[a.slug], pool = isCol ? COLUMNS : FEATURES;
+      var nxt = pool[(pool.indexOf(a) + 1) % pool.length];
+      var sect = isCol ? ["Urban Culture", "urban-culture/"] : ["Dispatches", "dispatches/"];
+      var fig = PHOTOS[a.slug] ? '<figure class="r-fig">' + photo(PHOTOS[a.slug]) + '<figcaption>Photograph to be commissioned.</figcaption></figure>' : "";
+      var draft = a.draft ? '<p class="note"><b>Draft</b>Biographical details, dates, titles and market data in this profile are being confirmed with the artist’s studio and Grove Gallery before publication.</p>' : "";
+      var main = '<article>\n    ' + M('<header class="r-head"><p class="crumb"><a href="@@' + sect[1] + '">' + sect[0] + '</a></p><p class="kicker">' + a.kicker + '</p><h1>' + a.title + '</h1><p class="r-stand">' + a.standfirst + '</p><p class="byline">By ' + SITE.desk + ' · ' + SITE.date + ' · ' + mins(a) + ' min read</p></header>', "words") + '\n    ' +
+        fig + '\n    ' + M('<div class="r-body">' + draft + fixLinks(a.body, "@@") + '</div>', "body") + '\n' +
+        '    <footer class="r-foot"><p class="filed">Filed under ' + (a.tags || []).join(", ") + '.</p>\n' +
+        '      <div class="next"><p class="kicker">Next ' + (isCol ? "column" : "dispatch") + '</p><h2>' + nxt.title + '</h2><a class="btn" href="@@' + pathOf(nxt.slug) + '">Read next</a></div></footer>\n  </article>';
+      return page(p + "index.html", a.title + " | " + NAME(), stripTags(a.standfirst), main);
+    }
+    function artistPage(x) {
+      var s = x.slug;
+      var works = newestFirst(ARCHIVE.filter(function (w) { return w.artist === x.name; }));
+      var feat = BY_SLUG[x.read];
+      var facts = (x.facts || []).map(function (p) { return '<div><dt>' + p[0] + '</dt><dd>' + p[1] + '</dd></div>'; }).join("");
+      var arch = "";
+      if (works.length) {
+        var rows = works.map(function (w) { return '<li><strong>' + (w.y === "TBC" ? "Date to confirm" : w.y) + '</strong>: ' + esc(w.title) + ', ' + esc(w.city) + '</li>'; }).join("");
+        arch = '<h2>In the archive</h2><ul class="plain">' + rows + '</ul><p><a href="@@interventions/?artist=' + s + '">See these entries in the archive</a></p>';
+      }
+      var main = '<article>\n    ' + M('<header class="r-head"><p class="crumb"><a href="@@artists/">Artists</a></p><p class="kicker">Artist</p><h1>' + x.name + '</h1><p class="r-stand">' + x.role + '</p></header>', "words") + '\n' +
+        '    <figure class="r-fig">' + photo(ART_PHOTOS[x.name] || x.name) + '<figcaption>Photograph to be commissioned.</figcaption></figure>\n' +
+        '    ' + M('<div class="r-body"><p>' + x.summary + '</p><p>' + (x.note || "") + '</p>\n      <dl class="kfacts">' + facts + '</dl>' + arch + '</div>', "about") + '\n' +
+        (feat ? '    <footer class="r-foot"><div class="next"><p class="kicker">Read more</p><h2>' + feat.title + '</h2><a class="btn" href="@@' + pathOf(feat.slug) + '">Read the story</a></div></footer>\n' : "") + '  </article>';
+      return page("artists/" + s + "/index.html", x.name + " | " + NAME(), stripTags(x.summary), main);
+    }
+    function notFound() {
+      var base = "<script>document.write('<base href=\"'+(location.hostname.slice(-9)==='github.io'?'/street-art-dispatch/':'/')+'\">')</script>\n";
+      var main = '<article><header class="r-head"><p class="kicker">Page not found</p><h1>That page isn’t here.</h1><p class="r-stand">It may have moved, or the address may be mistyped.</p></header><div class="r-body r-body--page"><p><a href="./">Go to the front page</a> or <a href="interventions/">search the archive</a>.</p></div></article>';
+      return page("", "Page not found | " + NAME(), "That page is not here.", main, { file: "404.html", head: base });
+    }
+    var LIST_ORDER = ["home", "dispatches", "urban-culture", "artists", "interventions", "exhibitions", "collecting", "about", "contact"];
+    // Every published page: the pages from the page list, then each article and artist, then the page for a wrong address.
+    function all() {
+      var out = [], done = {};
+      function p(k) { if (PAGES.pages[k] && !done[k]) { done[k] = 1; out.push(sectionsPage(k)); } }
+      LIST_ORDER.forEach(p); Object.keys(PAGES.pages || {}).forEach(p);
+      ALL.forEach(function (a) { out.push(articlePage(a)); });
+      (D.artists || []).forEach(function (x) { if (x.read && BY_SLUG[x.read]) out.push(artistPage(x)); });
+      out.push(notFound());
+      return out;
+    }
+    return {
+      all: all, sectionsPage: sectionsPage, notFound: notFound,
+      articlePage: function (s) { return BY_SLUG[s] ? articlePage(BY_SLUG[s]) : null; },
+      featurePage: function (s) { return BY_SLUG[s] ? articlePage(BY_SLUG[s]) : null; },
+      artistPage: function (s) { var x = (D.artists || []).find(function (a) { return a.slug === s && hasPage(a); }); return x ? artistPage(x) : null; },
+      // Which page a web address inside the site leads to.
+      which: function (path) {
+        path = String(path || "").replace(/^\/+/, "").replace(/index\.html$/, "").split("#")[0].split("?")[0];
+        var m;
+        if ((m = /^artists\/([a-z0-9-]+)\/?$/.exec(path)) && (D.artists || []).some(function (a) { return a.slug === m[1] && hasPage(a); })) return { kind: "artist", key: m[1] };
+        if ((m = /^(dispatches|urban-culture)\/([a-z0-9-]+)\/?$/.exec(path)) && BY_SLUG[m[2]]) return { kind: "article", key: m[2] };
+        var k = Object.keys(PAGES.pages || {}).find(function (x) { return PAGES.pages[x].path === path + (path && !/\/$/.test(path) ? "/" : "") + "index.html"; });
+        return k ? { kind: "page", key: k } : null;
+      },
+    };
+  }
+
+  var SAD = { fromFiles: fromFiles, Site: Site, slug: slug, SITE_URL: SITE_URL };
+  if (typeof module !== "undefined" && module.exports) module.exports = SAD; else root.SAD = SAD;
+})(typeof window !== "undefined" ? window : this);

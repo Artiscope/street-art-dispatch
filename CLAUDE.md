@@ -26,13 +26,17 @@ in the repository, so there is nothing to edit by hand.
 
 | To change | Edit this file |
 |---|---|
-| Articles, columns, artists, archive entries, exhibitions, collecting primer, About and Contact | `data/content.json` |
+| Articles, columns, artists, archive entries, exhibitions, collecting figures and glossary | `data/content.json` |
+| The sections of each page, their order and their words (headings, introductions, About, Contact, menu bar and footer) | `data/pages.json` (only from Artiscope Digital Home) |
+| Colours and typefaces chosen in the console | `data/theme.json` (leave alone) |
 | Colours, fonts, spacing | `assets/site.css` |
 | Menu, sign-up box, archive search | `assets/site.js` |
-| Page layouts | `tools/build.py` |
+| Page layouts | `assets/render.js` (run by `tools/build.mjs`, which `python3 tools/build.py` runs) |
 
-Run `python3 tools/build.py _site` to check a change builds. Do not
-commit `_site`. Do not edit `.github/workflows/pages.yml` unless the
+The pages are drawn by `assets/render.js`, the same code the page editor
+in Artiscope Digital Home uses for its preview, so the preview and the
+published page always match. Run `python3 tools/build.py _site` to check a
+change builds. Do not commit `_site`. Do not edit `.github/workflows/pages.yml` unless the
 owner asks.
 
 ## The look of this site
