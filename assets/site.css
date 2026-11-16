@@ -57,10 +57,6 @@ h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.08;letter-spac
 figcaption{margin-top:10px;font:400 .875rem/1.45 var(--sans);color:var(--pine-2)}
 
 /* ---------- Masthead ---------- */
-.topbar{background:var(--pine);color:var(--linen)}
-.topbar .wrap{display:flex;justify-content:space-between;gap:16px;padding-block:10px;font:500 .875rem/1.3 var(--sans)}
-.topbar span:last-child{display:none}
-@media (min-width:640px){.topbar span:last-child{display:block}}
 .nameplate{text-align:center;padding:clamp(28px,5vw,56px) var(--pad) clamp(16px,2.5vw,24px)}
 .nameplate a{font-family:var(--display);font-size:clamp(2.75rem,9.5vw,8rem);line-height:.95;letter-spacing:-.015em;text-decoration:none;display:inline-block}
 .nameplate p{margin-top:12px;font:500 1rem/1.4 var(--sans);color:var(--pine-2)}

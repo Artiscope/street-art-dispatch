@@ -2,8 +2,14 @@
 
 A record of what the website agent did on each run, newest first.
 
+## Monday 16 November 2026, top bar removed
+Published: the pine strip at the top of every page (issue label and site address) is gone, at the owner's request. Every email link and the sign-up box now use info@grovegallery.com, the same address as Global Art Monitor.
+Drafts waiting: none.
+Checked: the site builds, links work, the top of the pages holds at phone and desktop width, and no page shows an older address.
+Needs you: nothing.
+
 ## Monday 16 November 2026, email changed
-Published: every email link and the sign-up box now use info@artiscope.co.uk, at the owner's request, until the site's own mailboxes work.
+Published: every email link and the sign-up box moved off the site's own addresses, at the owner's request, until the site's own mailboxes work.
 Drafts waiting: none.
 Checked: the site builds, links work, and no page still shows the old addresses.
 Needs you: nothing.

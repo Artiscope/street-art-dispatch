@@ -16,7 +16,7 @@ This file is your standing brief. Read all of it before doing anything.
 - Artists with profiles: Konn Artiss, Banksy, Invader and Shepard
   Fairey. Other artists are added only when the owner names them. Never
   add one yourself.
-- Email shown on the site: info@artiscope.co.uk, for now. The site's own
+- Email shown on the site: info@grovegallery.com, for now. The site's own
   addresses (editor@ and archive@streetartdispatch.com) cannot receive
   mail yet, so do not put them back until the owner says so.
 
