@@ -4,7 +4,7 @@
 **Positioning:** *The Urban Art and Culture Publication*
 **Homepage line:** Art Doesn't Always Wait for an Invitation.
 
-`index.html` in this repository is the working homepage prototype. It's a single file built on the Marcus Vane motion system (Anton / Onest type, accent red `#ff3b1d`, spring reveals, Lenis smooth scroll). This document covers the editorial strategy, information architecture, SEO, data model and build plan for taking that prototype to a production publication.
+`index.html` in this repository is the working homepage prototype: a single, dependency-free file in a light editorial design (linen, pine and ruby; Gloock, Source Serif 4 and Libre Franklin). This document covers the editorial strategy, information architecture, SEO, data model and build plan for taking that prototype to a production publication.
 
 ---
 
@@ -64,7 +64,7 @@ Every pillar page is a hub. Supporting articles link **up** to it, it links **do
 - Titles should run 55–60 characters and meta descriptions 150–160. Name OG images `/og/{slug}.jpg`.
 - Internal links: every feature needs at least 3 contextual links (pillar, one sibling, one archive record). The prototype already does this inside the article bodies.
 - Generate the sitemap and news sitemap automatically. Add canonical URLs and an `hreflang` slot for a possible IT/FR edition.
-- Core Web Vitals: serve AVIF/WebP, lazy-load below the fold, preload Anton, and keep LCP under 2.5s on 4G. The hero poster is HTML/CSS, so it costs no image request.
+- Core Web Vitals: serve AVIF/WebP, lazy-load below the fold, preload Gloock and Source Serif 4, and keep LCP under 2.5s on 4G.
 
 ---
 
@@ -146,22 +146,33 @@ Each artist hub (`/artists/{slug}/`) uses one template:
 
 ## 7. Design system (as built in `index.html`)
 
-| Token | Value |
-|---|---|
-| Background / surface / surface-2 | `#08080a` / `#111114` / `#17171b` |
-| Foreground / muted / reading text | `#f3f1ea` / `#807f78` / `#dedad0` |
-| Accent / accent-2 / paper | `#ff3b1d` / `#ff6a3d` / `#ebe5d5` |
-| Display face | Anton (headlines, masthead, figures, pull quotes) |
-| Sans face | Onest 400/500/600 (UI, titles, labels) |
-| **Reading face (added)** | **Newsreader**, for standfirsts and article bodies, because long-form reading needs a serif |
-| Scale | Rem-based adaptive grid on a 1920 base, with breakpoints at 1440 / 1024 / 640 (exactly as in the brief) |
+### Colour: 60 / 30 / 10
+| Share | Token | Hex | Use |
+|---|---|---|---|
+| 60% | Vanilla Linen | `#EFE6D3` | Page, reading view, cards (`#E6DBC4`), photo frames (`#DDD0B5`) |
+| 30% | Pine Lacquer | `#163A30` | Text, top bar, footer, the Collecting section, links, focus rings, selected filter chips |
+| 10% | Ruby Red | `#F0283C` | **Buttons only** (Subscribe, Read Issue 01, Read next, Read the collecting guide). Hover `#D21E32`. |
 
-**Editorial additions beyond the Marcus Vane template:**
-- **Hero:** the founder portrait is replaced by a wheat-pasted **poster** carrying the headline, composited in front of a giant red "STREET ART / DISPATCH" masthead. It uses the same liquid distortion on hover, with letter-by-letter masthead reveals.
-- **Reader view:** a full-screen, hash-routed article view (`#read/{slug}`) with a progress bar, a ~68-character measure, a 20px serif body, drop caps, pull quotes, tags and a "Next dispatch" link. Esc and the back button close it.
-- **Generative SVG covers:** placeholders, one per article and artist, that run through the LiquidImage component (grayscale → colour reveal on hover). **They're meant to be replaced with commissioned or licensed photography.**
-- **Readability floors:** body text never drops below 15px and eyebrow labels never below 11px, even though the layout scales in rem.
-- **Accessibility:** `prefers-reduced-motion` is fully honoured (no preloader, no marquee, no reveals). Focus rings are visible, live regions announce archive results and artist changes, and the article view is a dialog.
+Contrast: pine on linen is 10:1. Secondary text `#4E6459` is at least 4.6:1 on both linen surfaces. Button labels are bold 19px white, which counts as large text, so ruby's 4.1:1 passes AA.
+
+### Type (all human-designed, free on Google Fonts)
+| Role | Typeface | Designer / origin |
+|---|---|---|
+| Headlines, nameplate, pull quotes | **Gloock** | Duarte Pace |
+| Reading text, standfirsts | **Source Serif 4** | Frank Grießhammer (Adobe), after Pierre-Simon Fournier |
+| Buttons, labels, captions, forms | **Libre Franklin** | Revival of Morris Fuller Benton's Franklin Gothic (1902) |
+
+We avoid the typefaces most often seen on AI-generated sites (Inter, Space Grotesk, Instrument Serif, Playfair Display, Fraunces, DM Sans/Serif, Poppins, Bebas Neue, Oswald, Onest, Anton).
+
+### Layout & interaction principles
+- 1240px max width, fluid side padding (20–48px), 12-column story grid, 8px spacing rhythm.
+- Body text 18–20px, reading measure about 68 characters, sentence-case labels (no tracked-out micro-capitals).
+- Every tap target is at least 44px. Real `<button>`s and links throughout, a skip link, visible focus, and keyboard support (Esc closes the menu and the reader).
+- Native scrolling, no scroll hijacking. Motion is limited to the menu sheet, the reader opening, a 3px card lift on hover, and the archive results fading as they update. All of it is off under `prefers-reduced-motion`.
+- No loading screen, marquee, letter-by-letter reveals, image distortion, ruled data tables or decorative numbering.
+- **Archive:** a search box, artist and city selects, decade chips, and results as index cards grouped by year. Clicking an artist's name filters to that artist.
+- **Artists:** photo cards that open a profile view, with the artist's summary, a plain-prose note, their archive entries and a link to the related story.
+- **Photography:** every image slot is a labelled "Photo to come" frame with a brief (see `PHOTOS` and `ARTIST_PHOTOS` in the script). Swap in commissioned or licensed images with credits.
 
 ---
 
@@ -183,7 +194,7 @@ Each artist hub (`/artists/{slug}/`) uses one template:
 **Recommended stack**
 - **Framework:** Next.js (App Router) or Astro, statically generated, with incremental regeneration for news.
 - **CMS:** Sanity (or Storyblok). Schemas: `article`, `column`, `artist`, `intervention`, `exhibition`, `auctionResult`, `author`, `city`. Editors can then add Grove Gallery artists without a developer.
-- **Motion:** port the prototype's CSS and JS as they are (Lenis, IntersectionObserver reveals, the Spring class and LiquidImage). No heavy animation library is needed.
+- **Motion:** CSS transitions only, as in the prototype. No animation or smooth-scroll library is needed.
 - **Search:** Pagefind for v1, Algolia when the archive passes about 1,000 records.
 - **Images:** a CDN with AVIF/WebP and focal-point cropping (Sanity image pipeline or Cloudinary).
 - **Newsletter:** Beehiiv / Substack / Mailchimp. The prototype's form already has a submit hook.
