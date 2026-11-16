@@ -1,0 +1,1248 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Street Art Dispatch — The Urban Art and Culture Publication</title>
+<meta name="description" content="Street Art Dispatch follows artists taking their work beyond conventional gallery spaces: public interventions, urban installations, experimental materials and collectable artworks.">
+<link rel="canonical" href="https://streetartdispatch.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Street Art Dispatch">
+<meta property="og:title" content="Art Doesn't Always Wait for an Invitation — Street Art Dispatch">
+<meta property="og:description" content="The urban art and culture publication: interventions, artists, exhibitions and collecting street art.">
+<meta property="og:url" content="https://streetartdispatch.com/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#08080a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Onest:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"NewsMediaOrganization","@id":"https://streetartdispatch.com/#org","name":"Street Art Dispatch","url":"https://streetartdispatch.com/","slogan":"The Urban Art and Culture Publication"},
+ {"@type":"WebSite","@id":"https://streetartdispatch.com/#site","url":"https://streetartdispatch.com/","name":"Street Art Dispatch","publisher":{"@id":"https://streetartdispatch.com/#org"},"inLanguage":"en-GB"}
+]}
+</script>
+<style>
+/* ---------- reset ---------- */
+*{margin:0;padding:0;box-sizing:border-box}
+img,video{display:block;max-width:100%}
+ul,ol{list-style:none}
+button,a,input,select{font:inherit;color:inherit;background:none;border:0;border-radius:0;-webkit-appearance:none;appearance:none;text-decoration:none}
+button,a,select{cursor:pointer}
+
+/* ---------- tokens ---------- */
+:root{
+  --background:#08080a;--foreground:#f3f1ea;--surface:#111114;--surface-2:#17171b;
+  --muted:#807f78;--line:rgba(243,241,234,.1);--line-strong:rgba(243,241,234,.22);
+  --accent:#ff3b1d;--accent-2:#ff6a3d;--paper:#ebe5d5;--ink:#0d0d0f;--read:#dedad0;
+  --gutter:2.5rem;--section:9rem;
+  --font-display:"Anton",sans-serif;--font-sans:"Onest",sans-serif;--font-serif:"Newsreader",Georgia,serif;
+  --fs-hero:28rem;--fs-mega:13rem;--fs-display:7.5rem;--fs-h1:5rem;--fs-h2:3.25rem;--fs-h3:1.75rem;
+  --fs-lead:max(1.375rem,18px);--fs-body:max(1.0625rem,15px);--fs-eyebrow:max(.8125rem,11px);
+  --expo:cubic-bezier(.16,1,.3,1);--quart:cubic-bezier(.165,.84,.44,1);--wipe:cubic-bezier(.22,1,.36,1);
+}
+html{font-size:16px;background:#08080a}
+@media (max-width:1920px){html{font-size:.833333vw}}
+@media (max-width:1440px){html{font-size:1.111111vw}}
+@media (max-width:1024px){html{font-size:1.5625vw}}
+@media (max-width:640px){html{font-size:4.444444vw}:root{--gutter:16px;--section:6.5rem}}
+
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-stopped{overflow:hidden}
+[data-lenis-prevent]{overscroll-behavior:contain}
+html.is-loading,html.reader-open{overflow:hidden}
+
+body{background:#08080a;color:#f3f1ea;font-family:var(--font-sans);font-size:var(--fs-body);line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+::selection{background:#ff3b1d;color:#08080a}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+main{position:relative;width:100%;overflow-x:hidden}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- shared ---------- */
+.eyebrow{display:flex;align-items:center;gap:.75rem;font-size:var(--fs-eyebrow);line-height:1.2;font-weight:500;text-transform:uppercase;letter-spacing:.22em;color:var(--muted)}
+.eyebrow i{width:.5rem;height:.5rem;flex:none;border-radius:9999px;background:var(--accent)}
+.label{font-size:var(--fs-eyebrow);line-height:1.2;text-transform:uppercase;letter-spacing:.22em;color:var(--muted)}
+.sec{padding:var(--section) var(--gutter);position:relative}
+.sec-head{display:flex;flex-direction:column;gap:2rem}
+@media (min-width:640px){.sec-head{flex-direction:row;align-items:flex-end;justify-content:space-between}}
+.h-sec{margin-top:1.5rem;max-width:16ch;font-family:var(--font-display);font-weight:400;text-transform:uppercase;line-height:.95;letter-spacing:-.01em;font-size:var(--fs-h2)}
+@media (min-width:640px){.h-sec{font-size:var(--fs-h1)}}
+.sec-rule{border:0;border-top:1px solid var(--line);margin:0 var(--gutter)}
+
+/* line masks for text reveals */
+.m{display:block;overflow:hidden;padding-bottom:.06em;margin-bottom:-.06em}
+.mi{display:inline-block;transform:translateY(110%);opacity:0;transition:transform 900ms var(--expo),opacity 900ms var(--expo);transition-delay:calc(var(--d,0ms) + var(--i,0)*90ms)}
+.is-revealed .mi{transform:none;opacity:1}
+.js [data-split]:not(.split):not(.done){visibility:hidden}
+.js [data-reveal]{opacity:0;transform:translateY(var(--y,16px));transition:opacity var(--dur,560ms) var(--expo) var(--d,0ms),transform var(--dur,560ms) var(--expo) var(--d,0ms)}
+.js [data-reveal].in{opacity:1;transform:none}
+
+/* ---------- preloader ---------- */
+.preloader{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:.75rem;padding:var(--gutter);transition:transform 650ms var(--wipe)}
+@media (min-width:640px){.preloader{flex-direction:row;align-items:flex-end;justify-content:space-between;gap:1rem}}
+.pl-bg{position:absolute;inset:0;z-index:-10;background:var(--background)}
+.pl-brand{font-family:var(--font-display);font-size:var(--fs-h3);text-transform:uppercase;line-height:1;letter-spacing:-.01em;transition:opacity 300ms ease}
+.pl-count{font-family:var(--font-display);font-size:var(--fs-display);line-height:1;font-variant-numeric:tabular-nums;transition:opacity 300ms ease}
+.acc{color:var(--accent)}
+.preloader.fade .pl-brand,.preloader.fade .pl-count{opacity:0}
+.preloader.wipe{transform:translateY(-100%)}
+.preloader.done{pointer-events:none;visibility:hidden}
+
+/* ---------- nav ---------- */
+.site-header{position:fixed;inset-inline:0;top:0;z-index:60;pointer-events:none;transition:background 400ms ease}
+.site-header::before{content:"";position:absolute;inset:0 0 -2rem;background:linear-gradient(to bottom,rgba(8,8,10,.92),rgba(8,8,10,0));opacity:0;transition:opacity 400ms ease;pointer-events:none}
+.site-header.scrolled::before{opacity:1}
+.nav{position:relative;pointer-events:auto;display:flex;align-items:center;justify-content:space-between;padding:1.5rem var(--gutter)}
+.logo{display:flex;align-items:center;gap:.75rem}
+.mono{display:grid;place-items:center;width:2.5rem;height:2.5rem;min-width:36px;min-height:36px;border-radius:9999px;border:1px solid var(--line-strong);font-weight:600;letter-spacing:-.01em;font-size:max(.9rem,13px)}
+.logo-name{display:none;font-size:var(--fs-eyebrow);font-weight:500;text-transform:uppercase;letter-spacing:.22em;color:var(--muted)}
+@media (min-width:640px){.logo-name{display:block}}
+.nav-links{display:none;gap:2.5rem}
+@media (min-width:1024px){.nav-links{display:flex}}
+.nav-links a{position:relative;font-size:var(--fs-eyebrow);font-weight:500;text-transform:uppercase;letter-spacing:.18em;color:var(--muted);transition:color 300ms ease}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-.25rem;height:1px;width:0;background:var(--accent);transition:width 400ms var(--expo)}
+.nav-links a:hover{color:var(--foreground)}
+.nav-links a:hover::after{width:100%}
+.burger{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.375rem;width:2.5rem;height:2.5rem;min-width:40px;min-height:40px}
+@media (min-width:1024px){.burger{display:none}}
+.burger span{display:block;height:2px;width:1.5rem;min-width:22px;background:var(--foreground);transition:transform 400ms var(--expo),opacity 300ms ease}
+.burger.open span:nth-child(1){transform:translateY(calc(.375rem + 2px)) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(calc(-.375rem - 2px)) rotate(-45deg)}
+.mmenu{position:fixed;inset:0;z-index:55;background:var(--background);display:flex;flex-direction:column;justify-content:center;padding-inline:var(--gutter);opacity:0;visibility:hidden;transition:opacity 450ms ease-out,visibility 0s 450ms}
+.mmenu.open{opacity:1;visibility:visible;transition:opacity 450ms ease-out,visibility 0s}
+.mmenu li{overflow:hidden}
+.mmenu a{display:block;font-family:var(--font-display);font-size:var(--fs-h2);text-transform:uppercase;line-height:1.08;letter-spacing:-.01em;transform:translateY(48px);opacity:0;transition:transform 420ms ease-out,opacity 420ms ease-out}
+.mmenu.open a{transform:none;opacity:1;transition-delay:calc(120ms + var(--i)*60ms)}
+.mmenu a:hover{color:var(--accent)}
+.mmenu-foot{margin-top:3rem}
+
+/* ---------- hero ---------- */
+.hero{position:relative;display:flex;flex-direction:column;min-height:100svh;overflow:hidden}
+.hero-top{position:relative;z-index:30;display:flex;flex-direction:column;gap:2rem;padding:7rem var(--gutter) 0}
+@media (min-width:640px){.hero-top{flex-direction:row;align-items:flex-start;justify-content:space-between;padding-top:8rem}}
+.roles{font-family:var(--font-display);font-weight:400;text-transform:uppercase;line-height:1.05;letter-spacing:-.01em;font-size:var(--fs-h3)}
+@media (min-width:640px){.roles{font-size:var(--fs-h2)}}
+.hero .roles .mi{transition-duration:760ms;transition-delay:calc(var(--hb,2500ms) + 200ms + var(--i)*80ms)}
+.hero.go .roles .mi{transform:none;opacity:1}
+.hero-intro{max-width:26rem}
+@media (min-width:640px){.hero-intro{text-align:right}.hero-intro .eyebrow{justify-content:flex-end}}
+.hero-intro p{margin-top:1rem;font-size:var(--fs-body);color:var(--muted)}
+.hero-intro p strong{color:var(--foreground);font-weight:500}
+.hero [data-h]{opacity:0;transform:translateY(16px);transition:opacity 520ms var(--expo),transform 520ms var(--expo);transition-delay:calc(var(--hb,2500ms) + var(--hd,0ms))}
+.hero.go [data-h]{opacity:1;transform:none}
+.masthead{position:absolute;inset-inline:0;bottom:0;z-index:10;display:flex;flex-direction:column;align-items:center;font-family:var(--font-display);text-transform:uppercase;line-height:.78;letter-spacing:-.01em;color:var(--accent);transform:translateY(6%);user-select:none}
+.mline{display:block;white-space:nowrap;clip-path:inset(-60% -6% -.12em -6%)}
+.ch{display:inline-block;transform:translateY(100%);opacity:0;transition:transform 900ms var(--expo),opacity 900ms var(--expo);transition-delay:calc(var(--ld) + var(--i)*52ms)}
+.ch.sp{width:.18em}
+.hero.go .ch{transform:none;opacity:1}
+.hero-base{position:absolute;inset-inline:0;bottom:0;z-index:20;height:26vh;background:linear-gradient(to bottom,transparent,#08080a);pointer-events:none}
+.poster-wrap{position:absolute;z-index:20;left:50%;bottom:0;width:66vw;transform:translate(-50%,16%) rotate(-3deg);pointer-events:none}
+@media (min-width:640px){.poster-wrap{width:40vw}}
+@media (min-width:1024px){.poster-wrap{width:29vw}}
+@media (max-width:639px){.hero{padding-bottom:96vw}.poster-wrap{width:46vw;left:72%;transform:translate(-50%,8%) rotate(-5deg)}.hero .cue{display:none}}
+.poster-in{position:relative}
+.poster-fig{pointer-events:auto;box-shadow:0 2.5rem 6rem rgba(0,0,0,.55)}
+.poster{position:relative;aspect-ratio:3/4;container-type:inline-size;padding:7cqi 7cqi 0;color:var(--ink);
+  background-color:var(--paper);
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .3  0 0 0 0 .25  0 0 0 0 .2  0 0 0 .5 -.12'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"),linear-gradient(97deg,transparent 48%,rgba(0,0,0,.06) 49%,transparent 51%),linear-gradient(4deg,transparent 60%,rgba(0,0,0,.05) 61%,transparent 63%);
+  clip-path:polygon(0 1.2%,6% 0,13% 1.4%,21% .3%,30% 1.6%,38% .2%,47% 1.1%,56% 0,64% 1.5%,73% .4%,81% 1.3%,90% .1%,100% 1%,100% 100%,0 100%)}
+.poster-top{display:flex;justify-content:space-between;font-family:var(--font-sans);font-weight:600;font-size:3.4cqi;text-transform:uppercase;letter-spacing:.16em;border-bottom:.5cqi solid var(--ink);padding-bottom:3cqi}
+.poster-h{margin-top:6cqi;font-family:var(--font-display);font-weight:400;text-transform:uppercase;font-size:15.5cqi;line-height:.9;letter-spacing:-.01em}
+.poster-h em{font-style:normal;color:var(--accent)}
+.poster-foot{margin-top:6cqi;display:flex;justify-content:space-between;gap:4cqi;font-size:3cqi;font-weight:500;text-transform:uppercase;letter-spacing:.14em;border-top:.3cqi solid var(--ink);padding-top:3cqi}
+.sticker{position:absolute;right:-4cqi;top:40%;width:26cqi;height:26cqi;border-radius:50%;background:var(--accent);color:var(--ink);display:grid;place-content:center;text-align:center;font-family:var(--font-sans);font-weight:600;font-size:3cqi;line-height:1.1;text-transform:uppercase;letter-spacing:.1em;transform:rotate(12deg)}
+.sticker b{display:block;font-family:var(--font-display);font-weight:400;font-size:10cqi;letter-spacing:0;line-height:1}
+.tape{position:absolute;z-index:2;top:-1.4rem;width:28%;height:2.6rem;background:rgba(235,229,213,.42);backdrop-filter:blur(1px);box-shadow:0 1px 4px rgba(0,0,0,.2)}
+.tape.t1{left:-6%;transform:rotate(-24deg)}
+.tape.t2{right:-6%;transform:rotate(21deg)}
+.hero [data-h].poster-in{transform:translateY(10%);transition-duration:1100ms}
+.hero.go [data-h].poster-in{transform:none}
+.cue{position:absolute;z-index:30;bottom:2rem;left:var(--gutter);display:flex;align-items:center;gap:.75rem;font-size:var(--fs-eyebrow);text-transform:uppercase;letter-spacing:.22em;color:var(--muted)}
+.cue::before{content:"";width:2.5rem;height:1px;background:var(--accent)}
+
+/* ---------- marquee ---------- */
+.marquee{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:2rem 0}
+.mq-track{display:flex;width:max-content;flex-wrap:nowrap;animation:marquee 22s linear infinite}
+.mq-item{display:flex;align-items:center;font-family:var(--font-display);font-size:var(--fs-h2);text-transform:uppercase;letter-spacing:-.01em;white-space:nowrap;line-height:1}
+.mq-item::after{content:"";margin-inline:2rem;width:.625rem;height:.625rem;border-radius:9999px;background:var(--accent)}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ---------- liquid image ---------- */
+.lq{position:relative;overflow:hidden;background:var(--surface);border-radius:.125rem;margin:0}
+.lq.bare{background:none;overflow:visible;border-radius:0}
+.lq-defs{position:absolute;width:0;height:0}
+.lq-media{position:absolute;inset:0;width:100%;height:100%}
+.lq.bare .lq-media{position:relative}
+.lq-media>svg{width:100%;height:100%}
+.lq-veil{position:absolute;inset:0;background:var(--background);mix-blend-mode:color;opacity:.88;transition:opacity 380ms ease-out;pointer-events:none}
+.lq-glow{position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,color-mix(in srgb,var(--accent) 35%,transparent) 50%,transparent 70%);opacity:0;transition:opacity 340ms ease-out;pointer-events:none;mix-blend-mode:screen}
+.lq-vig{position:absolute;inset:0;background:radial-gradient(120% 120% at 50% 120%,color-mix(in srgb,#08080a 70%,transparent),transparent 60%);pointer-events:none}
+.group:hover .lq-veil,.lq:hover .lq-veil{opacity:0}
+.group:hover .lq-glow,.lq:hover .lq-glow{opacity:1}
+@media (hover:none),(max-width:768px){.lq-veil{opacity:.25}.lq-glow{display:none}}
+
+/* ---------- dispatches ---------- */
+.lead{display:grid;gap:2rem;margin-top:4rem;align-items:end}
+@media (min-width:1024px){.lead{grid-template-columns:7fr 5fr;gap:var(--gutter)}}
+.lead .lq{aspect-ratio:16/11;width:100%}
+.kicker{font-size:var(--fs-eyebrow);font-weight:500;text-transform:uppercase;letter-spacing:.22em;color:var(--accent)}
+.lead-t{margin-top:1.25rem;font-family:var(--font-display);font-weight:400;text-transform:uppercase;line-height:.95;letter-spacing:-.01em;font-size:var(--fs-h2);transition:color 340ms ease-out}
+@media (min-width:1024px){.lead-t{font-size:4.25rem}}
+.group:hover .lead-t,.group:hover .card-t{color:var(--accent)}
+.stand{margin-top:1.25rem;font-family:var(--font-serif);font-size:var(--fs-lead);line-height:1.45;color:rgba(243,241,234,.78)}
+.meta{margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;font-size:var(--fs-eyebrow);text-transform:uppercase;letter-spacing:.18em;color:var(--muted)}
+.btn-read{margin-top:2rem;display:inline-flex;align-items:center;gap:.75rem;border:1px solid var(--line-strong);border-radius:9999px;padding:.9rem 1.5rem;font-size:var(--fs-eyebrow);font-weight:500;text-transform:uppercase;letter-spacing:.18em;transition:background 300ms ease,color 300ms ease,border-color 300ms ease}
+.group:hover .btn-read{background:var(--accent);border-color:var(--accent);color:var(--background)}
+.pair{margin-top:6rem;display:grid;grid-template-columns:1fr;column-gap:var(--gutter);row-gap:4rem}
+@media (min-width:768px){.pair{grid-template-columns:1fr 1fr}.pair>li:nth-child(2){margin-top:6rem}}
+.card .lq{aspect-ratio:16/11;width:100%}
+.card-row{margin-top:1.5rem;border-top:1px solid var(--line);padding-top:1.25rem;display:flex;align-items:flex-start;justify-content:space-between;gap:1.5rem}
+.card-t{font-size:var(--fs-h3);line-height:1.15;font-weight:600;letter-spacing:-.01em;transition:color 340ms ease-out}
+.card .stand{font-size:max(1.125rem,16px);margin-top:.75rem;max-width:46ch}
+.card-side{flex:none;text-align:right}
+.card-side span{display:block;font-size:var(--fs-eyebrow);text-transform:uppercase;letter-spacing:.18em;color:var(--muted)}
+.card-side span+span{margin-top:.5rem;color:var(--accent);font-weight:500}
+.card-cat{margin-top:.9rem}
+.index{margin-top:6rem}
+.ix{display:grid;grid-template-columns:auto 1fr;column-gap:1.5rem;border-top:1px solid var(--line);padding:2rem 0;align-items:start}
+.ix:last-child{border-bottom:1px solid var(--line)}
+@media (min-width:768px){.ix{grid-template-columns:auto 1fr 14rem}}
+.ix-n{font-size:var(--fs-h3);line-height:1.15;font-weight:600;font-variant-numeric:tabular-nums;color:var(--accent)}
+.ix .kicker{color:var(--muted)}
+.ix .card-t{margin-top:.5rem}
+.ix .stand{font-size:max(1.0625rem,15px);margin-top:.6rem;max-width:58ch}
+.ix .lq{display:none;aspect-ratio:16/11;width:100%}
+@media (min-width:768px){.ix .lq{display:block}}
+
+/* ---------- artists ---------- */
+.artists{margin-top:4rem;display:grid;grid-template-columns:1fr;gap:3rem}
+@media (min-width:1024px){.artists{grid-template-columns:repeat(12,1fr);gap:var(--gutter)}.a-list{grid-column:span 5}.a-panel{grid-column:span 7}}
+.a-btn{width:100%;display:flex;align-items:baseline;gap:1.25rem;border-top:1px solid var(--line);padding:1.75rem 0;text-align:left}
+.a-list li:last-child .a-btn{border-bottom:1px solid var(--line)}
+.a-ix{font-size:var(--fs-eyebrow);font-variant-numeric:tabular-nums;letter-spacing:.18em;color:var(--muted);transition:color 300ms}
+.a-txt{flex:1}
+.a-name{display:block;font-size:var(--fs-h3);line-height:1.15;font-weight:600;letter-spacing:-.01em;color:var(--muted);transition:color 300ms}
+.a-role{display:block;margin-top:.25rem;font-size:var(--fs-eyebrow);text-transform:uppercase;letter-spacing:.18em;color:var(--muted)}
+.a-rule{align-self:center;height:1px;width:0;background:var(--accent);transition:width 500ms var(--expo)}
+.a-btn.active .a-ix{color:var(--accent)}
+.a-btn.active .a-name{color:var(--foreground)}
+.a-btn.active .a-rule{width:2.5rem}
+.a-panel{display:grid;grid-template-columns:1fr;gap:2rem;align-items:start}
+@media (min-width:640px){.a-panel{grid-template-columns:1fr auto}}
+.a-copy{order:2}
+@media (min-width:640px){.a-copy{order:1}.a-fig{order:2;width:16rem}}
+.a-fig{order:1}
+.a-fig .lq{aspect-ratio:4/5;width:100%}
+.a-sum{max-width:30ch;font-size:var(--fs-h3);font-weight:500;line-height:1.3;letter-spacing:-.01em}
+.a-sum .w{display:inline-block;transform:translateY(18px);opacity:0}
+.a-sum.play .w{animation:wordIn 520ms var(--quart) forwards;animation-delay:calc(var(--i)*22ms)}
+@keyframes wordIn{to{transform:none;opacity:1}}
+.facts{margin-top:2rem;border-top:1px solid var(--line)}
+.facts div{display:grid;grid-template-columns:9rem 1fr;gap:1rem;padding:.9rem 0;border-bottom:1px solid var(--line)}
+.facts dt{font-size:var(--fs-eyebrow);text-transform:uppercase;letter-spacing:.18em;color:var(--muted);padding-top:.2em}
+.facts dd{font-size:var(--fs-body)}
+.a-link{margin-top:1.75rem;display:inline-flex;gap:.6rem;font-size:var(--fs-eyebrow);font-weight:500;text-transform:uppercase;letter-spacing:.18em;color:var(--accent)}
+.a-link:hover{color:var(--accent-2)}
+.a-fig-in{transition:opacity 640ms var(--expo),transform 640ms var(--expo)}
+.a-fig-in.swap{opacity:0;transform:scale(1.04)}
+.js .a-fig[data-reveal]{transform:scale(1.06)}
+
+/* ---------- archive ---------- */
+.arch-tools{margin-top:4rem;display:grid;grid-template-columns:1fr;gap:1.25rem 1.5rem;align-items:end}
+@media (min-width:768px){.arch-tools{grid-template-columns:2fr 1fr 1fr 1fr auto}}
+.field{display:flex;flex-direction:column;gap:.5rem}
+.field span{font-size:var(--fs-eyebrow);text-transform:uppercase;letter-spacing:.18em;color:var(--muted)}
+.field input,.field select{width:100%;border-bottom:1px solid var(--line-strong);padding:.75rem 0;font-size:var(--fs-body);color:var(--foreground);transition:border-color 300ms}
+.field input::placeholder{color:var(--muted)}
+.field input:focus,.field select:focus{outline:none;border-color:var(--accent)}
+.field select{background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8'><path d='M1 1l5 5 5-5' fill='none' stroke='%23807f78' stroke-width='1.5'/></svg>") no-repeat right .2rem center;padding-right:1.5rem}
+.field option{background:#111114;color:#f3f1ea}
+.reset{border:1px solid var(--line-strong);border-radius:9999px;padding:.75rem 1.25rem;font-size:var(--fs-eyebrow);text-transform:uppercase;letter-spacing:.18em;color:var(--muted);transition:color 300ms,border-color 300ms}
+.reset:hover{color:var(--foreground);border-color:var(--foreground)}
+.arch-count{margin-top:2.5rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.arch-count b{color:var(--foreground);font-weight:500}
+.arch{margin-top:1.25rem;border-top:1px solid var(--line-strong)}
+.arch-head{display:none}
+.arch-row,.arch-head{display:grid;grid-template-columns:4.5rem 1fr;column-gap:1.25rem;padding:1.5rem 0;border-bottom:1px solid var(--line);transition:background 300ms}
+.arch-head{display:none;padding:.9rem 0}
+@media (min-width:1024px){
+  .arch-row,.arch-head{grid-template-columns:6rem minmax(0,1fr) 13rem 11rem 12rem}
+  .arch-head{display:grid}
+  .arch-row{padding:1.75rem 0}
+}
+.arch-row:hover{background:linear-gradient(90deg,var(--surface),transparent)}
+.a-year{font-family:var(--font-display);font-size:var(--fs-h3);line-height:1;color:var(--accent)}
+.a-title{font-size:max(1.25rem,17px);line-height:1.25;font-weight:600;letter-spacing:-.01em}
+.a-note{margin-top:.4rem;color:var(--muted);max-width:62ch;font-size:var(--fs-body)}
+.a-read{display:inline-block;margin-top:.6rem;font-size:var(--fs-eyebrow);text-transform:uppercase;letter-spacing:.18em;color:var(--accent)}
+.a-artist,.a-city,.a-type{grid-column:2;font-size:var(--fs-body)}
+.a-artist{margin-top:.75rem;text-align:left;color:var(--foreground);text-decoration:underline;text-decoration-color:var(--line-strong);text-underline-offset:.25em}
+.a-artist:hover{color:var(--accent)}
+.a-city small,.a-type small{display:block;font-size:var(--fs-eyebrow);text-transform:uppercase;letter-spacing:.16em;color:var(--muted)}
+.a-type{color:var(--muted)}
+@media (max-width:1023px){.a-city,.a-type{display:inline}.a-city small{display:inline;margin-left:.4rem}}
+@media (min-width:1024px){.a-artist,.a-city,.a-type{grid-column:auto;margin-top:0}.a-artist{justify-self:start;align-self:start}}
+.pill{display:inline-block;white-space:nowrap;margin-top:.4rem;padding:.2rem .55rem;border:1px dashed var(--accent);border-radius:9999px;font-size:var(--fs-eyebrow);text-transform:uppercase;letter-spacing:.12em;color:var(--accent)}
+.arch-head span{font-size:var(--fs-eyebrow);text-transform:uppercase;letter-spacing:.18em;color:var(--muted)}
+.arch-empty{padding:3rem 0;color:var(--muted)}
+.arch-empty button{color:var(--accent);text-decoration:underline}
+.arch-note{margin-top:2rem;max-width:62ch;color:var(--muted)}
+.arch-note a{color:var(--foreground);text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:.25em}
+
+/* ---------- culture ---------- */
+.cols{margin-top:4rem;display:grid;grid-template-columns:1fr;gap:var(--gutter)}
+@media (min-width:768px){.cols{grid-template-columns:repeat(3,1fr)}}
+.col-card{display:flex;flex-direction:column;border-top:1px solid var(--line-strong);padding-top:1.75rem;height:100%}
+.col-n{font-family:var(--font-display);font-size:var(--fs-display);line-height:1;color:var(--surface-2);-webkit-text-stroke:1px var(--line-strong);transition:color 340ms ease-out,-webkit-text-stroke-color 340ms}
+.col-card:hover .col-n{color:var(--accent);-webkit-text-stroke-color:var(--accent)}
+.col-card .kicker{margin-top:1.5rem}
+.col-card .card-t{margin-top:.75rem}
+.col-card:hover .card-t{color:var(--accent)}
+.col-card .stand{font-size:max(1.0625rem,15px);flex:1}
+.more{margin-top:1.75rem;font-size:var(--fs-eyebrow);font-weight:500;text-transform:uppercase;letter-spacing:.18em;color:var(--muted);transition:color 300ms}
+.col-card:hover .more{color:var(--foreground)}
+
+/* ---------- exhibitions ---------- */
+.exh{margin-top:4rem;border-top:1px solid var(--line-strong)}
+.ex{display:grid;grid-template-columns:1fr;gap:.75rem;padding:2rem 0;border-bottom:1px solid var(--line)}
+@media (min-width:1024px){.ex{grid-template-columns:5fr 3fr 3fr 2fr;gap:var(--gutter);align-items:baseline}}
+.ex-t{font-family:var(--font-display);font-weight:400;font-size:var(--fs-h2);line-height:1;text-transform:uppercase;letter-spacing:-.01em;transition:color 340ms}
+.ex:hover .ex-t{color:var(--accent)}
+.ex-t small{display:block;margin-top:.6rem;font-family:var(--font-sans);font-size:var(--fs-body);text-transform:none;letter-spacing:0;color:var(--muted);line-height:1.5}
+.ex-c{font-size:var(--fs-body)}
+.ex-c span{display:block;font-size:var(--fs-eyebrow);text-transform:uppercase;letter-spacing:.18em;color:var(--muted);margin-bottom:.3rem}
+.ex .pill{justify-self:start}
+@media (min-width:1024px){.ex .pill{justify-self:end}}
+
+/* ---------- collecting ---------- */
+.stats{margin-top:4rem;display:grid;grid-template-columns:1fr;border-top:1px solid var(--line)}
+@media (min-width:640px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1024px){.stats{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.stat{display:flex;flex-direction:column;gap:1rem;border-bottom:1px solid var(--line);padding:2.5rem 0}
+@media (min-width:640px) and (max-width:1023px){.stat:nth-child(2n){border-left:1px solid var(--line);padding-left:2rem}}
+@media (min-width:1024px){.stat{padding:3rem 0}.stat:not(:nth-child(4n+1)){border-left:1px solid var(--line);padding-left:2rem}}
+.stat dd{font-family:var(--font-display);font-size:var(--fs-h1);white-space:nowrap;line-height:1;letter-spacing:-.01em;transition:color 340ms ease-out}
+.stat:hover dd{color:var(--accent)}
+.stat dt{max-width:24ch;font-size:var(--fs-body);text-transform:uppercase;letter-spacing:.14em;color:var(--muted);line-height:1.5}
+.gloss{margin-top:6rem;display:grid;grid-template-columns:1fr;gap:3rem}
+@media (min-width:1024px){.gloss{grid-template-columns:repeat(12,1fr);gap:var(--gutter)}.gloss-l{grid-column:span 5}.gloss-r{grid-column:span 7}}
+.gloss-l p:not(.eyebrow){margin-top:2rem;max-width:42ch;font-size:var(--fs-lead);line-height:1.45;color:var(--muted)}
+.pr{display:grid;grid-template-columns:auto 1fr;column-gap:1.5rem;border-top:1px solid var(--line);padding:2rem 0}
+.pr:last-child{border-bottom:1px solid var(--line)}
+.pr-n{font-size:var(--fs-h3);line-height:1.15;font-weight:600;font-variant-numeric:tabular-nums;color:var(--accent)}
+.pr h3{font-size:var(--fs-h3);line-height:1.15;font-weight:600;letter-spacing:-.01em}
+.pr p{margin-top:.75rem;max-width:52ch;color:var(--muted)}
+
+/* ---------- footer ---------- */
+.foot{padding-top:var(--section);padding-inline:var(--gutter)}
+.foot .h-sec{max-width:18ch;font-size:var(--fs-h1)}
+@media (min-width:640px){.foot .h-sec{font-size:var(--fs-display)}}
+.foot-p{margin-top:2rem;max-width:44ch;font-size:var(--fs-lead);line-height:1.45;color:var(--muted)}
+.mail{margin-top:3rem;display:inline-flex;align-items:baseline;gap:.75rem;font-size:var(--fs-h3);line-height:1.15;font-weight:600;letter-spacing:-.01em;word-break:break-all;transition:transform 340ms ease-out,color 340ms ease-out}
+@media (min-width:640px){.mail{gap:1rem;font-size:var(--fs-h1);line-height:1}}
+.mail:hover{transform:translateX(14px);color:var(--accent)}
+.mail b{color:var(--accent);font-weight:600}
+.nl{margin-top:3rem;display:flex;max-width:36rem;border-bottom:1px solid var(--line-strong)}
+.nl input{flex:1;min-width:0;padding:1rem 0;font-size:var(--fs-body)}
+.nl input::placeholder{color:var(--muted)}
+.nl input:focus{outline:none}
+.nl button{font-size:var(--fs-eyebrow);font-weight:500;text-transform:uppercase;letter-spacing:.18em;color:var(--accent);padding-left:1rem}
+.nl-msg{margin-top:.75rem;font-size:var(--fs-eyebrow);text-transform:uppercase;letter-spacing:.18em;color:var(--muted);min-height:1.2em}
+.bar{margin-top:var(--section);border-top:1px solid var(--line);padding:3rem 0;display:grid;grid-template-columns:1fr;gap:2.5rem}
+@media (min-width:1024px){.bar{grid-template-columns:repeat(12,1fr)}.bar-l{grid-column:span 6}.bar-m{grid-column:span 3}.bar-r{grid-column:span 3;text-align:right}}
+.sig{font-family:var(--font-display);font-size:var(--fs-h2);text-transform:uppercase;line-height:1;letter-spacing:-.01em}
+.bar-l .label{margin-top:1rem}
+.social li+li{margin-top:.5rem}
+.social a{display:inline-flex;align-items:center;font-size:var(--fs-body);color:var(--muted);transition:color 300ms}
+.social a::before{content:"";width:0;height:1px;background:var(--accent);margin-right:0;transition:width 400ms var(--expo),margin 400ms var(--expo)}
+.social a:hover{color:var(--foreground)}
+.social a:hover::before{width:1.5rem;margin-right:.75rem}
+.copy{font-size:var(--fs-eyebrow);text-transform:uppercase;letter-spacing:.18em;color:var(--muted);line-height:1.6}
+
+/* ---------- reader ---------- */
+.reader{position:fixed;inset:0;z-index:80;background:var(--background);overflow-y:auto;transform:translateY(100%);visibility:hidden;transition:transform 650ms var(--wipe),visibility 0s 650ms}
+.reader.open{transform:none;visibility:visible;transition:transform 650ms var(--wipe),visibility 0s}
+.r-bar{position:sticky;top:0;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem var(--gutter);background:rgba(8,8,10,.86);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.r-brand{font-family:var(--font-display);text-transform:uppercase;font-size:max(1.25rem,16px);letter-spacing:-.01em;line-height:1}
+.r-kick{display:none;font-size:var(--fs-eyebrow);text-transform:uppercase;letter-spacing:.22em;color:var(--muted)}
+@media (min-width:768px){.r-kick{display:block}}
+.r-close{display:inline-flex;align-items:center;gap:.6rem;font-size:var(--fs-eyebrow);font-weight:500;text-transform:uppercase;letter-spacing:.18em;color:var(--muted);transition:color 300ms}
+.r-close:hover{color:var(--foreground)}
+.r-close b{display:grid;place-items:center;width:2.25rem;height:2.25rem;min-width:32px;min-height:32px;border:1px solid var(--line-strong);border-radius:50%;font-weight:400;font-size:1.1em;color:var(--foreground)}
+.r-prog{position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:var(--accent);transform-origin:0 50%;transform:scaleX(0)}
+.r-head{max-width:64rem;margin:0 auto;padding:6rem var(--gutter) 3rem}
+.r-title{margin-top:1.5rem;font-family:var(--font-display);font-weight:400;text-transform:uppercase;line-height:.95;letter-spacing:-.01em;font-size:max(2.75rem,36px)}
+@media (min-width:640px){.r-title{font-size:var(--fs-h1)}}
+.r-stand{margin-top:1.75rem;max-width:40ch;font-family:var(--font-serif);font-size:max(1.625rem,20px);line-height:1.4;color:rgba(243,241,234,.82)}
+.r-meta{margin-top:2rem;display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;font-size:var(--fs-eyebrow);text-transform:uppercase;letter-spacing:.18em;color:var(--muted)}
+.r-cover{max-width:76rem;margin:0 auto;padding:0 var(--gutter)}
+.r-cover .lq{aspect-ratio:16/8;width:100%}
+.r-cover .lq-veil{opacity:0}
+.r-cover figcaption{margin-top:.75rem;font-size:var(--fs-eyebrow);text-transform:uppercase;letter-spacing:.16em;color:var(--muted)}
+.r-body{max-width:calc(40rem + 2*var(--gutter));margin:0 auto;padding:4rem var(--gutter) 0;font-family:var(--font-serif);font-size:max(1.25rem,18px);line-height:1.7;color:var(--read)}
+.r-body p+p,.r-body p+ol,.r-body p+ul,.r-body ol+p,.r-body ul+p{margin-top:1.3em}
+.r-body h2{margin:2.4em 0 .9em;font-family:var(--font-sans);font-size:max(1.5rem,19px);line-height:1.25;font-weight:600;letter-spacing:-.01em;color:var(--foreground)}
+.r-body em{font-style:italic}
+.r-body strong{color:var(--foreground);font-weight:500}
+.r-body a{color:var(--foreground);text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:1px;text-underline-offset:.2em;transition:color 200ms}
+.r-body a:hover{color:var(--accent)}
+.dropcap::first-letter{float:left;font-family:var(--font-display);font-size:4.3em;line-height:.82;margin:.08em .12em 0 0;color:var(--accent)}
+.pull{margin:2em 0;padding:1.5rem 0;border-top:1px solid var(--line-strong);border-bottom:1px solid var(--line-strong);font-family:var(--font-display);text-transform:uppercase;font-size:max(2.25rem,28px);line-height:1;letter-spacing:-.01em;color:var(--accent)}
+@media (min-width:1024px){.pull{margin-inline:-6rem}}
+.numbered{counter-reset:n;margin-top:1.3em}
+.numbered li{counter-increment:n;position:relative;padding-left:3rem}
+.numbered li+li{margin-top:1em}
+.numbered li::before{content:counter(n,decimal-leading-zero);position:absolute;left:0;top:.15em;font-family:var(--font-sans);font-weight:600;font-size:.8em;color:var(--accent)}
+.glossary{margin-top:1.3em;border-top:1px solid var(--line)}
+.glossary li{padding:1em 0;border-bottom:1px solid var(--line)}
+.note{margin-bottom:2.5rem;padding:1.1rem 1.25rem;border:1px dashed var(--accent);font-family:var(--font-sans);font-size:var(--fs-body);line-height:1.55;color:var(--muted)}
+.note b{color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:.14em;font-size:var(--fs-eyebrow);display:block;margin-bottom:.35rem}
+.r-foot{max-width:calc(40rem + 2*var(--gutter));margin:0 auto;padding:4rem var(--gutter) var(--section)}
+.tags{margin-top:1rem;display:flex;flex-wrap:wrap;gap:.5rem}
+.tags li{padding:.4rem .8rem;border:1px solid var(--line-strong);border-radius:9999px;font-size:var(--fs-eyebrow);text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
+.r-next{display:block;margin-top:4rem;border-top:1px solid var(--line-strong);padding-top:2rem}
+.r-next-t{display:block;margin-top:1rem;font-family:var(--font-display);text-transform:uppercase;font-size:var(--fs-h2);line-height:1;letter-spacing:-.01em;transition:color 340ms}
+.r-next:hover .r-next-t{color:var(--accent)}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion:reduce){
+  .preloader{display:none}
+  .mq-track{animation:none}
+  .mi,.ch,.hero [data-h],.js [data-reveal],.a-sum .w,.mmenu a,.reader{transition:none!important;animation:none!important;transform:none!important;opacity:1!important}
+  .js [data-split]:not(.split){visibility:visible}
+  .reader:not(.open){visibility:hidden}
+}
+</style>
+<script type="importmap">
+{ "imports": { "lenis": "https://cdn.jsdelivr.net/npm/lenis@1.3.19/dist/lenis.mjs" } }
+</script>
+</head>
+<body>
+
+<!-- 1) PRELOADER -->
+<div class="preloader" id="preloader" aria-hidden="true">
+  <div class="pl-bg"></div>
+  <p class="pl-brand">Street Art Dispatch</p>
+  <p class="pl-count"><span id="plNum">0</span><span class="acc">%</span></p>
+</div>
+
+<!-- 2) NAV -->
+<header class="site-header" id="siteHeader">
+  <nav class="nav" aria-label="Primary">
+    <a href="#top" class="logo" aria-label="Street Art Dispatch — home"><span class="mono">SD</span><span class="logo-name">Street Art Dispatch</span></a>
+    <ul class="nav-links">
+      <li><a href="#dispatches">Dispatches</a></li>
+      <li><a href="#artists">Artists</a></li>
+      <li><a href="#interventions">Interventions</a></li>
+      <li><a href="#culture">Urban Culture</a></li>
+      <li><a href="#exhibitions">Exhibitions</a></li>
+      <li><a href="#collecting">Collecting</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <ul>
+    <li><a href="#dispatches" style="--i:0">Dispatches</a></li>
+    <li><a href="#artists" style="--i:1">Artists</a></li>
+    <li><a href="#interventions" style="--i:2">Interventions</a></li>
+    <li><a href="#culture" style="--i:3">Urban Culture</a></li>
+    <li><a href="#exhibitions" style="--i:4">Exhibitions</a></li>
+    <li><a href="#collecting" style="--i:5">Collecting</a></li>
+  </ul>
+  <p class="label mmenu-foot">streetartdispatch.com</p>
+</div>
+
+<main>
+  <!-- 3) HERO -->
+  <section class="hero" id="top">
+    <div class="hero-top">
+      <h2 class="roles" aria-label="Interventions, Installations, Culture, Collecting">
+        <span class="m"><span class="mi" style="--i:0">Interventions</span></span>
+        <span class="m"><span class="mi" style="--i:1">Installations</span></span>
+        <span class="m"><span class="mi" style="--i:2">Culture</span></span>
+        <span class="m"><span class="mi" style="--i:3">Collecting</span></span>
+      </h2>
+      <div class="hero-intro" data-h style="--hd:400ms">
+        <p class="eyebrow"><i></i>Issue 01 · November 2026</p>
+        <p><strong>Street Art Dispatch</strong> follows artists taking their work beyond conventional gallery spaces. From public interventions and urban installations to experimental materials and collectable artworks, we document the evolving relationship between contemporary art, the city and its audience.</p>
+      </div>
+    </div>
+
+    <div class="masthead" id="masthead" aria-hidden="true"></div>
+
+    <div class="poster-wrap">
+      <div class="poster-in" data-h style="--hd:250ms">
+        <span class="tape t1"></span><span class="tape t2"></span>
+        <figure class="lq bare poster-fig" data-scale="30">
+          <div class="lq-media poster">
+            <div class="poster-top"><span>Street Art Dispatch</span><span>No. 01</span></div>
+            <h1 class="poster-h">Art Doesn't Always Wait for an <em>Invitation.</em></h1>
+            <div class="poster-foot"><span>The Urban Art &amp; Culture Publication</span><span>streetartdispatch.com</span></div>
+            <div class="sticker" aria-hidden="true">Issue<b>01</b>Nov&nbsp;26</div>
+          </div>
+        </figure>
+      </div>
+    </div>
+
+    <div class="hero-base"></div>
+    <a href="#dispatches" class="cue" data-h style="--hd:900ms">Scroll to read the dispatch</a>
+  </section>
+
+  <!-- 4) MARQUEE -->
+  <section class="marquee" aria-label="What we cover">
+    <div class="mq-track" id="mqTrack"></div>
+  </section>
+
+  <!-- 5) DISPATCHES -->
+  <section class="sec" id="dispatches">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow"><i></i>Dispatches</p>
+        <h2 class="h-sec" data-split>Priority commissions for Issue 01.</h2>
+      </div>
+      <p class="label">06 / Features</p>
+    </div>
+    <div id="dispatchList"></div>
+  </section>
+
+  <!-- 6) ARTISTS -->
+  <section class="sec" id="artists">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow"><i></i>Artists</p>
+        <h2 class="h-sec" data-split>The artists working beyond the walls.</h2>
+      </div>
+      <p class="label">Profiles · Grove Gallery &amp; beyond</p>
+    </div>
+    <div class="artists">
+      <ul class="a-list" id="artistList"></ul>
+      <div class="a-panel">
+        <div class="a-copy">
+          <p class="a-sum" id="aSum" aria-live="polite"></p>
+          <dl class="facts" id="aFacts"></dl>
+          <a class="a-link" id="aLink" href="#">Read the profile <span>→</span></a>
+        </div>
+        <div class="a-fig" data-reveal style="--dur:640ms">
+          <div class="a-fig-in" id="aFigIn"><figure class="lq" data-scale="22" id="aFig"><div class="lq-media" id="aMedia"></div></figure></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7) INTERVENTIONS ARCHIVE (flagship) -->
+  <section class="sec" id="interventions">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow"><i></i>Interventions — The Archive</p>
+        <h2 class="h-sec" data-split>A documented record of art made in public.</h2>
+      </div>
+      <p class="label">Search by artist, city &amp; year</p>
+    </div>
+    <form class="arch-tools" id="archTools" role="search" onsubmit="return false" data-reveal>
+      <label class="field"><span>Search</span><input type="search" id="fQ" placeholder="Work, artist, city, medium…" autocomplete="off"></label>
+      <label class="field"><span>Artist</span><select id="fArtist"><option value="">All artists</option></select></label>
+      <label class="field"><span>City</span><select id="fCity"><option value="">All cities</option></select></label>
+      <label class="field"><span>Year</span><select id="fYear"><option value="">All years</option></select></label>
+      <button type="button" class="reset" id="fReset">Reset</button>
+    </form>
+    <div class="arch-count label"><span id="archCount"></span><span>Sorted newest first</span></div>
+    <ul class="arch" id="archList" aria-live="polite"></ul>
+    <p class="arch-note">The archive is a living record. Every entry is sourced and dated; entries marked <span class="acc">pending</span> are awaiting confirmation from the artist or gallery. Know of an intervention we've missed? <a href="mailto:archive@streetartdispatch.com">Submit it to the archive</a>.</p>
+  </section>
+
+  <!-- 8) URBAN CULTURE -->
+  <section class="sec" id="culture">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow"><i></i>Urban Culture</p>
+        <h2 class="h-sec" data-split>Attention is the new public square.</h2>
+      </div>
+      <p class="label">03 / Columns</p>
+    </div>
+    <ul class="cols" id="colList"></ul>
+  </section>
+
+  <!-- 9) EXHIBITIONS -->
+  <section class="sec" id="exhibitions">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow"><i></i>Exhibitions</p>
+        <h2 class="h-sec" data-split>Where the street meets the gallery.</h2>
+      </div>
+      <p class="label">Listings &amp; previews</p>
+    </div>
+    <ul class="exh" id="exList"></ul>
+  </section>
+
+  <!-- 10) COLLECTING -->
+  <section class="sec" id="collecting">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow"><i></i>Collecting Street Art</p>
+        <h2 class="h-sec" data-split>From the wall to the collection.</h2>
+      </div>
+      <p class="label">Originals · Editions · Auction results</p>
+    </div>
+    <dl class="stats" id="stats"></dl>
+    <div class="gloss">
+      <div class="gloss-l">
+        <p class="eyebrow"><i></i>A collector's primer</p>
+        <p data-reveal style="--dur:520ms">Art made in public is hard to own, so the objects that carry it into a collection need to be understood exactly. Four things to know before you buy.</p>
+        <a class="a-link" href="#read/spectacle-to-collectable" data-reveal style="--d:120ms">Read: From Public Spectacle to Collectable Object <span>→</span></a>
+      </div>
+      <ul class="gloss-r" id="gloss"></ul>
+    </div>
+  </section>
+
+  <!-- 11) FOOTER -->
+  <footer class="foot" id="contact">
+    <p class="eyebrow"><i></i>Get the Dispatch</p>
+    <h2 class="h-sec" data-split>The city keeps talking. We keep listening.</h2>
+    <p class="foot-p" data-reveal style="--dur:520ms">One dispatch a week, with new interventions, artist profiles and collecting news. For pitches, tips and press, write to the desk.</p>
+    <a class="mail" href="mailto:editor@streetartdispatch.com">editor@streetartdispatch.com <b>↗</b></a>
+    <form class="nl" id="nl"><label class="sr" for="nlEmail">Email address</label><input id="nlEmail" type="email" required placeholder="Your email for the weekly dispatch"><button type="submit">Subscribe</button></form>
+    <p class="nl-msg" id="nlMsg" aria-live="polite"></p>
+    <div class="bar">
+      <div class="bar-l">
+        <p class="sig">Street Art Dispatch</p>
+        <p class="label">The urban art and culture publication.</p>
+      </div>
+      <nav class="bar-m" aria-label="Social">
+        <ul class="social">
+          <li><a href="https://www.instagram.com" target="_blank" rel="noreferrer noopener">Instagram</a></li>
+          <li><a href="https://x.com" target="_blank" rel="noreferrer noopener">X / Twitter</a></li>
+          <li><a href="https://substack.com" target="_blank" rel="noreferrer noopener">Substack</a></li>
+        </ul>
+      </nav>
+      <div class="bar-r"><p class="copy">© <span id="yr">2026</span> Street Art Dispatch.<br>streetartdispatch.com</p></div>
+    </div>
+  </footer>
+</main>
+
+<!-- ARTICLE READER -->
+<div class="reader" id="reader" role="dialog" aria-modal="true" aria-label="Article" data-lenis-prevent></div>
+
+<script type="module">
+/* =========================================================
+   CONTENT
+   ========================================================= */
+const DESK = 'The Dispatch Desk';
+const DATE = 'November 2026';
+
+const FEATURES = [
+{
+ slug:'konn-artiss', kicker:'Artist Profile', cover:'konn', draft:true,
+ title:'Konn Artiss: Art, Intervention and Public Attention',
+ standfirst:'Konn Artiss makes work for the moment a crowd realises something wasn’t supposed to be there. A profile of an artist whose best-known pieces start as public interventions and end up as arguments about who art is for.',
+ tags:['Konn Artiss','Artist profile','Venice intervention','Artwork','Auctions'],
+ body:`
+<p class="dropcap">When people realise that what they’re looking at wasn’t supposed to be there, a crowd goes quiet for a second or two. Then the phones come out. Konn Artiss makes work for that second, and for what happens after it.</p>
+<p>For Artiss, as for many artists of this generation, the gallery is one stop in an artwork’s life rather than its starting point. The work usually appears first in public, placed or staged somewhere that already means something, and it borrows the attention of people who weren’t looking for art. Exhibition, collection and auction come later, after the piece has been photographed, discussed and argued over.</p>
+<h2>Starting outside the white cube</h2>
+<p>“Street art” covers some of this. The unannounced appearance, the dependence on location and the sense of the city as co-author all come from the street. The strategy owes as much to performance and conceptual art, though. An intervention cares less about how it looks than about what changes when it turns up.</p>
+<p>That changes where the viewer stands. You can admire a mural from across the road. An intervention makes you part of its audience whether you meant to be or not, and your reaction (the double take, the photo, the post) becomes part of how the work travels.</p>
+<h2>Venice as a stage</h2>
+<p>Venice sharpens all of this. The city is already a spectacle, and every other year it hosts the most closely watched exhibition in contemporary art, so its visitors arrive ready to look. Artiss’s Venice intervention used that readiness. The city provided the drama and the work interrupted it.</p>
+<p>Several things make Venice suit this kind of art. Narrow sightlines and routes along the water turn any unexpected object into an event. Nearly every visitor carries a camera. During the Biennale the line between the official programme and unofficial responses to it blurs, and people go looking for the next thing to see. A work placed there gets compared with the pavilions, with the city, and with earlier artists who used Venice the same way. (We cover that history in <a href="#read/venice-stage">Venice as a Stage for Contemporary Art</a>.)</p>
+<blockquote class="pull">The city provided the drama. The work interrupted it.</blockquote>
+<h2>Attention as a material</h2>
+<p>Critics of public interventions often call them stunts. The forms can look alike, so the reflex is understandable, but it misses how carefully serious artists in this field work. Artiss handles attention the way other artists handle paint, steel or light.</p>
+<p>In practice that means planning for documentation, since most people will see the work on a screen and the photograph will outlive the object. It means thinking about timing and about who will be there, and checking that the piece reads at a glance and still holds up on a second look. It also means treating the public’s response, whether enthusiasm, confusion or irritation, as part of what the work means.</p>
+<p>As with any art made in public, the real test comes after the attention moves on. Clever interventions tend to evaporate. The lasting ones leave an idea that people keep coming back to.</p>
+<h2>From the street to the collection</h2>
+<p>Every artist who works in public runs into the same practical problem: how does a temporary gesture become something that can be exhibited, bought and kept? Artiss treats the intervention and the collectable work as related but separate. The public piece makes the argument. Studio works, editions and documentation take it into private and institutional collections.</p>
+<p>Collectors need to understand that separation. Value here depends on provenance and clarity: knowing exactly what an object is, how it relates to the public work, and who vouches for its authenticity. Gallery representation is one link in that chain. <a href="#read/spectacle-to-collectable">From Public Spectacle to Collectable Object</a> explains how it works.</p>
+<h2>Why it matters now</h2>
+<p>Street Art Dispatch exists because this way of working has moved from the edge of contemporary culture to its centre. The artists we follow don’t choose between the street and the gallery. They build practices that move between the two, and they use public space to reach people that institutions rarely reach.</p>
+<p>Artiss is a clear example of that shift. The work asks who decides where art can appear, and makes a good case that the people who own the walls no longer decide alone.</p>`
+},
+{
+ slug:'intervention-vs-stunt', kicker:'Essay · Public Art', cover:'stunt',
+ title:'What Makes an Art Intervention Different from a Publicity Stunt?',
+ standfirst:'Both appear without warning, draw a crowd and spread online. Five questions for telling art made in public apart from marketing made to trend.',
+ tags:['Artistic interventions','Art stunts','Public art','Performance art','Viral art'],
+ body:`
+<p class="dropcap">On paper the two can look identical. Something appears in public without warning, a crowd gathers, photographs spread, and an artist’s or a brand’s name trends for a day. Most of us still sense that an art intervention and a publicity stunt are different things. Saying exactly how is harder.</p>
+<h2>The shared toolkit</h2>
+<p>Both rely on surprise, location and circulation. Both need an audience that didn’t plan to be one. Both are now made with the camera in mind, because an event nobody photographs barely happened. That overlap is why critics call artists’ work a stunt so often, and why brands keep borrowing street art’s language.</p>
+<h2>Five questions that separate them</h2>
+<ol class="numbered">
+<li><strong>What’s left once it’s over?</strong> A stunt has done its job when attention peaks. An intervention should leave something behind: an idea, an argument, a different way of seeing a place.</li>
+<li><strong>Does the site matter?</strong> Interventions usually belong to the place where they happen, and moving them drains their meaning. Stunts travel well. The same activation could run in any city with enough footfall.</li>
+<li><strong>Who benefits?</strong> If the main result is a product launch or more followers, the answer is obvious. Art can raise an artist’s profile too, but the audience should get more out of it than it gives.</li>
+<li><strong>Does it survive without the headlines?</strong> Look at what was actually made. If it’s still precise and still says something, it will outlast the photograph.</li>
+<li><strong>Is the risk real?</strong> Artists working in public often take real legal, financial and reputational risks. Stunts are usually permitted, insured and engineered to be safe.</li>
+</ol>
+<h2>Three cases</h2>
+<p>During the 2019 Biennale, Banksy set up an unannounced stall in Venice selling paintings that together showed a huge cruise ship dwarfing the city. Police moved the stall on. It looked like a stunt, but the subject belonged to the place: what mass tourism does to the lagoon. The location carried the argument.</p>
+<p>Maurizio Cattelan’s <em>Comedian</em>, a banana duct-taped to a wall at Art Basel Miami Beach in 2019, is harder to place. Part of its fame came from another artist eating it. Its subject, though, was how the art market decides what things are worth, so the spectacle was its medium. In 2024 an edition sold at Sotheby’s for $6.2 million, and the argument that followed made Cattelan’s point for him.</p>
+<p>Christo and Jeanne-Claude sit at the other end. Wrapping the Reichstag in Berlin in 1995 took more than twenty years of negotiation, and the artists paid for it by selling their own preparatory works. It was slow and expensive, and few public artworks have drawn bigger crowds.</p>
+<blockquote class="pull">Ask what remains once the noise stops.</blockquote>
+<h2>A working definition</h2>
+<p>An art intervention borrows the methods of public spectacle to say something that outlasts the spectacle. A publicity stunt is finished when the spectacle ends. The line isn’t always clean, and the best artists work along it on purpose (our profile of <a href="#read/konn-artiss">Konn Artiss</a> looks at one). The five questions will usually tell you which side a work falls on.</p>`
+},
+{
+ slug:'venice-stage', kicker:'Cities · Venice', cover:'venice',
+ title:'Venice as a Stage for Contemporary Art',
+ standfirst:'A city built as a sequence of reveals, where the art world arrives every other year ready to look. Why Venice is the most loaded stage in public art.',
+ tags:['Venice intervention','Venice Biennale','Public art','Installations','Banksy'],
+ body:`
+<p class="dropcap">Venice has always been staged. A city built on water and laid out as a series of reveals (a bridge, a corner, a sudden campo) teaches visitors to look. That makes it one of the most powerful settings in the world for contemporary art, and one of the most loaded.</p>
+<h2>A city built for spectators</h2>
+<p>The Venice Biennale, first held in 1895, made an institution of that theatre. Every other year, national pavilions in the Giardini and the Arsenale bring the art world to one city, and collateral shows fill palazzos, churches and courtyards across the islands. For a few months almost any wall in Venice could be an exhibition space, and almost any visitor a critic.</p>
+<h2>Official and unofficial Venice</h2>
+<p>All that attention produces a second, unofficial Biennale. Artists without a pavilion or an invitation know the audience is in town and inclined to read anything unexpected as art. Some of the most discussed works of recent editions appeared on that fringe.</p>
+<p>In 2019 Banksy set up an unannounced stall of paintings that together showed a giant cruise ship looming over the city. Around the same time, a mural of a child in a life jacket holding a pink flare appeared at the waterline of a canal-side building. Both dealt with things Venice lives with every day: mass tourism and migration. Neither had the Biennale’s permission, and both relied on its audience.</p>
+<p>Sanctioned work has used the city just as boldly. For the 2017 Biennale, Lorenzo Quinn’s <em>Support</em> showed two giant hands rising from the Grand Canal to brace the façade of a historic hotel. The image of a city at risk from climate change spread well beyond the art press.</p>
+<blockquote class="pull">In Venice the setting always becomes part of the work.</blockquote>
+<h2>Why interventions land here</h2>
+<p>Three things make Venice unusually receptive. The first is sightlines: without cars, people walk slowly and look closely. The second is symbolism. Venice already stands for beauty, fragility and overtourism, so any work placed there inherits a metaphor. The third is documentation, since visitors photograph an intervention from every angle within minutes.</p>
+<p>The same things make the city hard to work in. A piece that only uses Venice as a backdrop looks thin beside the real thing. The interventions that last, including those by artists such as <a href="#read/konn-artiss">Konn Artiss</a>, deal with what the city is as well as how it looks.</p>
+<h2>After the show</h2>
+<p>Venice also shows how fast public art turns into history. Murals fade in the salt air, temporary works come down, stalls get moved on. Documentation and memory survive, and increasingly so do the collectable objects these moments produce. That’s why our <a href="#interventions" data-jump>Intervention Archive</a> treats Venice as a core city. A large share of the story of art made in public has happened on its water.</p>`
+},
+{
+ slug:'spectacle-to-collectable', kicker:'Collecting', cover:'collect',
+ title:'From Public Spectacle to Collectable Object',
+ standfirst:'A canvas shreds itself seconds after the hammer falls, then resells for eighteen times the price. How a public spectacle becomes something a collector can own.',
+ tags:['Street art collecting','Auction results','Original works','Editions','Provenance'],
+ body:`
+<p class="dropcap">On 5 October 2018, seconds after the hammer fell on Banksy’s <em>Girl with Balloon</em> at Sotheby’s London, a shredder hidden in the frame started up and pulled half the canvas through. The room gasped. Within days the work had a new title, <em>Love is in the Bin</em>, and was on its way to becoming one of the best-known artworks of the century.</p>
+<p>The buyer, who had agreed to pay £1,042,000, went through with the purchase. Three years later the shredded work came back to auction and sold for £18,582,000. The shredding had made the object far more valuable.</p>
+<h2>The paradox of public art</h2>
+<p>Art made in public is hard to own. A mural belongs to its wall, and an intervention happens and is gone. Even so, street and urban art has one of the busiest markets in contemporary collecting. It works by translation: the public event is carried into objects that can hold its meaning inside a collection.</p>
+<h2>What collectors actually buy</h2>
+<ul class="glossary">
+<li><strong>Studio originals.</strong> Unique works on canvas, panel or paper, made for exhibition and sale. They are often the closest link to an artist’s public practice.</li>
+<li><strong>Editions and prints.</strong> Screen prints and other multiples, usually signed and numbered. Shepard Fairey built much of his practice around editions, so for him the print is central.</li>
+<li><strong>Relics and documentation.</strong> Objects, photographs and certificates tied to a specific intervention. Their value depends entirely on clear provenance.</li>
+<li><strong>Certificates and instructions.</strong> Some works exist mainly as an idea. Cattelan’s <em>Comedian</em> is sold as a certificate of authenticity with instructions, and the banana itself can be replaced.</li>
+</ul>
+<h2>Provenance is everything</h2>
+<p>Street-based work is easy to imitate, so authentication matters more here than almost anywhere else in contemporary art. Banksy’s works are authenticated by Pest Control, the artist’s own handling service. It refuses to authenticate pieces made on the street, as a stand against people removing public works to sell them. Other artists rely on their galleries, studios and catalogues.</p>
+<p>For a new collector the rules are simple. Buy from galleries and auction houses that can document an object’s history. Ask exactly what you’re buying: a unique work, an edition (which number, out of how many) or documentation. Be wary of anything said to have come off a wall.</p>
+<blockquote class="pull">The shredding made the object worth eighteen times more.</blockquote>
+<h2>Where the value comes from</h2>
+<p>The market tends to reward the qualities that make public art matter in the first place: a clear idea, a memorable moment, a recognisable voice. An intervention that really changed the conversation gives every related object a story, and in collecting a story adds value. The best galleries in this field show street-rooted artists alongside the context of their public work.</p>
+<p>The shredder’s lesson for collectors is that in this field the artwork and the event are now bound together. The most interesting collections take account of both.</p>`
+},
+{
+ slug:'banksy-evolution', kicker:'Street Art History', cover:'banksy',
+ title:'Banksy and the Evolution of Art Interventions',
+ standfirst:'Bristol walls, museum hangs, a month-long residency, a theme park and a self-shredding canvas: how one artist turned the intervention from trespass into a global event.',
+ tags:['Banksy','Street art history','Artistic interventions','Invader','Shepard Fairey'],
+ body:`
+<p class="dropcap">No artist has done more to define the modern art intervention than Banksy, and none has changed the form as often. Following the work from Bristol’s walls to the auction room shows how the intervention itself developed, from trespass into a carefully planned public event.</p>
+<h2>1990s: the wall</h2>
+<p>The early work came out of Bristol’s graffiti scene in the 1990s. Stencils became the signature, partly because they’re quick to apply and partly because they produce images that read instantly. At this stage the intervention is simple: an image in the wrong place, saying something the wall’s owner never meant to say.</p>
+<h2>2005: the institution</h2>
+<p>In 2005 the target moved from the street to the museum. Banksy hung altered works without permission in New York institutions including the Museum of Modern Art and the Metropolitan Museum of Art, and placed a fake “ancient” rock carving of a figure pushing a shopping trolley in the British Museum. Some of these stayed up for days before anyone noticed. The question underneath was who decides what counts as art.</p>
+<h2>2006–2013: the system</h2>
+<p>Next the interventions went after systems instead of places. In 2006 hundreds of copies of a Paris Hilton album in UK record shops were swapped for versions the artist had re-sleeved and remixed. In October 2013 the month-long <em>Better Out Than In</em> residency put a new work somewhere in New York every day, and the city became a scavenger hunt played out online. On one day a stall near Central Park sold signed canvases for $60 each, and almost nobody stopped to buy.</p>
+<h2>2015–2019: the experience</h2>
+<p>By the mid-2010s the interventions had become places you could walk into. <em>Dismaland</em> (2015), a dystopian “bemusement park” on a derelict lido in Weston-super-Mare, brought together dozens of artists for five weeks. <em>The Walled Off Hotel</em> (2017) in Bethlehem faces the separation wall and runs as both a hotel and an exhibition space. In 2018 the shredding of <em>Girl with Balloon</em> turned an auction room into the stage. In 2019 the Venice stall and mural took on the Biennale, and later that year <em>Gross Domestic Product</em>, a Croydon shop window that never opened, played out a trademark dispute in public.</p>
+<blockquote class="pull">The surprise stayed constant. The audience grew from one passer-by to the whole internet.</blockquote>
+<h2>What changed</h2>
+<p>Surprise runs through all three decades. Scale and planning changed. The early stencils depended on someone happening to notice. The later interventions were built to circulate worldwide: confirmed on the artist’s own channels, documented by the studio, and set up so that the public’s reaction became part of the work.</p>
+<p>Banksy wasn’t working alone. Invader’s tile mosaics, appearing in Paris since 1998, and Shepard Fairey’s sticker campaign, started in 1989, built their own systems for occupying the city. All three are in our <a href="#interventions" data-jump>Intervention Archive</a>.</p>
+<h2>The legacy for today’s artists</h2>
+<p>Every artist working in public now, <a href="#read/konn-artiss">Konn Artiss</a> included, works in a landscape Banksy helped shape. Audiences expect art to appear without warning, the press knows how to cover it, and the market knows how to price what comes out of it. The next generation has to find interventions that can still surprise an audience that has learned to expect surprise.</p>`
+},
+{
+ slug:'beyond-gallery-walls', kicker:'Public Art', cover:'walls',
+ title:'Why Contemporary Artists Are Working Beyond Gallery Walls',
+ standfirst:'The white cube was designed to remove distractions, and many artists now find that neutrality limiting. Five reasons the work is moving outside.',
+ tags:['Public art','Installations','Urban culture','Social media and artists','JR','Invader'],
+ body:`
+<p class="dropcap">The white cube was designed to remove distractions: clean walls, even light, nothing between the viewer and the work. A growing number of contemporary artists now find that neutrality limiting. They’re taking work into streets, squares and waterways and onto screens, and their reasons go well beyond rebellion.</p>
+<h2>1. The audience is elsewhere</h2>
+<p>Most people never visit a contemporary gallery. Public space reaches commuters, residents, tourists and children. Keith Haring understood this in the early 1980s, when he drew in chalk on the black paper covering unused advertising panels in the New York subway and made work for thousands of riders a day.</p>
+<h2>2. Context is content</h2>
+<p>A work placed somewhere specific takes on that place’s history and politics. JR’s huge paste-ups get their meaning from where they go up, from the portraits in <em>Women Are Heroes</em> to the 2016 illusion that made the Louvre pyramid seem to vanish.</p>
+<h2>3. Documentation travels further than objects</h2>
+<p>A gallery show reaches the people who visit. A public work that gets photographed and shared can reach millions within hours. The image of an intervention now counts as a work in its own right, and it’s often how most people experience it.</p>
+<h2>4. Participation changes the work</h2>
+<p>Public art lets people in. JR’s <em>Inside Out</em> project, launched in 2011, asks communities around the world to paste up their own portraits. Invader’s <em>Flash Invaders</em> app turns finding the mosaics into a game played across cities. The audience takes part as well as looking.</p>
+<h2>5. The gallery still matters, differently</h2>
+<p>The gallery isn’t finished. Its role is shifting from the place where art starts to the place where it’s gathered, explained and kept. Galleries working with street-rooted artists show studio works, editions and documentation that carry a public practice into collections.</p>
+<blockquote class="pull">The work starts in the street. The gallery keeps the story.</blockquote>
+<h2>The risks</h2>
+<p>Working outside the gallery has costs. Unsanctioned work can bring legal trouble, temporary work can disappear without a record, and public attention moves on quickly. Careful, searchable, accurate documentation matters for exactly that reason, and it’s why Street Art Dispatch is building an <a href="#interventions" data-jump>archive of public interventions</a>.</p>`
+}];
+
+const COLUMNS = [
+{
+ slug:'phone-new-plinth', kicker:'Urban Culture · Social media', column:true,
+ title:'The Phone Is the New Plinth',
+ standfirst:'Every public artwork now lives twice, once on the street and once on the screen. Most of its audience only ever sees the screen.',
+ tags:['Social media and artists','Viral art','Cultural attention'],
+ body:`
+<p class="dropcap">Every public artwork now has two lives, one on the street and one on the screen. For most of its audience the screen is the only one they see.</p>
+<p>Artists working in public have adapted quickly. They compose works to read in a vertical frame, time them for when feeds are busiest, and release their own documentation so that the first image to circulate is the right one. Social platforms did for urban art what the printing press did for the poster, making the image endlessly reproducible and putting it in everyone’s pocket.</p>
+<p>That brings opportunity and pressure. An artist with a strong online following can work without institutions. The platforms reward novelty over depth, though, and it’s tempting to make work for the scroll instead of the street.</p>
+<p>The most interesting artists use the phone the way a sculptor uses a plinth: to present the work, which still lives somewhere else.</p>`
+},
+{
+ slug:'anatomy-viral-artwork', kicker:'Urban Culture · Viral art', column:true,
+ title:'Anatomy of a Viral Artwork',
+ standfirst:'What makes a work of public art travel? The same four ingredients keep turning up, and quality isn’t one of them.',
+ tags:['Viral art','Art stunts','Cultural attention'],
+ body:`
+<p class="dropcap">What makes a work of public art travel? Across the most-shared interventions of the past decade, the same ingredients keep turning up.</p>
+<ol class="numbered">
+<li><strong>A readable image.</strong> The work makes sense in under a second, even as a thumbnail.</li>
+<li><strong>A recognisable setting.</strong> A famous building, a symbolic city or a familiar street.</li>
+<li><strong>A story.</strong> Something happened, such as a removal, an arrest, a sale or a disappearance, that gives people a reason to share it.</li>
+<li><strong>An open question.</strong> Who made it? Is it real? Is it allowed?</li>
+</ol>
+<p>Going viral says nothing about quality, and plenty of strong work never travels. Knowing the mechanics helps audiences and editors tell work built to last from work built to trend. For the longer argument, read <a href="#read/intervention-vs-stunt">What Makes an Art Intervention Different from a Publicity Stunt?</a></p>`
+},
+{
+ slug:'crowd-as-medium', kicker:'Urban Culture · Performance', column:true,
+ title:'When the Crowd Becomes the Medium',
+ standfirst:'Some interventions aren’t objects. They’re situations, and the public is the material.',
+ tags:['Performance art','Public art','Artistic interventions'],
+ body:`
+<p class="dropcap">Some interventions aren’t objects at all. They’re situations, and the crowd is the material.</p>
+<p>Think of the queue outside a shop that never opens, the people gathered around a work that might be removed at any moment, or the hunt across a city for the next piece. In each case, part of the artwork is what the public does.</p>
+<p>That puts public art close to performance, in a line that runs back to the happenings of the 1960s. It also raises a question of responsibility. When a crowd becomes the medium, the artist is shaping how people behave in public space as well as what it looks like.</p>
+<p>The best work uses that power carefully and gives people something worth discovering.</p>`
+}];
+
+const ARTISTS = [
+{ name:'Konn Artiss', role:'Intervention · Installation · Collectable works', cover:'a-konn', read:'konn-artiss',
+  summary:'An artist working across public intervention, installation and collectable work. Our readers know Artiss best for an intervention staged in Venice that made the city’s audience part of the piece.',
+  facts:[['Practice','Public intervention, installation, studio works'],['Key context','The Venice intervention'],['Gallery','Grove Gallery'],['Profile','Lead feature, Issue 01']] },
+{ name:'Banksy', role:'Stencil · Installation · Unsanctioned intervention', cover:'a-banksy', read:'banksy-evolution',
+  summary:'The anonymous artist from Bristol’s graffiti scene who made the stencil a global language and turned interventions into events, from unsanctioned museum hangs to a canvas that shredded itself at auction.',
+  facts:[['Roots','Bristol, 1990s'],['Landmarks','Dismaland (2015) · Walled Off Hotel (2017) · Venice (2019)'],['Authentication','Pest Control Office']] },
+{ name:'Invader', role:'Mosaic · Urban “invasions”', cover:'a-invader', read:'beyond-gallery-walls',
+  summary:'The French artist whose ceramic-tile mosaics, built from the pixel language of early video games, have been “invading” cities since 1998. In 2015 one reached the International Space Station.',
+  facts:[['First invasion','Paris, 1998'],['Landmarks','Flash Invaders app (2014) · ISS mosaic (2015)'],['Medium','Ceramic tiles']] },
+{ name:'Shepard Fairey', role:'Poster · Print · Mural', cover:'a-fairey', read:'spectacle-to-collectable',
+  summary:'The American artist who grew a 1989 student sticker campaign into the OBEY project. His 2008 Hope poster became one of the defining political images of its era.',
+  facts:[['Origin','Sticker campaign, Providence, 1989'],['Landmarks','Hope (2008) · Earth Crisis, Paris (2015)'],['Collecting','Signed screen-print editions']] },
+{ name:'Grove Gallery roster', role:'Profiles in commission', cover:'a-grove', read:null,
+  summary:'Street Art Dispatch is expanding its profiles across the artists shown by Grove Gallery. Each one covers public work alongside studio practice, editions and collecting context.',
+  facts:[['Next','Profiles across the Grove Gallery roster'],['Format','Profile · Interventions · Works · Collecting notes'],['Suggest','editor@streetartdispatch.com']] }];
+
+const ARCHIVE = [
+ {y:'TBC',title:'The Venice intervention',artist:'Konn Artiss',city:'Venice',country:'Italy',type:'Public intervention',note:'Konn Artiss’s intervention staged in Venice. Date, title and documentation are being confirmed with the artist’s studio and Grove Gallery.',read:'konn-artiss',pending:true},
+ {y:2024,title:'Comedian sold at Sotheby’s',artist:'Maurizio Cattelan',city:'New York',country:'USA',type:'Auction event',note:'An edition of the banana duct-taped to a wall sells for $6.2 million, five years after its debut.',read:'spectacle-to-collectable'},
+ {y:2021,title:'L’Arc de Triomphe, Wrapped',artist:'Christo and Jeanne-Claude',city:'Paris',country:'France',type:'Temporary installation',note:'Realised posthumously: the monument wrapped in silvery-blue fabric and red rope for sixteen days.'},
+ {y:2021,title:'Love is in the Bin resold',artist:'Banksy',city:'London',country:'UK',type:'Auction event',note:'The half-shredded canvas returns to Sotheby’s and sells for £18,582,000.',read:'spectacle-to-collectable'},
+ {y:2019,title:'Venice in Oil',artist:'Banksy',city:'Venice',country:'Italy',type:'Unsanctioned stall',note:'An unannounced stall of paintings forming a cruise ship over the lagoon, set up during the Biennale; moved on by police.',read:'venice-stage'},
+ {y:2019,title:'Migrant child mural',artist:'Banksy',city:'Venice',country:'Italy',type:'Mural',note:'A child in a life jacket holding a pink flare, painted at the waterline of a canal-side building.',read:'venice-stage'},
+ {y:2019,title:'Comedian',artist:'Maurizio Cattelan',city:'Miami Beach',country:'USA',type:'Art-fair spectacle',note:'A banana taped to a wall at Art Basel Miami Beach. Another artist ate it during the fair.',read:'intervention-vs-stunt'},
+ {y:2019,title:'Gross Domestic Product',artist:'Banksy',city:'London',country:'UK',type:'Shop-window installation',note:'A Croydon shopfront that never opened its doors, staged amid a trademark dispute.',read:'banksy-evolution'},
+ {y:2018,title:'Girl with Balloon shredded',artist:'Banksy',city:'London',country:'UK',type:'Auction intervention',note:'A shredder hidden in the frame activates as the hammer falls at Sotheby’s; the work is re-titled Love is in the Bin.',read:'spectacle-to-collectable'},
+ {y:2017,title:'The Walled Off Hotel',artist:'Banksy',city:'Bethlehem',country:'Palestine',type:'Permanent installation',note:'A working hotel and exhibition space facing the separation wall.',read:'banksy-evolution'},
+ {y:2017,title:'Support',artist:'Lorenzo Quinn',city:'Venice',country:'Italy',type:'Sanctioned installation',note:'Two giant hands rise from the Grand Canal to brace a hotel façade during the Biennale.',read:'venice-stage'},
+ {y:2016,title:'JR at the Louvre',artist:'JR',city:'Paris',country:'France',type:'Anamorphic paste-up',note:'A photographic illusion makes the Louvre pyramid appear to disappear.',read:'beyond-gallery-walls'},
+ {y:2016,title:'Life jackets on the Konzerthaus',artist:'Ai Weiwei',city:'Berlin',country:'Germany',type:'Façade installation',note:'Thousands of refugees’ life jackets wrapped around the columns of a concert hall.'},
+ {y:2015,title:'Dismaland',artist:'Banksy',city:'Weston-super-Mare',country:'UK',type:'Temporary installation',note:'A dystopian “bemusement park” on a derelict lido, open for five weeks with dozens of invited artists.',read:'banksy-evolution'},
+ {y:2015,title:'Earth Crisis',artist:'Shepard Fairey',city:'Paris',country:'France',type:'Suspended installation',note:'A monumental globe hung in the Eiffel Tower during the COP21 climate talks.'},
+ {y:2015,title:'Space invasion',artist:'Invader',city:'In orbit',country:'International Space Station',type:'Mosaic',note:'A mosaic is sent up to the International Space Station.'},
+ {y:2014,title:'Flash Invaders',artist:'Invader',city:'Paris',country:'France',type:'Participatory app',note:'An app turns photographing mosaics into a game played across cities.',read:'beyond-gallery-walls'},
+ {y:2013,title:'Better Out Than In',artist:'Banksy',city:'New York',country:'USA',type:'Month-long residency',note:'A new work announced daily across the city throughout October.',read:'banksy-evolution'},
+ {y:2011,title:'Inside Out',artist:'JR',city:'Worldwide',country:'Global',type:'Participatory project',note:'A global participatory art project inviting communities to paste up their own portraits.',read:'beyond-gallery-walls'},
+ {y:2008,title:'Hope',artist:'Shepard Fairey',city:'Los Angeles',country:'USA',type:'Poster campaign',note:'A grassroots poster that became one of the defining political images of its era.'},
+ {y:2005,title:'Museum hangs',artist:'Banksy',city:'New York',country:'USA',type:'Unauthorised hang',note:'Altered works hung without permission in major New York museums.',read:'banksy-evolution'},
+ {y:2005,title:'Fake rock carving in the British Museum',artist:'Banksy',city:'London',country:'UK',type:'Unauthorised hang',note:'A “primitive” carving of a figure pushing a shopping trolley, placed in the galleries.',read:'banksy-evolution'},
+ {y:1998,title:'First Paris invasion',artist:'Invader',city:'Paris',country:'France',type:'Mosaic campaign',note:'Tile mosaics begin appearing across the city.'},
+ {y:1995,title:'Wrapped Reichstag',artist:'Christo and Jeanne-Claude',city:'Berlin',country:'Germany',type:'Temporary installation',note:'Realised after more than two decades of negotiation; self-funded through the sale of preparatory works.',read:'intervention-vs-stunt'},
+ {y:1989,title:'André the Giant Has a Posse',artist:'Shepard Fairey',city:'Providence',country:'USA',type:'Sticker campaign',note:'A student sticker campaign that grew into the OBEY project.'},
+ {y:1981,title:'Paris stencils',artist:'Blek le Rat',city:'Paris',country:'France',type:'Stencil campaign',note:'Stencilled rats begin appearing on Paris walls, an early landmark for stencil art.'},
+ {y:1980,title:'Subway drawings',artist:'Keith Haring',city:'New York',country:'USA',type:'Chalk drawings',note:'Chalk drawings on blank advertising panels across the subway, through the early 1980s.',read:'beyond-gallery-walls'}
+];
+
+const EXHIBITIONS = [
+ {t:'Konn Artiss',sub:'New and selected works',venue:'Grove Gallery',when:'Dates to be announced',status:'Listing to confirm'},
+ {t:'Across the Roster',sub:'Ongoing coverage of artists shown by Grove Gallery',venue:'Grove Gallery',when:'Rolling',status:'Series'},
+ {t:'Dispatch Live',sub:'A talk and viewing on interventions, for readers and collectors',venue:'Venue to be announced',when:'Proposed, 2027',status:'In planning'}
+];
+
+const STATS = [
+ ['£1.04M','Paid for Girl with Balloon at Sotheby’s in 2018, seconds before it shredded'],
+ ['£18.58M','The same work, as Love is in the Bin, resold in 2021'],
+ ['$6.2M','Comedian, an edition sold at Sotheby’s New York, 2024'],
+ ['0','Street-removed works Banksy’s Pest Control will authenticate']
+];
+const GLOSS = [
+ ['Original','A unique work made by the artist for exhibition or sale: canvas, panel, paper or sculpture. It’s the closest link to a public practice.'],
+ ['Edition','A multiple, usually a screen print, produced in a fixed run and signed and numbered. Ask for the edition size and the number.'],
+ ['Provenance','The documented history of ownership from the studio to you. In street art, gaps in provenance are a red flag.'],
+ ['Authentication','Who stands behind the work: the artist’s studio, an official body such as Pest Control, or the representing gallery.']
+];
+const MARQUEE = ['Public Interventions','Urban Installations','Experimental Materials','Collectable Works','The City As Gallery'];
+
+/* =========================================================
+   GENERATIVE COVERS (SVG — placeholders for commissioned photography)
+   ========================================================= */
+const K={ink:'#0d0d0f',paper:'#ebe5d5',red:'#ff3b1d',red2:'#ff6a3d',surf:'#111114',surf2:'#17171b',muted:'#807f78',bg:'#08080a'};
+let cid=0;
+const rng=s=>()=>(s=(s*16807)%2147483647)/2147483647;
+function svg(w,h,bg,inner){
+  const id=++cid;
+  const defs=`<defs>
+  <filter id="gr${id}" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 1.8 0 0 0 -.9"/></filter>
+  <filter id="bl${id}" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="18"/></filter>
+  <pattern id="hR${id}" width="18" height="18" patternUnits="userSpaceOnUse" patternTransform="rotate(28)"><circle cx="9" cy="9" r="3.4" fill="${K.red}"/></pattern>
+  <pattern id="hP${id}" width="18" height="18" patternUnits="userSpaceOnUse" patternTransform="rotate(28)"><circle cx="9" cy="9" r="3" fill="${K.paper}"/></pattern>
+  <pattern id="hK${id}" width="16" height="16" patternUnits="userSpaceOnUse" patternTransform="rotate(28)"><circle cx="8" cy="8" r="2.6" fill="${K.ink}"/></pattern></defs>`;
+  return `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">${defs}<rect width="${w}" height="${h}" fill="${bg}"/>${inner.replaceAll('#ID',id)}<rect width="${w}" height="${h}" filter="url(#gr${id})" opacity=".14"/></svg>`;
+}
+const T=(x,y,s,fill,txt,extra='')=>`<text x="${x}" y="${y}" font-family="Anton" font-size="${s}" fill="${fill}" ${extra}>${txt}</text>`;
+const L=(x,y,txt,fill=K.muted,extra='')=>`<text x="${x}" y="${y}" font-family="Onest" font-weight="500" font-size="28" letter-spacing="7" fill="${fill}" ${extra}>${txt}</text>`;
+
+const COVERS={
+ konn(){
+  const drips=[[1000,150],[1060,240],[1130,110],[1190,200],[1250,90]].map(([x,h])=>`<rect x="${x}" y="760" width="16" height="${h}" rx="8" fill="${K.red}"/>`).join('');
+  return svg(1600,1100,K.surf,`
+   <circle cx="1120" cy="520" r="470" fill="url(#hR#ID)" opacity=".75"/>
+   <circle cx="1120" cy="520" r="300" fill="${K.red}" filter="url(#bl#ID)"/>
+   <circle cx="1120" cy="520" r="255" fill="${K.red}"/>${drips}
+   ${T(100,540,300,K.paper,'KONN','letter-spacing="-3"')}${T(100,860,300,K.paper,'ARTISS','letter-spacing="-3"')}
+   <rect x="100" y="905" width="560" height="8" fill="${K.red}"/>
+   ${L(104,150,'ARTIST PROFILE — DISPATCH 01')}`);
+ },
+ stunt(){
+  return svg(1600,1100,K.paper,`
+   <polygon points="820,0 1600,0 1600,1100 780,1100 840,900 790,720 850,540 800,350 845,170" fill="${K.red}"/>
+   <rect x="820" y="0" width="780" height="1100" fill="url(#hK#ID)" opacity=".1"/>
+   ${T(110,720,430,K.ink,'ART')}${T(905,720,300,K.ink,'STUNT')}
+   <circle cx="815" cy="575" r="95" fill="${K.ink}"/>${T(815,612,96,K.paper,'VS','text-anchor="middle"')}
+   ${L(112,150,'ESSAY — PUBLIC ART',K.ink)}${L(905,1000,'FIVE QUESTIONS',K.ink)}`);
+ },
+ venice(){
+  const r=rng(7);let w='',a='',up='';
+  for(let i=0;i<21;i++){const x=20+i*76;a+=`<path d="M${x} 700 V585 a22 22 0 0 1 44 0 V700Z" fill="${K.surf}"/>`;up+=`<path d="M${x+8} 540 V505 a14 14 0 0 1 28 0 V540Z" fill="${K.surf}"/>`}
+  for(let j=0;j<24;j++){const y=750+j*14;let x=-40;while(x<1600){const len=40+r()*180;const near=Math.abs(x+len/2-1180)<200-j*5;w+=`<rect x="${x}" y="${y}" width="${len}" height="3" fill="${near?K.red:K.paper}" opacity="${near?.9:.18+r()*.2}"/>`;x+=len+20+r()*80}}
+  return svg(1600,1100,K.surf,`
+   <circle cx="1180" cy="290" r="170" fill="${K.red}"/>
+   <polygon points="0,440 140,440 140,400 180,400 180,440 520,440 560,410 600,440 900,440 900,395 950,395 950,440 1600,440 1600,730 0,730" fill="${K.paper}"/>
+   ${up}${a}<rect x="0" y="728" width="1600" height="6" fill="${K.paper}" opacity=".5"/>${w}
+   ${L(100,150,'CITIES — VENICE')}`);
+ },
+ collect(){
+  const r=rng(3);let s='';
+  for(let i=0;i<28;i++){const x=522+i*20;const h=120+r()*300;s+=`<rect x="${x}" y="690" width="14" height="${h}" fill="${K.red}" transform="rotate(${(r()*6-3).toFixed(1)} ${x} 690)"/>`}
+  return svg(1600,1100,K.paper,`
+   <rect x="520" y="130" width="560" height="540" fill="${K.red}"/>
+   <rect x="520" y="130" width="560" height="540" fill="url(#hP#ID)" opacity=".18"/>
+   <rect x="500" y="110" width="600" height="580" fill="none" stroke="${K.ink}" stroke-width="40"/>
+   <rect x="480" y="655" width="640" height="48" fill="${K.ink}"/>${s}
+   <g transform="rotate(-12 1330 300)"><rect x="1190" y="240" width="280" height="112" fill="none" stroke="${K.red}" stroke-width="8"/>${T(1330,328,88,K.red,'SOLD','text-anchor="middle"')}</g>
+   ${L(110,150,'COLLECTING',K.ink)}${L(110,1000,'LOT 01 — ESTIMATE ON REQUEST',K.ink)}`);
+ },
+ banksy(){
+  const words=[['WALL','1990s',.32],['MUSEUM','2005',.5],['SYSTEM','2013',.75],['MARKET','2018',1]];
+  return svg(1600,1100,K.ink,words.map(([wd,yr,o],i)=>{const y=290+i*245;const fill=i===3?K.red:K.paper;return `${T(100,y,235,fill,wd,`opacity="${o}" letter-spacing="2"`)}<rect x="90" y="${y-118}" width="1000" height="12" fill="${K.ink}"/>${L(1500,y-20,yr,K.muted,'text-anchor="end"')}<rect x="1180" y="${y-30}" width="${i===3?220:140}" height="2" fill="${fill}" opacity="${o}"/>`}).join('')+L(100,90,'STREET ART HISTORY'));
+ },
+ walls(){
+  const hole='640,330 700,290 760,320 830,270 900,310 960,300 980,380 950,450 990,520 930,600 860,580 780,620 700,590 640,610 610,520 640,450 600,390';
+  return svg(1600,1100,K.paper,`
+   <clipPath id="cp#ID"><polygon points="${hole}"/></clipPath>
+   <polygon points="0,1100 420,720 1180,720 1600,1100" fill="#ddd6c3"/>
+   <rect x="420" y="200" width="760" height="520" fill="#e4dece" stroke="${K.ink}" stroke-width="3"/>
+   <line x1="0" y1="0" x2="420" y2="200" stroke="${K.ink}" stroke-width="3"/><line x1="1600" y1="0" x2="1180" y2="200" stroke="${K.ink}" stroke-width="3"/>
+   <line x1="0" y1="1100" x2="420" y2="720" stroke="${K.ink}" stroke-width="3"/><line x1="1600" y1="1100" x2="1180" y2="720" stroke="${K.ink}" stroke-width="3"/>
+   <polygon points="${hole}" fill="${K.red}"/>
+   <g clip-path="url(#cp#ID)" fill="${K.ink}">${[[600,520,60],[665,470,45],[715,540,70],[790,430,50],[845,500,60],[910,455,40],[955,520,60]].map(([x,y,w])=>`<rect x="${x}" y="${y}" width="${w}" height="${640-y}"/>`).join('')}</g>
+   <polygon points="${hole}" fill="none" stroke="${K.ink}" stroke-width="5"/>
+   <polygon points="150,330 300,400 300,640 150,600" fill="none" stroke="${K.ink}" stroke-width="3" opacity=".5"/>
+   ${L(1500,150,'BEYOND THE WHITE CUBE',K.ink,'text-anchor="end"')}`);
+ },
+ 'a-konn'(){return svg(1000,1250,K.surf,`<circle cx="620" cy="460" r="380" fill="url(#hR#ID)" opacity=".8"/><circle cx="620" cy="460" r="210" fill="${K.red}"/>${T(60,1000,620,K.paper,'KA','letter-spacing="-10"')}${L(64,1160,'KONN ARTISS')}`)},
+ 'a-banksy'(){return svg(1000,1250,K.ink,`<rect x="0" y="760" width="1000" height="120" fill="${K.red}"/>${T(120,1080,1050,K.paper,'B','opacity=".92"')}<rect x="0" y="420" width="1000" height="18" fill="${K.ink}"/><rect x="0" y="700" width="1000" height="18" fill="${K.ink}"/>${L(64,110,'STREET ART HISTORY')}`)},
+ 'a-invader'(){
+  const P=['0010100','0111110','1101011','1111111','0101010','1000001','0100010'];let t='';
+  for(let r=0;r<16;r++)for(let c=0;c<13;c++)t+=`<rect x="${c*80+4}" y="${r*80+4}" width="72" height="72" fill="${K.paper}" opacity=".035"/>`;
+  P.forEach((row,r)=>[...row].forEach((v,c)=>{if(v==='1')for(let a=0;a<3;a++)for(let b=0;b<3;b++)t+=`<rect x="${150+c*100+a*33}" y="${300+r*100+b*33}" width="30" height="30" fill="${K.red}"/>`}));
+  return svg(1000,1250,K.surf2,t+L(64,1160,'MOSAIC — SINCE 1998'))},
+ 'a-fairey'(){
+  let rays='';for(let i=0;i<24;i+=2){const a1=i*Math.PI/12,a2=(i+1)*Math.PI/12;rays+=`<polygon points="500,560 ${500+1400*Math.cos(a1)},${560+1400*Math.sin(a1)} ${500+1400*Math.cos(a2)},${560+1400*Math.sin(a2)}" fill="${K.ink}" opacity=".12"/>`}
+  return svg(1000,1250,K.red,rays+`<circle cx="500" cy="560" r="300" fill="${K.paper}"/><circle cx="500" cy="560" r="300" fill="url(#hK#ID)" opacity=".25"/>${T(500,700,380,K.ink,'SF','text-anchor="middle"')}<rect x="0" y="1060" width="1000" height="190" fill="${K.ink}"/>${L(64,1170,'POSTER — PRINT — MURAL',K.paper)}`)},
+ 'a-grove'(){return svg(1000,1250,K.paper,`<rect x="420" y="250" width="160" height="620" fill="${K.ink}"/><rect x="190" y="480" width="620" height="160" fill="${K.ink}"/><rect x="0" y="0" width="1000" height="1250" fill="url(#hK#ID)" opacity=".06"/>${T(64,1080,120,K.red,'MORE ARTISTS')}${L(64,1160,'GROVE GALLERY ROSTER',K.ink)}`)}
+};
+const cover=k=>COVERS[k]();
+
+/* =========================================================
+   UTILITIES
+   ========================================================= */
+const $=(s,c=document)=>c.querySelector(s), $$=(s,c=document)=>[...c.querySelectorAll(s)];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const html=document.documentElement;
+const t0=performance.now();
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const hoverOK=()=>matchMedia('(hover:hover) and (min-width:769px)').matches;
+const words=s=>s.replace(/<[^>]+>/g,' ').trim().split(/\s+/).length;
+const mins=a=>Math.max(1,Math.round(words(a.body)/225));
+const ALL=[...FEATURES,...COLUMNS];
+$('#yr').textContent=new Date().getFullYear();
+
+/* adaptive grid scale-up above 1920 */
+const FONT_BASE=16,BASE_W=1920,COEF=.6666;
+function applyAdaptiveGrid(){const w=innerWidth;const red=((BASE_W-w)/BASE_W)*100*COEF;const size=FONT_BASE-(FONT_BASE*red)/100;if(size>FONT_BASE)html.style.fontSize=size+'px';else html.style.removeProperty('font-size')}
+applyAdaptiveGrid();
+
+/* lenis */
+let lenis=null;
+import('lenis').then(({default:Lenis})=>{
+  lenis=new Lenis({smoothWheel:true});window.lenis=lenis;
+  if(html.classList.contains('is-loading')||html.classList.contains('reader-open'))lenis.stop();
+  const raf=t=>{lenis.raf(t);requestAnimationFrame(raf)};requestAnimationFrame(raf);
+}).catch(()=>{});
+const scrollToEl=el=>{if(!el)return;if(lenis)lenis.scrollTo(el,{offset:0,duration:1.4});else el.scrollIntoView({behavior:reduce?'auto':'smooth'})};
+
+/* spring (true spring physics, for liquid distortion) */
+class Spring{constructor(v,k,c){this.x=v;this.v=0;this.to=v;this.k=k;this.c=c;this.run=false}
+ set(to,cb){this.to=to;this.cb=cb;if(!this.run){this.run=true;this.last=performance.now();requestAnimationFrame(this.tick)}}
+ tick=now=>{const dt=Math.min(.064,(now-this.last)/1000);this.last=now;const n=Math.max(1,Math.ceil(dt/.004)),h=dt/n;
+  for(let i=0;i<n;i++){const a=-this.k*(this.x-this.to)-this.c*this.v;this.v+=a*h;this.x+=this.v*h}
+  if(Math.abs(this.x-this.to)<1e-3&&Math.abs(this.v)<1e-3){this.x=this.to;this.v=0;this.run=false;this.cb&&this.cb(this.x);this.onRest&&this.onRest(this.x);return}
+  this.cb&&this.cb(this.x);requestAnimationFrame(this.tick)}}
+
+/* LiquidImage */
+let lqn=0;
+function liquid(fig){
+  if(fig.dataset.lq)return;fig.dataset.lq='1';
+  const id='lq'+(++lqn),max=+fig.dataset.scale||28,media=$('.lq-media',fig);
+  fig.insertAdjacentHTML('afterbegin',`<svg class="lq-defs" aria-hidden="true" width="0" height="0"><filter id="${id}" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.009" numOctaves="2" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="1" xChannelSelector="R" yChannelSelector="G"/></filter></svg>`);
+  if(!fig.classList.contains('bare'))fig.insertAdjacentHTML('beforeend','<div class="lq-vig"></div><div class="lq-veil"></div><div class="lq-glow"></div>');
+  const turb=$('feTurbulence',fig),disp=$('feDisplacementMap',fig);
+  const sp=new Spring(0,140,13);
+  const upd=p=>{disp.setAttribute('scale',(1+(max-1)*p).toFixed(2));turb.setAttribute('baseFrequency',Math.max(.001,.009+.013*p).toFixed(4))};
+  sp.onRest=x=>{if(x===0)media.style.filter=''};
+  const host=fig.closest('.group')||fig;
+  host.addEventListener('mouseenter',()=>{if(!hoverOK()||reduce)return;media.style.filter=`url(#${id})`;sp.set(1,upd)});
+  host.addEventListener('mouseleave',()=>{if(sp.run||sp.x)sp.set(0,upd)});
+}
+const fig=(k,scale=28)=>`<figure class="lq" data-scale="${scale}"><div class="lq-media">${cover(k)}</div></figure>`;
+
+/* =========================================================
+   RENDER
+   ========================================================= */
+// marquee
+const mq=MARQUEE.map(w=>`<span class="mq-item">${w}</span>`).join('');
+$('#mqTrack').innerHTML=mq+`<span style="display:contents" aria-hidden="true">${mq}</span>`;
+
+// dispatches
+(()=>{
+  const [lead,a,b,...rest]=FEATURES;
+  const meta=f=>`<span>By ${DESK}</span><span>${mins(f)} min read</span>`;
+  $('#dispatchList').innerHTML=`
+  <a class="lead group" href="#read/${lead.slug}" data-reveal style="--y:60px;--dur:620ms">
+    ${fig(lead.cover)}
+    <div><p class="kicker">01 — ${lead.kicker}</p><h3 class="lead-t">${lead.title}</h3><p class="stand">${lead.standfirst}</p><p class="meta">${meta(lead)}</p><span class="btn-read">Read the dispatch <span>↗</span></span></div>
+  </a>
+  <ul class="pair">${[a,b].map((f,i)=>`
+    <li data-reveal style="--y:60px;--dur:620ms;--d:${i*120}ms"><a class="card group" href="#read/${f.slug}">${fig(f.cover)}
+      <div class="card-row"><div><h3 class="card-t">${f.title}</h3><p class="stand">${f.standfirst}</p></div>
+      <div class="card-side"><span>0${i+2}</span><span>${mins(f)} min</span></div></div>
+      <p class="label card-cat">${f.kicker}</p></a></li>`).join('')}
+  </ul>
+  <ul class="index">${rest.map((f,i)=>`
+    <li data-reveal style="--d:${i*90}ms"><a class="ix group" href="#read/${f.slug}">
+      <span class="ix-n">0${i+4}</span>
+      <div><p class="kicker">${f.kicker} · ${mins(f)} min</p><h3 class="card-t">${f.title}</h3><p class="stand">${f.standfirst}</p></div>
+      ${fig(f.cover)}</a></li>`).join('')}
+  </ul>`;
+})();
+
+// artists
+let activeArtist=-1;
+$('#artistList').innerHTML=ARTISTS.map((a,i)=>`<li><button class="a-btn" data-i="${i}" aria-pressed="false"><span class="a-ix">0${i+1}</span><span class="a-txt"><span class="a-name">${a.name}</span><span class="a-role">${a.role}</span></span><span class="a-rule"></span></button></li>`).join('');
+function setArtist(i,first){
+  if(i===activeArtist)return;activeArtist=i;const a=ARTISTS[i];
+  $$('.a-btn').forEach((b,j)=>{b.classList.toggle('active',j===i);b.setAttribute('aria-pressed',j===i)});
+  const sum=$('#aSum');
+  sum.innerHTML=a.summary.split(' ').map((w,k)=>`<span class="w" style="--i:${k}">${esc(w)}</span>`).join(' ');
+  sum.classList.remove('play');void sum.offsetWidth;sum.classList.add('play');
+  $('#aFacts').innerHTML=a.facts.map(([k,v])=>`<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join('');
+  const ln=$('#aLink');
+  if(a.read){ln.href='#read/'+a.read;ln.innerHTML=`Read: ${esc(ALL.find(x=>x.slug===a.read).title)} <span>→</span>`}
+  else{ln.href='mailto:editor@streetartdispatch.com';ln.innerHTML='Suggest an artist <span>→</span>'}
+  const fi=$('#aFigIn');
+  const swap=()=>{$('#aMedia').innerHTML=cover(a.cover);fi.classList.remove('swap')};
+  if(first)swap();else{fi.classList.add('swap');setTimeout(swap,220)}
+}
+$$('.a-btn').forEach(b=>{const i=+b.dataset.i;['mouseenter','focus','click'].forEach(ev=>b.addEventListener(ev,()=>{if(ev==='mouseenter'&&!hoverOK())return;setArtist(i)}))});
+setArtist(0,true);
+
+// archive
+const st={q:'',artist:'',city:'',year:''};
+const uniq=k=>[...new Set(ARCHIVE.map(r=>String(r[k])))];
+uniq('artist').sort().forEach(v=>$('#fArtist').insertAdjacentHTML('beforeend',`<option>${esc(v)}</option>`));
+uniq('city').sort().forEach(v=>$('#fCity').insertAdjacentHTML('beforeend',`<option>${esc(v)}</option>`));
+uniq('y').sort((a,b)=>(+b||9999)-(+a||9999)).forEach(v=>$('#fYear').insertAdjacentHTML('beforeend',`<option>${esc(v)}</option>`));
+function renderArchive(){
+  const q=st.q.toLowerCase().trim();
+  const rows=ARCHIVE.filter(r=>(!st.artist||r.artist===st.artist)&&(!st.city||r.city===st.city)&&(!st.year||String(r.y)===st.year)&&(!q||[r.title,r.artist,r.city,r.country,r.type,r.note,r.y].join(' ').toLowerCase().includes(q)))
+    .sort((a,b)=>(+b.y||9999)-(+a.y||9999));
+  $('#archCount').innerHTML=`Showing <b>${rows.length}</b> of ${ARCHIVE.length} interventions`;
+  $('#archList').innerHTML=`<li class="arch-head" aria-hidden="true"><span>Year</span><span>Work</span><span>Artist</span><span>City</span><span>Type</span></li>`+
+   (rows.length?rows.map(r=>`<li class="arch-row">
+     <span class="a-year">${r.y}</span>
+     <div><h3 class="a-title">${esc(r.title)}</h3><p class="a-note">${esc(r.note)}</p>${r.read?`<a class="a-read" href="#read/${r.read}">Read the dispatch →</a>`:''}</div>
+     <button class="a-artist" data-artist="${esc(r.artist)}" title="Filter by ${esc(r.artist)}">${esc(r.artist)}</button>
+     <span class="a-city">${esc(r.city)}<small>${esc(r.country)}</small></span>
+     <span class="a-type">${esc(r.type)}${r.pending?'<br><span class="pill">Pending</span>':''}</span></li>`).join('')
+   :`<li class="arch-empty">No interventions match those filters yet. <button data-reset>Clear filters</button></li>`);
+}
+const syncSelects=()=>{$('#fQ').value=st.q;$('#fArtist').value=st.artist;$('#fCity').value=st.city;$('#fYear').value=st.year};
+$('#fQ').addEventListener('input',e=>{st.q=e.target.value;renderArchive()});
+$('#fArtist').addEventListener('change',e=>{st.artist=e.target.value;renderArchive()});
+$('#fCity').addEventListener('change',e=>{st.city=e.target.value;renderArchive()});
+$('#fYear').addEventListener('change',e=>{st.year=e.target.value;renderArchive()});
+const resetArch=()=>{Object.assign(st,{q:'',artist:'',city:'',year:''});syncSelects();renderArchive()};
+$('#fReset').addEventListener('click',resetArch);
+$('#archList').addEventListener('click',e=>{const b=e.target.closest('[data-artist]');if(b){st.artist=b.dataset.artist;syncSelects();renderArchive()}if(e.target.closest('[data-reset]'))resetArch()});
+renderArchive();
+
+// culture
+$('#colList').innerHTML=COLUMNS.map((c,i)=>`<li data-reveal style="--d:${i*110}ms"><a class="col-card" href="#read/${c.slug}"><span class="col-n">0${i+1}</span><p class="kicker">${c.kicker}</p><h3 class="card-t">${c.title}</h3><p class="stand">${c.standfirst}</p><span class="more">Read the column · ${mins(c)} min →</span></a></li>`).join('');
+
+// exhibitions
+$('#exList').innerHTML=EXHIBITIONS.map((x,i)=>`<li class="ex" data-reveal style="--d:${i*110}ms"><h3 class="ex-t">${x.t}<small>${x.sub}</small></h3><p class="ex-c"><span>Venue</span>${x.venue}</p><p class="ex-c"><span>Dates</span>${x.when}</p><span class="pill">${x.status}</span></li>`).join('');
+
+// collecting
+$('#stats').innerHTML=STATS.map(([v,l],i)=>`<div class="stat" data-reveal style="--d:${i*110}ms"><dd>${v}</dd><dt>${l}</dt></div>`).join('');
+$('#gloss').innerHTML=GLOSS.map(([t,p],i)=>`<li class="pr" data-reveal style="--d:${i*90}ms"><span class="pr-n">0${i+1}</span><div><h3>${t}</h3><p>${p}</p></div></li>`).join('');
+
+// newsletter (demo hook — wire to the ESP in production)
+$('#nl').addEventListener('submit',e=>{e.preventDefault();$('#nlMsg').textContent='Thanks, you’re on the list for the next dispatch.';e.target.reset()});
+
+$$('.lq').forEach(liquid);
+
+/* =========================================================
+   HERO MASTHEAD (letter-by-letter, fitted to viewport)
+   ========================================================= */
+const mast=$('#masthead');
+function fitMast(){
+  mast.style.fontSize='100px';
+  const w=Math.max(...$$('.mline',mast).map(l=>l.getBoundingClientRect().width));
+  const max=parseFloat(getComputedStyle(html).fontSize)*28;
+  mast.style.fontSize=Math.min(max,100*innerWidth*.97/w)+'px';
+}
+function buildMast(){
+  const lines=innerWidth<640?['Street','Art','Dispatch']:['Street Art','Dispatch'];
+  const key=lines.join('|');
+  if(mast.dataset.key!==key){
+    mast.dataset.key=key;
+    mast.innerHTML=lines.map((l,li)=>`<span class="mline" style="--ld:calc(var(--hb,2500ms) + ${li*240}ms)">${[...l].map((c,i)=>c===' '?'<span class="ch sp"> </span>':`<span class="ch" style="--i:${i}">${c}</span>`).join('')}</span>`).join('');
+  }
+  fitMast();
+}
+
+/* =========================================================
+   TEXT SPLITTING + IN-VIEW
+   ========================================================= */
+function splitLines(el){
+  if(!el.dataset.orig)el.dataset.orig=el.innerHTML;
+  const txt=el.textContent.trim();el.setAttribute('aria-label',txt);
+  el.innerHTML=txt.split(/\s+/).map(w=>`<span class="sw">${esc(w)}</span>`).join(' ');
+  const lines=[];let top=null;
+  $$('.sw',el).forEach(s=>{const t=s.offsetTop;if(top===null||Math.abs(t-top)>4){lines.push([]);top=t}lines[lines.length-1].push(s.textContent)});
+  el.innerHTML=lines.map((l,i)=>`<span class="m" aria-hidden="true"><span class="mi" style="--i:${i}">${esc(l.join(' '))}</span></span>`).join('');
+  el.classList.add('split');el._n=lines.length;
+}
+function revealSplit(el){
+  el.classList.add('is-revealed');
+  setTimeout(()=>{el.innerHTML=el.dataset.orig;el.classList.remove('split','is-revealed');el.classList.add('done')},950+el._n*90+100);
+}
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target;io.unobserve(el);if(el.hasAttribute('data-split'))revealSplit(el);else el.classList.add('in')}),{threshold:0});
+
+/* =========================================================
+   BOOT: preloader -> hero -> observers
+   ========================================================= */
+const pre=$('#preloader');
+function endPreloader(){html.classList.remove('is-loading');pre.classList.add('done');if(lenis&&!html.classList.contains('reader-open'))lenis.start()}
+function runPreloader(){
+  html.classList.add('is-loading');scrollTo(0,0);if(lenis)lenis.stop();
+  const num=$('#plNum'),D=2000,s=performance.now();
+  const step=now=>{const p=Math.min(1,(now-s)/D);num.textContent=Math.round(100*(p<.5?p*1.04:1-(1-p)*.96));
+    if(p<1)return requestAnimationFrame(step);
+    num.textContent='100';pre.classList.add('fade');
+    setTimeout(()=>{pre.classList.add('wipe');setTimeout(endPreloader,650)},300+200)};
+  requestAnimationFrame(step);
+}
+if(reduce){pre.classList.add('done')}else runPreloader();
+
+const fontsReady=Promise.race([document.fonts.ready,new Promise(r=>setTimeout(r,2200))]);
+fontsReady.then(()=>{
+  buildMast();
+  const hero=$('.hero');
+  const hb=reduce?0:Math.max(0,2500-(performance.now()-t0));
+  hero.style.setProperty('--hb',hb+'ms');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>hero.classList.add('go')));
+  $$('[data-split]').forEach(el=>{splitLines(el);io.observe(el)});
+  $$('[data-reveal]').forEach(el=>io.observe(el));
+  routeFromHash();
+});
+let rz;addEventListener('resize',()=>{applyAdaptiveGrid();clearTimeout(rz);rz=setTimeout(buildMast,120)});
+
+/* nav: scrolled state, anchors, mobile menu */
+const header=$('#siteHeader');
+addEventListener('scroll',()=>header.classList.toggle('scrolled',scrollY>40),{passive:true});
+const burger=$('#burger'),mm=$('#mmenu');
+function setMenu(open){burger.classList.toggle('open',open);mm.classList.toggle('open',open);burger.setAttribute('aria-expanded',open);burger.setAttribute('aria-label',open?'Close menu':'Open menu');mm.setAttribute('aria-hidden',!open);if(lenis)open?lenis.stop():lenis.start()}
+burger.addEventListener('click',()=>setMenu(!mm.classList.contains('open')));
+
+/* =========================================================
+   READER (hash-routed: #read/slug)
+   ========================================================= */
+const reader=$('#reader');let lastFocus=null;
+function openReader(slug){
+  const a=ALL.find(x=>x.slug===slug);if(!a)return;
+  const pool=a.column?COLUMNS:FEATURES;const next=pool[(pool.indexOf(a)+1)%pool.length];
+  reader.innerHTML=`
+  <div class="r-bar"><a class="r-brand" href="#top" data-close>Street Art Dispatch</a><span class="r-kick">${a.kicker}</span><button class="r-close" data-close aria-label="Close article">Close <b>×</b></button><i class="r-prog" id="rProg"></i></div>
+  <article>
+    <header class="r-head"><p class="eyebrow"><i></i>${a.kicker}</p><h1 class="r-title">${a.title}</h1><p class="r-stand">${a.standfirst}</p>
+      <p class="r-meta"><span>By ${DESK}</span><span>${DATE}</span><span>${mins(a)} min read</span></p></header>
+    ${a.cover?`<div class="r-cover">${fig(a.cover)}<p class="label" style="margin-top:.75rem">Illustration: Street Art Dispatch · Commissioned photography to follow</p></div>`:''}
+    <div class="r-body">${a.draft?'<p class="note"><b>Editor’s note — draft</b>Biographical details, dates, titles and market data in this profile are being confirmed with the artist’s studio and Grove Gallery before publication.</p>':''}${a.body}</div>
+    <footer class="r-foot"><p class="label">Filed under</p><ul class="tags">${a.tags.map(t=>`<li>${t}</li>`).join('')}</ul>
+      <a class="r-next" href="#read/${next.slug}"><span class="label">Next ${a.column?'column':'dispatch'}</span><span class="r-next-t">${next.title} →</span></a></footer>
+  </article>`;
+  $$('.lq',reader).forEach(liquid);
+  reader.scrollTop=0;
+  if(!reader.classList.contains('open')){lastFocus=document.activeElement;reader.classList.add('open');html.classList.add('reader-open');if(lenis)lenis.stop()}
+  document.title=`${a.title} — Street Art Dispatch`;
+  setTimeout(()=>$('.r-close',reader).focus({preventScroll:true}),60);
+}
+function closeReader(){
+  if(!reader.classList.contains('open'))return;
+  reader.classList.remove('open');html.classList.remove('reader-open');
+  if(lenis&&!html.classList.contains('is-loading'))lenis.start();
+  document.title='Street Art Dispatch — The Urban Art and Culture Publication';
+  lastFocus&&lastFocus.focus&&lastFocus.focus({preventScroll:true});
+}
+reader.addEventListener('scroll',()=>{const p=reader.scrollTop/Math.max(1,reader.scrollHeight-reader.clientHeight);const b=$('#rProg');if(b)b.style.transform=`scaleX(${p})`},{passive:true});
+function routeFromHash(){const m=location.hash.match(/^#read\/([\w-]+)/);if(m)openReader(m[1]);else closeReader()}
+addEventListener('hashchange',routeFromHash);
+addEventListener('keydown',e=>{if(e.key==='Escape'){if(mm.classList.contains('open'))setMenu(false);else if(reader.classList.contains('open'))clearHash()}});
+function clearHash(){history.pushState('',document.title,location.pathname+location.search);closeReader()}
+
+/* global anchor handling: smooth section scroll, close overlays */
+document.addEventListener('click',e=>{
+  if(e.target.closest('button[data-close]')){clearHash();return}
+  const a=e.target.closest('a[href^="#"]');if(!a)return;
+  const href=a.getAttribute('href');
+  if(href.startsWith('#read/'))return; // handled by hashchange
+  e.preventDefault();
+  const wasOpen=reader.classList.contains('open');
+  if(mm.classList.contains('open'))setMenu(false);
+  if(wasOpen)clearHash();
+  if(a.hasAttribute('data-close')&&href==='#top'&&!wasOpen)return;
+  const target=href==='#top'?$('#top'):$(href);
+  setTimeout(()=>scrollToEl(target),wasOpen?120:0);
+});
+</script>
+</body>
+</html>
