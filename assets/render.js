@@ -85,17 +85,18 @@
     }
     function page(path, title, desc, main, o) {
       o = o || {};
-      o.top = [groupHtml("top", true), o.top || ""].filter(Boolean).join("\n");
-      main = [groupHtml("top", false), main, groupHtml("bottom")].filter(Boolean).join("\n  ");
+      // a page with its own layout has no menu bar, footer or shared sections; popups show on every page
+      o.top = o.own ? "" : [groupHtml("top", true), o.top || ""].filter(Boolean).join("\n");
+      main = (o.own ? [main, groupHtml("popups")] : [groupHtml("top", false), main, groupHtml("bottom"), groupHtml("popups")]).filter(Boolean).join("\n  ");
       var urlPath = /index\.html$/.test(path) ? path.slice(0, -"index.html".length) : (o.file ? "" : path);
       var depth = (urlPath.match(/\//g) || []).length, r = o.file ? "" : new Array(depth + 1).join("../");
       var home = !!o.home, name = esc(NAME()), st = hd(), hon = shared("header")[1];
       main = String(main).split("@@").join(r);
       var links = navLinks().map(function (l) { return '<li><a href="' + r + l[1] + '"' + (urlPath.indexOf(l[1]) === 0 ? ' aria-current="page"' : "") + '>' + txt(l[0]) + '</a></li>'; }).join("");
       var sub = hrefOf(get(st, "subscribe_href", "#newsletter")).split("@@").join(r), subWords = txt(get(st, "subscribe", "Subscribe"));
-      var plate = home ? '<header class="nameplate"><img class="plate-mark" src="assets/brand/sad-tile.svg" alt="" width="72" height="72"><a href="' + (r || "./") + '">' + name + '<i class="stop"></i></a><p>' + txt(get(st, "tagline", "")) + '</p></header>' +
+      var plate = home && !o.own ? '<header class="nameplate"><img class="plate-mark" src="assets/brand/sad-tile.svg" alt="" width="72" height="72"><a href="' + (r || "./") + '">' + name + '<i class="stop"></i></a><p>' + txt(get(st, "tagline", "")) + '</p></header>' +
         '<div id="navSentinel" aria-hidden="true"></div>' : "";
-      var nav = !hon ? "" : '<nav class="nav' + (home ? "" : " nav--inner") + '" id="nav" aria-label="Sections">\n  <div class="wrap">\n' +
+      var nav = !hon || o.own ? "" : '<nav class="nav' + (home ? "" : " nav--inner") + '" id="nav" aria-label="Sections">\n  <div class="wrap">\n' +
         '    <a class="nav-mark" href="' + (r || "./") + '"><img src="' + r + 'assets/brand/sad-tile.svg" alt="" width="34" height="34"><span>' + name + '<i class="stop"></i></span></a>\n' +
         (headLogos(st, r, "L") ? '    <span class="hlogos">' + headLogos(st, r, "L") + '</span>\n' : "") +
         '    <ul class="nav-links">' + links + '</ul>\n' + (headLogos(st, r, "C") ? '    <span class="hlogos">' + headLogos(st, r, "C") + '</span>\n' : "") + '    <div class="nav-right">\n' + (headLogos(st, r, "R") ? '      <span class="hlogos">' + headLogos(st, r, "R") + '</span>\n' : "") + '      <a class="btn btn--sm" href="' + sub + '">' + subWords + '</a>\n' +
@@ -103,7 +104,7 @@
         '<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Menu">\n  <div class="sheet-top"><span>' + name + '<i class="stop"></i></span><button class="close-btn" id="sheetClose">Close <b aria-hidden="true">×</b></button></div>\n' +
         '  <ul>' + links + '</ul>\n  <a class="btn" href="' + sub + '">' + subWords + '</a>\n</div>';
       var ft = shared("footer"), f = ft[0];
-      var foot = !ft[1] ? "" : '<footer class="on-pine foot" id="contact">\n  <div class="wrap">\n    <div class="foot-grid">\n' +
+      var foot = !ft[1] || o.own ? "" : '<footer class="on-pine foot" id="contact">\n  <div class="wrap">\n    <div class="foot-grid">\n' +
         '      <div><img class="foot-mark" src="' + r + 'assets/brand/sad-mark-on-dark.svg" alt="" width="64" height="64"><p class="mark">' + name + '<i class="stop"></i></p><p class="tag">' + txt(get(f, "tagline", "")) + '</p></div>\n' +
         '      <nav aria-labelledby="f-sec"><h2 id="f-sec">' + txt(get(f, "sections_heading", "Sections")) + '</h2><ul>' + navLinks().map(function (l) { return '<li><a href="' + r + l[1] + '">' + txt(l[0]) + '</a></li>'; }).join("") + '</ul></nav>\n' +
         '      <nav aria-labelledby="f-abt"><h2 id="f-abt">' + txt(get(f, "about_heading", "About")) + '</h2><ul>\n        ' +
@@ -242,6 +243,14 @@
         '        <p class="mf-note">This opens your own email app with a message ready to send to ' + esc(mailTo()) + '.</p>\n' +
         (get(st, "pitch", "") || email ? '        <p class="pitch">' + txt(get(st, "pitch", "")) + (email ? ' <a class="tlink" style="min-height:0" href="mailto:' + esc(email) + '">' + esc(email) + '</a>' : "") + '</p>\n' : "") +
         '      </div>\n    </div>\n  </section>';
+    };
+    // A sign-up box that pops up once a visit; drawn hidden, and shown by the site's script.
+    S["signup-popup"] = function (st, ctx) {
+      var id = (ctx && ctx.id) || "popup", d = Math.max(3, Math.min(60, Number(get(st, "delay", 8)) || 8)), e = get(st, "eyebrow", ""), t = get(st, "text", "");
+      return '<div class="supop" id="' + esc(id) + '" data-popup data-delay="' + d + '" role="dialog" aria-labelledby="' + esc(id) + '-h" hidden>\n  <button type="button" class="supop-x" data-pop-close>Close</button>\n' +
+        (e ? '  <p class="kicker">' + txt(e) + '</p>\n' : "") + '  <h2 id="' + esc(id) + '-h">' + txt(get(st, "heading", "")) + '</h2>\n' + (t ? '  <p class="dek">' + txt(String(t).trim()) + '</p>\n' : "") +
+        '  <form class="nl" data-popform data-email="' + esc(mailTo()) + '" novalidate><label class="sr" for="' + esc(id) + '-e">Email address</label><input id="' + esc(id) + '-e" name="email" type="email" required placeholder="you@example.com" autocomplete="email"><button class="btn" type="submit">' + txt(get(st, "button", "") || "Ask to join") + '</button></form>\n' +
+        '  <p class="mf-note" role="status">This opens your own email app with a message ready to send to ' + esc(mailTo()) + '.</p>\n</div>';
     };
     S["text-page"] = function (st) {
       var body = (get(st, "intro", []) || []).map(function (p) { return "<p>" + (typeof p === "object" && p ? p.v : p) + "</p>"; }).join("");
@@ -408,7 +417,7 @@
         var html = mark(own(S[sec.type](sec.settings || {}, { id: sec.id, page: key }), sec.id, seen), sec.id);
         if (lead && sec.type === "announcement") top.push(html); else { lead = false; parts.push(html); }
       });
-      return page(pg.path, pg.title || "", pg.description || "", parts.join("\n  "), { home: !!pg.home, top: top.join("\n") });
+      return page(pg.path, pg.title || "", pg.description || "", (pg.own ? top.concat(parts) : parts).join("\n  "), { home: !!pg.home, top: pg.own ? "" : top.join("\n"), own: !!pg.own });
     }
 
     // ----- articles, columns and artists, each on its own page -----

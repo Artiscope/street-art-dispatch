@@ -422,3 +422,16 @@ section[id],footer[id]{scroll-margin-top:88px}
 .hlogo--s img{height:24px}.hlogo--m img{height:32px}.hlogo--l img{height:44px}
 .hlogo-empty{font:600 .8125rem/1 var(--sans);padding:6px 10px;border:1.5px dashed var(--pine);border-radius:4px}
 @media (max-width:479px){.hlogos{display:none}}
+
+/* ----- a sign-up box that pops up once a visit ----- */
+.supop{position:fixed;right:24px;bottom:24px;z-index:90;width:min(420px,calc(100vw - 32px));padding:26px 26px 22px;border-radius:4px;background:var(--pine);color:var(--linen);box-shadow:0 24px 60px rgba(22,58,48,.35)}
+.supop[hidden]{display:none}
+.supop.adh-picked-block{position:fixed}
+.supop-x{position:absolute;top:16px;right:18px;border:0;background:none;color:rgba(239,230,211,.82);font:600 .8125rem/1 var(--sans);text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:6px}
+.supop h2{font-family:var(--display);font-weight:400;font-size:1.75rem;line-height:1.1;margin:0 0 10px;padding-right:56px;color:var(--linen)}
+.supop .kicker{color:rgba(239,230,211,.82)}
+.supop .dek{margin:0 0 14px;color:rgba(239,230,211,.9)}
+.supop .nl{display:flex;flex-wrap:wrap;gap:10px}
+.supop .nl input{flex:1 1 180px;min-height:52px;border:0;border-radius:4px;padding:0 14px;font:400 1rem var(--sans);background:var(--linen);color:var(--pine)}
+.supop .mf-note{color:rgba(239,230,211,.82)}
+@media (max-width:600px){.supop{left:16px;right:16px;bottom:16px;width:auto}}

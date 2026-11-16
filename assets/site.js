@@ -132,7 +132,28 @@
     });
   }
 
-  function refresh(){timers.forEach(clearInterval);timers=[];setupNav();setupMenu();setupSignup();setupArchive();setupAnnounce();setupSlides();setupGalleries();setupMailForms()}
+  /* Each popup shows once a visit, after its delay; Close or Escape puts it away. Never while the page is being edited.
+     Its form opens the visitor's own email app, like the sign-up box. */
+  function setupPopups(){
+    document.querySelectorAll('[data-popup]').forEach(function(p){
+      if(p.getAttribute('data-wired'))return;p.setAttribute('data-wired','1');
+      var key='sad-popup-'+p.id,seen=function(){try{return sessionStorage.getItem(key)==='1'}catch(e){return false}};
+      var shut=function(){p.hidden=true};
+      p.querySelectorAll('[data-pop-close]').forEach(function(b){b.addEventListener('click',shut)});
+      p.addEventListener('keydown',function(e){if(e.key==='Escape')shut()});
+      var f=p.querySelector('[data-popform]'),note=p.querySelector('.mf-note');
+      if(f)f.addEventListener('submit',function(e){
+        e.preventDefault();var em=f.elements.email,to=f.getAttribute('data-email');
+        if(!em.value.trim()||!em.checkValidity()){em.focus();if(note)note.textContent='We need a working email address, so we can add you.';return}
+        var url='mailto:'+to+'?subject='+encodeURIComponent('Subscribe to the Dispatch')+'&body='+encodeURIComponent('Please add '+em.value.trim()+' to the weekly dispatch.');
+        f.setAttribute('data-mailto',url);location.href=url;
+        if(note)note.textContent='Your email app should now be open with the message ready. Send it and we will add you. If nothing opened, write to '+to+'.';
+      });
+      if(window.ADH_EDIT||seen())return;
+      setTimeout(function(){if(!window.ADH_EDIT&&!seen()&&document.body.contains(p)){p.hidden=false;try{sessionStorage.setItem(key,'1')}catch(e){}}},(Number(p.getAttribute('data-delay'))||8)*1000);
+    });
+  }
+  function refresh(){timers.forEach(clearInterval);timers=[];setupNav();setupMenu();setupSignup();setupArchive();setupAnnounce();setupSlides();setupGalleries();setupMailForms();setupPopups()}
   window.SADSite={refresh:refresh};
   refresh();
 })();
@@ -164,7 +185,7 @@
     if (!out) { out = site.notFound(); }
     view = at; types = {};
     (((m.pages.pages || {})[at.key] || {}).sections || []).forEach(function (x) { types[x.id] = x.type; });
-    grp = {}; ["top", "bottom"].forEach(function (w) { (((m.pages.groups || {})[w]) || []).forEach(function (x) { types[x.id] = x.type; grp[x.id] = 1; }); });
+    grp = {}; ["top", "popups", "bottom"].forEach(function (w) { (((m.pages.groups || {})[w]) || []).forEach(function (x) { types[x.id] = x.type; grp[x.id] = 1; }); });
     var moved = out.path !== draw.path; draw.path = out.path;
     var base = document.querySelector("base[data-adh]");
     if (!base) { base = document.createElement("base"); base.setAttribute("data-adh", ""); document.head.insertBefore(base, document.head.firstChild); }
@@ -191,8 +212,10 @@
   function tagged(el, bf, block) { if (!el || !bf) { return null; } return el.querySelector('[data-adh-b="' + bf + "." + block + '"]'); }
   function pick(id, block, label, scroll, bf, bi) {
     document.querySelectorAll(".adh-picked,.adh-picked-block,[data-adh-label]").forEach(function (x) { x.classList.remove("adh-picked", "adh-picked-block"); x.removeAttribute("data-adh-label"); });
+    document.querySelectorAll("[data-popup]").forEach(function (p) { p.hidden = true; });
     if (!id) { return; }
     var el = sectionEl(id); if (!el) { return; }
+    if (el.hasAttribute("data-popup")) { el.hidden = false; }
     var target = el;
     if ((block != null && block >= 0) || (bf && bi >= 0)) { var b = (bf && bi >= 0 ? tagged(el, bf, bi) : null) || (block >= 0 ? blockEls(id)[block] : null); if (b) { var bar = b.closest("[data-announce],[data-slides]"); if (bar && bar.adhShow) { bar.adhShow(b); } el.classList.add("adh-picked"); b.classList.add("adh-picked-block"); target = b; } else { el.classList.add("adh-picked-block"); } }
     else { el.classList.add("adh-picked-block"); }
@@ -201,7 +224,7 @@
   }
   window.addEventListener("message", function (e) {
     if (e.origin !== ok || !e.data) { return; }
-    if (!active) { active = true; document.documentElement.classList.add("adh"); style(); }
+    if (!active) { active = true; window.ADH_EDIT = true; document.querySelectorAll("[data-popup]").forEach(function (p) { p.hidden = true; }); document.documentElement.classList.add("adh"); style(); }
     if (e.data.type === "adh-pages" && e.data.data && e.data.pages) {
       var m = e.data;
       loadRender(function () { var moved = false; try { moved = draw(m); } catch (x) { } pick(m.pick, m.block, m.label, m.scroll || moved, m.bf, m.bi); });
