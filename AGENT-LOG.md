@@ -2,6 +2,12 @@
 
 A record of what the website agent did on each run, newest first.
 
+## Monday 16 November 2026, email changed
+Published: every email link and the sign-up box now use info@artiscope.co.uk, at the owner's request, until the site's own mailboxes work.
+Drafts waiting: none.
+Checked: the site builds, links work, and no page still shows the old addresses.
+Needs you: nothing.
+
 ## Monday 16 November 2026
 Published: the site rebuilt as real pages (23 in all) from the single page prototype, with the same design and words. New pages: About and standards, Contact, page not found.
 Drafts waiting: none.

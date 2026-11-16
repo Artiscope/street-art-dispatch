@@ -122,7 +122,7 @@ def newsletter():
       <div>
         <form class="nl" id="nl"><label class="sr" for="nlEmail">Email address</label><input id="nlEmail" type="email" required placeholder="you@example.com" autocomplete="email"><button class="btn" type="submit">Subscribe</button></form>
         <p class="nl-msg" id="nlMsg" aria-live="polite"></p>
-        <p class="pitch">Pitches, tips and press: <a class="tlink" style="min-height:0" href="mailto:editor@streetartdispatch.com">editor@streetartdispatch.com</a></p>
+        <p class="pitch">Pitches, tips and press: <a class="tlink" style="min-height:0" href="mailto:info@artiscope.co.uk">info@artiscope.co.uk</a></p>
       </div>
     </div>
   </section>'''
@@ -267,7 +267,7 @@ def interventions():
     <div class="astatus"><p id="aCount" aria-live="polite">{len(A)} interventions, newest first</p><button class="tlink" id="aClear" type="button" hidden>Clear filters</button></div>
     <div class="results" id="results">{out}</div>
     <p class="empty" id="aEmpty" hidden>Nothing matches those filters yet.</p>
-    <p class="anote">Every entry is sourced and dated. Entries marked “Awaiting confirmation” are being checked with the artist or gallery. Know of one we’ve missed? <a class="tlink" href="mailto:archive@streetartdispatch.com" style="min-height:0">Send it to the archive</a></p>
+    <p class="anote">Every entry is sourced and dated. Entries marked “Awaiting confirmation” are being checked with the artist or gallery. Know of one we’ve missed? <a class="tlink" href="mailto:info@artiscope.co.uk" style="min-height:0">Send it to the archive</a></p>
   </div></section>"""
     page('interventions/', f'The Intervention Archive | {NAME}', 'A dated record of art made in public. Search by artist, city or year.', main)
 

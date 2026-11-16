@@ -16,8 +16,9 @@ This file is your standing brief. Read all of it before doing anything.
 - Artists with profiles: Konn Artiss, Banksy, Invader and Shepard
   Fairey. Other artists are added only when the owner names them. Never
   add one yourself.
-- Emails shown on the site: editor@streetartdispatch.com and
-  archive@streetartdispatch.com.
+- Email shown on the site: info@artiscope.co.uk, for now. The site's own
+  addresses (editor@ and archive@streetartdispatch.com) cannot receive
+  mail yet, so do not put them back until the owner says so.
 
 ## How the site is put together
 The pages are built by a script on every push. There are no built pages

@@ -22,7 +22,7 @@
   if(nl)nl.addEventListener('submit',function(e){
     e.preventDefault();
     var em=$('#nlEmail').value;
-    location.href='mailto:editor@streetartdispatch.com?subject='+encodeURIComponent('Subscribe to the Dispatch')+'&body='+encodeURIComponent('Please add '+em+' to the weekly dispatch.');
+    location.href='mailto:info@artiscope.co.uk?subject='+encodeURIComponent('Subscribe to the Dispatch')+'&body='+encodeURIComponent('Please add '+em+' to the weekly dispatch.');
     $('#nlMsg').textContent='Your email app should open with a subscription request. Send it and we’ll add you.';
   });
 })();
