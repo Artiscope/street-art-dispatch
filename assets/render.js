@@ -78,8 +78,15 @@
     }
 
     // ----- the frame of every page -----
+    // Sections shared by every page: announcement bars above the menu bar, the rest at the top and bottom of the page.
+    function groupHtml(where, ann) {
+      return (((PAGES.groups || {})[where]) || []).filter(function (sec) { return sec && sec.visible !== false && S[sec.type] && (where !== "top" || (sec.type === "announcement") === !!ann); })
+        .map(function (sec) { return mark(S[sec.type](sec.settings || {}, { id: sec.id, page: "every" }), sec.id); }).join("\n");
+    }
     function page(path, title, desc, main, o) {
       o = o || {};
+      o.top = [groupHtml("top", true), o.top || ""].filter(Boolean).join("\n");
+      main = [groupHtml("top", false), main, groupHtml("bottom")].filter(Boolean).join("\n  ");
       var urlPath = /index\.html$/.test(path) ? path.slice(0, -"index.html".length) : (o.file ? "" : path);
       var depth = (urlPath.match(/\//g) || []).length, r = o.file ? "" : new Array(depth + 1).join("../");
       var home = !!o.home, name = esc(NAME()), st = hd(), hon = shared("header")[1];
