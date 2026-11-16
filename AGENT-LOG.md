@@ -5,7 +5,8 @@ A record of what the website agent did on each run, newest first.
 ## Monday 16 November 2026, smaller header
 Published: the home page header is now a compact centred masthead, with the stamp beside the name on one line and the name at under half its earlier size. Chosen by the owner from two samples.
 Drafts waiting: none.
-Checked: the site builds, links work, and the header holds at phone, tablet and desktop width.
+Also fixed: on very narrow phones (under 380 pixels wide) the story grid, an archive card and the menu bar pushed pages wider than the screen. This fault was there before the header change.
+Checked: the site builds, links work, and all 23 pages fit the screen at six widths from 320 to 1888 pixels.
 Needs you: nothing.
 
 ## Monday 16 November 2026, logo added
