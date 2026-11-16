@@ -2,6 +2,12 @@
 
 A record of what the website agent did on each run, newest first.
 
+## Monday 16 November 2026, logo added
+Published: the new logo, chosen by the owner. It is a postage stamp showing a brick wall with one painted mark. It now appears above the name on the home page, beside the name in the menu bar, in the footer and as the browser tab icon. The site name now ends with a ruby full stop.
+Drafts waiting: none.
+Checked: the site builds, links work, the logo shows on every page at phone and desktop width, and no image is missing.
+Needs you: nothing. The logo guide is in the `brand` folder.
+
 ## Monday 16 November 2026, top bar removed
 Published: the pine strip at the top of every page (issue label and site address) is gone, at the owner's request. Every email link and the sign-up box now use info@grovegallery.com, the same address as Global Art Monitor.
 Drafts waiting: none.

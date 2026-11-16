@@ -277,3 +277,10 @@ section[id],footer[id]{scroll-margin-top:88px}
 .kfacts dd{margin-top:2px;font-size:1.0625rem;line-height:1.5}
 .stds{display:grid;gap:22px}
 .stds dd{margin-top:4px}
+
+/* ---------- Logo ---------- */
+.stop{display:inline-block;width:.17em;height:.17em;border-radius:50%;background:var(--ruby);margin-left:.045em}
+.plate-mark{display:block;margin:0 auto clamp(14px,2vw,22px);width:clamp(52px,6vw,72px);height:auto}
+.nav-mark{display:inline-flex;align-items:center;gap:12px}
+.nav-mark img{flex:none}
+.foot-mark{display:block;margin-bottom:18px}

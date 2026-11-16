@@ -41,6 +41,11 @@ owner asks.
 - Typefaces: Gloock for headings, Source Serif 4 for reading text,
   Libre Franklin for labels and buttons.
 - Every image spot without a photo shows a "Photo to come" frame.
+- Logo: a postage stamp (dispatch) showing a brick wall (street) with one
+  painted ruby mark (art). The name always ends with a ruby full stop.
+  The files are in `assets/brand/` and are drawn by `tools/make_logo.py`.
+  The guide is `brand/Street-Art-Dispatch-logo-guidelines.pdf`. Leave the
+  logo alone unless the owner asks.
 
 ## Voice
 Authoritative but not academic. The full voice guide is in `VOICE.md`.

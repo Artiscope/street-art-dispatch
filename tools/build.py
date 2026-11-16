@@ -38,7 +38,7 @@ def page(path, title, desc, main, home=False, file=None, head=''):
     r = '' if file else '../' * depth
     if not file: PAGES.append(path)
     links = ''.join(f'<li><a href="{r}{h}"{" aria-current=\"page\"" if path.startswith(h) else ""}>{t}</a></li>' for t, h in NAV)
-    plate = (f'<header class="nameplate"><a href="{r or "./"}">{NAME}</a><p>{TAG}</p></header>'
+    plate = (f'<header class="nameplate"><img class="plate-mark" src="assets/brand/sad-tile.svg" alt="" width="72" height="72"><a href="{r or "./"}">{NAME}<i class="stop"></i></a><p>{TAG}</p></header>'
              '<div id="navSentinel" aria-hidden="true"></div>') if home else ''
     doc = f'''<!doctype html>
 <html lang="en-GB">
@@ -58,14 +58,17 @@ def page(path, title, desc, main, home=False, file=None, head=''):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gloock&family=Libre+Franklin:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
-{head}<link rel="stylesheet" href="{r}assets/site.css">
+{head}<link rel="icon" href="{r}assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="{r}assets/brand/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="{r}assets/brand/sad-tile-180.png">
+<link rel="stylesheet" href="{r}assets/site.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 {plate}
 <nav class="nav{'' if home else ' nav--inner'}" id="nav" aria-label="Sections">
   <div class="wrap">
-    <a class="nav-mark" href="{r or './'}">{NAME}</a>
+    <a class="nav-mark" href="{r or './'}"><img src="{r}assets/brand/sad-tile.svg" alt="" width="34" height="34"><span>{NAME}<i class="stop"></i></span></a>
     <ul class="nav-links">{links}</ul>
     <div class="nav-right">
       <a class="btn btn--sm" href="{r}#newsletter">Subscribe</a>
@@ -74,7 +77,7 @@ def page(path, title, desc, main, home=False, file=None, head=''):
   </div>
 </nav>
 <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Menu">
-  <div class="sheet-top"><span>{NAME}</span><button class="close-btn" id="sheetClose">Close <b aria-hidden="true">×</b></button></div>
+  <div class="sheet-top"><span>{NAME}<i class="stop"></i></span><button class="close-btn" id="sheetClose">Close <b aria-hidden="true">×</b></button></div>
   <ul>{links}</ul>
   <a class="btn" href="{r}#newsletter">Subscribe</a>
 </div>
@@ -84,7 +87,7 @@ def page(path, title, desc, main, home=False, file=None, head=''):
 <footer class="on-pine foot" id="contact">
   <div class="wrap">
     <div class="foot-grid">
-      <div><p class="mark">{NAME}</p><p class="tag">{TAG}.</p></div>
+      <div><img class="foot-mark" src="{r}assets/brand/sad-mark-on-dark.svg" alt="" width="64" height="64"><p class="mark">{NAME}<i class="stop"></i></p><p class="tag">{TAG}.</p></div>
       <nav aria-labelledby="f-sec"><h2 id="f-sec">Sections</h2><ul>{''.join(f'<li><a href="{r}{h}">{t}</a></li>' for t, h in NAV)}</ul></nav>
       <nav aria-labelledby="f-abt"><h2 id="f-abt">About</h2><ul>
         <li><a href="{r}about/">About and standards</a></li><li><a href="{r}contact/">Contact</a></li><li><a href="{r}#newsletter">Subscribe</a></li></ul></nav>

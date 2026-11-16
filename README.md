@@ -29,4 +29,12 @@ Copy an entry under `archive` in `data/content.json` and fill it in. Use `"y": "
 
 Vanilla Linen #EFE6D3 (60%), Pine Lacquer #163A30 (30%), Ruby Red #F0283C (10%, buttons only). Gloock for headings, Source Serif 4 for reading text, Libre Franklin for labels and buttons.
 
+## Logo
+
+The logo files are in `assets/brand/`, and the guide on how to use them is `brand/Street-Art-Dispatch-logo-guidelines.pdf`. The files are drawn by `tools/make_logo.py`, which needs the Gloock typeface file for the versions that include the name:
+
+```
+python3 tools/make_logo.py path/to/Gloock-Regular.ttf
+```
+
 `DEVELOPMENT.md` holds the original editorial and build plan.
