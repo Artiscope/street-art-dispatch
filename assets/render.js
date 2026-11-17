@@ -439,6 +439,24 @@
       html.replace(/ id="([^"]+)"/g, function (m, x) { seen[x] = 1; return m; });
       return html;
     }
+    // Templates: an article or an artist page is drawn with the sections of its template around its own content (the "main" section).
+    function tplOf(kind, slug) {
+      var all = ((PAGES.templates || {})[kind]) || {}, o = opts.tpl;
+      var id = o && o.kind === kind && all[o.id] ? o.id : ((((PAGES.assign || {})[kind]) || {})[slug] || "default");
+      return all[id] || all["default"] || null;
+    }
+    function tplWrap(kind, slug, inner) {
+      var t = tplOf(kind, slug); if (!t || !Array.isArray(t.sections)) return inner;
+      var placed = false, seen = {};
+      inner.replace(/ id="([^"]+)"/g, function (m, x) { seen[x] = 1; return m; });
+      var out = t.sections.map(function (sec) {
+        if (sec && sec.type === "main") { placed = true; return inner; }
+        if (!sec || sec.visible === false || !S[sec.type]) return "";
+        return mark(cssMark(own(S[sec.type](sec.settings || {}, { id: sec.id, page: "tpl" }), sec.id, seen), sec), sec.id);
+      });
+      if (!placed) out.unshift(inner);
+      return out.filter(Boolean).join("\n");
+    }
     function sectionsPage(key) {
       var pg = PAGES.pages[key], parts = [], top = [], lead = true, seen = {};
       (pg.sections || []).forEach(function (sec) {
@@ -461,6 +479,7 @@
         fig + '\n    ' + M('<div class="r-body">' + draft + fixLinks(a.body, "@@") + '</div>', "body") + '\n' +
         '    <footer class="r-foot"><p class="filed">Filed under ' + (a.tags || []).join(", ") + '.</p>\n' +
         '      <div class="next"><p class="kicker">Next ' + (isCol ? "column" : "dispatch") + '</p><h2>' + nxt.title + '</h2><a class="btn" href="@@' + pathOf(nxt.slug) + '">Read next</a></div></footer>\n  </article>';
+      main = tplWrap("article", a.slug, main);
       return page(p + "index.html", a.title + " | " + NAME(), stripTags(a.standfirst), main);
     }
     function artistPage(x) {
@@ -477,6 +496,7 @@
         '    <figure class="r-fig">' + photo(ART_PHOTOS[x.name] || x.name) + '<figcaption>Photograph to be commissioned.</figcaption></figure>\n' +
         '    ' + M('<div class="r-body"><p>' + x.summary + '</p><p>' + (x.note || "") + '</p>\n      <dl class="kfacts">' + facts + '</dl>' + arch + '</div>', "about") + '\n' +
         (feat ? '    <footer class="r-foot"><div class="next"><p class="kicker">Read more</p><h2>' + feat.title + '</h2><a class="btn" href="@@' + pathOf(feat.slug) + '">Read the story</a></div></footer>\n' : "") + '  </article>';
+      main = tplWrap("artist", s, main);
       return page("artists/" + s + "/index.html", x.name + " | " + NAME(), stripTags(x.summary), main);
     }
     function notFound() {

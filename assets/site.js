@@ -164,7 +164,7 @@
   if (window.parent === window) { return; }
   var ROOT = new URL(".", new URL("..", (me && me.src) || location.href)).href;
   var BLOCKS = { header: ".nav-links li", footer: ".foot-grid nav:last-child li", hero: ".actions a" };
-  var view = { kind: "page", key: "home" }, types = {}, grp = {};
+  var view = { kind: "page", key: "home" }, types = {}, grp = {}, tsec = {};
   function loadRender(done) {
     if (window.SAD) { done(); return; }
     var s = document.createElement("script"); s.src = ROOT + "assets/render.js"; s.onload = done; document.head.appendChild(s);
@@ -177,7 +177,7 @@
     document.head.appendChild(st);
   }
   function draw(m) {
-    var site = window.SAD.Site(m.data, m.pages, "", { mark: true, show: m.show || "", social: m.social || {}, imageSrc: function (name) { return (m.images || {})[name] || ROOT + "assets/images/" + name; } });
+    var site = window.SAD.Site(m.data, m.pages, "", { mark: true, show: m.show || "", social: m.social || {}, tpl: m.tpl || null, imageSrc: function (name) { return (m.images || {})[name] || ROOT + "assets/images/" + name; } });
     var at = m.at || { kind: "page", key: "home" }, out = null;
     if (at.kind === "artist") { out = site.artistPage(at.key); }
     else if (at.kind === "article") { out = site.articlePage(at.key); }
@@ -186,6 +186,7 @@
     view = at; types = {};
     (((m.pages.pages || {})[at.key] || {}).sections || []).forEach(function (x) { types[x.id] = x.type; });
     grp = {}; ["top", "popups", "bottom"].forEach(function (w) { (((m.pages.groups || {})[w]) || []).forEach(function (x) { types[x.id] = x.type; grp[x.id] = 1; }); });
+    tsec = {}; if (at.kind === "article" || at.kind === "artist") { var tall = ((m.pages.templates || {})[at.kind]) || {}, tid = m.tpl && m.tpl.kind === at.kind && tall[m.tpl.id] ? m.tpl.id : ((((m.pages.assign || {})[at.kind]) || {})[at.key] || "default"); (((tall[tid] || tall["default"] || {}).sections) || []).forEach(function (x) { if (x.type !== "main") { types[x.id] = x.type; tsec[x.id] = 1; } }); }
     var moved = out.path !== draw.path; draw.path = out.path;
     var base = document.querySelector("base[data-adh]");
     if (!base) { base = document.createElement("base"); base.setAttribute("data-adh", ""); document.head.insertBefore(base, document.head.firstChild); }
@@ -244,7 +245,7 @@
     var host = sectionEl(id); if (!host) { return null; }
     var el = host, tag = t.closest("[data-adh-b]");
     if (tag && host.contains(tag)) { var bp = tag.getAttribute("data-adh-b").split("."); bf = bp[0]; block = Number(bp[1]); el = tag; }
-    return { id: id, block: block, bf: bf, view: grp[id] ? "every" : view.kind, el: el, plus: !!bf || (id !== "header" && id !== "footer" && (!!grp[id] || view.kind === "page")) };
+    return { id: id, block: block, bf: bf, view: grp[id] ? "every" : tsec[id] ? "tpl" : view.kind, el: el, plus: !!bf || (id !== "header" && id !== "footer" && (!!grp[id] || !!tsec[id] || view.kind === "page")) };
   }
   /* the inspector: an outline and a name tag on whatever the pointer is over, with a plus above and below to add something just there */
   var NAMES = {}, hov = null, hovBox = null, hovRaf = 0;
@@ -303,7 +304,7 @@
     var bf = "", tag = e.target.closest("[data-adh-b]");
     if (tag) { var bp = tag.getAttribute("data-adh-b").split("."); bf = bp[0]; block = Number(bp[1]); }
     else { var list = blockEls(id); for (var i = 0; i < list.length; i++) { if (list[i].contains(e.target)) { block = i; break; } } }
-    window.parent.postMessage({ type: "adh-click", id: id, block: block, bf: bf, view: grp[id] ? "every" : view.kind }, ok);
+    window.parent.postMessage({ type: "adh-click", id: id, block: block, bf: bf, view: grp[id] ? "every" : tsec[id] ? "tpl" : view.kind }, ok);
   }, true);
 })();
 
