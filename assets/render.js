@@ -90,12 +90,31 @@
       return (((PAGES.groups || {})[where]) || []).filter(function (sec) { return sec && sec.visible !== false && S[sec.type] && (where !== "top" || (sec.type === "announcement") === !!ann); })
         .map(function (sec) { return mark(cssMark(S[sec.type](sec.settings || {}, { id: sec.id, page: "every" }), sec), sec.id); }).join("\n");
     }
+
+    // ----- add-ons: our own small extras for every page, switched on in Artiscope Digital Home -----
+    function aoClosed() { try { return typeof localStorage !== "undefined" && localStorage.getItem("ao-privacy-closed") === "1"; } catch (x) { return false; } }
+    function aoHtml(A, kind, url, title, esc, link) {
+      A = A || {}; var out = { share: "", fixed: "" }, on = function (id) { return !!(A[id] && A[id].on === true); };
+      var fits = function (w) { return w === "all" || (w === "items" ? (kind === "article" || kind === "artist") : kind === "article"); };
+      if (on("share") && fits(A.share.where || "articles")) {
+        var u = encodeURIComponent(url), t = encodeURIComponent(title || "");
+        var nets = { email: ["Email", "mailto:?subject=" + t + "&body=" + u], x: ["X", "https://x.com/intent/post?url=" + u + "&text=" + t], linkedin: ["LinkedIn", "https://www.linkedin.com/sharing/share-offsite/?url=" + u], facebook: ["Facebook", "https://www.facebook.com/sharer/sharer.php?u=" + u] };
+        var links = (A.share.networks || []).filter(function (n) { return nets[n]; }).map(function (n) { return '<a href="' + esc(nets[n][1]) + '"' + (n === "email" ? "" : ' target="_blank" rel="noopener noreferrer"') + '>' + nets[n][0] + '</a>'; }).join("");
+        if (links) out.share = '<aside class="ao-share" aria-label="Share this page"><span>' + esc(A.share.heading || "Share this page") + '</span>' + links + '</aside>';
+      }
+      if (on("progress") && fits(A.progress.where || "articles")) out.fixed += A.progress.style === "percent" ? '<div class="ao-progress pct" aria-hidden="true"><b>0%</b></div>' : '<div class="ao-progress" aria-hidden="true"><i></i></div>';
+      if (on("top")) out.fixed += '<button type="button" class="ao-top' + (A.top.side === "left" ? " left" : "") + '" data-after="' + (Number(A.top.after) || 600) + '">' + esc(A.top.label || "Top") + '</button>';
+      if (on("privacy")) out.fixed += '<div class="ao-privacy" role="region" aria-label="Privacy"><p>' + esc(A.privacy.text || "") + (A.privacy.link && A.privacy.link_label ? ' <a href="' + esc(link(A.privacy.link)) + '">' + esc(A.privacy.link_label) + '</a>' : "") + '</p><button type="button" data-ao-close>' + esc(A.privacy.button || "Close") + '</button></div>';
+      return out;
+    }
+    var AO_KIND = "page";
     function page(path, title, desc, main, o) {
       o = o || {};
+      var urlPath = /index\.html$/.test(path) ? path.slice(0, -"index.html".length) : (o.file ? "" : path);
+      var ao = aoHtml(PAGES.addons, AO_KIND, SITE_URL + urlPath, String(title || "").split(" | ")[0], esc, function (x) { return /^(https?:|mailto:|#|\/)/.test(x) ? x : "@@" + x; }); AO_KIND = "page";
       // a page with its own layout has no menu bar, footer or shared sections; popups show on every page
       o.top = o.own ? "" : [groupHtml("top", true), o.top || ""].filter(Boolean).join("\n");
-      main = (o.own ? [main, groupHtml("popups")] : [groupHtml("top", false), main, groupHtml("bottom"), groupHtml("popups")]).filter(Boolean).join("\n  ");
-      var urlPath = /index\.html$/.test(path) ? path.slice(0, -"index.html".length) : (o.file ? "" : path);
+      main = (o.own ? [main, groupHtml("popups"), ao.fixed] : [groupHtml("top", false), main, ao.share, groupHtml("bottom"), groupHtml("popups"), ao.fixed]).filter(Boolean).join("\n  ");
       var depth = (urlPath.match(/\//g) || []).length, r = o.file ? "" : new Array(depth + 1).join("../");
       var home = !!o.home, name = esc(NAME()), st = hd(), hon = shared("header")[1];
       main = String(main).split("@@").join(r);
@@ -492,7 +511,7 @@
         fig + '\n    ' + M('<div class="r-body">' + draft + fixLinks(a.body, "@@") + '</div>', "body") + '\n' +
         '    <footer class="r-foot"><p class="filed">Filed under ' + (a.tags || []).join(", ") + '.</p>\n' +
         '      <div class="next"><p class="kicker">Next ' + (isCol ? "column" : "dispatch") + '</p><h2>' + nxt.title + '</h2><a class="btn" href="@@' + pathOf(nxt.slug) + '">Read next</a></div></footer>\n  </article>';
-      main = tplWrap("article", a.slug, main);
+      main = tplWrap("article", a.slug, main); AO_KIND = "article";
       return page(p + "index.html", a.title + " | " + NAME(), stripTags(a.standfirst), main);
     }
     function artistPage(x) {
@@ -509,7 +528,7 @@
         '    <figure class="r-fig">' + photo(ART_PHOTOS[x.name] || x.name) + '<figcaption>Photograph to be commissioned.</figcaption></figure>\n' +
         '    ' + M('<div class="r-body"><p>' + x.summary + '</p><p>' + (x.note || "") + '</p>\n      <dl class="kfacts">' + facts + '</dl>' + arch + '</div>', "about") + '\n' +
         (feat ? '    <footer class="r-foot"><div class="next"><p class="kicker">Read more</p><h2>' + feat.title + '</h2><a class="btn" href="@@' + pathOf(feat.slug) + '">Read the story</a></div></footer>\n' : "") + '  </article>';
-      main = tplWrap("artist", s, main);
+      main = tplWrap("artist", s, main); AO_KIND = "artist";
       return page("artists/" + s + "/index.html", x.name + " | " + NAME(), stripTags(x.summary), main);
     }
     function notFound() {
