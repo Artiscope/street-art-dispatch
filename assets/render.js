@@ -37,6 +37,13 @@
 
   function Site(D, PAGES, THEME, opts) {
     opts = opts || {};
+    // Social media addresses chosen in the theme; nothing is shown until one is filled in.
+    function socialHtml() {
+      var all = opts.social && typeof opts.social === "object" ? opts.social : {}, out = Object.keys(all).map(function (k) { return all[k]; }).filter(function (x) { return x && /^https:\/\/[^\s<>"']+$/.test(x.href || ""); });
+      return out.length ? '<nav class="foot-social" aria-label="Social media">' + out.map(function (x) { return '<a href="' + esc(x.href) + '" rel="noopener">' + esc(x.label) + '</a>'; }).join("") + '</nav>\n' : "";
+    }
+    function iconOk() { return typeof opts.favicon === "string" && /^assets\/images\/[A-Za-z0-9._-]{1,120}\.(png|jpe?g|svg|ico)$/.test(opts.favicon); }
+    opts = opts || {};
     D = D || {}; PAGES = PAGES || { shared: {}, pages: {} };
     var SITE = D.site || {};
     // a hidden article is kept but not shown, except when it is being edited
@@ -109,7 +116,7 @@
         '      <nav aria-labelledby="f-sec"><h2 id="f-sec">' + txt(get(f, "sections_heading", "Sections")) + '</h2><ul>' + navLinks().map(function (l) { return '<li><a href="' + r + l[1] + '">' + txt(l[0]) + '</a></li>'; }).join("") + '</ul></nav>\n' +
         '      <nav aria-labelledby="f-abt"><h2 id="f-abt">' + txt(get(f, "about_heading", "About")) + '</h2><ul>\n        ' +
         (get(f, "about_links", []) || []).filter(function (l) { return Array.isArray(l) && l[0]; }).map(function (l) { return '<li><a href="' + hrefOf(l[1]).split("@@").join(r) + '">' + txt(l[0]) + '</a></li>'; }).join("") + '</ul></nav>\n' +
-        '    </div>\n    <p class="legal">' + txt(get(f, "legal", "")) + '</p>\n  </div>\n</footer>';
+        '    </div>\n    ' + socialHtml() + '<p class="legal">' + txt(get(f, "legal", "")) + '</p>\n  </div>\n</footer>';
       var html = '<!doctype html>\n<html lang="en-GB">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n' +
         '<title>' + esc(title) + '</title>\n<meta name="description" content="' + esc(desc) + '">\n<link rel="canonical" href="' + SITE_URL + urlPath + '">\n' +
         '<meta property="og:type" content="' + (home ? "website" : "article") + '">\n<meta property="og:site_name" content="' + name + '">\n' +
@@ -117,7 +124,7 @@
         '<meta name="twitter:card" content="summary_large_image">\n<meta name="theme-color" content="#163A30">\n' +
         '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n' +
         '<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Libre+Franklin:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">\n' +
-        (o.head || "") + '<link rel="icon" href="' + r + 'assets/brand/favicon.svg" type="image/svg+xml">\n<link rel="icon" href="' + r + 'assets/brand/favicon-32.png" sizes="32x32" type="image/png">\n' +
+        (o.head || "") + (iconOk() ? '<link rel="icon" href="' + r + opts.favicon + '">\n' : '<link rel="icon" href="' + r + 'assets/brand/favicon.svg" type="image/svg+xml">\n<link rel="icon" href="' + r + 'assets/brand/favicon-32.png" sizes="32x32" type="image/png">\n') +
         '<link rel="apple-touch-icon" href="' + r + 'assets/brand/sad-tile-180.png">\n<link rel="stylesheet" href="' + r + 'assets/site.css">\n' + (THEME || "") + secCssTag() +
         '</head>\n<body>\n<a class="skip" href="#main">Skip to content</a>\n' + plate + '\n' + (o.top ? String(o.top).split("@@").join(r) + "\n" : "") + nav + '\n<main id="main">\n' + main + '\n</main>\n' + foot + '\n' +
         '<script src="' + r + 'assets/site.js" defer></script>\n</body>\n</html>\n';
