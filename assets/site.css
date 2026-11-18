@@ -456,3 +456,11 @@ section[id],footer[id]{scroll-margin-top:88px}
 .ao-privacy a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
 .ao-privacy button { border: 0; cursor: pointer; padding: 8px 14px; background: #EFE6D3; color: #163A30; font: inherit; border-radius: 0; }
 @media (max-width: 600px) { .ao-top { right: 14px; bottom: 14px; } .ao-top.left { left: 14px; } .ao-privacy { left: 10px; right: 10px; bottom: 10px; } }
+
+/* ---------- Placed photos in story and artist spaces ---------- */
+.ph-img{display:block}
+.story .ph-img{aspect-ratio:3/2}
+.acard .ph-img{aspect-ratio:4/5;transition:transform .25s ease,box-shadow .25s ease}
+.acard:hover .ph-img{transform:translateY(-3px);box-shadow:0 14px 28px -18px rgba(22,58,48,.55)}
+.r-fig .ph-img{width:100%;height:auto;max-height:760px;object-fit:contain;background:var(--linen-2)}
+.r-fig figcaption a{text-decoration:underline;text-underline-offset:3px}

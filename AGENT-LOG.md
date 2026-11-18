@@ -2,6 +2,12 @@
 
 A record of what the website agent did on each run, newest first.
 
+## Wednesday 18 November 2026, first photos
+Published: three licensed photos, on the owner's go ahead. Venice waterfront on the Venice feature (Jean-Pol Grandmont, CC BY 4.0). An 1808 print of Christie's auction room on the collecting feature (public domain). A Shepard Fairey mural in Vienna on his profile (Herzi Pinki, CC BY-SA 3.0 AT). Each carries its credit on the page and is recorded in `data/photo-sources.json`. Story and artist photo spaces can now hold a real photo with a credit line.
+Drafts waiting: none.
+Checked: licences and authors on Wikimedia Commons itself; the site builds, links work, no image is missing, and pages fit at phone and desktop width.
+Needs you: photos from Grove Gallery for the three Konn Artiss and roster spaces. No free-to-use photo was found for the Banksy and Invader spaces: the two Banksy photos seen earlier are not on Wikimedia Commons. Still to search: a crowd photographing a work, and a public work from street level.
+
 ## Monday 16 November 2026, smaller header
 Published: the home page header is now a compact centred masthead, with the stamp beside the name on one line and the name at under half its earlier size. Chosen by the owner from two samples.
 Drafts waiting: none.

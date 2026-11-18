@@ -28,6 +28,7 @@
     return {
       site: { desk: c.desk || "", date: c.date || "" },
       photos: c.photos || {}, artist_photos: c.artist_photos || {},
+      photo_files: c.photo_files || {}, artist_photo_files: c.artist_photo_files || {},
       articles: (c.features || []).map(function (f) { return Object.assign({}, f, { section: "dispatches" }); })
         .concat((c.columns || []).map(function (f) { return Object.assign({}, f, { section: "urban-culture" }); })),
       artists: (c.artists || []).map(function (a) { return Object.assign({ slug: a.slug || slug(a.name) }, a, { note: notes[a.name] || "" }); }),
@@ -60,7 +61,7 @@
     var FEATURES = LIVE.filter(function (a) { return a.section !== "urban-culture"; }), COLUMNS = LIVE.filter(function (a) { return a.section === "urban-culture"; }), ALL = FEATURES.concat(COLUMNS);
     var COLS = {}; COLUMNS.forEach(function (c) { COLS[c.slug] = 1; });
     var BY_SLUG = {}; ALL.forEach(function (a) { BY_SLUG[a.slug] = a; });
-    var PHOTOS = D.photos || {}, ART_PHOTOS = D.artist_photos || {};
+    var PHOTOS = D.photos || {}, ART_PHOTOS = D.artist_photos || {}, PHOTO_FILES = D.photo_files || {}, ART_PHOTO_FILES = D.artist_photo_files || {};
     function hasPage(x) { return !!(x.read && BY_SLUG[x.read]) || !!opts.mark; }
     var ARCHIVE = D.archive || [];
 
@@ -72,6 +73,20 @@
     function photo(desc, ratio) {
       var st = ratio ? ' style="aspect-ratio:' + ratio + '"' : "";
       return '<div class="ph" role="img" aria-label="' + W("sr.photo", "Photograph to come: {what}", { what: esc(desc) }) + '"' + st + '><span class="ph-t">' + W("missing.photo", "Photo to come") + '</span><span class="ph-d">' + esc(desc) + '</span></div>';
+    }
+    // a licensed photo placed in a story or artist space: { image, alt, caption, credit, credit_href, focus }
+    function fileOk(v) { return v && typeof v === "object" && /^[A-Za-z0-9._-]{1,120}\.(png|jpe?g)$/.test(String(v.image || "")); }
+    function slotPic(v, desc, ratio) {
+      if (!fileOk(v)) return photo(desc, ratio);
+      var pos = /^\d{1,3}% \d{1,3}%$/.test(String(v.focus || "")) ? "object-position:" + v.focus + ";" : "";
+      var st = (ratio ? "aspect-ratio:" + ratio + ";" : "") + pos;
+      return '<img class="ph-img" src="' + esc(opts.imageSrc ? opts.imageSrc(v.image) : "@@assets/images/" + v.image) + '" alt="' + esc(v.alt || "") + '" loading="lazy"' + (st ? ' style="' + st + '"' : "") + '>';
+    }
+    function slotCap(v, missing) {
+      if (!fileOk(v)) return missing;
+      var c = txt(v.credit || ""), href = String(v.credit_href || "");
+      if (c && /^https:\/\//.test(href)) c = '<a href="' + esc(href) + '">' + c + '</a>';
+      return [txt(v.caption || ""), c].filter(Boolean).join(" ");
     }
     function fixLinks(body, r) {
       return String(body).replace(/href="#read\/([\w-]+)"/g, function (m, s) { return 'href="' + r + pathOf(s) + '"'; })
@@ -162,7 +177,7 @@
     // ----- shared pieces -----
     function story(f, cls) {
       var stand = cls !== "s-side" ? '<p class="stand">' + f.standfirst + '</p>' : "";
-      return '<article class="story ' + cls + '">' + photo(PHOTOS[f.slug] || f.title) + '<p class="kicker">' + f.kicker + '</p>' +
+      return '<article class="story ' + cls + '">' + slotPic(PHOTO_FILES[f.slug], PHOTOS[f.slug] || f.title) + '<p class="kicker">' + f.kicker + '</p>' +
         '<h3><a href="@@' + pathOf(f.slug) + '">' + f.title + '</a></h3>' + stand + '<p class="byline">By ' + SITE.desk + ' · ' + W("item.min-read", "{n} min read", { n: String(mins(f)) }) + '</p></article>';
     }
     function icard(x) {
@@ -173,7 +188,7 @@
         '<p>' + esc(x.note) + '</p>' + more + '</li>';
     }
     function acard(x) {
-      var inner = photo(ART_PHOTOS[x.name] || x.name) + '<h3>' + x.name + '</h3><p>' + x.role + '</p>';
+      var inner = slotPic(ART_PHOTO_FILES[x.name], ART_PHOTOS[x.name] || x.name) + '<h3>' + x.name + '</h3><p>' + x.role + '</p>';
       if (x.read && BY_SLUG[x.read]) return '<li><a class="acard" href="@@artists/' + x.slug + '/">' + inner + '<span class="more">' + W("btn.open-profile", "Open profile") + '</span></a></li>';
       return '<li><div class="acard acard--soon">' + inner + '<span class="soon">' + W("missing.soon", "Coming soon") + '</span></div></li>';
     }
@@ -514,7 +529,7 @@
       var p = pathOf(a.slug), isCol = !!COLS[a.slug], pool = isCol ? COLUMNS : FEATURES;
       var nxt = pool[(pool.indexOf(a) + 1) % pool.length];
       var sect = isCol ? ["Urban Culture", "urban-culture/"] : ["Dispatches", "dispatches/"];
-      var fig = PHOTOS[a.slug] ? '<figure class="r-fig">' + photo(PHOTOS[a.slug]) + '<figcaption>' + W("missing.commission", "Photograph to be commissioned.") + '</figcaption></figure>' : "";
+      var fig = PHOTOS[a.slug] || fileOk(PHOTO_FILES[a.slug]) ? '<figure class="r-fig">' + slotPic(PHOTO_FILES[a.slug], PHOTOS[a.slug]) + '<figcaption>' + slotCap(PHOTO_FILES[a.slug], W("missing.commission", "Photograph to be commissioned.")) + '</figcaption></figure>' : "";
       var draft = a.draft ? '<p class="note"><b>' + W("item.draft", "Draft") + '</b>Biographical details, dates, titles and market data in this profile are being confirmed with the artist’s studio and Grove Gallery before publication.</p>' : "";
       var main = '<article>\n    ' + M('<header class="r-head"><p class="crumb"><a href="@@' + sect[1] + '">' + sect[0] + '</a></p><p class="kicker">' + a.kicker + '</p><h1>' + a.title + '</h1><p class="r-stand">' + a.standfirst + '</p><p class="byline">By ' + SITE.desk + ' · ' + SITE.date + ' · ' + W("item.min-read", "{n} min read", { n: String(mins(a)) }) + '</p></header>', "words") + '\n    ' +
         fig + '\n    ' + M('<div class="r-body">' + draft + fixLinks(a.body, "@@") + '</div>', "body") + '\n' +
@@ -534,7 +549,7 @@
         arch = '<h2>' + W("item.in-archive", "In the archive") + '</h2><ul class="plain">' + rows + '</ul><p><a href="@@interventions/?artist=' + s + '">' + W("item.see-archive", "See these entries in the archive") + '</a></p>';
       }
       var main = '<article>\n    ' + M('<header class="r-head"><p class="crumb"><a href="@@artists/">' + W("item.crumb-artists", "Artists") + '</a></p><p class="kicker">' + W("item.kicker-artist", "Artist") + '</p><h1>' + x.name + '</h1><p class="r-stand">' + x.role + '</p></header>', "words") + '\n' +
-        '    <figure class="r-fig">' + photo(ART_PHOTOS[x.name] || x.name) + '<figcaption>' + W("missing.commission", "Photograph to be commissioned.") + '</figcaption></figure>\n' +
+        '    <figure class="r-fig">' + slotPic(ART_PHOTO_FILES[x.name], ART_PHOTOS[x.name] || x.name) + '<figcaption>' + slotCap(ART_PHOTO_FILES[x.name], W("missing.commission", "Photograph to be commissioned.")) + '</figcaption></figure>\n' +
         '    ' + M('<div class="r-body"><p>' + x.summary + '</p><p>' + (x.note || "") + '</p>\n      <dl class="kfacts">' + facts + '</dl>' + arch + '</div>', "about") + '\n' +
         (feat ? '    <footer class="r-foot"><div class="next"><p class="kicker">' + W("item.read-more", "Read more") + '</p><h2>' + feat.title + '</h2><a class="btn" href="@@' + pathOf(feat.slug) + '">' + W("btn.read-story", "Read the story") + '</a></div></footer>\n' : "") + '  </article>';
       main = tplWrap("artist", s, main); AO_KIND = "artist";

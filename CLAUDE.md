@@ -97,9 +97,22 @@ question in plain language with UK spellings and no jargon.
 If you are unsure which list a change belongs to, it waits.
 
 ## Images
-The owner supplies every image, through the `inbox/` folder. Never
-download images from the web, never use stock photos and never generate
-images of artworks or people.
+Images come from two places only: photos the owner supplies through the
+`inbox/` folder, and licensed photos the owner has approved.
+
+A licensed photo must be free to publish (public domain or a Creative
+Commons licence that allows it), with the licence checked on the photo's
+own page, not taken from another site's credit. List it in
+`data/photo-sources.json` with its source, author and licence;
+`tools/fetch_photos.py` then saves it into `assets/images`. Place it in
+`photo_files` or `artist_photo_files` in `data/content.json`, always with
+a credit line. Show the owner the photo before it goes live.
+
+Never use stock photos, photos from news sites, social media or image
+search, or photos of named living people. Never generate images of
+artworks or people. A free licence on a photo of a mural covers the
+photo, not the artwork, so tell the owner when a photo shows an artist's
+work and let them decide.
 
 ## Checks before every push
 - The site builds and every page you touched loads.

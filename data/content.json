@@ -592,5 +592,31 @@
     "Grove Gallery roster": "A new profile every week. Suggest an artist at info@grovegallery.com."
   },
   "desk": "The Dispatch Desk",
-  "date": "November 2026"
+  "date": "November 2026",
+  "photo_files": {
+    "venice-stage": {
+      "image": "venice-riva-degli-schiavoni.jpg",
+      "alt": "Venice seen from above the lagoon: boats moored along the Riva degli Schiavoni, terracotta roofs and bell towers, with Murano on the horizon.",
+      "caption": "Venice: the Riva degli Schiavoni waterfront, with the lagoon and Murano beyond, August 2014.",
+      "credit": "Photo: Jean-Pol Grandmont, CC BY 4.0, via Wikimedia Commons.",
+      "credit_href": "https://commons.wikimedia.org/wiki/File:0_Venise,_Riva_Dei_Schiavoni,_sestiere_du_Castello_et_l%27%C3%8Ele_de_Murano_(1).jpg"
+    },
+    "spectacle-to-collectable": {
+      "image": "christies-auction-room-1808.jpg",
+      "alt": "A hand-coloured print of a crowded auction room in 1808: an auctioneer at a raised desk under a skylight, paintings covering the walls, and a seated and standing crowd of bidders.",
+      "caption": "The auction room at Christie’s, London, in 1808. Print after Thomas Rowlandson and Augustus Charles Pugin, from The Microcosm of London.",
+      "credit": "Public domain, via Wikimedia Commons.",
+      "credit_href": "https://commons.wikimedia.org/wiki/File:Microcosm_of_London_Plate_006_-_Auction_Room,_Christie%27s_(colour).jpg"
+    }
+  },
+  "artist_photo_files": {
+    "Shepard Fairey": {
+      "image": "shepard-fairey-ankerbrot-vienna.jpg",
+      "alt": "A tall red, black and cream mural of a woman holding a spray can, painted on the grey end wall of a factory building.",
+      "caption": "Mural by Shepard Fairey on the Ankerbrot factory, Vienna, painted in May 2013 and photographed in 2014.",
+      "credit": "Photo: Herzi Pinki, CC BY-SA 3.0 AT, via Wikimedia Commons.",
+      "credit_href": "https://commons.wikimedia.org/wiki/File:Ankerbrot-Fabrik_03.jpg",
+      "focus": "50% 38%"
+    }
+  }
 }
