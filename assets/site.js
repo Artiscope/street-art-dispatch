@@ -4,6 +4,16 @@
 (function(){
   var html=document.documentElement,watch=null,keys=false;
   function $(s){return document.querySelector(s)}
+  /* The site's fixed words. Edit default text in Artiscope Digital Home keeps changed ones, which the page
+     carries in #adh-words (the editor sets window.ADH_WORDS); every call here carries the site's own words. */
+  function SW(key,dflt,slots){
+    var w=window.ADH_WORDS||null;
+    if(!w){try{var el=document.getElementById('adh-words');w=el?JSON.parse(el.textContent):{}}catch(x){w={}}}
+    var t=w&&typeof w[key]==='string'&&w[key].trim()?w[key]:dflt;
+    Object.keys(slots||{}).forEach(function(k){t=t.split('{'+k+'}').join(slots[k])});
+    return t;
+  }
+  function SWh(key,dflt){return SW(key,dflt).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 
   function setupNav(){
     var nav=$('#nav'),sentinel=$('#navSentinel');
@@ -38,8 +48,8 @@
     nl.addEventListener('submit',function(e){
       e.preventDefault();
       var em=$('#nlEmail').value;
-      location.href='mailto:info@grovegallery.com?subject='+encodeURIComponent('Subscribe to the Dispatch')+'&body='+encodeURIComponent('Please add '+em+' to the weekly dispatch.');
-      $('#nlMsg').textContent='Your email app should open with a subscription request. Send it and we’ll add you.';
+      location.href='mailto:info@grovegallery.com?subject='+encodeURIComponent(SW('form.subject','Subscribe to the Dispatch'))+'&body='+encodeURIComponent('Please add '+em+' to the weekly dispatch.');
+      $('#nlMsg').textContent=SW('form.sent-box','Your email app should open with a subscription request. Send it and we’ll add you.');
     });
   }
 
@@ -58,7 +68,7 @@
       });
       all('.yr').forEach(function(y){y.hidden=!y.querySelector('.icard:not([hidden])')});
       var active=st.q||st.artist||st.city||st.dec;
-      count.textContent=active?'Showing '+shown+' of '+total+' interventions':total+' interventions, newest first';
+      count.textContent=active?SW('archive.showing','Showing {shown} of {total} interventions',{shown:String(shown),total:String(total)}):SW('archive.count','{n} interventions, newest first',{n:String(total)});
       clear.hidden=!active;empty.hidden=shown>0;
       q.value=st.q;fa.value=st.artist;fc.value=st.city;
       all('.chip').forEach(function(c){c.setAttribute('aria-pressed',c.dataset.dec===st.dec)});
@@ -82,7 +92,7 @@
   function setupAnnounce(){
     document.querySelectorAll('[data-announce]').forEach(function(bar){
       var msgs=bar.querySelectorAll('.ann-msg'),count=bar.querySelector('.ann-count'),at=0,hold=false;if(msgs.length<2)return;
-      function show(i){at=(i+msgs.length)%msgs.length;msgs.forEach(function(m,k){m.classList.toggle('on',k===at)});if(count)count.textContent=(at+1)+' of '+msgs.length}
+      function show(i){at=(i+msgs.length)%msgs.length;msgs.forEach(function(m,k){m.classList.toggle('on',k===at)});if(count)count.textContent=SW('btn.count','{n} of {total}',{n:String(at+1),total:String(msgs.length)})}
       bar.adhShow=function(el){for(var i=0;i<msgs.length;i++)if(msgs[i]===el)show(i)};
       bar.addEventListener('mouseenter',function(){hold=true});bar.addEventListener('mouseleave',function(){hold=false});
       if(!still)timers.push(setInterval(function(){if(!hold&&!html.classList.contains('adh'))show(at+1)},1000*(+bar.dataset.secs||6)));
@@ -92,7 +102,7 @@
   function setupSlides(){
     document.querySelectorAll('[data-slides]').forEach(function(box){
       var sl=box.querySelectorAll('.ss-slide'),label=box.querySelector('.ss-at'),at=0;if(sl.length<2)return;
-      function show(i){at=(i+sl.length)%sl.length;sl.forEach(function(s,k){s.classList.toggle('on',k===at)});if(label)label.textContent=(at+1)+' of '+sl.length}
+      function show(i){at=(i+sl.length)%sl.length;sl.forEach(function(s,k){s.classList.toggle('on',k===at)});if(label)label.textContent=SW('btn.count','{n} of {total}',{n:String(at+1),total:String(sl.length)})}
       box.adhShow=function(el){for(var k=0;k<sl.length;k++)if(sl[k]===el)show(k)};
       box.addEventListener('click',function(e){var b=e.target.closest('[data-ss]');if(!b)return;show(at+(b.dataset.ss==='next'?1:-1));box.dataset.auto='0'});
       if(!still&&box.dataset.auto==='1')timers.push(setInterval(function(){if(box.dataset.auto==='1'&&!html.classList.contains('adh'))show(at+1)},1000*(+box.dataset.secs||6)));
@@ -106,9 +116,9 @@
     });
   }
   function openBox(items,i){
-    var box=document.createElement('div');box.className='lbox';box.setAttribute('role','dialog');box.setAttribute('aria-modal','true');box.setAttribute('aria-label','Photo');
-    box.innerHTML='<div class="lbox-top"><span class="lbox-at"></span><button type="button" data-lb="close">Close</button></div><div class="lbox-pic"></div><div class="lbox-nav"><button type="button" data-lb="prev">Previous</button><span class="lbox-cap"></span><button type="button" data-lb="next">Next</button></div>';
-    function show(k){i=(k+items.length)%items.length;var it=items[i],pic=it.querySelector('img,.ph');box.querySelector('.lbox-pic').innerHTML=pic?pic.outerHTML:'';box.querySelector('.lbox-at').textContent=(i+1)+' of '+items.length;var t=it.querySelector('.gl-t');box.querySelector('.lbox-cap').textContent=t?t.textContent:''}
+    var box=document.createElement('div');box.className='lbox';box.setAttribute('role','dialog');box.setAttribute('aria-modal','true');box.setAttribute('aria-label',SW('sr.photo-box','Photo'));
+    box.innerHTML='<div class="lbox-top"><span class="lbox-at"></span><button type="button" data-lb="close">'+SWh('btn.close','Close')+'</button></div><div class="lbox-pic"></div><div class="lbox-nav"><button type="button" data-lb="prev">'+SWh('btn.previous','Previous')+'</button><span class="lbox-cap"></span><button type="button" data-lb="next">'+SWh('btn.next','Next')+'</button></div>';
+    function show(k){i=(k+items.length)%items.length;var it=items[i],pic=it.querySelector('img,.ph');box.querySelector('.lbox-pic').innerHTML=pic?pic.outerHTML:'';box.querySelector('.lbox-at').textContent=SW('btn.count','{n} of {total}',{n:String(i+1),total:String(items.length)});var t=it.querySelector('.gl-t');box.querySelector('.lbox-cap').textContent=t?t.textContent:''}
     function close(){box.remove();html.classList.remove('menu-open');removeEventListener('keydown',key);items[i].focus()}
     function key(e){if(e.key==='Escape')close();if(e.key==='ArrowRight')show(i+1);if(e.key==='ArrowLeft')show(i-1)}
     box.addEventListener('click',function(e){var b=e.target.closest('[data-lb]');if(!b)return;if(b.dataset.lb==='close')close();else show(i+(b.dataset.lb==='next'?1:-1))});
@@ -122,12 +132,12 @@
         var v=function(n){var el=form.elements[n];return el?el.value.trim():''},note=form.querySelector('.mf-note'),to=form.getAttribute('data-email');
         var say=function(t,bad){if(note){note.textContent=t;note.classList.toggle('err',!!bad)}};
         var email=form.elements.email;
-        if(email&&(!email.value.trim()||!email.checkValidity())){email.focus();say('We need a working email address, so we can reply.',true);return}
-        if(form.elements.message&&!v('message')){form.elements.message.focus();say('Please write your message first.',true);return}
+        if(email&&(!email.value.trim()||!email.checkValidity())){email.focus();say(SW('form.need-email','We need a working email address, so we can reply.'),true);return}
+        if(form.elements.message&&!v('message')){form.elements.message.focus();say(SW('form.need-message','Please write your message first.'),true);return}
         var subject=(v('topic')||'A message')+' for Street Art Dispatch';
         var url='mailto:'+to+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(v('message')+'\n\nName: '+v('name')+'\nEmail: '+v('email'));
         form.setAttribute('data-mailto',url);location.href=url;
-        say('Your email app should now be open with the message ready. Send it and it reaches us. If nothing opened, write to '+to+'.');
+        say(SW('form.sent','Your email app should now be open with the message ready. Send it and it reaches us. If nothing opened, write to {email}.',{email:to}));
       });
     });
   }
@@ -144,10 +154,10 @@
       var f=p.querySelector('[data-popform]'),note=p.querySelector('.mf-note');
       if(f)f.addEventListener('submit',function(e){
         e.preventDefault();var em=f.elements.email,to=f.getAttribute('data-email');
-        if(!em.value.trim()||!em.checkValidity()){em.focus();if(note)note.textContent='We need a working email address, so we can add you.';return}
-        var url='mailto:'+to+'?subject='+encodeURIComponent('Subscribe to the Dispatch')+'&body='+encodeURIComponent('Please add '+em.value.trim()+' to the weekly dispatch.');
+        if(!em.value.trim()||!em.checkValidity()){em.focus();if(note)note.textContent=SW('form.need-email-join','We need a working email address, so we can add you.');return}
+        var url='mailto:'+to+'?subject='+encodeURIComponent(SW('form.subject','Subscribe to the Dispatch'))+'&body='+encodeURIComponent('Please add '+em.value.trim()+' to the weekly dispatch.');
         f.setAttribute('data-mailto',url);location.href=url;
-        if(note)note.textContent='Your email app should now be open with the message ready. Send it and we will add you. If nothing opened, write to '+to+'.';
+        if(note)note.textContent=SW('form.sent-join','Your email app should now be open with the message ready. Send it and we will add you. If nothing opened, write to {email}.',{email:to});
       });
       if(window.ADH_EDIT||seen())return;
       setTimeout(function(){if(!window.ADH_EDIT&&!seen()&&document.body.contains(p)){p.hidden=false;try{sessionStorage.setItem(key,'1')}catch(e){}}},(Number(p.getAttribute('data-delay'))||8)*1000);

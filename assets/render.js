@@ -40,12 +40,21 @@
     // Social media addresses chosen in the theme; nothing is shown until one is filled in.
     function socialHtml() {
       var all = opts.social && typeof opts.social === "object" ? opts.social : {}, out = Object.keys(all).map(function (k) { return all[k]; }).filter(function (x) { return x && /^https:\/\/[^\s<>"']+$/.test(x.href || ""); });
-      return out.length ? '<nav class="foot-social" aria-label="Social media">' + out.map(function (x) { return '<a href="' + esc(x.href) + '" rel="noopener">' + esc(x.label) + '</a>'; }).join("") + '</nav>\n' : "";
+      return out.length ? '<nav class="foot-social" aria-label="' + W("sr.social", "Social media") + '">' + out.map(function (x) { return '<a href="' + esc(x.href) + '" rel="noopener">' + esc(x.label) + '</a>'; }).join("") + '</nav>\n' : "";
     }
     function iconOk() { return typeof opts.favicon === "string" && /^assets\/images\/[A-Za-z0-9._-]{1,120}\.(png|jpe?g|svg|ico)$/.test(opts.favicon); }
     opts = opts || {};
     D = D || {}; PAGES = PAGES || { shared: {}, pages: {} };
     var SITE = D.site || {};
+    // The fixed words of the design. Edit default text in Artiscope Digital Home keeps changed ones in the
+    // page list file under "words"; any word not changed keeps the site's own, written beside each W().
+    var WORDS = PAGES.words && typeof PAGES.words === "object" ? PAGES.words : {};
+    function W(key, dflt, slots) {
+      var t = txt(typeof WORDS[key] === "string" && WORDS[key].trim() ? WORDS[key] : dflt).replace(/"/g, "&quot;");
+      Object.keys(slots || {}).forEach(function (k) { t = t.split("{" + k + "}").join(slots[k]); });
+      return t;
+    }
+    function wordsTag() { return Object.keys(WORDS).length ? '<script type="application/json" id="adh-words">' + JSON.stringify(WORDS).replace(/</g, "\\u003c") + '</script>\n' : ""; }
     // a hidden article is kept but not shown, except when it is being edited
     var LIVE = (D.articles || []).filter(function (a) { return !a.hidden || (opts.show && a.slug === opts.show); });
     var FEATURES = LIVE.filter(function (a) { return a.section !== "urban-culture"; }), COLUMNS = LIVE.filter(function (a) { return a.section === "urban-culture"; }), ALL = FEATURES.concat(COLUMNS);
@@ -62,7 +71,7 @@
     function pathOf(s) { return (COLS[s] ? "urban-culture/" : "dispatches/") + s + "/"; }
     function photo(desc, ratio) {
       var st = ratio ? ' style="aspect-ratio:' + ratio + '"' : "";
-      return '<div class="ph" role="img" aria-label="Photograph to come: ' + esc(desc) + '"' + st + '><span class="ph-t">Photo to come</span><span class="ph-d">' + esc(desc) + '</span></div>';
+      return '<div class="ph" role="img" aria-label="' + W("sr.photo", "Photograph to come: {what}", { what: esc(desc) }) + '"' + st + '><span class="ph-t">' + W("missing.photo", "Photo to come") + '</span><span class="ph-d">' + esc(desc) + '</span></div>';
     }
     function fixLinks(body, r) {
       return String(body).replace(/href="#read\/([\w-]+)"/g, function (m, s) { return 'href="' + r + pathOf(s) + '"'; })
@@ -100,11 +109,11 @@
         var u = encodeURIComponent(url), t = encodeURIComponent(title || "");
         var nets = { email: ["Email", "mailto:?subject=" + t + "&body=" + u], x: ["X", "https://x.com/intent/post?url=" + u + "&text=" + t], linkedin: ["LinkedIn", "https://www.linkedin.com/sharing/share-offsite/?url=" + u], facebook: ["Facebook", "https://www.facebook.com/sharer/sharer.php?u=" + u] };
         var links = (A.share.networks || []).filter(function (n) { return nets[n]; }).map(function (n) { return '<a href="' + esc(nets[n][1]) + '"' + (n === "email" ? "" : ' target="_blank" rel="noopener noreferrer"') + '>' + nets[n][0] + '</a>'; }).join("");
-        if (links) out.share = '<aside class="ao-share" aria-label="Share this page"><span>' + esc(A.share.heading || "Share this page") + '</span>' + links + '</aside>';
+        if (links) out.share = '<aside class="ao-share" aria-label="' + W("sr.share", "Share this page") + '"><span>' + esc(A.share.heading || "Share this page") + '</span>' + links + '</aside>';
       }
       if (on("progress") && fits(A.progress.where || "articles")) out.fixed += A.progress.style === "percent" ? '<div class="ao-progress pct" aria-hidden="true"><b>0%</b></div>' : '<div class="ao-progress" aria-hidden="true"><i></i></div>';
       if (on("top")) out.fixed += '<button type="button" class="ao-top' + (A.top.side === "left" ? " left" : "") + '" data-after="' + (Number(A.top.after) || 600) + '">' + esc(A.top.label || "Top") + '</button>';
-      if (on("privacy")) out.fixed += '<div class="ao-privacy" role="region" aria-label="Privacy"><p>' + esc(A.privacy.text || "") + (A.privacy.link && A.privacy.link_label ? ' <a href="' + esc(link(A.privacy.link)) + '">' + esc(A.privacy.link_label) + '</a>' : "") + '</p><button type="button" data-ao-close>' + esc(A.privacy.button || "Close") + '</button></div>';
+      if (on("privacy")) out.fixed += '<div class="ao-privacy" role="region" aria-label="' + W("sr.privacy", "Privacy") + '"><p>' + esc(A.privacy.text || "") + (A.privacy.link && A.privacy.link_label ? ' <a href="' + esc(link(A.privacy.link)) + '">' + esc(A.privacy.link_label) + '</a>' : "") + '</p><button type="button" data-ao-close>' + esc(A.privacy.button || "Close") + '</button></div>';
       return out;
     }
     var AO_KIND = "page";
@@ -122,12 +131,12 @@
       var sub = hrefOf(get(st, "subscribe_href", "#newsletter")).split("@@").join(r), subWords = txt(get(st, "subscribe", "Subscribe"));
       var plate = home && !o.own ? '<header class="nameplate"><img class="plate-mark" src="assets/brand/sad-tile.svg" alt="" width="72" height="72"><a href="' + (r || "./") + '">' + name + '<i class="stop"></i></a><p>' + txt(get(st, "tagline", "")) + '</p></header>' +
         '<div id="navSentinel" aria-hidden="true"></div>' : "";
-      var nav = !hon || o.own ? "" : '<nav class="nav' + (home ? "" : " nav--inner") + '" id="nav" aria-label="Sections">\n  <div class="wrap">\n' +
+      var nav = !hon || o.own ? "" : '<nav class="nav' + (home ? "" : " nav--inner") + '" id="nav" aria-label="' + W("sr.nav", "Sections") + '">\n  <div class="wrap">\n' +
         '    <a class="nav-mark" href="' + (r || "./") + '"><img src="' + r + 'assets/brand/sad-tile.svg" alt="" width="34" height="34"><span>' + name + '<i class="stop"></i></span></a>\n' +
         (headLogos(st, r, "L") ? '    <span class="hlogos">' + headLogos(st, r, "L") + '</span>\n' : "") +
         '    <ul class="nav-links">' + links + '</ul>\n' + (headLogos(st, r, "C") ? '    <span class="hlogos">' + headLogos(st, r, "C") + '</span>\n' : "") + '    <div class="nav-right">\n' + (headLogos(st, r, "R") ? '      <span class="hlogos">' + headLogos(st, r, "R") + '</span>\n' : "") + '      <a class="btn btn--sm" href="' + sub + '">' + subWords + '</a>\n' +
-        '      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="sheet"><i aria-hidden="true"></i>Menu</button>\n    </div>\n  </div>\n</nav>\n' +
-        '<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Menu">\n  <div class="sheet-top"><span>' + name + '<i class="stop"></i></span><button class="close-btn" id="sheetClose">Close <b aria-hidden="true">×</b></button></div>\n' +
+        '      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="sheet"><i aria-hidden="true"></i>' + W("menu.open", "Menu") + '</button>\n    </div>\n  </div>\n</nav>\n' +
+        '<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="' + W("sr.menu", "Menu") + '">\n  <div class="sheet-top"><span>' + name + '<i class="stop"></i></span><button class="close-btn" id="sheetClose">' + W("menu.close", "Close") + ' <b aria-hidden="true">×</b></button></div>\n' +
         '  <ul>' + links + '</ul>\n  <a class="btn" href="' + sub + '">' + subWords + '</a>\n</div>';
       var ft = shared("footer"), f = ft[0];
       var foot = !ft[1] || o.own ? "" : '<footer class="on-pine foot" id="contact">\n  <div class="wrap">\n    <div class="foot-grid">\n' +
@@ -144,8 +153,8 @@
         '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n' +
         '<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Libre+Franklin:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">\n' +
         (o.head || "") + (iconOk() ? '<link rel="icon" href="' + r + opts.favicon + '">\n' : '<link rel="icon" href="' + r + 'assets/brand/favicon.svg" type="image/svg+xml">\n<link rel="icon" href="' + r + 'assets/brand/favicon-32.png" sizes="32x32" type="image/png">\n') +
-        '<link rel="apple-touch-icon" href="' + r + 'assets/brand/sad-tile-180.png">\n<link rel="stylesheet" href="' + r + 'assets/site.css">\n' + (THEME || "") + secCssTag() +
-        '</head>\n<body>\n<a class="skip" href="#main">Skip to content</a>\n' + plate + '\n' + (o.top ? String(o.top).split("@@").join(r) + "\n" : "") + nav + '\n<main id="main">\n' + main + '\n</main>\n' + foot + '\n' +
+        '<link rel="apple-touch-icon" href="' + r + 'assets/brand/sad-tile-180.png">\n<link rel="stylesheet" href="' + r + 'assets/site.css">\n' + (THEME || "") + secCssTag() + wordsTag() +
+        '</head>\n<body>\n<a class="skip" href="#main">' + W("menu.skip", "Skip to content") + '</a>\n' + plate + '\n' + (o.top ? String(o.top).split("@@").join(r) + "\n" : "") + nav + '\n<main id="main">\n' + main + '\n</main>\n' + foot + '\n' +
         '<script src="' + r + 'assets/site.js" defer></script>\n</body>\n</html>\n';
       return { path: o.file || path, url: urlPath, html: html };
     }
@@ -154,26 +163,26 @@
     function story(f, cls) {
       var stand = cls !== "s-side" ? '<p class="stand">' + f.standfirst + '</p>' : "";
       return '<article class="story ' + cls + '">' + photo(PHOTOS[f.slug] || f.title) + '<p class="kicker">' + f.kicker + '</p>' +
-        '<h3><a href="@@' + pathOf(f.slug) + '">' + f.title + '</a></h3>' + stand + '<p class="byline">By ' + SITE.desk + ' · ' + mins(f) + ' min read</p></article>';
+        '<h3><a href="@@' + pathOf(f.slug) + '">' + f.title + '</a></h3>' + stand + '<p class="byline">By ' + SITE.desk + ' · ' + W("item.min-read", "{n} min read", { n: String(mins(f)) }) + '</p></article>';
     }
     function icard(x) {
-      var badge = x.pending ? '<span class="badge">Awaiting confirmation</span>' : "";
-      var more = x.read && BY_SLUG[x.read] ? '<a class="tlink" href="@@' + pathOf(x.read) + '">Read the story</a>' : "";
+      var badge = x.pending ? '<span class="badge">' + W("missing.awaiting", "Awaiting confirmation") + '</span>' : "";
+      var more = x.read && BY_SLUG[x.read] ? '<a class="tlink" href="@@' + pathOf(x.read) + '">' + W("btn.read-story", "Read the story") + '</a>' : "";
       return '<li class="icard"><p class="kicker"><span>' + esc(x.type) + '</span>' + badge + '</p><h4>' + esc(x.title) + '</h4>' +
         '<p class="who"><a href="@@interventions/?artist=' + slug(x.artist) + '">' + esc(x.artist) + '</a> · ' + esc(x.city) + ', ' + esc(x.country) + '</p>' +
         '<p>' + esc(x.note) + '</p>' + more + '</li>';
     }
     function acard(x) {
       var inner = photo(ART_PHOTOS[x.name] || x.name) + '<h3>' + x.name + '</h3><p>' + x.role + '</p>';
-      if (x.read && BY_SLUG[x.read]) return '<li><a class="acard" href="@@artists/' + x.slug + '/">' + inner + '<span class="more">Open profile</span></a></li>';
-      return '<li><div class="acard acard--soon">' + inner + '<span class="soon">Coming soon</span></div></li>';
+      if (x.read && BY_SLUG[x.read]) return '<li><a class="acard" href="@@artists/' + x.slug + '/">' + inner + '<span class="more">' + W("btn.open-profile", "Open profile") + '</span></a></li>';
+      return '<li><div class="acard acard--soon">' + inner + '<span class="soon">' + W("missing.soon", "Coming soon") + '</span></div></li>';
     }
     function ccard(c) {
-      return '<li class="ccard"><p class="kicker">' + c.kicker + ' · ' + mins(c) + ' min</p><h3><a href="@@' + pathOf(c.slug) + '">' + c.title + '</a></h3><p>' + c.standfirst + '</p>' +
-        '<span class="more" aria-hidden="true">' + (COLS[c.slug] ? "Read the column" : "Read the dispatch") + '</span></li>';
+      return '<li class="ccard"><p class="kicker">' + c.kicker + ' · ' + W("item.mins", "{n} min", { n: String(mins(c)) }) + '</p><h3><a href="@@' + pathOf(c.slug) + '">' + c.title + '</a></h3><p>' + c.standfirst + '</p>' +
+        '<span class="more" aria-hidden="true">' + (COLS[c.slug] ? W("btn.read-column", "Read the column") : W("btn.read-dispatch", "Read the dispatch")) + '</span></li>';
     }
     function ecard(x) {
-      return '<li class="ecard"><p class="kicker">' + x.venue + '</p><h3>' + x.t + '</h3><p>' + x.sub + '</p><dl><div><dt>Dates: </dt><dd>' + x.when + '</dd></div></dl><span class="badge">' + x.status + '</span></li>';
+      return '<li class="ecard"><p class="kicker">' + x.venue + '</p><h3>' + x.t + '</h3><p>' + x.sub + '</p><dl><div><dt>' + W("item.dates", "Dates:") + ' </dt><dd>' + x.when + '</dd></div></dl><span class="badge">' + x.status + '</span></li>';
     }
     function dgrid(list) {
       if (!list.length) return "";
@@ -233,20 +242,20 @@
         var text = esc(["title", "artist", "city", "country", "type", "note", "y"].map(function (k) { return String(x[k]); }).join(" ").toLowerCase());
         return icard(x).replace('<li class="icard">', '<li class="icard" data-artist="' + slug(x.artist) + '" data-city="' + esc(x.city) + '" data-dec="' + dec(x) + '" data-text="' + text + '">');
       };
-      var label = function (y) { return y === "TBC" ? "Date to confirm" : y; };
+      var label = function (y) { return y === "TBC" ? W("missing.date", "Date to confirm") : y; };
       var out = groups.map(function (g) { return '<section class="yr" aria-label="' + label(g[0]) + '"><h2>' + label(g[0]) + '</h2><ul class="cards">' + g[1].map(card).join("") + '</ul></section>'; }).join("");
-      var chips = [["", "All years"], ["2020", "2020s"], ["2010", "2010s"], ["2000", "2000s"], ["1990", "1990s"], ["1980", "1980s"], ["tbc", "Date to confirm"]].map(function (c) {
+      var chips = [["", W("archive.all-years", "All years")], ["2020", "2020s"], ["2010", "2010s"], ["2000", "2000s"], ["1990", "1990s"], ["1980", "1980s"], ["tbc", W("missing.date", "Date to confirm")]].map(function (c) {
         return '<button type="button" class="chip" data-dec="' + c[0] + '" aria-pressed="' + (c[0] === "" ? "true" : "false") + '">' + c[1] + '</button>';
       }).join("");
       var aopts = names.map(function (n) { return '<option value="' + slug(n) + '">' + esc(n) + '</option>'; }).join(""), copts = cities.map(function (c) { return '<option>' + esc(c) + '</option>'; }).join("");
       var email = get(st, "email", "") || mailTo(), note = get(st, "note", "");
       var inner = '\n    <form class="atools" role="search" onsubmit="return false">\n' +
-        '      <div class="field"><label for="fQ">Search</label><input id="fQ" type="search" placeholder="' + txt(get(st, "search_hint", "")) + '" autocomplete="off"></div>\n' +
-        '      <div class="field"><label for="fArtist">Artist</label><select id="fArtist"><option value="">All artists</option>' + aopts + '</select></div>\n' +
-        '      <div class="field"><label for="fCity">City</label><select id="fCity"><option value="">All cities</option>' + copts + '</select></div>\n' +
-        '      <div class="field decades" role="group" aria-labelledby="decLbl"><span class="lbl" id="decLbl">Year</span><div class="chips" id="decades">' + chips + '</div></div>\n    </form>\n' +
-        '    <div class="astatus"><p id="aCount" aria-live="polite">' + ARCHIVE.length + ' interventions, newest first</p><button class="tlink" id="aClear" type="button" hidden>Clear filters</button></div>\n' +
-        '    <div class="results" id="results">' + out + '</div>\n    <p class="empty" id="aEmpty" hidden>Nothing matches those filters yet.</p>\n' +
+        '      <div class="field"><label for="fQ">' + W("archive.search", "Search") + '</label><input id="fQ" type="search" placeholder="' + txt(get(st, "search_hint", "")) + '" autocomplete="off"></div>\n' +
+        '      <div class="field"><label for="fArtist">' + W("archive.artist", "Artist") + '</label><select id="fArtist"><option value="">' + W("archive.all-artists", "All artists") + '</option>' + aopts + '</select></div>\n' +
+        '      <div class="field"><label for="fCity">' + W("archive.city", "City") + '</label><select id="fCity"><option value="">' + W("archive.all-cities", "All cities") + '</option>' + copts + '</select></div>\n' +
+        '      <div class="field decades" role="group" aria-labelledby="decLbl"><span class="lbl" id="decLbl">' + W("archive.year", "Year") + '</span><div class="chips" id="decades">' + chips + '</div></div>\n    </form>\n' +
+        '    <div class="astatus"><p id="aCount" aria-live="polite">' + W("archive.count", "{n} interventions, newest first", { n: String(ARCHIVE.length) }) + '</p><button class="tlink" id="aClear" type="button" hidden>' + W("archive.clear", "Clear filters") + '</button></div>\n' +
+        '    <div class="results" id="results">' + out + '</div>\n    <p class="empty" id="aEmpty" hidden>' + W("archive.empty", "Nothing matches those filters yet.") + '</p>\n' +
         (note || email ? '    <p class="anote">' + txt(note) + (email && get(st, "note_link", "") ? ' <a class="tlink" href="mailto:' + esc(email) + '" style="min-height:0">' + txt(st.note_link) + '</a>' : "") + '</p>\n  ' : "  ");
       return wrapSec(st, ctx, inner, { id: "archive", attrs: ' data-total="' + ARCHIVE.length + '"' });
     };
@@ -264,19 +273,19 @@
       var email = get(st, "email", "") || mailTo(), id = ctx.id;
       return '<section class="sec" id="' + id + '" aria-labelledby="h-' + id + '">\n    <div class="wrap news">\n' +
         '      <div><h2 id="h-' + id + '">' + txt(get(st, "heading", "")) + '</h2>' + (get(st, "text", "") ? '<p class="dek">' + txt(st.text) + '</p>' : "") + '</div>\n      <div>\n' +
-        '        <form class="nl" id="nl"><label class="sr" for="nlEmail">Email address</label><input id="nlEmail" type="email" required placeholder="you@example.com" autocomplete="email"><button class="btn" type="submit">' + txt(get(st, "button", "Subscribe")) + '</button></form>\n' +
+        '        <form class="nl" id="nl"><label class="sr" for="nlEmail">' + W("form.email", "Email address") + '</label><input id="nlEmail" type="email" required placeholder="' + W("form.placeholder", "you@example.com") + '" autocomplete="email"><button class="btn" type="submit">' + txt(get(st, "button", "Subscribe")) + '</button></form>\n' +
         '        <p class="nl-msg" id="nlMsg" aria-live="polite"></p>\n' +
-        '        <p class="mf-note">This opens your own email app with a message ready to send to ' + esc(mailTo()) + '.</p>\n' +
+        '        <p class="mf-note">' + W("form.note", "This opens your own email app with a message ready to send to {email}.", { email: esc(mailTo()) }) + '</p>\n' +
         (get(st, "pitch", "") || email ? '        <p class="pitch">' + txt(get(st, "pitch", "")) + (email ? ' <a class="tlink" style="min-height:0" href="mailto:' + esc(email) + '">' + esc(email) + '</a>' : "") + '</p>\n' : "") +
         '      </div>\n    </div>\n  </section>';
     };
     // A sign-up box that pops up once a visit; drawn hidden, and shown by the site's script.
     S["signup-popup"] = function (st, ctx) {
       var id = (ctx && ctx.id) || "popup", d = Math.max(3, Math.min(60, Number(get(st, "delay", 8)) || 8)), e = get(st, "eyebrow", ""), t = get(st, "text", "");
-      return '<div class="supop" id="' + esc(id) + '" data-popup data-delay="' + d + '" role="dialog" aria-labelledby="' + esc(id) + '-h" hidden>\n  <button type="button" class="supop-x" data-pop-close>Close</button>\n' +
+      return '<div class="supop" id="' + esc(id) + '" data-popup data-delay="' + d + '" role="dialog" aria-labelledby="' + esc(id) + '-h" hidden>\n  <button type="button" class="supop-x" data-pop-close>' + W("btn.close", "Close") + '</button>\n' +
         (e ? '  <p class="kicker">' + txt(e) + '</p>\n' : "") + '  <h2 id="' + esc(id) + '-h">' + txt(get(st, "heading", "")) + '</h2>\n' + (t ? '  <p class="dek">' + txt(String(t).trim()) + '</p>\n' : "") +
-        '  <form class="nl" data-popform data-email="' + esc(mailTo()) + '" novalidate><label class="sr" for="' + esc(id) + '-e">Email address</label><input id="' + esc(id) + '-e" name="email" type="email" required placeholder="you@example.com" autocomplete="email"><button class="btn" type="submit">' + txt(get(st, "button", "") || "Ask to join") + '</button></form>\n' +
-        '  <p class="mf-note" role="status">This opens your own email app with a message ready to send to ' + esc(mailTo()) + '.</p>\n</div>';
+        '  <form class="nl" data-popform data-email="' + esc(mailTo()) + '" novalidate><label class="sr" for="' + esc(id) + '-e">' + W("form.email", "Email address") + '</label><input id="' + esc(id) + '-e" name="email" type="email" required placeholder="' + W("form.placeholder", "you@example.com") + '" autocomplete="email"><button class="btn" type="submit">' + (get(st, "button", "") ? txt(get(st, "button", "")) : W("btn.join", "Ask to join")) + '</button></form>\n' +
+        '  <p class="mf-note" role="status">' + W("form.note", "This opens your own email app with a message ready to send to {email}.", { email: esc(mailTo()) }) + '</p>\n</div>';
     };
     S["text-page"] = function (st) {
       var body = (get(st, "intro", []) || []).map(function (p) { return "<p>" + (typeof p === "object" && p ? p.v : p) + "</p>"; }).join("");
@@ -302,7 +311,7 @@
       return photo((x && x.alt) || desc || "Photograph", ratio);
     }
     function link(words, h, cls) { return words && addrOk(h) ? '<a class="' + (cls || "tlink") + '" href="' + esc(hrefOf(h)) + '"' + (/^https?:/i.test(String(h)) ? ' rel="noopener"' : "") + '>' + txt(words) + '</a>' : ""; }
-    function rep(x) { return x && x.reported ? '<span class="badge">Reported</span> ' : ""; }
+    function rep(x) { return x && x.reported ? '<span class="badge">' + W("item.reported", "Reported") + '</span> ' : ""; }
     function per(st) { return { "2": 2, "3": 3, "4": 4 }[String(get(st, "per_row", "3"))] || 3; }
     function mailTo() { return "info@grovegallery.com"; }
 
@@ -311,7 +320,7 @@
       var look = get(st, "style", "pine") === "linen" ? "ann--linen" : "ann--pine";
       var secs = Math.max(3, Math.min(30, Number(get(st, "seconds", 6)) || 6));
       var msgs = rows.map(function (r, k) { return '<p class="ann-msg' + (k ? "" : " on") + '" data-adh-b="messages.' + r.i + '"><span>' + txt(r.x.text || "") + '</span>' + link(r.x.link, r.x.href, "ann-link") + '</p>'; }).join("");
-      return '<div class="ann ' + look + '" data-announce data-secs="' + secs + '"><div class="wrap ann-in"><div class="ann-msgs">' + msgs + '</div>' + (rows.length > 1 ? '<span class="ann-count" aria-hidden="true">1 of ' + rows.length + '</span>' : "") + '</div></div>';
+      return '<div class="ann ' + look + '" data-announce data-secs="' + secs + '"><div class="wrap ann-in"><div class="ann-msgs">' + msgs + '</div>' + (rows.length > 1 ? '<span class="ann-count" aria-hidden="true">' + W("btn.count", "{n} of {total}", { n: "1", total: String(rows.length) }) + '</span>' : "") + '</div></div>';
     };
     S.columns = function (st) {
       var num = get(st, "numbered", true) !== false;
@@ -346,7 +355,7 @@
     S.slideshow = function (st) {
       var rows = liveRows(get(st, "slides", [])), n = rows.length, secs = Math.max(3, Math.min(30, Number(get(st, "seconds", 6)) || 6));
       var slides = rows.map(function (r, k) { return '<figure class="ss-slide' + (k ? "" : " on") + '" data-adh-b="slides.' + r.i + '">' + picOf(r.x, "Slide " + (k + 1), "16/9") + (r.x.caption ? '<figcaption>' + txt(r.x.caption) + '</figcaption>' : "") + '</figure>'; }).join("");
-      var nav = n > 1 ? '<div class="ss-nav"><button type="button" class="tlink" data-ss="prev">Previous</button><span class="ss-at" aria-live="polite">1 of ' + n + '</span><button type="button" class="tlink" data-ss="next">Next</button></div>' : "";
+      var nav = n > 1 ? '<div class="ss-nav"><button type="button" class="tlink" data-ss="prev">' + W("btn.previous", "Previous") + '</button><span class="ss-at" aria-live="polite">' + W("btn.count", "{n} of {total}", { n: "1", total: String(n) }) + '</span><button type="button" class="tlink" data-ss="next">' + W("btn.next", "Next") + '</button></div>' : "";
       return libSec("", headBlock(st) + '<div class="ss" data-slides data-auto="' + (get(st, "auto", true) === false ? 0 : 1) + '" data-secs="' + secs + '" aria-roledescription="slideshow">' + slides + nav + '</div>');
     };
     S.gallery = function (st) {
@@ -376,37 +385,37 @@
       var items = liveRows(get(st, "artworks", [])).map(function (r, k) {
         var w = r.x, tag = addrOk(w.href) ? "a" : "div", line = [w.year, w.medium].filter(Boolean).join(", ");
         return '<' + tag + ' class="aw"' + (tag === "a" ? ' href="' + esc(hrefOf(w.href)) + '"' : "") + ' data-adh-b="artworks.' + r.i + '">' + picOf(w, w.title || "Artwork " + (k + 1), "4/5") +
-          '<h3>' + (w.title ? txt(w.title) : '<span class="tbc">Title to confirm</span>') + '</h3>' + (line ? '<p class="aw-d">' + txt(line) + '</p>' : "") + (w.size ? '<p class="aw-d">' + txt(w.size) + '</p>' : "") + (w.note ? '<p class="aw-n">' + txt(w.note) + '</p>' : "") + '</' + tag + '>';
+          '<h3>' + (w.title ? txt(w.title) : '<span class="tbc">' + W("missing.title", "Title to confirm") + '</span>') + '</h3>' + (line ? '<p class="aw-d">' + txt(line) + '</p>' : "") + (w.size ? '<p class="aw-d">' + txt(w.size) + '</p>' : "") + (w.note ? '<p class="aw-n">' + txt(w.note) + '</p>' : "") + '</' + tag + '>';
       }).join("");
       return libSec("", headBlock(st) + '<div class="lgrid lgrid--' + per(st) + '">' + items + '</div>');
     };
     S.exhibitions = function (st) {
       var cards = liveRows(get(st, "shows", [])).map(function (r) {
         var x = r.x;
-        return '<li class="ecard" data-adh-b="shows.' + r.i + '"><p class="kicker">' + txt(x.place || "") + '</p><h3>' + rep(x) + txt(x.title || "") + '</h3><dl><div><dt>Dates: </dt><dd>' + (x.dates ? txt(x.dates) : "To confirm") + '</dd></div></dl>' +
-          (x.kind ? '<span class="badge">' + txt(x.kind) + '</span>' : "") + (x.href && addrOk(x.href) ? ' <a class="tlink ecard-src" href="' + esc(hrefOf(x.href)) + '" rel="noopener">Source</a>' : "") + '</li>';
+        return '<li class="ecard" data-adh-b="shows.' + r.i + '"><p class="kicker">' + txt(x.place || "") + '</p><h3>' + rep(x) + txt(x.title || "") + '</h3><dl><div><dt>' + W("item.dates", "Dates:") + ' </dt><dd>' + (x.dates ? txt(x.dates) : W("missing.tbc", "To confirm")) + '</dd></div></dl>' +
+          (x.kind ? '<span class="badge">' + txt(x.kind) + '</span>' : "") + (x.href && addrOk(x.href) ? ' <a class="tlink ecard-src" href="' + esc(hrefOf(x.href)) + '" rel="noopener">' + W("btn.source", "Source") + '</a>' : "") + '</li>';
       }).join("");
       return libSec("", headBlock(st) + '<ul class="egrid">' + cards + '</ul>');
     };
     S.career = function (st) {
       var rows = liveRows(get(st, "events", [])).map(function (r) {
         var x = r.x;
-        return '<li class="car-row" data-adh-b="events.' + r.i + '"><span class="car-when">' + (x.when ? txt(x.when) : '<span class="tbc">To confirm</span>') + '</span><span class="car-what">' + rep(x) + txt(x.what || "") +
-          (x.href && addrOk(x.href) ? ' <a class="tlink" href="' + esc(hrefOf(x.href)) + '" rel="noopener">Source</a>' : "") + '</span></li>';
+        return '<li class="car-row" data-adh-b="events.' + r.i + '"><span class="car-when">' + (x.when ? txt(x.when) : '<span class="tbc">' + W("missing.tbc", "To confirm") + '</span>') + '</span><span class="car-what">' + rep(x) + txt(x.what || "") +
+          (x.href && addrOk(x.href) ? ' <a class="tlink" href="' + esc(hrefOf(x.href)) + '" rel="noopener">' + W("btn.source", "Source") + '</a>' : "") + '</span></li>';
       }).join("");
       return libSec("", headBlock(st) + '<ol class="car">' + rows + '</ol>');
     };
     S.press = function (st) {
       var items = liveRows(get(st, "quotes", [])).filter(function (r) { return r.x.quote; }).map(function (r) {
         var x = r.x, by = [x.who, x.publication, x.date].filter(Boolean).map(txt).join(", ");
-        return '<figure class="lcard pq" data-adh-b="quotes.' + r.i + '"><blockquote>“' + txt(String(x.quote).trim()) + '”</blockquote>' + (by ? '<figcaption>' + by + '</figcaption>' : "") + (x.href && addrOk(x.href) ? '<a class="tlink" href="' + esc(hrefOf(x.href)) + '" rel="noopener">Read it at the source</a>' : "") + '</figure>';
+        return '<figure class="lcard pq" data-adh-b="quotes.' + r.i + '"><blockquote>“' + txt(String(x.quote).trim()) + '”</blockquote>' + (by ? '<figcaption>' + by + '</figcaption>' : "") + (x.href && addrOk(x.href) ? '<a class="tlink" href="' + esc(hrefOf(x.href)) + '" rel="noopener">' + W("btn.read-source", "Read it at the source") + '</a>' : "") + '</figure>';
       }).join("");
       return libSec("", headBlock(st) + '<div class="lgrid lgrid--2">' + items + '</div>');
     };
     S.visit = function (st) {
       var mw = get(st, "map_words", ""), m = String(get(st, "map", "") || ""), map = mw && /^https:\/\//i.test(m) ? '<a class="tlink" href="' + esc(m) + '" target="_blank" rel="noopener">' + txt(mw) + '</a>' : "";
       var cards = liveRows(get(st, "details", [])).map(function (r, k) {
-        return '<div class="lcard vis" data-adh-b="details.' + r.i + '"><p class="kicker">' + txt(r.x.title || "") + '</p><p class="vis-words">' + (r.x.text ? txt(String(r.x.text).trim()).replace(/\n/g, "<br>") : '<span class="tbc">To add</span>') + '</p>' + (k === 0 ? map : "") + '</div>';
+        return '<div class="lcard vis" data-adh-b="details.' + r.i + '"><p class="kicker">' + txt(r.x.title || "") + '</p><p class="vis-words">' + (r.x.text ? txt(String(r.x.text).trim()).replace(/\n/g, "<br>") : '<span class="tbc">' + W("missing.to-add", "To add") + '</span>') + '</p>' + (k === 0 ? map : "") + '</div>';
       }).join("");
       return libSec("", headBlock(st) + '<div class="lgrid lgrid--3">' + cards + '</div>' + (cards ? "" : map));
     };
@@ -414,10 +423,10 @@
       var topics = (Array.isArray(get(st, "topics", [])) ? st.topics : []).map(function (t, i) { return { t: t, i: i }; }).filter(function (x) { return typeof x.t === "string" && x.t.trim(); });
       var t = get(st, "text", "");
       return libSec("", '<div class="mform"><div>' + headBlock(st) + (t ? '<p class="dek">' + txt(String(t).trim()) + '</p>' : "") + '</div>' +
-        '<form class="mf" data-mailform="contact" data-email="' + esc(mailTo()) + '" novalidate><div class="mf-row"><div class="field"><label>Your name<input name="name" type="text" autocomplete="name"></label></div><div class="field"><label>Your email<input name="email" type="email" autocomplete="email" required></label></div></div>' +
-        (topics.length ? '<div class="field"><label>What it is about<select name="topic">' + topics.map(function (x) { return '<option data-adh-b="topics.' + x.i + '">' + txt(x.t.trim()) + '</option>'; }).join("") + '</select></label></div>' : "") +
-        '<div class="field"><label>Your message<textarea name="message" rows="5" required></textarea></label></div>' +
-        '<div><button class="btn" type="submit">' + txt(get(st, "button", "") || "Write the email") + '</button><p class="mf-note" role="status">This opens your own email app with your message ready to send to ' + esc(mailTo()) + '.</p></div></form></div>');
+        '<form class="mf" data-mailform="contact" data-email="' + esc(mailTo()) + '" novalidate><div class="mf-row"><div class="field"><label>' + W("form.name", "Your name") + '<input name="name" type="text" autocomplete="name"></label></div><div class="field"><label>' + W("form.your-email", "Your email") + '<input name="email" type="email" autocomplete="email" required></label></div></div>' +
+        (topics.length ? '<div class="field"><label>' + W("form.topic", "What it is about") + '<select name="topic">' + topics.map(function (x) { return '<option data-adh-b="topics.' + x.i + '">' + txt(x.t.trim()) + '</option>'; }).join("") + '</select></label></div>' : "") +
+        '<div class="field"><label>' + W("form.message", "Your message") + '<textarea name="message" rows="5" required></textarea></label></div>' +
+        '<div><button class="btn" type="submit">' + (get(st, "button", "") ? txt(get(st, "button", "")) : W("btn.write", "Write the email")) + '</button><p class="mf-note" role="status">' + W("form.note-contact", "This opens your own email app with your message ready to send to {email}.", { email: esc(mailTo()) }) + '</p></div></form></div>');
     };
 
     // In the editor each section is marked, so a click on the page can find it.
@@ -505,12 +514,12 @@
       var p = pathOf(a.slug), isCol = !!COLS[a.slug], pool = isCol ? COLUMNS : FEATURES;
       var nxt = pool[(pool.indexOf(a) + 1) % pool.length];
       var sect = isCol ? ["Urban Culture", "urban-culture/"] : ["Dispatches", "dispatches/"];
-      var fig = PHOTOS[a.slug] ? '<figure class="r-fig">' + photo(PHOTOS[a.slug]) + '<figcaption>Photograph to be commissioned.</figcaption></figure>' : "";
-      var draft = a.draft ? '<p class="note"><b>Draft</b>Biographical details, dates, titles and market data in this profile are being confirmed with the artist’s studio and Grove Gallery before publication.</p>' : "";
-      var main = '<article>\n    ' + M('<header class="r-head"><p class="crumb"><a href="@@' + sect[1] + '">' + sect[0] + '</a></p><p class="kicker">' + a.kicker + '</p><h1>' + a.title + '</h1><p class="r-stand">' + a.standfirst + '</p><p class="byline">By ' + SITE.desk + ' · ' + SITE.date + ' · ' + mins(a) + ' min read</p></header>', "words") + '\n    ' +
+      var fig = PHOTOS[a.slug] ? '<figure class="r-fig">' + photo(PHOTOS[a.slug]) + '<figcaption>' + W("missing.commission", "Photograph to be commissioned.") + '</figcaption></figure>' : "";
+      var draft = a.draft ? '<p class="note"><b>' + W("item.draft", "Draft") + '</b>Biographical details, dates, titles and market data in this profile are being confirmed with the artist’s studio and Grove Gallery before publication.</p>' : "";
+      var main = '<article>\n    ' + M('<header class="r-head"><p class="crumb"><a href="@@' + sect[1] + '">' + sect[0] + '</a></p><p class="kicker">' + a.kicker + '</p><h1>' + a.title + '</h1><p class="r-stand">' + a.standfirst + '</p><p class="byline">By ' + SITE.desk + ' · ' + SITE.date + ' · ' + W("item.min-read", "{n} min read", { n: String(mins(a)) }) + '</p></header>', "words") + '\n    ' +
         fig + '\n    ' + M('<div class="r-body">' + draft + fixLinks(a.body, "@@") + '</div>', "body") + '\n' +
-        '    <footer class="r-foot"><p class="filed">Filed under ' + (a.tags || []).join(", ") + '.</p>\n' +
-        '      <div class="next"><p class="kicker">Next ' + (isCol ? "column" : "dispatch") + '</p><h2>' + nxt.title + '</h2><a class="btn" href="@@' + pathOf(nxt.slug) + '">Read next</a></div></footer>\n  </article>';
+        '    <footer class="r-foot"><p class="filed">' + W("item.filed", "Filed under {tags}.", { tags: (a.tags || []).join(", ") }) + '</p>\n' +
+        '      <div class="next"><p class="kicker">' + (isCol ? W("item.next-column", "Next column") : W("item.next-dispatch", "Next dispatch")) + '</p><h2>' + nxt.title + '</h2><a class="btn" href="@@' + pathOf(nxt.slug) + '">' + W("btn.read-next", "Read next") + '</a></div></footer>\n  </article>';
       main = tplWrap("article", a.slug, main); AO_KIND = "article";
       return page(p + "index.html", a.title + " | " + NAME(), stripTags(a.standfirst), main);
     }
@@ -521,19 +530,19 @@
       var facts = (x.facts || []).map(function (p) { return '<div><dt>' + p[0] + '</dt><dd>' + p[1] + '</dd></div>'; }).join("");
       var arch = "";
       if (works.length) {
-        var rows = works.map(function (w) { return '<li><strong>' + (w.y === "TBC" ? "Date to confirm" : w.y) + '</strong>: ' + esc(w.title) + ', ' + esc(w.city) + '</li>'; }).join("");
-        arch = '<h2>In the archive</h2><ul class="plain">' + rows + '</ul><p><a href="@@interventions/?artist=' + s + '">See these entries in the archive</a></p>';
+        var rows = works.map(function (w) { return '<li><strong>' + (w.y === "TBC" ? W("missing.date", "Date to confirm") : w.y) + '</strong>: ' + esc(w.title) + ', ' + esc(w.city) + '</li>'; }).join("");
+        arch = '<h2>' + W("item.in-archive", "In the archive") + '</h2><ul class="plain">' + rows + '</ul><p><a href="@@interventions/?artist=' + s + '">' + W("item.see-archive", "See these entries in the archive") + '</a></p>';
       }
-      var main = '<article>\n    ' + M('<header class="r-head"><p class="crumb"><a href="@@artists/">Artists</a></p><p class="kicker">Artist</p><h1>' + x.name + '</h1><p class="r-stand">' + x.role + '</p></header>', "words") + '\n' +
-        '    <figure class="r-fig">' + photo(ART_PHOTOS[x.name] || x.name) + '<figcaption>Photograph to be commissioned.</figcaption></figure>\n' +
+      var main = '<article>\n    ' + M('<header class="r-head"><p class="crumb"><a href="@@artists/">' + W("item.crumb-artists", "Artists") + '</a></p><p class="kicker">' + W("item.kicker-artist", "Artist") + '</p><h1>' + x.name + '</h1><p class="r-stand">' + x.role + '</p></header>', "words") + '\n' +
+        '    <figure class="r-fig">' + photo(ART_PHOTOS[x.name] || x.name) + '<figcaption>' + W("missing.commission", "Photograph to be commissioned.") + '</figcaption></figure>\n' +
         '    ' + M('<div class="r-body"><p>' + x.summary + '</p><p>' + (x.note || "") + '</p>\n      <dl class="kfacts">' + facts + '</dl>' + arch + '</div>', "about") + '\n' +
-        (feat ? '    <footer class="r-foot"><div class="next"><p class="kicker">Read more</p><h2>' + feat.title + '</h2><a class="btn" href="@@' + pathOf(feat.slug) + '">Read the story</a></div></footer>\n' : "") + '  </article>';
+        (feat ? '    <footer class="r-foot"><div class="next"><p class="kicker">' + W("item.read-more", "Read more") + '</p><h2>' + feat.title + '</h2><a class="btn" href="@@' + pathOf(feat.slug) + '">' + W("btn.read-story", "Read the story") + '</a></div></footer>\n' : "") + '  </article>';
       main = tplWrap("artist", s, main); AO_KIND = "artist";
       return page("artists/" + s + "/index.html", x.name + " | " + NAME(), stripTags(x.summary), main);
     }
     function notFound() {
       var base = "<script>document.write('<base href=\"'+(location.hostname.slice(-9)==='github.io'?'/street-art-dispatch/':'/')+'\">')</script>\n";
-      var main = '<article><header class="r-head"><p class="kicker">Page not found</p><h1>That page isn’t here.</h1><p class="r-stand">It may have moved, or the address may be mistyped.</p></header><div class="r-body r-body--page"><p><a href="./">Go to the front page</a> or <a href="interventions/">search the archive</a>.</p></div></article>';
+      var main = '<article><header class="r-head"><p class="kicker">' + W("nf.eyebrow", "Page not found") + '</p><h1>' + W("nf.title", "That page isn’t here.") + '</h1><p class="r-stand">' + W("nf.lede", "It may have moved, or the address may be mistyped.") + '</p></header><div class="r-body r-body--page"><p><a href="./">' + W("nf.home", "Go to the front page") + '</a> ' + W("nf.or", "or") + ' <a href="interventions/">' + W("nf.archive", "search the archive") + '</a>.</p></div></article>';
       return page("", "Page not found | " + NAME(), "That page is not here.", main, { file: "404.html", head: base });
     }
     var LIST_ORDER = ["home", "dispatches", "urban-culture", "artists", "interventions", "exhibitions", "collecting", "about", "contact"];
