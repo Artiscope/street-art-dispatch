@@ -177,7 +177,7 @@
     // ----- shared pieces -----
     function story(f, cls) {
       var stand = cls !== "s-side" ? '<p class="stand">' + f.standfirst + '</p>' : "";
-      return '<article class="story ' + cls + '">' + slotPic(PHOTO_FILES[f.slug], PHOTOS[f.slug] || f.title) + '<p class="kicker">' + f.kicker + '</p>' +
+      return '<article class="story ' + cls + '">' + picFor(f, PHOTO_FILES[f.slug], PHOTOS[f.slug] || f.title) + '<p class="kicker">' + f.kicker + '</p>' +
         '<h3><a href="@@' + pathOf(f.slug) + '">' + f.title + '</a></h3>' + stand + '<p class="byline">By ' + SITE.desk + ' · ' + W("item.min-read", "{n} min read", { n: String(mins(f)) }) + '</p></article>';
     }
     function icard(x) {
@@ -188,7 +188,7 @@
         '<p>' + esc(x.note) + '</p>' + more + '</li>';
     }
     function acard(x) {
-      var inner = slotPic(ART_PHOTO_FILES[x.name], ART_PHOTOS[x.name] || x.name) + '<h3>' + x.name + '</h3><p>' + x.role + '</p>';
+      var inner = picFor(x, ART_PHOTO_FILES[x.name], ART_PHOTOS[x.name] || x.name) + '<h3>' + x.name + '</h3><p>' + x.role + '</p>';
       if (x.read && BY_SLUG[x.read]) return '<li><a class="acard" href="@@artists/' + x.slug + '/">' + inner + '<span class="more">' + W("btn.open-profile", "Open profile") + '</span></a></li>';
       return '<li><div class="acard acard--soon">' + inner + '<span class="soon">' + W("missing.soon", "Coming soon") + '</span></div></li>';
     }
@@ -226,7 +226,7 @@
         '        <h1 id="heroTitle">' + txt(get(st, "headline", "")) + '</h1>\n' +
         (get(st, "intro", "") ? '        <p class="hero-intro">' + txt(st.intro) + '</p>\n' : "") +
         (btn || lnk ? '        <div class="actions">' + btn + lnk + '</div>\n' : "") +
-        '      </div>\n      <figure>' + photo(get(st, "photo", "Lead image")) + (cap ? '<figcaption>' + cap + '</figcaption>' : "") + '</figure>\n    </section>\n  </div>';
+        '      </div>\n      <figure>' + picOf({ image: get(st, "image", ""), alt: get(st, "photo", "") }, "Lead image") + (cap ? '<figcaption>' + cap + '</figcaption>' : "") + '</figure>\n    </section>\n  </div>';
     };
     function articlesFor(which) {
       if (which === "dispatches") return FEATURES.slice();
@@ -325,6 +325,8 @@
       if (x && x.image) return '<img class="ph-img" src="' + esc(opts.imageSrc ? opts.imageSrc(x.image) : "@@assets/images/" + x.image) + '" alt="' + esc(x.alt || "") + '" loading="lazy"' + (ratio ? ' style="aspect-ratio:' + ratio + '"' : "") + '>';
       return photo((x && x.alt) || desc || "Photograph", ratio);
     }
+    // the item's own photo first, then a licensed photo placed in its space, then the frame
+    function picFor(x, lic, desc, ratio) { return x && x.image ? picOf(x, desc, ratio) : fileOk(lic) ? slotPic(lic, desc, ratio) : picOf(x, desc, ratio); }
     function link(words, h, cls) { return words && addrOk(h) ? '<a class="' + (cls || "tlink") + '" href="' + esc(hrefOf(h)) + '"' + (/^https?:/i.test(String(h)) ? ' rel="noopener"' : "") + '>' + txt(words) + '</a>' : ""; }
     function rep(x) { return x && x.reported ? '<span class="badge">' + W("item.reported", "Reported") + '</span> ' : ""; }
     function per(st) { return { "2": 2, "3": 3, "4": 4 }[String(get(st, "per_row", "3"))] || 3; }
@@ -524,12 +526,18 @@
     }
 
     // ----- articles, columns and artists, each on its own page -----
+    // The photo at the top of an article or artist page: the photo with its credit, or the Photo to come frame.
+    function rFigure(x, lic, desc) {
+      if (!x.image && fileOk(lic)) return '<figure class="r-fig">' + slotPic(lic, desc) + '<figcaption>' + slotCap(lic, "") + '</figcaption></figure>';
+      var credit = String(x.credit || "").trim();
+      return '<figure class="r-fig">' + picOf(x, desc) + '<figcaption>' + (x.image ? txt(credit) : W("missing.commission", "Photograph to be commissioned.")) + '</figcaption></figure>';
+    }
     function M(h, id) { return opts.mark ? h.replace(/^(\s*<[a-z]+)/, '$1 data-adh="' + id + '"') : h; }
     function articlePage(a) {
       var p = pathOf(a.slug), isCol = !!COLS[a.slug], pool = isCol ? COLUMNS : FEATURES;
       var nxt = pool[(pool.indexOf(a) + 1) % pool.length];
       var sect = isCol ? ["Urban Culture", "urban-culture/"] : ["Dispatches", "dispatches/"];
-      var fig = PHOTOS[a.slug] || fileOk(PHOTO_FILES[a.slug]) ? '<figure class="r-fig">' + slotPic(PHOTO_FILES[a.slug], PHOTOS[a.slug]) + '<figcaption>' + slotCap(PHOTO_FILES[a.slug], W("missing.commission", "Photograph to be commissioned.")) + '</figcaption></figure>' : "";
+      var fig = PHOTOS[a.slug] || a.image || fileOk(PHOTO_FILES[a.slug]) || opts.mark ? M(rFigure(a, PHOTO_FILES[a.slug], PHOTOS[a.slug] || a.title), "picture") : "";
       var draft = a.draft ? '<p class="note"><b>' + W("item.draft", "Draft") + '</b>Biographical details, dates, titles and market data in this profile are being confirmed with the artist’s studio and Grove Gallery before publication.</p>' : "";
       var main = '<article>\n    ' + M('<header class="r-head"><p class="crumb"><a href="@@' + sect[1] + '">' + sect[0] + '</a></p><p class="kicker">' + a.kicker + '</p><h1>' + a.title + '</h1><p class="r-stand">' + a.standfirst + '</p><p class="byline">By ' + SITE.desk + ' · ' + SITE.date + ' · ' + W("item.min-read", "{n} min read", { n: String(mins(a)) }) + '</p></header>', "words") + '\n    ' +
         fig + '\n    ' + M('<div class="r-body">' + draft + fixLinks(a.body, "@@") + '</div>', "body") + '\n' +
@@ -549,7 +557,7 @@
         arch = '<h2>' + W("item.in-archive", "In the archive") + '</h2><ul class="plain">' + rows + '</ul><p><a href="@@interventions/?artist=' + s + '">' + W("item.see-archive", "See these entries in the archive") + '</a></p>';
       }
       var main = '<article>\n    ' + M('<header class="r-head"><p class="crumb"><a href="@@artists/">' + W("item.crumb-artists", "Artists") + '</a></p><p class="kicker">' + W("item.kicker-artist", "Artist") + '</p><h1>' + x.name + '</h1><p class="r-stand">' + x.role + '</p></header>', "words") + '\n' +
-        '    <figure class="r-fig">' + slotPic(ART_PHOTO_FILES[x.name], ART_PHOTOS[x.name] || x.name) + '<figcaption>' + slotCap(ART_PHOTO_FILES[x.name], W("missing.commission", "Photograph to be commissioned.")) + '</figcaption></figure>\n' +
+        '    ' + M(rFigure(x, ART_PHOTO_FILES[x.name], ART_PHOTOS[x.name] || x.name), "picture") + '\n' +
         '    ' + M('<div class="r-body"><p>' + x.summary + '</p><p>' + (x.note || "") + '</p>\n      <dl class="kfacts">' + facts + '</dl>' + arch + '</div>', "about") + '\n' +
         (feat ? '    <footer class="r-foot"><div class="next"><p class="kicker">' + W("item.read-more", "Read more") + '</p><h2>' + feat.title + '</h2><a class="btn" href="@@' + pathOf(feat.slug) + '">' + W("btn.read-story", "Read the story") + '</a></div></footer>\n' : "") + '  </article>';
       main = tplWrap("artist", s, main); AO_KIND = "artist";
