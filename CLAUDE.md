@@ -44,7 +44,12 @@ owner asks.
   Ruby Red #F0283C (10%, buttons only).
 - Typefaces: Gloock for headings, Source Serif 4 for reading text,
   Libre Franklin for labels and buttons.
-- Every image spot without a photo shows a "Photo to come" frame.
+- An image spot without a photo shows a quiet "Photo to come" frame, except
+  on story cards other than the lead, which are text-led until a photo
+  arrives.
+- One card style everywhere (filled, no outlines). On wide screens the
+  home page section names sit in a side column, and the home page opens
+  on a pine band.
 - Logo: a postage stamp (dispatch) showing a brick wall (street) with one
   painted ruby mark (art). The name always ends with a ruby full stop.
   The files are in `assets/brand/` and are drawn by `tools/make_logo.py`.

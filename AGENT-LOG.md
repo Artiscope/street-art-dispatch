@@ -2,6 +2,13 @@
 
 A record of what the website agent did on each run, newest first.
 
+## Wednesday 18 November 2026, cleaner look
+Published: the cleaner design the owner chose from two samples. The home page opens on a pine band and its section names sit in a side column on wide screens. One card style is used everywhere, heading sizes are calmer, and empty photo frames are lighter with a faint brick pattern. Stories without a photo are now text-led; only the lead story keeps an empty frame.
+Also fixed: card titles sat at different heights in the same row.
+Drafts waiting: none.
+Checked: all 23 pages fit the screen at seven widths from 320 to 1888 pixels, links work and no image is missing.
+Needs you: nothing.
+
 ## Wednesday 18 November 2026, first photos
 Published: three licensed photos, on the owner's go ahead. Venice waterfront on the Venice feature (Jean-Pol Grandmont, CC BY 4.0). An 1808 print of Christie's auction room on the collecting feature (public domain). A Shepard Fairey mural in Vienna on his profile (Herzi Pinki, CC BY-SA 3.0 AT). Each carries its credit on the page and is recorded in `data/photo-sources.json`. Story and artist photo spaces can now hold a real photo with a credit line.
 Drafts waiting: none.
