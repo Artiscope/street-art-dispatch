@@ -1,0 +1,32 @@
+{
+  "about": "Licensed photos approved by the owner. tools/fetch_photos.py saves each one into assets/images under the given file name. Add an entry here, never a download by hand, so every photo keeps its source, licence and credit.",
+  "photos": [
+    {
+      "file": "venice-riva-degli-schiavoni.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/0_Venise%2C_Riva_Dei_Schiavoni%2C_sestiere_du_Castello_et_l%27%C3%8Ele_de_Murano_%281%29.jpg/1920px-0_Venise%2C_Riva_Dei_Schiavoni%2C_sestiere_du_Castello_et_l%27%C3%8Ele_de_Murano_%281%29.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:0_Venise,_Riva_Dei_Schiavoni,_sestiere_du_Castello_et_l%27%C3%8Ele_de_Murano_(1).jpg",
+      "author": "Jean-Pol Grandmont",
+      "licence": "CC BY 4.0",
+      "licence_url": "https://creativecommons.org/licenses/by/4.0",
+      "checked": "2026-11-18"
+    },
+    {
+      "file": "christies-auction-room-1808.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Microcosm_of_London_Plate_006_-_Auction_Room%2C_Christie%27s_%28colour%29.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Microcosm_of_London_Plate_006_-_Auction_Room,_Christie%27s_(colour).jpg",
+      "author": "Thomas Rowlandson and Augustus Charles Pugin, 1808",
+      "licence": "Public domain",
+      "licence_url": "",
+      "checked": "2026-11-18"
+    },
+    {
+      "file": "shepard-fairey-ankerbrot-vienna.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/Ankerbrot-Fabrik_03.jpg/1280px-Ankerbrot-Fabrik_03.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Ankerbrot-Fabrik_03.jpg",
+      "author": "Herzi Pinki",
+      "licence": "CC BY-SA 3.0 AT",
+      "licence_url": "https://creativecommons.org/licenses/by-sa/3.0/at/deed.en",
+      "checked": "2026-11-18"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+name: Fetch licensed photos
+
+# When data/photo-sources.json changes, saves any new photo listed there
+# into assets/images and commits it. It publishes nothing by itself: the
+# photo appears on the site with the next change pushed to main.
+
+on:
+  push:
+    branches: [main]
+    paths: ['data/photo-sources.json']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch-photos
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Save the photos
+        run: python3 tools/fetch_photos.py
+      - name: Commit them
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/images
+          git diff --cached --quiet || git commit -m "Add licensed photos listed in data/photo-sources.json"
+          git push
