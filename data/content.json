@@ -637,6 +637,22 @@
       "credit": "Photo: Herzi Pinki, CC BY-SA 3.0 AT, via Wikimedia Commons.",
       "credit_href": "https://commons.wikimedia.org/wiki/File:Ankerbrot-Fabrik_03.jpg",
       "focus": "50% 38%"
+    },
+    "Banksy": {
+      "image": "banksy-statue-waterloo-place.jpg",
+      "alt": "A dark statue seen from below against a grey sky: a man in a suit strides off the edge of a stone plinth while a large flag he holds blows back over his face, with scaffolded buildings behind.",
+      "caption": "Statue by Banksy in Waterloo Place, London, installed in April 2026. Photographed in May 2026.",
+      "credit": "Photo: Bex Walton, CC BY 4.0, via Wikimedia Commons.",
+      "credit_href": "https://commons.wikimedia.org/wiki/File:Banksy_statue,_Waterloo_Place,_2026-05-04.jpg",
+      "focus": "50% 35%"
+    },
+    "Invader": {
+      "image": "invader-malaga.jpg",
+      "alt": "A small pixel mosaic of a flamenco dancer in a red spotted dress, set high on an ochre wall beside an old stone cathedral tower.",
+      "caption": "Tile mosaic by Invader in Málaga, photographed in 2017.",
+      "credit": "Photo: Nicolas Vigier, CC0, via Wikimedia Commons.",
+      "credit_href": "https://commons.wikimedia.org/wiki/File:Invader_en_Malaga.jpg",
+      "focus": "60% 40%"
     }
   }
 }

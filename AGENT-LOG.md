@@ -2,6 +2,12 @@
 
 A record of what the website agent did on each run, newest first.
 
+## Monday 23 November 2026, artist photos (draft)
+Published: nothing. Prepared as a draft on the owner's request to add images to the sites.
+Drafts waiting: photos for the Banksy and Invader profiles (link in the pull request list).
+Checked: licences read on each photo's own Wikimedia Commons page. Banksy: his 2026 flag statue in Waterloo Place, London, photo by Bex Walton, CC BY 4.0. Invader: a mosaic in Málaga, photo by Nicolas Vigier, CC0. Both pages build and hold at phone and desktop width.
+Needs you: both photos show the artists' own work. The free licence covers the photograph, not the artwork, so please decide whether to publish. No usable photo was found for the Banksy stencil articles: murals in the UK are not covered by the rule that allows photos of public sculpture.
+
 ## Wednesday 18 November 2026, cleaner look
 Published: the cleaner design the owner chose from two samples. The home page opens on a pine band and its section names sit in a side column on wide screens. One card style is used everywhere, heading sizes are calmer, and empty photo frames are lighter with a faint brick pattern. Stories without a photo are now text-led; only the lead story keeps an empty frame.
 Also fixed: card titles sat at different heights in the same row.
