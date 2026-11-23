@@ -2,6 +2,12 @@
 
 A record of what the website agent did on each run, newest first.
 
+## Monday 23 November 2026, photos for the new street artists (draft)
+Published: nothing. Prepared as a draft on the owner's request to add images for the five new street artists.
+Drafts waiting: photos for the Vhils, OSGEMEOS and Faith XLVII profiles (link in the pull request list).
+Checked: licences read on each photo's own Wikimedia Commons page. Vhils: his carved wall portrait on Chausseestraße, Berlin, photo by OTFW, CC BY-SA 3.0. OSGEMEOS: their mural at the Museu de Arte Moderna, São Paulo, photo by André Deak, CC BY 2.0. Faith XLVII: her mural in Cologne, photo by Raimond Spekking, CC BY-SA 4.0. The profiles build and hold at phone and desktop width.
+Needs you: all three photos show the artists' own work, so please decide whether to publish. No usable photo was found for KAWS or Eko Nugroho, so their profiles keep the Photo to come frame.
+
 ## Monday 23 November 2026, artist photos (draft)
 Published: nothing. Prepared as a draft on the owner's request to add images to the sites.
 Drafts waiting: photos for the Banksy and Invader profiles (link in the pull request list).
