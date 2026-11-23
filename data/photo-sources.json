@@ -27,6 +27,24 @@
       "licence": "CC BY-SA 3.0 AT",
       "licence_url": "https://creativecommons.org/licenses/by-sa/3.0/at/deed.en",
       "checked": "2026-11-18"
+    },
+    {
+      "file": "banksy-statue-waterloo-place.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Banksy_statue%2C_Waterloo_Place%2C_2026-05-04.jpg/1920px-Banksy_statue%2C_Waterloo_Place%2C_2026-05-04.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Banksy_statue,_Waterloo_Place,_2026-05-04.jpg",
+      "author": "Bex Walton",
+      "licence": "CC BY 4.0",
+      "licence_url": "https://creativecommons.org/licenses/by/4.0",
+      "checked": "2026-11-23"
+    },
+    {
+      "file": "invader-malaga.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Invader_en_Malaga.jpg/1920px-Invader_en_Malaga.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Invader_en_Malaga.jpg",
+      "author": "Nicolas Vigier",
+      "licence": "CC0 (public domain dedication)",
+      "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "checked": "2026-11-23"
     }
   ]
 }

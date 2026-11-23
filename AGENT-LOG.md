@@ -2,6 +2,12 @@
 
 A record of what the website agent did on each run, newest first.
 
+## Monday 23 November 2026, artist photos (draft)
+Published: nothing. Prepared as a draft on the owner's request to add images to the sites.
+Drafts waiting: photos for the Banksy and Invader profiles (link in the pull request list).
+Checked: licences read on each photo's own Wikimedia Commons page. Banksy: his 2026 flag statue in Waterloo Place, London, photo by Bex Walton, CC BY 4.0. Invader: a mosaic in Málaga, photo by Nicolas Vigier, CC0. Both pages build and hold at phone and desktop width.
+Needs you: both photos show the artists' own work. The free licence covers the photograph, not the artwork, so please decide whether to publish. No usable photo was found for the Banksy stencil articles: murals in the UK are not covered by the rule that allows photos of public sculpture.
+
 ## Monday 23 November 2026, five street artists (draft)
 Drafted, not published: a new style article, "Five Street Artists, Five Styles", and five new artist profiles: OSGEMEOS, Vhils, KAWS, Eko Nugroho and Faith XLVII. Added under the owner's standing rule that each round of artist research goes to every site.
 Drafts waiting: this branch, draft/2026-11-23-street-artists-world, as a draft pull request.
