@@ -2,6 +2,12 @@
 
 A record of what the website agent did on each run, newest first.
 
+## Monday 23 November 2026, five street artists (draft)
+Drafted, not published: a new style article, "Five Street Artists, Five Styles", and five new artist profiles: OSGEMEOS, Vhils, KAWS, Eko Nugroho and Faith XLVII. Added under the owner's standing rule that each round of artist research goes to every site.
+Drafts waiting: this branch, draft/2026-11-23-street-artists-world, as a draft pull request.
+Checked: every fact links to a page that was opened (artist sites, museum and auction house pages); the site builds (30 pages); the new pages fit at 390 and 1280 pixels; no long dashes.
+Needs you: your go ahead to merge. Every artist photo space shows "Photo to come" until you approve licensed photos.
+
 ## Wednesday 18 November 2026, cleaner look
 Published: the cleaner design the owner chose from two samples. The home page opens on a pine band and its section names sit in a side column on wide screens. One card style is used everywhere, heading sizes are calmer, and empty photo frames are lighter with a faint brick pattern. Stories without a photo are now text-led; only the lead story keeps an empty frame.
 Also fixed: card titles sat at different heights in the same row.
