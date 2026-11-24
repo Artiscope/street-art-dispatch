@@ -59,7 +59,7 @@
             "#newsletter"
           ]
         ],
-        "legal": "© 2026 Street Art Dispatch · streetartdispatch.com"
+        "legal": "© 2026 Street Art Dispatch · Published by Artiscope · streetartdispatch.com"
       }
     }
   },
@@ -368,7 +368,7 @@
               }
             ],
             "end_heading": "Get in touch",
-            "end_text": "Pitches, tips, press and corrections go to <a href=\"mailto:info@grovegallery.com\">info@grovegallery.com</a>. More ways to reach us are on the <a href=\"{root}contact/\">contact page</a>."
+            "end_text": "Pitches, tips, press and corrections go to <a href=\"mailto:info@artiscope.co.uk\">info@artiscope.co.uk</a>. More ways to reach us are on the <a href=\"{root}contact/\">contact page</a>."
           }
         }
       ]
@@ -391,19 +391,19 @@
             "items": [
               {
                 "term": "Pitches, tips and press",
-                "text": "<a href=\"mailto:info@grovegallery.com\">info@grovegallery.com</a>"
+                "text": "<a href=\"mailto:info@artiscope.co.uk\">info@artiscope.co.uk</a>"
               },
               {
                 "term": "Corrections",
-                "text": "Send the page address and the correction to <a href=\"mailto:info@grovegallery.com\">info@grovegallery.com</a>."
+                "text": "Send the page address and the correction to <a href=\"mailto:info@artiscope.co.uk\">info@artiscope.co.uk</a>."
               },
               {
                 "term": "The Intervention Archive",
-                "text": "Know of an intervention we’ve missed? Send it, with a source, to <a href=\"mailto:info@grovegallery.com\">info@grovegallery.com</a>."
+                "text": "Know of an intervention we’ve missed? Send it, with a source, to <a href=\"mailto:info@artiscope.co.uk\">info@artiscope.co.uk</a>."
               },
               {
                 "term": "Suggest an artist",
-                "text": "Tell us who we should cover at <a href=\"mailto:info@grovegallery.com\">info@grovegallery.com</a>."
+                "text": "Tell us who we should cover at <a href=\"mailto:info@artiscope.co.uk\">info@artiscope.co.uk</a>."
               },
               {
                 "term": "The weekly email",
