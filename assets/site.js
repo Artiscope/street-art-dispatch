@@ -48,7 +48,7 @@
     nl.addEventListener('submit',function(e){
       e.preventDefault();
       var em=$('#nlEmail').value;
-      location.href='mailto:info@grovegallery.com?subject='+encodeURIComponent(SW('form.subject','Subscribe to the Dispatch'))+'&body='+encodeURIComponent('Please add '+em+' to the weekly dispatch.');
+      location.href='mailto:info@artiscope.co.uk?subject='+encodeURIComponent(SW('form.subject','Subscribe to the Dispatch'))+'&body='+encodeURIComponent('Please add '+em+' to the weekly dispatch.');
       $('#nlMsg').textContent=SW('form.sent-box','Your email app should open with a subscription request. Send it and we’ll add you.');
     });
   }

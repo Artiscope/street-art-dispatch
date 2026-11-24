@@ -16,7 +16,7 @@ for p in json.load(open(os.path.join(ROOT, 'data', 'photo-sources.json'), encodi
     if os.path.exists(out):
         print('already there', name); continue
     try:
-        req = urllib.request.Request(url, headers={'User-Agent': 'StreetArtDispatchSite/1.0 (https://streetartdispatch.com; info@grovegallery.com)'})
+        req = urllib.request.Request(url, headers={'User-Agent': 'StreetArtDispatchSite/1.0 (https://streetartdispatch.com; info@artiscope.co.uk)'})
         data = urllib.request.urlopen(req, timeout=60).read()
         ok = data[:3] == b'\xff\xd8\xff' or data[:8] == b'\x89PNG\r\n\x1a\n'
         if not ok or not (20_000 < len(data) < 8_000_000):

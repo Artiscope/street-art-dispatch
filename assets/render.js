@@ -330,7 +330,7 @@
     function link(words, h, cls) { return words && addrOk(h) ? '<a class="' + (cls || "tlink") + '" href="' + esc(hrefOf(h)) + '"' + (/^https?:/i.test(String(h)) ? ' rel="noopener"' : "") + '>' + txt(words) + '</a>' : ""; }
     function rep(x) { return x && x.reported ? '<span class="badge">' + W("item.reported", "Reported") + '</span> ' : ""; }
     function per(st) { return { "2": 2, "3": 3, "4": 4 }[String(get(st, "per_row", "3"))] || 3; }
-    function mailTo() { return "info@grovegallery.com"; }
+    function mailTo() { return "info@artiscope.co.uk"; }
 
     S.announcement = function (st) {
       var rows = liveRows(get(st, "messages", [])).filter(function (r) { return r.x.text || r.x.link; });
