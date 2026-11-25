@@ -2,12 +2,10 @@
 
 A record of what the website agent did on each run, newest first.
 
-## Wednesday 25 November 2026, Konn Artiss photo in his article (draft)
-Published: nothing. Prepared as a draft on the owner's request to use the Venice photo in the article as well.
-Drafts waiting: draft/2026-11-25-konn-article-photo, as a draft pull request.
+## Wednesday 25 November 2026, Konn Artiss photo in his article (published)
+Published on the owner's go ahead. Made on their request to use the Venice photo in the article as well.
 Changed: the Venice photo now heads the article "Konn Artiss: Art, Intervention and Public Attention" and its story cards, with the caption "Konn Artiss in Venice." and the same written description. The artist profile keeps its separate "Konn Artiss in the studio" frame.
 Checked: the site builds (30 pages); the article holds at 390 and 1280 pixels; no long dashes; the CNAME file is unchanged.
-Needs you: your go ahead to merge.
 
 ## Wednesday 25 November 2026, Konn Artiss photo on the home page (published)
 Published on the owner's go ahead, with the photo they sent of a Konn Artiss performance in Venice.
