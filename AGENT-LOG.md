@@ -4,9 +4,14 @@ A record of what the website agent did on each run, newest first.
 
 ## Wednesday 25 November 2026, Andy Warhol (draft)
 Published: nothing. A dispatch on Andy Warhol added as a draft after the owner asked for him on all five sites.
-Drafts waiting: "Andy Warhol and the Street: The Pop Artist Who Painted with a Graffiti Writer" (his work with Basquiat, who began as SAMO), with a public domain 1977 White House portrait. Dispatches count now nine. Branch draft/2026-11-25-andy-warhol.
+Drafts waiting: "Andy Warhol and the Street: The Pop Artist Who Painted with a Graffiti Writer" (his work with Basquiat, who began as SAMO), with a public domain 1977 White House portrait. Dispatches count now ten. Branch draft/2026-11-25-andy-warhol.
 Checked: The Art Newspaper, e-flux, Wikipedia (SAMO, Basquiat), MoMA.
 Needs you: no artist profile was added for Warhol, since he did not make street art. Say if you want one.
+
+## Wednesday 25 November 2026, Mohamed L’Ghacham (draft)
+Drafted on the owner's go ahead to add Mohamed L’Ghacham from the emerging artists research.
+Changed: new dispatch "Mohamed L’Ghacham: Family Photographs on the Scale of a Street", an artist profile, and four archive entries (2017 to 2025, all festival walls). The Dispatches page now says nine features.
+Checked: the site builds (32 pages); the dispatch and profile hold at 390 and 1280 pixels; no long dashes; the CNAME file is unchanged. No auction results were found. No photo yet: the spots show "Photo to come".
 
 ## Wednesday 25 November 2026, KAWS photo on his artist profile (published)
 Published on the owner's go ahead, with the photo they sent from the Christie's KAWS artist guide.
