@@ -2,6 +2,12 @@
 
 A record of what the website agent did on each run, newest first.
 
+## Wednesday 25 November 2026, Andy Warhol (draft)
+Published: nothing. A dispatch on Andy Warhol added as a draft after the owner asked for him on all five sites.
+Drafts waiting: "Andy Warhol and the Street: The Pop Artist Who Painted with a Graffiti Writer" (his work with Basquiat, who began as SAMO), with a public domain 1977 White House portrait. Dispatches count now nine. Branch draft/2026-11-25-andy-warhol.
+Checked: The Art Newspaper, e-flux, Wikipedia (SAMO, Basquiat), MoMA.
+Needs you: no artist profile was added for Warhol, since he did not make street art. Say if you want one.
+
 ## Wednesday 25 November 2026, KAWS photo on his artist profile (published)
 Published on the owner's go ahead, with the photo they sent from the Christie's KAWS artist guide.
 Changed: the photo of KAWS with four COMPANION figures replaces the "Photo to come" frame on his artist profile and his card on the Artists page. Caption "KAWS with four of his COMPANION figures.", credited "Photo: courtesy of Christie's." with a link to the Christie's page.
