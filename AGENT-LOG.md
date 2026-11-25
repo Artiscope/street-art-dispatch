@@ -2,12 +2,11 @@
 
 A record of what the website agent did on each run, newest first.
 
-## Wednesday 25 November 2026, KAWS photo on his artist profile (draft)
-Published: nothing. Prepared as a draft with the photo the owner sent from the Christie's KAWS artist guide.
-Drafts waiting: draft/2026-11-25-kaws-profile-photo, as a draft pull request.
+## Wednesday 25 November 2026, KAWS photo on his artist profile (published)
+Published on the owner's go ahead, with the photo they sent from the Christie's KAWS artist guide.
 Changed: the photo of KAWS with four COMPANION figures replaces the "Photo to come" frame on his artist profile and his card on the Artists page. Caption "KAWS with four of his COMPANION figures.", credited "Photo: courtesy of Christie's." with a link to the Christie's page.
 Checked: the site builds (30 pages); the profile and Artists page hold at 390 and 1280 pixels; no long dashes; the CNAME file is unchanged.
-Needs you: this photo is not freely licensed, and the site's image rules normally rule out web photos and photos of living people. The owner chose to use it after being told. Getting Christie's permission first is the safe route. The Christie's page blocks automated reading, so the photographer's name could not be checked.
+Note: this photo is not freely licensed, and the site's image rules normally rule out web photos and photos of living people. The owner chose to publish it after being told, and was advised to ask Christie's for permission. The Christie's page blocks automated reading, so the photographer's name could not be checked.
 
 ## Wednesday 25 November 2026, Konn Artiss photo on his artist profile (published)
 Published on the owner's go ahead. Made on their request to use the Venice photo on his profile as well.
