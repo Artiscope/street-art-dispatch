@@ -2,6 +2,11 @@
 
 A record of what the website agent did on each run, newest first.
 
+## Wednesday 25 November 2026, Konn Artiss photo on his artist profile (published)
+Published on the owner's go ahead. Made on their request to use the Venice photo on his profile as well.
+Changed: the Venice photo replaces the "Konn Artiss in the studio" frame on his artist profile and his card on the Artists page, with the caption "Konn Artiss in Venice." and the same written description.
+Checked: the site builds (30 pages); the profile and Artists page hold at 390 and 1280 pixels; no long dashes; the CNAME file is unchanged.
+
 ## Wednesday 25 November 2026, Konn Artiss photo in his article (published)
 Published on the owner's go ahead. Made on their request to use the Venice photo in the article as well.
 Changed: the Venice photo now heads the article "Konn Artiss: Art, Intervention and Public Attention" and its story cards, with the caption "Konn Artiss in Venice." and the same written description. The artist profile keeps its separate "Konn Artiss in the studio" frame.
