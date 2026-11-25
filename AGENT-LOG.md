@@ -2,12 +2,10 @@
 
 A record of what the website agent did on each run, newest first.
 
-## Wednesday 25 November 2026, Konn Artiss photo on the home page (draft)
-Published: nothing. Prepared as a draft with the photo the owner sent of a Konn Artiss performance in Venice.
-Drafts waiting: draft/2026-11-25-konn-homepage-photo, as a draft pull request.
-Changed: the photo now fills the large frame in the home page's pine band, resized for the web with its camera details removed. It has a written description for screen readers, and the caption reads "Photo: credit to confirm" until the owner names the photographer.
+## Wednesday 25 November 2026, Konn Artiss photo on the home page (published)
+Published on the owner's go ahead, with the photo they sent of a Konn Artiss performance in Venice.
+Changed: the photo now fills the large frame in the home page's pine band, resized for the web with its camera details removed. It has a written description for screen readers. The owner said no photographer credit is needed, so the caption stays "On the cover: Konn Artiss in Venice."
 Checked: the site builds (30 pages); the home page holds at 390 and 1280 pixels; no long dashes; the CNAME file is unchanged.
-Needs you: the photographer's name for the credit, and your go ahead to merge.
 
 ## Wednesday 25 November 2026, cleaner home page and tighter spacing (published)
 Published on the owner's go ahead. Made on their request to stop the home page repeating every section and to cut the empty space.
