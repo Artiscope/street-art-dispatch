@@ -2,12 +2,11 @@
 
 A record of what the website agent did on each run, newest first.
 
-## Wednesday 25 November 2026, cleaner home page and tighter spacing (draft)
-Published: nothing. Prepared as a draft on the owner's request to stop the home page repeating every section and to cut the empty space.
-Drafts waiting: draft/2026-11-25-clean-homepage, as a draft pull request.
+## Wednesday 25 November 2026, cleaner home page and tighter spacing (published)
+Published on the owner's go ahead. Made on their request to stop the home page repeating every section and to cut the empty space.
 Changed: the home page now has the opening band, the first three dispatches with a link to the rest, the three newest archive entries, four short cards pointing to Artists, Urban Culture, Exhibitions and Collecting, and the sign-up box. The full Artists, Urban Culture, Exhibitions and Collecting sections are hidden on the home page, not deleted, and every section page is unchanged in content. Spacing between sections, at the top of pages and in the footer is smaller across the whole site.
 Checked: the site builds (30 pages); the home page and section pages hold at 390 and 1280 pixels; no long dashes; the CNAME file is unchanged. No new facts were written; the card wording reuses each section's own introduction.
-Needs you: your go ahead to merge. The Dispatches page still says "Six commissioned features" although eight are listed.
+Also fixed: the Dispatches page said "Six commissioned features" although eight are listed. It now says eight, in its introduction and its search description.
 
 ## Monday 23 November 2026, photos for the new street artists (draft)
 Published: nothing. Prepared as a draft on the owner's request to add images for the five new street artists.
