@@ -94,23 +94,14 @@
           "visible": true,
           "settings": {
             "heading": "Dispatches",
-            "intro": "Six commissioned features for our first issue.",
+            "intro": "Three to start with. The rest of the issue is on the Dispatches page.",
             "which": "dispatches",
             "look": "grid",
             "top": false,
-            "flush": true
-          }
-        },
-        {
-          "id": "artists",
-          "type": "profiles",
-          "visible": true,
-          "settings": {
-            "heading": "Artists",
-            "intro": "The people taking art beyond the gallery. We start with Konn Artiss and add a new profile from the Grove Gallery roster every week.",
-            "artists": [],
-            "top": false,
-            "flush": true
+            "flush": true,
+            "count": 3,
+            "more": "See all dispatches",
+            "more_href": "dispatches/"
           }
         },
         {
@@ -118,10 +109,10 @@
           "type": "archive",
           "visible": true,
           "settings": {
-            "heading": "The Intervention Archive",
-            "intro": "Art made in public, documented and dated. Search by artist, city or year.",
+            "heading": "From the archive",
+            "intro": "The newest entries in the Intervention Archive.",
             "show": "recent",
-            "count": 6,
+            "count": 3,
             "button": "Search all {count} interventions",
             "button_href": "interventions/",
             "search_hint": "",
@@ -132,9 +123,69 @@
           }
         },
         {
+          "id": "explore",
+          "type": "columns",
+          "visible": true,
+          "settings": {
+            "eyebrow": "Inside the site",
+            "heading": "Find your way around",
+            "numbered": false,
+            "per_row": "4",
+            "columns": [
+              {
+                "title": "Artists",
+                "text": "The people taking art beyond the gallery. We start with Konn Artiss and add a new profile from the Grove Gallery roster every week.",
+                "link": "Meet the artists",
+                "href": "artists/"
+              },
+              {
+                "title": "Urban Culture",
+                "text": "Short columns on attention, virality and the crowd.",
+                "link": "Read the columns",
+                "href": "urban-culture/"
+              },
+              {
+                "title": "Exhibitions",
+                "text": "Where the street meets the gallery. Listings are provisional until venues confirm dates.",
+                "link": "See the listings",
+                "href": "exhibitions/"
+              },
+              {
+                "title": "Collecting",
+                "text": "Originals, editions and auction results, and what to check before you buy.",
+                "link": "Read the collecting guide",
+                "href": "collecting/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "newsletter",
+          "type": "signup",
+          "visible": true,
+          "settings": {
+            "heading": "Get the Dispatch",
+            "text": "One email a week with new interventions, artist profiles and collecting news.",
+            "button": "Subscribe",
+            "pitch": "Pitches, tips and press:"
+          }
+        },
+        {
+          "id": "artists",
+          "type": "profiles",
+          "visible": false,
+          "settings": {
+            "heading": "Artists",
+            "intro": "The people taking art beyond the gallery. We start with Konn Artiss and add a new profile from the Grove Gallery roster every week.",
+            "artists": [],
+            "top": false,
+            "flush": true
+          }
+        },
+        {
           "id": "culture",
           "type": "features",
-          "visible": true,
+          "visible": false,
           "settings": {
             "heading": "Urban Culture",
             "intro": "Short columns on attention, virality and the crowd.",
@@ -147,7 +198,7 @@
         {
           "id": "exhibitions",
           "type": "exhibition-list",
-          "visible": true,
+          "visible": false,
           "settings": {
             "heading": "Exhibitions",
             "intro": "Where the street meets the gallery. Listings are provisional until venues confirm dates.",
@@ -158,7 +209,7 @@
         {
           "id": "collecting",
           "type": "collecting",
-          "visible": true,
+          "visible": false,
           "settings": {
             "heading": "Collecting Street Art",
             "intro": "Originals, editions and auction results, and what to check before you buy.",
@@ -167,17 +218,6 @@
             "button": "Read the collecting guide",
             "button_href": "collecting/",
             "top": false
-          }
-        },
-        {
-          "id": "newsletter",
-          "type": "signup",
-          "visible": true,
-          "settings": {
-            "heading": "Get the Dispatch",
-            "text": "One email a week with new interventions, artist profiles and collecting news.",
-            "button": "Subscribe",
-            "pitch": "Pitches, tips and press:"
           }
         }
       ]

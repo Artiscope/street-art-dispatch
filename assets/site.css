@@ -519,3 +519,30 @@ section[id],footer[id]{scroll-margin-top:88px}
   .s-lead{grid-column:span 7!important}.side{grid-column:span 5!important}
   .agrid{gap:28px 20px}
 }
+
+/* ==========================================================
+   Tighter spacing, 25 November 2026
+   Less empty space between sections, at the top of pages and in the footer.
+   ========================================================== */
+:root{--sec:clamp(44px,5.5vw,80px)}
+.hero{padding-block:clamp(32px,4vw,56px)}
+.sec--top{padding-top:clamp(32px,4.5vw,56px)}
+.sec--lib{padding-block:var(--sec)}
+.sec-head{margin-bottom:clamp(20px,2.5vw,32px)}
+.dgrid{gap:36px 28px}
+.side{gap:28px}
+.amore{margin-top:28px}
+.anote{margin-top:32px}
+.primer{margin-top:clamp(40px,5vw,64px)}
+.yr{margin-top:28px}
+.lcard{padding:24px 24px 26px;border-radius:4px}
+.lcard h3{font-size:calc(1.375rem * var(--h-scale, 1));line-height:1.15}
+.lcard-text p{font-size:calc(1rem * var(--b-scale, 1))}
+.foot{padding-block:48px 32px}
+.foot-grid{gap:32px}
+.foot ul a{min-height:36px}
+.legal{margin-top:32px}
+.r-head{padding-top:clamp(32px,5vw,64px)}
+.r-body{padding-top:36px}
+/* two plain sections in a row share one gap rather than doubling it */
+.sec:not(.on-pine)+.sec:not(.on-pine){padding-top:0}

@@ -235,9 +235,12 @@
       return (Array.isArray(which) ? which : []).filter(function (s) { return BY_SLUG[s]; }).map(function (s) { return BY_SLUG[s]; });
     }
     S.features = function (st, ctx) {
-      var list = articlesFor(get(st, "which", "dispatches"));
+      var list = articlesFor(get(st, "which", "dispatches")), n = Number(get(st, "count", 0)) || 0;
+      if (n > 0) list = list.slice(0, n);
       var inner = get(st, "look", "grid") === "list" ? '<ul class="cgrid">' + list.map(ccard).join("") + '</ul>' : '<div class="dgrid">' + dgrid(list) + '</div>';
-      return wrapSec(st, ctx, inner);
+      // an optional link under a shortened list, such as "All six dispatches" on the home page
+      var more = get(st, "more", "") && addrOk(get(st, "more_href", "")) ? '\n    <p class="amore"><a class="tlink" href="' + hrefOf(st.more_href) + '">' + txt(st.more) + '</a></p>' : "";
+      return wrapSec(st, ctx, inner + more);
     };
     S.profiles = function (st, ctx) {
       var want = (get(st, "artists", []) || []).filter(function (x) { return typeof x === "string"; }), list = (D.artists || []).filter(function (x) { return !want.length || want.indexOf(x.slug) >= 0; });
