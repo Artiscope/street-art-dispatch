@@ -81,6 +81,69 @@
       "licence": "Public domain",
       "licence_url": "",
       "checked": "2026-11-25"
+    },
+    {
+      "file": "pablo-picasso-1908.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Portrait_de_Picasso%2C_1908.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Portrait_de_Picasso,_1908.jpg",
+      "author": "Unknown photographer, 1908",
+      "licence": "Public domain",
+      "licence_url": "",
+      "checked": "2026-11-25"
+    },
+    {
+      "file": "damien-hirst-2012.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/Damien_Hirst_%286712601473%29.jpg/1280px-Damien_Hirst_%286712601473%29.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Damien_Hirst_(6712601473).jpg",
+      "author": "Andrew Russeth",
+      "licence": "CC BY-SA 2.0",
+      "licence_url": "https://creativecommons.org/licenses/by-sa/2.0",
+      "checked": "2026-11-25"
+    },
+    {
+      "file": "keith-haring-stedelijk-1986.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Keith_Haring_%281986%29.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Keith_Haring_(1986).jpg",
+      "author": "Rob Bogaerts / Anefo, Nationaal Archief",
+      "licence": "CC0",
+      "licence_url": "",
+      "checked": "2026-11-25"
+    },
+    {
+      "file": "david-shrigley-2011.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/David_Shrigley.jpg/1280px-David_Shrigley.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:David_Shrigley.jpg",
+      "author": "Andy Miah",
+      "licence": "CC BY-SA 2.0",
+      "licence_url": "https://creativecommons.org/licenses/by-sa/2.0",
+      "checked": "2026-11-25"
+    },
+    {
+      "file": "david-shrigley-really-good-2016.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/David_Shrigley%27s_fourth_plinth_%2830730433995%29.jpg/1600px-David_Shrigley%27s_fourth_plinth_%2830730433995%29.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:David_Shrigley%27s_fourth_plinth_(30730433995).jpg",
+      "author": "Matt Brown",
+      "licence": "CC BY 2.0",
+      "licence_url": "https://creativecommons.org/licenses/by/2.0",
+      "checked": "2026-11-25"
+    },
+    {
+      "file": "jean-michel-basquiat-1984.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/Basquiat1984.tif/lossy-page1-960px-Basquiat1984.tif.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Basquiat1984.tif",
+      "author": "Galerie Bruno Bischofberger",
+      "licence": "CC BY-SA 4.0",
+      "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "checked": "2026-11-25"
+    },
+    {
+      "file": "david-hockney-2017.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/6/64/David_Hockney_2017_at_Flash_Expo_%28cropped%29.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:David_Hockney_2017_at_Flash_Expo_(cropped).jpg",
+      "author": "Connaissance des Arts",
+      "licence": "CC BY 3.0",
+      "licence_url": "https://creativecommons.org/licenses/by/3.0",
+      "checked": "2026-11-25"
     }
   ]
 }
