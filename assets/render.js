@@ -132,8 +132,27 @@
       return out;
     }
     var AO_KIND = "page";
+    // ----- for search engines: structured data, a picture to share and titles short enough to show in full -----
+    var MONTHS = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
+    function isoDate(s) { var m = /^(\d{1,2}) ([A-Za-z]+) (\d{4})$/.exec(String(s || "").trim()), i = m ? MONTHS.indexOf(m[2].toLowerCase()) : -1; return i < 0 ? "" : m[3] + "-" + ("0" + (i + 1)).slice(-2) + "-" + ("0" + m[1]).slice(-2); }
+    function plainText(s, n) { var t = String(s || "").replace(/<[^>]*>/g, " ").replace(/&amp;/g, "&").replace(/&[a-z#0-9]+;/gi, " ").replace(/\s+/g, " ").trim(); return n && t.length > n ? t.slice(0, n - 1).replace(/\s+\S*$/, "") + "…" : t; }
+    function shortTitle(t) { t = String(t || ""); var i = t.lastIndexOf(" | "); return t.length > 60 && i > 0 ? t.slice(0, i) : t; }
+    function ldTag(o) { return '<script type="application/ld+json">' + JSON.stringify(o).replace(/</g, "\\u003c") + '</script>\n'; }
+    function shareTag(file) { return /^[A-Za-z0-9._-]{1,120}\.(png|jpe?g)$/.test(String(file || "")) ? '<meta property="og:image" content="' + esc(SITE_URL + "assets/images/" + file) + '">\n<meta name="twitter:card" content="summary_large_image">\n' : ""; }
+    function orgLd() { return { "@type": "Organization", name: plainText(NAME()), url: SITE_URL }; }
+    function siteLd(desc) { return ldTag({ "@context": "https://schema.org", "@type": "WebSite", name: plainText(NAME()), url: SITE_URL, description: plainText(desc), publisher: orgLd() }); }
+    function articleLd(type, urlPath, title, desc, date, file, about) {
+      var o = { "@context": "https://schema.org", "@type": type, headline: plainText(title, 110), description: plainText(desc), url: SITE_URL + urlPath, mainEntityOfPage: SITE_URL + urlPath, author: orgLd(), publisher: orgLd(), isPartOf: { "@type": "WebSite", name: plainText(NAME()), url: SITE_URL } };
+      if (isoDate(date)) o.datePublished = isoDate(date);
+      if (/^[A-Za-z0-9._-]{1,120}\.(png|jpe?g)$/.test(String(file || ""))) o.image = SITE_URL + "assets/images/" + file;
+      if (about && about.length) o.about = about.map(function (n) { return { "@type": "Thing", name: plainText(n) }; });
+      return ldTag(o);
+    }
+    function listLd(urlPath, name, desc) { return ldTag({ "@context": "https://schema.org", "@type": "CollectionPage", name: plainText(name), description: plainText(desc), url: SITE_URL + urlPath, isPartOf: { "@type": "WebSite", name: plainText(NAME()), url: SITE_URL } }); }
     function page(path, title, desc, main, o) {
       o = o || {};
+      title = shortTitle(title);
+      if (path === "index.html" && !o.file) o.head = (o.head || "") + siteLd(desc);
       var urlPath = /index\.html$/.test(path) ? path.slice(0, -"index.html".length) : (o.file ? "" : path);
       var ao = aoHtml(PAGES.addons, AO_KIND, SITE_URL + urlPath, String(title || "").split(" | ")[0], esc, function (x) { return /^(https?:|mailto:|#|\/)/.test(x) ? x : "@@" + x; }); AO_KIND = "page";
       // a page with its own layout has no menu bar, footer or shared sections; popups show on every page
@@ -547,7 +566,9 @@
         '    <footer class="r-foot"><p class="filed">' + W("item.filed", "Filed under {tags}.", { tags: (a.tags || []).join(", ") }) + '</p>\n' +
         '      <div class="next"><p class="kicker">' + (isCol ? W("item.next-column", "Next column") : W("item.next-dispatch", "Next dispatch")) + '</p><h2>' + nxt.title + '</h2><a class="btn" href="@@' + pathOf(nxt.slug) + '">' + W("btn.read-next", "Read next") + '</a></div></footer>\n  </article>';
       main = tplWrap("article", a.slug, main); AO_KIND = "article";
-      return page(p + "index.html", a.title + " | " + NAME(), stripTags(a.standfirst), main);
+      var pic = fileOk(PHOTO_FILES[a.slug]) ? PHOTO_FILES[a.slug].image : "";
+      return page(p + "index.html", a.title + " | " + NAME(), stripTags(a.standfirst), main,
+        { head: articleLd("Article", p, a.title, a.standfirst, "", pic, a.tags || []) + shareTag(pic) });
     }
     function artistPage(x) {
       var s = x.slug;
@@ -574,7 +595,10 @@
         '    ' + M('<div class="r-body"><p>' + x.summary + '</p><p>' + (x.note || "") + '</p>\n      <dl class="kfacts">' + facts + '</dl>' + prof + arch + expl + srcs + '</div>', "about") + '\n' +
         (feat ? '    <footer class="r-foot"><div class="next"><p class="kicker">' + W("item.read-more", "Read more") + '</p><h2>' + feat.title + '</h2><a class="btn" href="@@' + pathOf(feat.slug) + '">' + W("btn.read-story", "Read the story") + '</a></div></footer>\n' : "") + '  </article>';
       main = tplWrap("artist", s, main); AO_KIND = "artist";
-      return page("artists/" + s + "/index.html", x.name + " | " + NAME(), stripTags(x.summary), main);
+      var face = fileOk(ART_PHOTO_FILES[x.name]) ? ART_PHOTO_FILES[x.name].image : "";
+      var who = { "@type": "Person", name: plainText(x.name), description: plainText(x.summary) };
+      return page("artists/" + s + "/index.html", x.name + " | " + NAME(), stripTags(x.summary), main,
+        { head: ldTag({ "@context": "https://schema.org", "@type": "ProfilePage", name: plainText(x.name), url: SITE_URL + "artists/" + s + "/", mainEntity: who, isPartOf: { "@type": "WebSite", name: plainText(NAME()), url: SITE_URL } }) + shareTag(face) });
     }
     function notFound() {
       var base = "<script>document.write('<base href=\"'+(location.hostname.slice(-9)==='github.io'?'/street-art-dispatch/':'/')+'\">')</script>\n";
