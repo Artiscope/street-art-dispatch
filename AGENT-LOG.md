@@ -2,6 +2,12 @@
 
 A record of what the website agent did on each run, newest first.
 
+## Wednesday 25 November 2026, gallery artist list (draft)
+Drafted after the owner sent the gallery's artist list and asked for full research on all five sites.
+Changed: new artist profiles for Keith Haring (the subway chalk drawings, murals in New York and Pisa) and Jean-Michel Basquiat (SAMO© graffiti, the move to canvas), each with Life and career, How the work is made, Key works, Milestones, Explore more and Sources. Both link to the Warhol dispatch. Public domain and Creative Commons photos of each, listed in data/photo-sources.json.
+Left out: Picasso, Hockney, Hirst, Shrigley, Colbert, Los-Talgia, Frank Canvas, Robi Walters and Amanza Smith, who do not make street art. Zen Xander is described as a street artist in one review, but no dated street work could be found, so no profile yet.
+Checked: every fact against the page it links to; the site builds (35 pages); the profiles hold at 390 pixels; no new long dashes; the CNAME file is unchanged.
+
 ## Wednesday 25 November 2026, fuller artist profiles
 Published on the owner's go ahead, after the owner asked for more about every artist so readers have more to explore.
 Changed: the nine profiles with public sources (Banksy, Invader, Shepard Fairey, OSGEMEOS, Vhils, KAWS, Eko Nugroho, Faith XLVII, Mohamed L’Ghacham) now have Life and career, How the work is made, Key works, In their own words (short quotes from published interviews, each named and linked), Milestones and exhibitions, Explore more (links to related artist profiles) and a Sources list. The artist page layout in assets/render.js draws these sections, and site.css styles them. Konn Artiss and the Grove Gallery roster card are unchanged, as the brief requires.
