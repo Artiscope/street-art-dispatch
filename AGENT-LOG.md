@@ -2,6 +2,11 @@
 
 A record of what the website agent did on each run, newest first.
 
+## Wednesday 25 November 2026, Mohamed L’Ghacham (draft)
+Drafted on the owner's go ahead to add Mohamed L’Ghacham from the emerging artists research.
+Changed: new dispatch "Mohamed L’Ghacham: Family Photographs on the Scale of a Street", an artist profile, and four archive entries (2017 to 2025, all festival walls). The Dispatches page now says nine features.
+Checked: the site builds (32 pages); the dispatch and profile hold at 390 and 1280 pixels; no long dashes; the CNAME file is unchanged. No auction results were found. No photo yet: the spots show "Photo to come".
+
 ## Wednesday 25 November 2026, KAWS photo on his artist profile (published)
 Published on the owner's go ahead, with the photo they sent from the Christie's KAWS artist guide.
 Changed: the photo of KAWS with four COMPANION figures replaces the "Photo to come" frame on his artist profile and his card on the Artists page. Caption "KAWS with four of his COMPANION figures.", credited "Photo: courtesy of Christie's." with a link to the Christie's page.
