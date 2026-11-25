@@ -81,6 +81,24 @@
       "licence": "Public domain",
       "licence_url": "",
       "checked": "2026-11-25"
+    },
+    {
+      "file": "keith-haring-stedelijk-1986.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Keith_Haring_%281986%29.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Keith_Haring_(1986).jpg",
+      "author": "Rob Bogaerts / Anefo, Nationaal Archief",
+      "licence": "CC0",
+      "licence_url": "",
+      "checked": "2026-11-25"
+    },
+    {
+      "file": "jean-michel-basquiat-1984.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/Basquiat1984.tif/lossy-page1-960px-Basquiat1984.tif.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Basquiat1984.tif",
+      "author": "Galerie Bruno Bischofberger",
+      "licence": "CC BY-SA 4.0",
+      "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "checked": "2026-11-25"
     }
   ]
 }

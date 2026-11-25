@@ -1251,6 +1251,208 @@
       ]
     },
     {
+      "name": "Keith Haring",
+      "role": "Subway drawing · Mural · Print",
+      "cover": "a-haring",
+      "read": "warhol-and-the-street",
+      "summary": "The American artist who drew in white chalk on empty advertising panels in the New York subway, then carried the same bold outline onto public murals from Manhattan to Pisa.",
+      "facts": [
+        [
+          "Roots",
+          "New York subway drawings, from 1981"
+        ],
+        [
+          "Method",
+          "Chalk, then paint; one continuous outline"
+        ],
+        [
+          "Landmark",
+          "Tuttomondo, Pisa (1989)"
+        ]
+      ],
+      "story": "<p>Keith Haring was born in Reading, Pennsylvania, in 1958 (<a href=\"https://www.britannica.com/biography/Keith-Haring\">Britannica</a>) and grew up in Kutztown. He had his first solo show in Pittsburgh at 19, and in 1978 moved to New York to study at the School of Visual Arts, where he fell in with the crowd at Club 57 (<a href=\"https://www.pbs.org/wnet/americanmasters/keith-haring-biography/16012\">PBS American Masters</a>).</p><p>In 1981 he started drawing in the subway. Unused advertising panels were covered with black paper until a new poster went up, and Haring drew on them in white chalk, without permission (<a href=\"https://www.britannica.com/biography/Keith-Haring\">Britannica</a>). PBS puts the number of these drawings in the hundreds, made over five years (<a href=\"https://www.pbs.org/wnet/americanmasters/keith-haring-biography/16012\">PBS American Masters</a>). Gallery shows followed, at Tony Shafrazi in 1982, and he was in the Whitney Biennial in 1983 (<a href=\"https://www.pbs.org/wnet/americanmasters/keith-haring-biography/16012\">PBS American Masters</a>). He died in New York in 1990, aged 31 (<a href=\"https://www.britannica.com/biography/Keith-Haring\">Britannica</a>).</p>",
+      "method": "<p>A subway drawing had to be quick, because it was made in a public station by someone who was not meant to be there. The figures are drawn in one continuous outline, with short strokes around them for movement or noise, and the same shapes run through his murals, paintings and prints (<a href=\"https://jsma.uoregon.edu/sites/default/files/2026-08/jsma-research-guide-keith-haring.pdf\">Jordan Schnitzer Museum of Art</a>).</p><p>Our reading: the speed of the subway work is why the style is so easy to recognise. With no time for shading or detail, everything rests on the outline.</p>",
+      "works": [
+        {
+          "t": "Untitled (Still Alive in '85)",
+          "y": "1985",
+          "m": "Chalk on three joined sheets of black paper, on the original transit authority mount",
+          "note": "One of the largest subway drawings of its time, according to the Jordan Schnitzer Museum of Art, with figures tumbling from a body that stands for the year 1985 (<a href=\"https://jsma.uoregon.edu/sites/default/files/2026-08/jsma-research-guide-keith-haring.pdf\">JSMA</a>)."
+        },
+        {
+          "t": "Crack is Wack",
+          "y": "1986",
+          "m": "Mural, New York",
+          "note": "Painted in the same year he opened the Pop Shop and painted on the Berlin Wall (<a href=\"https://www.pbs.org/wnet/americanmasters/keith-haring-biography/16012\">PBS American Masters</a>)."
+        },
+        {
+          "t": "Tuttomondo",
+          "y": "1989",
+          "m": "Mural, Pisa",
+          "note": "Painted on the wall of the Servi di Maria convent beside the church of Sant'Antonio, between the railway and bus stations. The city describes its subject as universal peace (<a href=\"https://www.turismo.pisa.it/en/luogo/keith-haring,-tuttomondo\">Pisa tourism office</a>)."
+        }
+      ],
+      "milestones": [
+        [
+          "1958",
+          "Born in Reading, Pennsylvania"
+        ],
+        [
+          "1978",
+          "First solo show, Pittsburgh; moves to New York"
+        ],
+        [
+          "1981",
+          "Starts the subway drawings"
+        ],
+        [
+          "1983",
+          "Whitney Biennial"
+        ],
+        [
+          "1986",
+          "Opens the Pop Shop; <i>Crack is Wack</i>; paints on the Berlin Wall"
+        ],
+        [
+          "1989",
+          "Sets up the Keith Haring Foundation; <i>Tuttomondo</i>, Pisa"
+        ],
+        [
+          "1990",
+          "Dies in New York"
+        ]
+      ],
+      "explore": [
+        "jean-michel-basquiat",
+        "banksy",
+        "shepard-fairey"
+      ],
+      "sources": [
+        [
+          "Britannica, Keith Haring",
+          "https://www.britannica.com/biography/Keith-Haring"
+        ],
+        [
+          "PBS American Masters, Keith Haring biography",
+          "https://www.pbs.org/wnet/americanmasters/keith-haring-biography/16012"
+        ],
+        [
+          "Jordan Schnitzer Museum of Art, Keith Haring research guide (2026)",
+          "https://jsma.uoregon.edu/sites/default/files/2026-08/jsma-research-guide-keith-haring.pdf"
+        ],
+        [
+          "Pisa tourism office, Keith Haring, Tuttomondo",
+          "https://www.turismo.pisa.it/en/luogo/keith-haring,-tuttomondo"
+        ]
+      ]
+    },
+    {
+      "name": "Jean-Michel Basquiat",
+      "role": "Graffiti · Painting · Drawing",
+      "cover": "a-basquiat",
+      "read": "warhol-and-the-street",
+      "summary": "The Brooklyn-born painter who began as one of the writers behind the SAMO© tags in downtown Manhattan and brought the words, crowns and crossings out of the street onto canvas.",
+      "facts": [
+        [
+          "Roots",
+          "SAMO© graffiti, late 1970s"
+        ],
+        [
+          "Method",
+          "Oilstick, acrylic, words and found materials"
+        ],
+        [
+          "Landmark",
+          "The Times Square Show (1980)"
+        ]
+      ],
+      "story": "<p>Jean-Michel Basquiat was born in Brooklyn in 1960 (<a href=\"https://www.britannica.com/biography/Jean-Michel-Basquiat\">Britannica</a>). In the late 1970s he wrote the SAMO© tags that appeared around downtown Manhattan with Al Diaz (<a href=\"https://whitney.org/artists/69\">Whitney Museum</a>); Britannica also names Shannon Dawson (<a href=\"https://www.britannica.com/biography/Jean-Michel-Basquiat\">Britannica</a>). His first exhibition was The Times Square Show in 1980 (<a href=\"https://www.britannica.com/biography/Jean-Michel-Basquiat\">Britannica</a>).</p><p>The move from walls to galleries was fast. In 1982 he had solo shows in New York and Los Angeles and was in Documenta 7 in Kassel (<a href=\"https://www.mfa.org/exhibition/writing-the-future/basquiat-contemporaries-exhibition-timeline\">Museum of Fine Arts, Boston</a>). He met Andy Warhol in 1983, and the two later painted together (<a href=\"https://www.britannica.com/biography/Jean-Michel-Basquiat\">Britannica</a>). He died in New York in 1988, aged 27 (<a href=\"https://www.britannica.com/biography/Jean-Michel-Basquiat\">Britannica</a>).</p>",
+      "method": "<p>By 1980 he was painting on canvas, drawing crowns, halos and parts of the body in oilstick (<a href=\"https://whitney.org/artists/69\">Whitney Museum</a>). He also painted on things he found: the Whitney thinks the wooden crossbars in <i>LNAPRK</i> (1982) may have come from the street, and the crown in its lower corner is his old graffiti signature (<a href=\"https://whitney.org/collection/works/7811\">Whitney Museum</a>).</p><p>Words fill the pictures, and many are crossed out. Our reading: that habit comes straight from the wall, where writing over a word is part of how a surface builds up.</p>",
+      "works": [
+        {
+          "t": "LNAPRK",
+          "y": "1982",
+          "m": "Acrylic, oil, oilstick and marker on found paper on canvas and wood, with rope",
+          "note": "Named after an amusement park outside Milan. Whitney Museum of American Art (<a href=\"https://whitney.org/collection/works/7811\">Whitney</a>)."
+        },
+        {
+          "t": "Hollywood Africans",
+          "y": "1983",
+          "m": "Acrylic and oil stick on canvas",
+          "note": "Painted in Los Angeles. The Whitney identifies the figures as Basquiat with the artists Rammellzee and Toxic, who both came out of graffiti (<a href=\"https://whitney.org/collection/works/453\">Whitney</a>)."
+        },
+        {
+          "t": "Untitled (Leonardo and His Five Grotesque Heads)",
+          "y": "1983",
+          "m": "Oilstick and acrylic",
+          "note": "Sold at Christie's New York on 19 November 2026 for US$32.8 million with fees, as reported by The Art Newspaper (<a href=\"https://theartnewspaper.com/2026/11/20/christies-new-york-november-auction-21st-century-art-gund-sonnabend-basquiat\">The Art Newspaper</a>)."
+        }
+      ],
+      "quotes": [
+        {
+          "q": "“I cross out words so you will see them more.”",
+          "who": "Jean-Michel Basquiat, quoted by the <a href=\"https://whitney.org/collection/works/453\">Whitney Museum</a>"
+        }
+      ],
+      "milestones": [
+        [
+          "1960",
+          "Born in Brooklyn"
+        ],
+        [
+          "Late 1970s",
+          "SAMO© graffiti with Al Diaz"
+        ],
+        [
+          "1980",
+          "The Times Square Show"
+        ],
+        [
+          "1982",
+          "Solo shows in New York and Los Angeles; Documenta 7"
+        ],
+        [
+          "1983",
+          "Whitney Biennial; meets Andy Warhol"
+        ],
+        [
+          "1988",
+          "Dies in New York"
+        ]
+      ],
+      "explore": [
+        "keith-haring",
+        "banksy",
+        "shepard-fairey"
+      ],
+      "sources": [
+        [
+          "Britannica, Jean-Michel Basquiat",
+          "https://www.britannica.com/biography/Jean-Michel-Basquiat"
+        ],
+        [
+          "Whitney Museum of American Art, Jean-Michel Basquiat",
+          "https://whitney.org/artists/69"
+        ],
+        [
+          "Whitney Museum, LNAPRK, 1982",
+          "https://whitney.org/collection/works/7811"
+        ],
+        [
+          "Whitney Museum, Hollywood Africans, 1983",
+          "https://whitney.org/collection/works/453"
+        ],
+        [
+          "Museum of Fine Arts, Boston, Basquiat and his contemporaries: exhibition timeline",
+          "https://www.mfa.org/exhibition/writing-the-future/basquiat-contemporaries-exhibition-timeline"
+        ],
+        [
+          "The Art Newspaper, Christie's 21st Century sale, New York (20 November 2026)",
+          "https://theartnewspaper.com/2026/11/20/christies-new-york-november-auction-21st-century-art-gund-sonnabend-basquiat"
+        ]
+      ]
+    },
+    {
       "name": "Grove Gallery roster",
       "role": "Profiles in commission",
       "cover": "a-grove",
@@ -1659,7 +1861,9 @@
     "KAWS": "A KAWS COMPANION sculpture",
     "Eko Nugroho": "An Eko Nugroho embroidery",
     "Faith XLVII": "A Faith XLVII mural",
-    "Mohamed L’Ghacham": "A Mohamed L’Ghacham mural"
+    "Mohamed L’Ghacham": "A Mohamed L’Ghacham mural",
+    "Keith Haring": "Keith Haring at work",
+    "Jean-Michel Basquiat": "Jean-Michel Basquiat"
   },
   "artist_notes": {
     "Konn Artiss": "Shown by Grove Gallery. The lead profile in Issue 01; dates and titles are being confirmed with the studio.",
@@ -1672,7 +1876,9 @@
     "KAWS": "Brian Donnelly, born 1974. Studied illustration at the School of Visual Arts, New York.",
     "Eko Nugroho": "Born 1977. Lives and works in Yogyakarta, Indonesia.",
     "Faith XLVII": "Born 1979. Began as a graffiti writer in South Africa in 1997.",
-    "Mohamed L’Ghacham": "Born 1993 in Tangier, Morocco. Lives and works in Mataró, near Barcelona."
+    "Mohamed L’Ghacham": "Born 1993 in Tangier, Morocco. Lives and works in Mataró, near Barcelona.",
+    "Keith Haring": "Born 1958 in Reading, Pennsylvania. Drew in the New York subway from 1981. Died 1990.",
+    "Jean-Michel Basquiat": "Born 1960 in Brooklyn. Wrote SAMO© graffiti in the late 1970s. Died 1988."
   },
   "desk": "The Dispatch Desk",
   "date": "November 2026",
@@ -1767,6 +1973,22 @@
       "credit": "Photo: courtesy of Christie's.",
       "credit_href": "https://www.christies.com/en/stories/kaws-artist-guide-1266ae90d08c4aba926e0e3309aeafaa",
       "focus": "58% 40%"
+    },
+    "Keith Haring": {
+      "image": "keith-haring-stedelijk-1986.jpg",
+      "alt": "Black and white photograph of Keith Haring, a young man with short hair and round glasses, at work on a large painted surface.",
+      "caption": "Keith Haring at the Stedelijk Museum, Amsterdam, 14 March 1986.",
+      "credit": "Photo: Rob Bogaerts, Anefo, Nationaal Archief, CC0, via Wikimedia Commons.",
+      "credit_href": "https://commons.wikimedia.org/wiki/File:Keith_Haring_(1986).jpg",
+      "focus": "50% 30%"
+    },
+    "Jean-Michel Basquiat": {
+      "image": "jean-michel-basquiat-1984.jpg",
+      "alt": "Jean-Michel Basquiat in 1984, a young man with short dreadlocks, photographed indoors.",
+      "caption": "Jean-Michel Basquiat, 15 September 1984.",
+      "credit": "Photo: Galerie Bruno Bischofberger, CC BY-SA 4.0, via Wikimedia Commons.",
+      "credit_href": "https://commons.wikimedia.org/wiki/File:Basquiat1984.tif",
+      "focus": "50% 25%"
     }
   }
 }
