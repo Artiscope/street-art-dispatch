@@ -2,10 +2,16 @@
 
 A record of what the website agent did on each run, newest first.
 
-## Wednesday 25 November 2026, fuller artist profiles (draft)
-Drafted on the owner's request to write more about every artist so readers have more to explore.
+## Wednesday 25 November 2026, fuller artist profiles
+Published on the owner's go ahead, after the owner asked for more about every artist so readers have more to explore.
 Changed: the nine profiles with public sources (Banksy, Invader, Shepard Fairey, OSGEMEOS, Vhils, KAWS, Eko Nugroho, Faith XLVII, Mohamed L’Ghacham) now have Life and career, How the work is made, Key works, In their own words (short quotes from published interviews, each named and linked), Milestones and exhibitions, Explore more (links to related artist profiles) and a Sources list. The artist page layout in assets/render.js draws these sections, and site.css styles them. Konn Artiss and the Grove Gallery roster card are unchanged, as the brief requires.
 Checked: every fact and quote against the page it links to; the site builds; the profiles hold at 390 and 1280 pixels; no long dashes; the CNAME file is unchanged.
+
+## Wednesday 25 November 2026, Andy Warhol (draft)
+Published: nothing. A dispatch on Andy Warhol added as a draft after the owner asked for him on all five sites.
+Drafts waiting: "Andy Warhol and the Street: The Pop Artist Who Painted with a Graffiti Writer" (his work with Basquiat, who began as SAMO), with a public domain 1977 White House portrait. Dispatches count now ten. Branch draft/2026-11-25-andy-warhol.
+Checked: The Art Newspaper, e-flux, Wikipedia (SAMO, Basquiat), MoMA.
+Needs you: no artist profile was added for Warhol, since he did not make street art. Say if you want one.
 
 ## Wednesday 25 November 2026, Mohamed L’Ghacham (draft)
 Drafted on the owner's go ahead to add Mohamed L’Ghacham from the emerging artists research.
