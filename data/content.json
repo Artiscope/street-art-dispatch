@@ -1,6 +1,21 @@
 {
   "features": [
     {
+      "slug": "warhol-and-the-street",
+      "kicker": "Street Art History",
+      "cover": "world",
+      "title": "Andy Warhol and the Street: The Pop Artist Who Painted with a Graffiti Writer",
+      "standfirst": "Warhol never sprayed a wall, but he spent two years painting with Jean-Michel Basquiat, who began as the downtown graffiti writer SAMO. What the four-handed canvases borrowed from the street.",
+      "tags": [
+        "Andy Warhol",
+        "Jean-Michel Basquiat",
+        "SAMO",
+        "Keith Haring",
+        "Street art history"
+      ],
+      "body": "<p class=\"dropcap\">Andy Warhol never wrote on a wall. He worked in a studio, printed his pictures through silkscreens and sold them through galleries. Yet the story of street art in New York keeps running into him, because in the early 1980s the most famous painter in the city spent two years making pictures with a young man who had started out spraying words around downtown Manhattan.</p>\n<h2>SAMO on the walls</h2>\n<p>From May 1978, Jean-Michel Basquiat and his school friend Al Diaz wrote short, deadpan phrases signed SAMO© on buildings in SoHo and the East Village, around the School of Visual Arts and on the D train (<a href=\"https://en.wikipedia.org/wiki/SAMO\" rel=\"noopener\">Wikipedia, SAMO</a>). The Village Voice ran a piece on the mystery writer in December 1978. When the two fell out in early 1980, Basquiat finished the project by writing SAMO© IS DEAD across downtown (same source).</p>\n<p>Around the same time he was selling hand-made postcards in SoHo. He is thought to have first met Warhol in 1979, when he tried to sell him some (<a href=\"https://www.theartnewspaper.com/2023/03/30/andy-warhol-and-jean-michel-basquiats-collaboration-examined-in-fondation-louis-vuitton-show\" rel=\"noopener\">The Art Newspaper</a>). The real introduction came in October 1982, when the dealer Bruno Bischofberger brought him to lunch at Warhol's studio. Warhol took a Polaroid, and by Warhol's own account a painting came back within two hours, still wet (<a href=\"https://en.wikipedia.org/wiki/Jean-Michel_Basquiat\" rel=\"noopener\">Wikipedia, Jean-Michel Basquiat</a>).</p>\n<h2>Four hands, one canvas</h2>\n<p>The two are thought to have made about 160 works together between 1983 and 1985 (<a href=\"https://www.theartnewspaper.com/2023/03/30/andy-warhol-and-jean-michel-basquiats-collaboration-examined-in-fondation-louis-vuitton-show\" rel=\"noopener\">The Art Newspaper</a>). The early pieces began with Warhol's own silkscreened images, eggs, crabs and dollar signs, which Basquiat painted over. Basquiat later put it simply: Warhol would start a painting and he would deface it (<a href=\"https://www.e-flux.com/announcements/501487/basquiat-x-warhol-painting-4-hands/\" rel=\"noopener\">e-flux</a>).</p>\n<p>That is close to a description of street practice moved indoors. A printed, commercial image goes up first, and a second hand writes over it. Warhol said he thought the paintings were better when you could not tell who had done which part (same source). In our reading, that is the moment the two worlds meet: Pop art's ready-made pictures, and graffiti's habit of answering whatever is already on the wall.</p>\n<blockquote class=\"pull\">A printed image goes up first, and a second hand writes over it.</blockquote>\n<h2>A panned show and a long afterlife</h2>\n<p>The joint exhibition at the Tony Shafrazi Gallery in New York in 1985 did not go well. Critics panned it, one called Basquiat Warhol's mascot, and the friendship cooled (<a href=\"https://en.wikipedia.org/wiki/Jean-Michel_Basquiat\" rel=\"noopener\">Wikipedia, Jean-Michel Basquiat</a>). Warhol died in February 1987 and Basquiat in August 1988.</p>\n<p>Keith Haring, who had known Basquiat from the School of Visual Arts scene (same source), described the collaboration as a conversation held through painting instead of words. When the Fondation Louis Vuitton in Paris showed more than 80 of the jointly signed canvases in 2023, it hung work by Haring and Kenny Scharf beside them (<a href=\"https://www.e-flux.com/announcements/501487/basquiat-x-warhol-painting-4-hands/\" rel=\"noopener\">e-flux</a>).</p>\n<h2>Why it matters on the street</h2>\n<p>From 1962 Warhol worked by taking a familiar photograph and printing it again and again through a silkscreen (<a href=\"https://www.moma.org/learn/moma_learning/andy-warhol-campbells-soup-cans-1962/\" rel=\"noopener\">MoMA</a>). In our reading, the stencils, paste-ups and stickers that repeat one picture across a city work in much the same way. His paintings are still on the market this month. Our sister sites, Global Art Monitor and The Art World Report, follow the November 2026 results.</p>"
+    },
+    {
       "slug": "konn-artiss",
       "kicker": "Artist Profile",
       "cover": "konn",
@@ -793,7 +808,8 @@
     "beyond-gallery-walls": "A public work seen from street level",
     "banksy-style": "A stencilled figure on a wall",
     "street-artists-world-style": "Painted walls in five cities",
-    "mohamed-lghacham": "A Mohamed L’Ghacham mural"
+    "mohamed-lghacham": "A Mohamed L’Ghacham mural",
+    "warhol-and-the-street": "Andy Warhol at the White House, 1977"
   },
   "artist_photos": {
     "Konn Artiss": "Konn Artiss in the studio",
@@ -842,6 +858,14 @@
       "image": "konn-artiss-venice.jpg",
       "alt": "Four performers in black, seen from behind on the Venice waterfront, spell out KONN in white letters across their backs. Two hold umbrellas reading TRUST and ME. Beside them a life-size seated figure reads a newspaper, with San Giorgio Maggiore across the water.",
       "caption": "Konn Artiss in Venice."
+    },
+    "warhol-and-the-street": {
+      "image": "andy-warhol-1977.jpg",
+      "alt": "A black and white photograph of Andy Warhol, with pale swept hair and round glasses, in a dark suit and striped tie, standing with his hands folded in a candlelit room.",
+      "caption": "Andy Warhol at a White House reception for artists, 14 June 1977.",
+      "credit": "Photo: Jack Kightlinger, White House, public domain, via Wikimedia Commons.",
+      "credit_href": "https://commons.wikimedia.org/wiki/File:Andy_Warhol_1977.jpg",
+      "focus": "50% 20%"
     }
   },
   "artist_photo_files": {
