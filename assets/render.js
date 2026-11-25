@@ -559,9 +559,19 @@
         var rows = works.map(function (w) { return '<li><strong>' + (w.y === "TBC" ? W("missing.date", "Date to confirm") : w.y) + '</strong>: ' + esc(w.title) + ', ' + esc(w.city) + '</li>'; }).join("");
         arch = '<h2>' + W("item.in-archive", "In the archive") + '</h2><ul class="plain">' + rows + '</ul><p><a href="@@interventions/?artist=' + s + '">' + W("item.see-archive", "See these entries in the archive") + '</a></p>';
       }
+      // The fuller profile: life and career, how the work is made, key works, the artist's own words, milestones, related artists and sources.
+      var prof = "";
+      if (x.story) prof += '<h2>' + W("item.story", "Life and career") + '</h2>' + x.story;
+      if (x.method) prof += '<h2>' + W("item.method", "How the work is made") + '</h2>' + x.method;
+      if ((x.works || []).length) prof += '<h2>' + W("item.key-works", "Key works") + '</h2>' + x.works.map(function (w) { return '<h3>' + w.t + (w.y ? ' <span class="yr">(' + w.y + ')</span>' : "") + '</h3>' + (w.m ? '<p class="wmed">' + w.m + '</p>' : "") + '<p>' + w.note + '</p>'; }).join("");
+      if ((x.quotes || []).length) prof += '<h2>' + W("item.own-words", "In their own words") + '</h2>' + x.quotes.map(function (q) { return '<figure class="aq"><blockquote class="pull">' + q.q + '</blockquote><figcaption>' + q.who + '</figcaption></figure>'; }).join("");
+      if ((x.milestones || []).length) prof += '<h2>' + W("item.milestones", "Milestones and exhibitions") + '</h2><ul class="plain">' + x.milestones.map(function (m) { return '<li><strong>' + m[0] + '</strong>: ' + m[1] + '</li>'; }).join("") + '</ul>';
+      var rel = (x.explore || []).map(function (r) { return (D.artists || []).filter(function (a) { return a.slug === r && hasPage(a); })[0]; }).filter(Boolean);
+      var expl = rel.length ? '<h2>' + W("item.explore", "Explore more") + '</h2><ul class="plain">' + rel.map(function (a) { return '<li><a href="@@artists/' + a.slug + '/">' + a.name + '</a>: ' + a.role + '</li>'; }).join("") + '</ul>' : "";
+      var srcs = (x.sources || []).length ? '<h2>' + W("item.sources", "Sources") + '</h2><ul class="plain srcs">' + x.sources.map(function (r) { return '<li><a href="' + r[1] + '">' + r[0] + '</a></li>'; }).join("") + '</ul>' : "";
       var main = '<article>\n    ' + M('<header class="r-head"><p class="crumb"><a href="@@artists/">' + W("item.crumb-artists", "Artists") + '</a></p><p class="kicker">' + W("item.kicker-artist", "Artist") + '</p><h1>' + x.name + '</h1><p class="r-stand">' + x.role + '</p></header>', "words") + '\n' +
         '    ' + M(rFigure(x, ART_PHOTO_FILES[x.name], ART_PHOTOS[x.name] || x.name), "picture") + '\n' +
-        '    ' + M('<div class="r-body"><p>' + x.summary + '</p><p>' + (x.note || "") + '</p>\n      <dl class="kfacts">' + facts + '</dl>' + arch + '</div>', "about") + '\n' +
+        '    ' + M('<div class="r-body"><p>' + x.summary + '</p><p>' + (x.note || "") + '</p>\n      <dl class="kfacts">' + facts + '</dl>' + prof + arch + expl + srcs + '</div>', "about") + '\n' +
         (feat ? '    <footer class="r-foot"><div class="next"><p class="kicker">' + W("item.read-more", "Read more") + '</p><h2>' + feat.title + '</h2><a class="btn" href="@@' + pathOf(feat.slug) + '">' + W("btn.read-story", "Read the story") + '</a></div></footer>\n' : "") + '  </article>';
       main = tplWrap("artist", s, main); AO_KIND = "artist";
       return page("artists/" + s + "/index.html", x.name + " | " + NAME(), stripTags(x.summary), main);

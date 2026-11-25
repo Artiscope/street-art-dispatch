@@ -243,6 +243,99 @@
           "Authentication",
           "Pest Control Office"
         ]
+      ],
+      "story": "<p>Nobody has confirmed who Banksy is, and we do not guess. The documented story starts in Bristol, where he was a teenage graffiti writer in the 1990s before moving to London, according to the <a href=\"https://jsma.uoregon.edu/sites/default/files/2024-08/JSMA%20Research%20Guide%20-%20Banksy.pdf\">Jordan Schnitzer Museum of Art</a>. <a href=\"https://www.phillips.com/detail/banksy/238143\">Phillips</a> dates his first works on trains and walls to 1993.</p><p>The walls came first, but canvases followed early. <i>Laugh Now</i>, a canvas of 2001, was bought from the artist the year it was painted (<a href=\"https://www.bonhams.com/auction/32184/lot/9/banksy-b-1975-laugh-now-painted-in-2001/\">Bonhams</a>). In 2006 the Los Angeles show <i>Barely Legal</i> put large paintings such as <i>Angel</i> in front of an American audience (<a href=\"https://www.bonhams.com/auction/31893/lot/18A/banksy-b-1974-angel-83-78-x-83-78-in-213-x-213-cm-painted-in-2006/\">Bonhams</a>).</p><p>In the summer of 2009 he took over the museum in his home city. <i>Banksy Versus Bristol Museum</i> filled the building with about 100 works, was free to enter and ran until 31 August. Staff had kept the plan secret since the previous October (<a href=\"https://mg.co.za/friday/2009-06-13-banksy-s-great-and-secret-show/\">Mail &amp; Guardian</a>).</p>",
+      "method": "<p>A stencil is a sheet with shapes cut out of it. Hold it to a wall, spray through it, and the picture appears in seconds. The <a href=\"https://jsma.uoregon.edu/sites/default/files/2024-08/JSMA%20Research%20Guide%20-%20Banksy.pdf\">Jordan Schnitzer Museum of Art</a> calls Banksy an early mainstream innovator of stencil graffiti, a technique prized for its speed and graphic clarity. On canvas he mixes spray paint with acrylic or household emulsion (<a href=\"https://www.bonhams.com/auction/31893/lot/18A/banksy-b-1974-angel-83-78-x-83-78-in-213-x-213-cm-painted-in-2006/\">Bonhams</a>).</p><p>The look hardly changes between wall and canvas: flat black and white figures, a single accent colour and very few words. Rats and chimpanzees stand in for people. Bonhams’ catalogue for <i>Laugh Now</i> reads the chimpanzee as a stand-in through which human hierarchies are seen (<a href=\"https://www.bonhams.com/auction/32184/lot/9/banksy-b-1975-laugh-now-painted-in-2001/\">Bonhams</a>).</p>",
+      "works": [
+        {
+          "t": "Laugh Now",
+          "y": "2001",
+          "m": "Acrylic and spray paint on canvas",
+          "note": "A stooping chimpanzee wears a sandwich board. The image also became a six-metre mural commissioned for the Ocean Rooms nightclub in Brighton in 2002 (<a href=\"https://www.bonhams.com/auction/32184/lot/9/banksy-b-1975-laugh-now-painted-in-2001/\">Bonhams</a>). Our reading: the joke lands first, and the point about who does the work and who gets laughed at follows a second later."
+        },
+        {
+          "t": "Girl with Balloon",
+          "y": "2002",
+          "m": "Stencil mural, later canvases and prints",
+          "note": "First painted near Waterloo Bridge on London’s South Bank (<a href=\"https://en.wikipedia.org/wiki/Girl_with_Balloon\">Wikipedia</a>). A framed version partly shredded itself moments after selling at Sotheby’s in 2018 and was renamed <i>Love Is in the Bin</i>. Offered again in 2021, it sold for £18.6m with fees (<a href=\"https://www.theartnewspaper.com/2021/10/14/banksys-shredded-love-is-in-the-bin-sells-for-pound185m\">The Art Newspaper</a>)."
+        },
+        {
+          "t": "Keep Ou T",
+          "y": "2019",
+          "m": "Reclaimed airport customs arch, wood, metal and spray paint",
+          "note": "A found object, reworked and given a new title. It shows how far the practice has moved from the wall to the gallery (<a href=\"https://www.phillips.com/detail/banksy/238143\">Phillips</a>)."
+        }
+      ],
+      "quotes": [
+        {
+          "q": "“This is the first show I’ve ever done where taxpayers’ money is being used to hang my pictures up rather than scrape them off.”",
+          "who": "Banksy, before <i>Banksy Versus Bristol Museum</i> opened in June 2009, as reported by the <a href=\"https://mg.co.za/friday/2009-06-13-banksy-s-great-and-secret-show/\">Mail &amp; Guardian</a>"
+        }
+      ],
+      "milestones": [
+        [
+          "1990s",
+          "Teenage graffiti writer in Bristol"
+        ],
+        [
+          "2001",
+          "<i>Laugh Now</i> painted on canvas"
+        ],
+        [
+          "2002",
+          "<i>Girl with Balloon</i> first appears near Waterloo Bridge"
+        ],
+        [
+          "2006",
+          "<i>Barely Legal</i>, Los Angeles"
+        ],
+        [
+          "2009",
+          "<i>Banksy Versus Bristol Museum</i>, about 100 works, free entry"
+        ],
+        [
+          "2018",
+          "A framed <i>Girl with Balloon</i> partly shreds at Sotheby’s"
+        ],
+        [
+          "2021",
+          "Resold as <i>Love Is in the Bin</i> for £18.6m with fees"
+        ]
+      ],
+      "explore": [
+        "shepard-fairey",
+        "invader",
+        "kaws"
+      ],
+      "sources": [
+        [
+          "Jordan Schnitzer Museum of Art, Research Guide: Banksy (2024)",
+          "https://jsma.uoregon.edu/sites/default/files/2024-08/JSMA%20Research%20Guide%20-%20Banksy.pdf"
+        ],
+        [
+          "Phillips, Banksy, Keep Ou T, lot 4 (October 2026)",
+          "https://www.phillips.com/detail/banksy/238143"
+        ],
+        [
+          "Bonhams, Banksy, Laugh Now, lot 9 (October 2026)",
+          "https://www.bonhams.com/auction/32184/lot/9/banksy-b-1975-laugh-now-painted-in-2001/"
+        ],
+        [
+          "Bonhams, Banksy, Angel, lot 18A (November 2026)",
+          "https://www.bonhams.com/auction/31893/lot/18A/banksy-b-1974-angel-83-78-x-83-78-in-213-x-213-cm-painted-in-2006/"
+        ],
+        [
+          "Mail & Guardian, Banksy’s great and secret show (13 June 2009)",
+          "https://mg.co.za/friday/2009-06-13-banksy-s-great-and-secret-show/"
+        ],
+        [
+          "Wikipedia, Girl with Balloon",
+          "https://en.wikipedia.org/wiki/Girl_with_Balloon"
+        ],
+        [
+          "The Art Newspaper, Banksy world record as shredded work sells for £18.6m (14 October 2021)",
+          "https://www.theartnewspaper.com/2021/10/14/banksys-shredded-love-is-in-the-bin-sells-for-pound185m"
+        ]
       ]
     },
     {
@@ -263,6 +356,87 @@
         [
           "Medium",
           "Ceramic tiles"
+        ]
+      ],
+      "story": "<p>Invader is French and keeps his face out of photographs. <a href=\"https://the-talks.com/interview/space-invader/\">The Talks</a> gives his year of birth as 1969. He has said the idea for the first wall mosaic came to him at the end of 1996, and that it was only in 1998 that he understood what the gesture could become (<a href=\"https://news.artnet.com/art-world/street-artist-invader-4000-2226676\">Artnet News</a>). Paris was the first city to be ‘invaded’.</p><p>By 2022 the count stood at more than 4,000 street works in around 80 cities. One mosaic went to the International Space Station in 2015 with the astronaut Samantha Cristoforetti, and the 4,000th was fixed to a wall in Potosí, Bolivia, at 4,000 metres (<a href=\"https://news.artnet.com/art-world/street-artist-invader-4000-2226676\">Artnet News</a>).</p><p>Nearly all of it is unauthorised. He told The Talks that 99 per cent of his pieces are illegal, and he calls museum and city commissions, such as a hospital facade in Paris and a bridge on the Vienna underground, his ‘1 percent legal’ (<a href=\"https://news.artnet.com/art-world/street-artist-invader-4000-2226676\">Artnet News</a>). Theft follows the work. Around 15 pieces were prised off Paris buildings in 2017 by thieves posing as city workers, and he now makes tiles that break if anyone tries to remove them (<a href=\"https://news.artnet.com/art-world/street-artist-invader-4000-2226676\">Artnet News</a>).</p>",
+      "method": "<p>The figures come from the 8-bit video games of the 1980s. Each square of a pixel image becomes a ceramic tile, so a mosaic is built the same way an old screen built a picture (<a href=\"https://www.juxtapoz.com/news/magazine/features/invader-to-infinity-and-beyond/\">Juxtapoz</a>). His early designs were drawn on a Macintosh IIfx with Photoshop 2.0, by his own account.</p><p>He also builds pictures from Rubik’s Cubes, which he calls Rubikcubism. <i>Invader Rubikcubist</i>, a show of more than 100 such works, ran at MIMA in Brussels until January 2023 (<a href=\"https://news.artnet.com/art-world/street-artist-invader-4000-2226676\">Artnet News</a>). Our reading: the cube does the same job as the tile, one coloured square at a time.</p>",
+      "works": [
+        {
+          "t": "The space mosaic",
+          "y": "2015",
+          "m": "Mosaic",
+          "note": "Taken aboard the International Space Station by Samantha Cristoforetti, which put an invasion beyond any city (<a href=\"https://news.artnet.com/art-world/street-artist-invader-4000-2226676\">Artnet News</a>)."
+        },
+        {
+          "t": "The 4,000th street work",
+          "y": "2022",
+          "m": "Ceramic tile mosaic, Potosí, Bolivia",
+          "note": "Installed at an altitude of 4,000 metres to mark the 4,000th piece. The milestone was celebrated with <i>Invader 4,000</i> at Over the Influence in Paris, from 10 December 2022 to 22 January 2023 (<a href=\"https://news.artnet.com/art-world/street-artist-invader-4000-2226676\">Artnet News</a>)."
+        },
+        {
+          "t": "Hello My Game Is...",
+          "y": "2017",
+          "m": "Exhibition, Musée en Herbe, Paris",
+          "note": "More than a hundred original works from January to 3 September 2017 (<a href=\"https://www.juxtapoz.com/news/magazine/features/invader-to-infinity-and-beyond/\">Juxtapoz</a>)."
+        }
+      ],
+      "quotes": [
+        {
+          "q": "“I hope forever. Because that is the game. I am addicted to it.”",
+          "who": "Invader, asked how long the invasions will go on, <a href=\"https://the-talks.com/interview/space-invader/\">The Talks</a>"
+        },
+        {
+          "q": "“Invading a new city is always more exciting for me than working on a new show.”",
+          "who": "Invader, <a href=\"https://www.juxtapoz.com/news/magazine/features/invader-to-infinity-and-beyond/\">Juxtapoz</a>, 2017"
+        }
+      ],
+      "milestones": [
+        [
+          "1996",
+          "Idea for the first wall mosaic"
+        ],
+        [
+          "1998",
+          "The Paris invasion begins in earnest"
+        ],
+        [
+          "2015",
+          "A mosaic goes to the International Space Station"
+        ],
+        [
+          "2017",
+          "<i>Hello My Game Is...</i>, Musée en Herbe, Paris"
+        ],
+        [
+          "2017",
+          "About 15 Paris pieces stolen by fake city workers"
+        ],
+        [
+          "2022",
+          "4,000th street work, Potosí, Bolivia"
+        ],
+        [
+          "2022 to 2023",
+          "<i>Invader Rubikcubist</i>, MIMA, Brussels"
+        ]
+      ],
+      "explore": [
+        "shepard-fairey",
+        "banksy",
+        "vhils"
+      ],
+      "sources": [
+        [
+          "The Talks, Space Invader: ‘You own the city’",
+          "https://the-talks.com/interview/space-invader/"
+        ],
+        [
+          "Artnet News, Anna Sansom, Invader on installing more than 4,000 mosaics (12 December 2022)",
+          "https://news.artnet.com/art-world/street-artist-invader-4000-2226676"
+        ],
+        [
+          "Juxtapoz, Invader: To Infinity and Beyond, interview by Sasha Bogojev (2017)",
+          "https://www.juxtapoz.com/news/magazine/features/invader-to-infinity-and-beyond/"
         ]
       ]
     },
@@ -285,6 +459,87 @@
           "Collecting",
           "Signed screen-print editions"
         ]
+      ],
+      "story": "<p>Shepard Fairey began the campaign that made his name in 1989, as a 19-year-old illustration student at the Rhode Island School of Design in Providence (<a href=\"https://lamag.com/politics/shepard-fairey-looks-back-at-30-years-of-dissent-and-forward-to-the-coming-election/\">Los Angeles magazine</a>). It was a sticker of the wrestler André the Giant with the line ‘Andre the Giant Has a Posse’. Fairey has said it ‘started as an inside joke with some skateboard friends’. RISD says it soon turned into a wider statement about making art for everyone (<a href=\"https://www.risd.edu/news/stories/fairey-faces-giant\">RISD</a>).</p><p>The word OBEY came from John Carpenter’s 1988 film <i>They Live</i>. Fairey told RISD students that the word ‘hit me like a ton of bricks’ (<a href=\"https://www.risd.edu/news/stories/fairey-faces-giant\">RISD</a>). He co-founded the gallery Subliminal Projects in 1995, launched the OBEY clothing label in 2001 and set up the design studio Studio Number One in 2003 (<a href=\"https://thecreativeindependent.com/people/shepard-fairey/\">The Creative Independent</a>). He has lived in Los Angeles since 2001.</p><p>His <i>Hope</i> portrait of Barack Obama, made during the 2008 election, carried his work far beyond the street. The original is in the Smithsonian (<a href=\"https://lamag.com/politics/shepard-fairey-looks-back-at-30-years-of-dissent-and-forward-to-the-coming-election/\">Los Angeles magazine</a>), and his work is also held by MoMA, LACMA and the National Portrait Gallery in Washington (<a href=\"https://thecreativeindependent.com/people/shepard-fairey/\">The Creative Independent</a>). The street work never stopped, and it has brought legal trouble, including 14 felony charges for destruction of property in Boston in 2009 (<a href=\"https://lamag.com/politics/shepard-fairey-looks-back-at-30-years-of-dissent-and-forward-to-the-coming-election/\">Los Angeles magazine</a>).</p>",
+      "method": "<p>Fairey works like a graphic designer: bold shapes, a small set of colours and lettering that reads from across a road. The same image can appear as a sticker, a pasted poster, a mural or a signed screen print. Our reading: the style borrows the look of propaganda in order to make people question it.</p><p>Collectors mostly buy his signed screen-print editions, which are produced in numbers. Murals are the public face of the work. By 2019 he had painted 100 of them, the hundredth for the arts organisation AS220 in Providence (<a href=\"https://www.risd.edu/news/stories/fairey-faces-giant\">RISD</a>).</p>",
+      "works": [
+        {
+          "t": "Andre the Giant Has a Posse",
+          "y": "1989",
+          "m": "Sticker campaign",
+          "note": "Started at RISD and spread by hand, city by city. It is the seed of everything that came later, including the OBEY name (<a href=\"https://www.risd.edu/news/stories/fairey-faces-giant\">RISD</a>)."
+        },
+        {
+          "t": "Hope",
+          "y": "2008",
+          "m": "Poster portrait of Barack Obama",
+          "note": "Made during the presidential campaign. The original is in the collection of the Smithsonian (<a href=\"https://lamag.com/politics/shepard-fairey-looks-back-at-30-years-of-dissent-and-forward-to-the-coming-election/\">Los Angeles magazine</a>)."
+        },
+        {
+          "t": "Facing the Giant: Three Decades of Dissent",
+          "y": "2019",
+          "m": "Touring retrospective",
+          "note": "Shown in Providence at AS220’s gallery from 25 October to 16 November 2019 (<a href=\"https://www.risd.edu/news/stories/fairey-faces-giant\">RISD</a>), and in Los Angeles at Over the Influence with 30 original works (<a href=\"https://lamag.com/politics/shepard-fairey-looks-back-at-30-years-of-dissent-and-forward-to-the-coming-election/\">Los Angeles magazine</a>)."
+        }
+      ],
+      "quotes": [
+        {
+          "q": "“If you work hard and believe in what you’re doing, the art world will eventually come to you.”",
+          "who": "Shepard Fairey, speaking to RISD students in October 2019, <a href=\"https://www.risd.edu/news/stories/fairey-faces-giant\">RISD</a>"
+        }
+      ],
+      "milestones": [
+        [
+          "1989",
+          "André the Giant stickers, Providence"
+        ],
+        [
+          "1995",
+          "Co-founds Subliminal Projects"
+        ],
+        [
+          "2001",
+          "OBEY clothing; moves to Los Angeles"
+        ],
+        [
+          "2003",
+          "Co-founds Studio Number One"
+        ],
+        [
+          "2008",
+          "<i>Hope</i> poster"
+        ],
+        [
+          "2009",
+          "Charged in Boston over street work"
+        ],
+        [
+          "2017",
+          "Documentary <i>Obey Giant</i>"
+        ],
+        [
+          "2019",
+          "100th mural, Providence; <i>Facing the Giant</i> tour"
+        ]
+      ],
+      "explore": [
+        "banksy",
+        "invader",
+        "kaws"
+      ],
+      "sources": [
+        [
+          "The Creative Independent, Shepard Fairey",
+          "https://thecreativeindependent.com/people/shepard-fairey/"
+        ],
+        [
+          "RISD, Fairey Faces the Giant, Simone Solondz (24 October 2019)",
+          "https://www.risd.edu/news/stories/fairey-faces-giant"
+        ],
+        [
+          "Los Angeles magazine, Robert Ito, Shepard Fairey looks back at 30 years of dissent (6 November 2019)",
+          "https://lamag.com/politics/shepard-fairey-looks-back-at-30-years-of-dissent-and-forward-to-the-coming-election/"
+        ]
       ]
     },
     {
@@ -305,6 +560,119 @@
         [
           "Landmark",
           "Kelburn Castle, Scotland (2007)"
+        ]
+      ],
+      "story": "<p>OSGEMEOS means ‘the twins’ in Portuguese. Gustavo and Otavio Pandolfo were born in São Paulo in 1974 (<a href=\"https://www.npr.org/2024/09/19/nx-s1-4967480/osgemeos-twins-brazil-hirshhorn-pandolfo\">NPR</a>) and grew up in Cambuci, an old working-class immigrant neighbourhood of the city (<a href=\"https://juxtapoz.com/news/installation/osgemeos-reveal-their-secrets-in-major-homecoming-museum-show-in-sao-paulo/\">Juxtapoz</a>). Tate’s press release says they started painting graffiti in 1987 (<a href=\"https://www.tate.org.uk/press/press-releases/street-art-tate-modern\">Tate</a>).</p><p>As children they invented an imaginary place they call Tritrez (<a href=\"https://www.npr.org/2024/09/19/nx-s1-4967480/osgemeos-twins-brazil-hirshhorn-pandolfo\">NPR</a>). Our reading: much of what they paint looks like news from that place. They talk about the partnership as a single voice, and work as one.</p><p>The walls led quickly to museums. They painted a giant about 82 feet high for the 2004 Athens Olympics (<a href=\"https://www.npr.org/2024/09/19/nx-s1-4967480/osgemeos-twins-brazil-hirshhorn-pandolfo\">NPR</a>), helped paint Kelburn Castle in Scotland in 2007 (<a href=\"https://www.hookedblog.co.uk/2007/05/graffiti-project.html\">Hookedblog</a>) and in 2008 were among six artists who painted the river front of Tate Modern (<a href=\"https://www.tate.org.uk/press/press-releases/street-art-tate-modern\">Tate</a>). <i>Segredos</i>, their homecoming show at the Pinacoteca de São Paulo, gathered more than 1,000 items, including notebooks from their early teens shown for the first time (<a href=\"https://juxtapoz.com/news/installation/osgemeos-reveal-their-secrets-in-major-homecoming-museum-show-in-sao-paulo/\">Juxtapoz</a>). The Hirshhorn in Washington gave them <i>Endless Story</i>, their first major museum survey in the United States, in 2024 (<a href=\"https://jsma.uoregon.edu/sites/default/files/2025-09/jsma-research-guide-osgemeos.pdf\">Jordan Schnitzer Museum of Art</a>).</p>",
+      "method": "<p>The figures are long-limbed and yellow-skinned, in patterned clothes, set in dreamlike scenes. <a href=\"https://www.artsy.net/artist/osgemeos\">Artsy</a> links the imagery to Brazilian folklore, hip-hop and graffiti. A museum research guide says the yellow comes from a colour both brothers see in their dreams (<a href=\"https://jsma.uoregon.edu/sites/default/files/2025-09/jsma-research-guide-osgemeos.pdf\">Jordan Schnitzer Museum of Art</a>).</p><p>In the studio the paintings grow extra layers. One panel of 2010 combines acrylic, spray enamel, latex and sequins (<a href=\"https://onlineonly.christies.com.cn/s/first-open-post-war-contemporary-art/osgemeos-b-1974-117/316126\">Christie’s</a>). Others are made on MDF with sequins and found materials, and some move: <i>Untitled (Zoetrope)</i> of 2014 is built around an early animation device (<a href=\"https://www.npr.org/2024/09/19/nx-s1-4967480/osgemeos-twins-brazil-hirshhorn-pandolfo\">NPR</a>).</p>",
+      "works": [
+        {
+          "t": "Kelburn Castle",
+          "y": "2007",
+          "m": "Paint on the walls of a 13th century castle, Scotland",
+          "note": "Commissioned by the castle’s owners from four Brazilian artists, OSGEMEOS among them (<a href=\"https://www.hookedblog.co.uk/2007/05/graffiti-project.html\">Hookedblog</a>). Our reading: a rare case of a historic building choosing graffiti."
+        },
+        {
+          "t": "Sem medo de ser feliz",
+          "y": "2010",
+          "m": "Acrylic, spray enamel, latex and sequins on panel",
+          "note": "The title means ‘without fear of being happy’. The sequins catch the light as you move, so the picture changes as you walk past (<a href=\"https://onlineonly.christies.com.cn/s/first-open-post-war-contemporary-art/osgemeos-b-1974-117/316126\">Christie’s</a>)."
+        },
+        {
+          "t": "Endless Story",
+          "y": "2024",
+          "m": "Survey exhibition, Hirshhorn Museum, Washington",
+          "note": "Their largest show in the United States, with more than 1,000 artworks, curated by Marina Isgro and opening on 29 September 2024 (<a href=\"https://www.npr.org/2024/09/19/nx-s1-4967480/osgemeos-twins-brazil-hirshhorn-pandolfo\">NPR</a>)."
+        }
+      ],
+      "quotes": [
+        {
+          "q": "“We are like one artist.”",
+          "who": "Gustavo Pandolfo, <a href=\"https://www.npr.org/2024/09/19/nx-s1-4967480/osgemeos-twins-brazil-hirshhorn-pandolfo\">NPR</a>, 2024"
+        },
+        {
+          "q": "“There is a conversation in the air flying there, but only we can listen [to] each other.”",
+          "who": "Otavio Pandolfo, <a href=\"https://www.npr.org/2024/09/19/nx-s1-4967480/osgemeos-twins-brazil-hirshhorn-pandolfo\">NPR</a>, 2024"
+        }
+      ],
+      "milestones": [
+        [
+          "1987",
+          "Start painting graffiti in São Paulo"
+        ],
+        [
+          "2004",
+          "Giant figure for the Athens Olympics"
+        ],
+        [
+          "2006",
+          "Milan Triennale"
+        ],
+        [
+          "2007",
+          "Kelburn Castle, Scotland"
+        ],
+        [
+          "2008",
+          "Tate Modern river front; Museum of Contemporary Art Tokyo"
+        ],
+        [
+          "2011",
+          "<i>Art in the Streets</i>, MOCA Los Angeles"
+        ],
+        [
+          "2012",
+          "First US solo show, ICA Boston"
+        ],
+        [
+          "2016",
+          "<i>Efêmero</i>, Pirelli HangarBicocca, Milan"
+        ],
+        [
+          "2020 to 2021",
+          "<i>Segredos</i>, Pinacoteca de São Paulo"
+        ],
+        [
+          "2022",
+          "<i>When the leaves turn to yellow</i>, CAC Málaga"
+        ],
+        [
+          "2024",
+          "<i>Endless Story</i>, Hirshhorn, Washington"
+        ]
+      ],
+      "explore": [
+        "vhils",
+        "faith-xlvii",
+        "eko-nugroho"
+      ],
+      "sources": [
+        [
+          "NPR, ‘We are like one artist’: These identical twins are in sync from graffiti to gallery (19 September 2024)",
+          "https://www.npr.org/2024/09/19/nx-s1-4967480/osgemeos-twins-brazil-hirshhorn-pandolfo"
+        ],
+        [
+          "Juxtapoz, Sasha Bogojev, OSGEMEOS reveal their secrets in major homecoming museum show in São Paulo (2020)",
+          "https://juxtapoz.com/news/installation/osgemeos-reveal-their-secrets-in-major-homecoming-museum-show-in-sao-paulo/"
+        ],
+        [
+          "Jordan Schnitzer Museum of Art, Artist Resources: OSGEMEOS (2025)",
+          "https://jsma.uoregon.edu/sites/default/files/2025-09/jsma-research-guide-osgemeos.pdf"
+        ],
+        [
+          "Tate, press release, Street Art at Tate Modern (2 April 2008)",
+          "https://www.tate.org.uk/press/press-releases/street-art-tate-modern"
+        ],
+        [
+          "Hookedblog, Graffiti Project (23 May 2007)",
+          "https://www.hookedblog.co.uk/2007/05/graffiti-project.html"
+        ],
+        [
+          "Artsy, OSGEMEOS",
+          "https://www.artsy.net/artist/osgemeos"
+        ],
+        [
+          "Christie’s, OSGEMEOS, Sem medo de ser feliz, lot 117 (July 2026)",
+          "https://onlineonly.christies.com.cn/s/first-open-post-war-contemporary-art/osgemeos-b-1974-117/316126"
         ]
       ]
     },
@@ -327,6 +695,111 @@
           "Landmark",
           "Scratching the Surface (from 2007)"
         ]
+      ],
+      "story": "<p>Alexandre Farto was born in Lisbon in 1987 (<a href=\"https://vhils.com/about/\">vhils.com</a>). He started as an illegal graffiti writer at 13, and by 16 or 17 he had begun to question what he was doing (<a href=\"https://www.designboom.com/art/alexandre-farto-vhils-studio-visit-interview-05-19-2017/\">designboom</a>). At about 19 he went to London to study, at Byam Shaw School of Art and Central Saint Martins (<a href=\"https://www.euronews.com/2024/05/14/street-art-made-with-explosives-and-chisels-meet-vhils-portugal-s-urban-archaeologist\">Euronews</a>; <a href=\"https://vhils.com/about/\">vhils.com</a>). In 2008 he painted at the Cans Festival in London, alongside Banksy (<a href=\"https://www.euronews.com/2024/05/14/street-art-made-with-explosives-and-chisels-meet-vhils-portugal-s-urban-archaeologist\">Euronews</a>).</p><p>The turning point was a change in direction rather than in style. He painted billboards white and cut back through them. ‘I felt that by destroying I was revealing,’ he told designboom (<a href=\"https://www.designboom.com/art/alexandre-farto-vhils-studio-visit-interview-05-19-2017/\">designboom</a>). His studio was founded in 2010 (<a href=\"https://vhils.com/about/\">vhils.com</a>) and now works from Barreiro, on the outskirts of Lisbon, with a team of about 15 (<a href=\"https://hypebeast.com/2020/3/exploding-identity-with-vhils\">Hypebeast</a>).</p><p>Lisbon has given him two museum shows: <i>Prisma</i>, a video installation at MAAT in 2022 (<a href=\"https://maat.pt/en/exhibition/vhils-prisma\">MAAT</a>), and a look back at his printed editions at MUDE, the city’s design museum, in early 2026 (<a href=\"https://www.euronews.com/2026/01/25/vhils-in-view-lisbon-looks-back-at-two-decades-of-art-by-portugals-urban-archaeologist\">Euronews</a>).</p>",
+      "method": "<p>Vhils works by taking away. He cuts, drills, etches or blasts through plaster, paper, wood and metal until a face appears from the layers underneath (<a href=\"https://vhils.com/about/\">vhils.com</a>). The tools run from chisels and a Dremel to explosives, a method he developed around 2012 (<a href=\"https://hypebeast.com/2020/3/exploding-identity-with-vhils\">Hypebeast</a>).</p><p>In the studio he carves into stacks of posters collected from the street, so the colours of old adverts become the light and shade of a portrait (<a href=\"https://www.bonhams.com/auction/31240/lot/231/vhils-b-1987-attrition-series-01-executed-in-2018/\">Bonhams</a>). The faces are often of people who live where the wall stands. In Rio de Janeiro he carved portraits into the ruins of homes being demolished, working with a local organisation (<a href=\"https://www.euronews.com/2024/05/14/street-art-made-with-explosives-and-chisels-meet-vhils-portugal-s-urban-archaeologist\">Euronews</a>).</p>",
+      "works": [
+        {
+          "t": "Scratching the Surface",
+          "y": "from 2007",
+          "m": "Carved wall portraits",
+          "note": "The series that set out the method, first shown in Lisbon in 2007 and in London in 2008 (<a href=\"https://vhils.com/about/\">vhils.com</a>)."
+        },
+        {
+          "t": "Dissecção",
+          "y": "2014",
+          "m": "Carved train carriages",
+          "note": "A series cut into the bodies of old train carriages (<a href=\"https://hypebeast.com/2020/3/exploding-identity-with-vhils\">Hypebeast</a>)."
+        },
+        {
+          "t": "Attrition series #01",
+          "y": "2018",
+          "m": "Hand-carved advertising posters collected from the street",
+          "note": "A studio work, 180 by 120 cm. Our reading: the adverts that once sold things now make up a stranger’s face (<a href=\"https://www.bonhams.com/auction/31240/lot/231/vhils-b-1987-attrition-series-01-executed-in-2018/\">Bonhams</a>)."
+        }
+      ],
+      "quotes": [
+        {
+          "q": "“I say that I’m kind of an urban archaeologist because I basically carve on the walls of the city.”",
+          "who": "Vhils, <a href=\"https://www.euronews.com/2024/05/14/street-art-made-with-explosives-and-chisels-meet-vhils-portugal-s-urban-archaeologist\">Euronews</a>"
+        },
+        {
+          "q": "“All of the layers in my work were a part of someone’s life before.”",
+          "who": "Vhils, <a href=\"https://hypebeast.com/2020/3/exploding-identity-with-vhils\">Hypebeast</a>, 2020"
+        }
+      ],
+      "milestones": [
+        [
+          "1987",
+          "Born in Lisbon"
+        ],
+        [
+          "Early 2000s",
+          "Graffiti on Lisbon’s walls"
+        ],
+        [
+          "2007",
+          "<i>Scratching the Surface</i>, Lisbon"
+        ],
+        [
+          "2008",
+          "Cans Festival, London"
+        ],
+        [
+          "2010",
+          "Studio founded"
+        ],
+        [
+          "Around 2012",
+          "Begins working with explosives"
+        ],
+        [
+          "2014",
+          "<i>Dissecção</i>"
+        ],
+        [
+          "2022",
+          "<i>Prisma</i>, MAAT, Lisbon"
+        ],
+        [
+          "2026",
+          "Editions show at MUDE, Lisbon"
+        ]
+      ],
+      "explore": [
+        "osgemeos",
+        "mohamed-l-ghacham",
+        "invader"
+      ],
+      "sources": [
+        [
+          "Vhils, About (artist’s website)",
+          "https://vhils.com/about/"
+        ],
+        [
+          "designboom, Hollie Smith, Alexandre Farto aka Vhils studio visit and interview in Lisbon (19 May 2017)",
+          "https://www.designboom.com/art/alexandre-farto-vhils-studio-visit-interview-05-19-2017/"
+        ],
+        [
+          "Euronews, Charlotte Cullen, Meet Vhils, Portugal’s ‘urban archaeologist’ (14 April 2022, updated 14 May 2024)",
+          "https://www.euronews.com/2024/05/14/street-art-made-with-explosives-and-chisels-meet-vhils-portugal-s-urban-archaeologist"
+        ],
+        [
+          "Hypebeast, Kevin Wong, Exploding Identity with Vhils (9 March 2020)",
+          "https://hypebeast.com/2020/3/exploding-identity-with-vhils"
+        ],
+        [
+          "Bonhams, Vhils, Attrition series #01, lot 231 (October 2025)",
+          "https://www.bonhams.com/auction/31240/lot/231/vhils-b-1987-attrition-series-01-executed-in-2018/"
+        ],
+        [
+          "MAAT, Vhils: Prisma (2022)",
+          "https://maat.pt/en/exhibition/vhils-prisma"
+        ],
+        [
+          "Euronews, Inês dos Santos Cardoso, Vhils in view (25 January 2026)",
+          "https://www.euronews.com/2026/01/25/vhils-in-view-lisbon-looks-back-at-two-decades-of-art-by-portugals-urban-archaeologist"
+        ]
       ]
     },
     {
@@ -347,6 +820,95 @@
         [
           "Landmark",
           "First COMPANION toy (1999)"
+        ]
+      ],
+      "story": "<p>Brian Donnelly was born in 1974. He studied illustration at the School of Visual Arts in New York and painted backgrounds for television cartoons (<a href=\"https://www.christies.com.cn/zh-cn/stories/kaws-artist-guide-1266ae90d08c4aba926e0e3309aeafaa\">Christie’s</a>). At night he tagged KAWS on walls in New Jersey and Manhattan, then began opening bus shelter advertising cases, painting his own figures over the posters and putting them back (<a href=\"https://www.christies.com.cn/zh-cn/stories/kaws-artist-guide-1266ae90d08c4aba926e0e3309aeafaa\">Christie’s</a>). <i>Untitled (Haring)</i>, painted on an advertising poster in 1997, and <i>Untitled (Maidenform)</i> of 1999 date from those years (<a href=\"https://brooklynrail.org/2021/06/art/KAWS-with-Jason-Rosenfeld/\">The Brooklyn Rail</a>; <a href=\"https://www.theartnewspaper.com/review/the-big-review-kaws-what-party-at-the-brooklyn-museum\">The Art Newspaper</a>).</p><p>A trip to Japan in 1999 produced his first toy, COMPANION, a figure with crossed-out eyes (<a href=\"https://www.christies.com.cn/zh-cn/stories/kaws-artist-guide-1266ae90d08c4aba926e0e3309aeafaa\">Christie’s</a>). The character has since been carved, cast and inflated. A COMPANION balloon joined the Macy’s Thanksgiving parade in 2012, and a 121-foot inflatable lay in Hong Kong’s Victoria Harbour in 2019 (<a href=\"https://www.christies.com.cn/zh-cn/stories/kaws-artist-guide-1266ae90d08c4aba926e0e3309aeafaa\">Christie’s</a>; <a href=\"https://brooklynrail.org/2021/06/art/KAWS-with-Jason-Rosenfeld/\">The Brooklyn Rail</a>). In 2021 the Brooklyn Museum gave him <i>KAWS: WHAT PARTY</i>, his first museum show in New York, with more than 100 works (<a href=\"https://www.brooklynmuseum.org/exhibitions/kaws_what_party\">Brooklyn Museum</a>).</p>",
+      "method": "<p>KAWS borrows from cartoons and packaging: flat colour, hard edges and familiar characters with X’d-out eyes. The large paintings crop the figures so tightly that they break into blocks of colour (<a href=\"https://www.christies.com.cn/en/lot/lot-6603892\">Christie’s</a>). He keeps the sculptures still on purpose. ‘I want you to look at the form. I don’t want you to think about what they might say,’ he told the Brooklyn Rail (<a href=\"https://brooklynrail.org/2021/06/art/KAWS-with-Jason-Rosenfeld/\">The Brooklyn Rail</a>).</p><p>The output is unusually wide: unique paintings, large sculptures, prints, toys, and collaborations with brands including Nike, Uniqlo and Dior (<a href=\"https://www.theartnewspaper.com/review/the-big-review-kaws-what-party-at-the-brooklyn-museum\">The Art Newspaper</a>). Our reading: that range is what keeps him in the street-art conversation long after he left the bus shelters.</p>",
+      "works": [
+        {
+          "t": "Untitled (Haring)",
+          "y": "1997",
+          "m": "Acrylic on an existing advertising poster",
+          "note": "One of the altered adverts that started it all, first shown at a friend’s restaurant and gallery in Seattle (<a href=\"https://brooklynrail.org/2021/06/art/KAWS-with-Jason-Rosenfeld/\">The Brooklyn Rail</a>)."
+        },
+        {
+          "t": "COMPANION",
+          "y": "1999",
+          "m": "Toy, later sculpture and inflatables",
+          "note": "The figure with Xs for eyes, first made as a toy after a trip to Japan (<a href=\"https://www.christies.com.cn/zh-cn/stories/kaws-artist-guide-1266ae90d08c4aba926e0e3309aeafaa\">Christie’s</a>). It has since appeared at every scale, from a shelf figure to a harbour."
+        },
+        {
+          "t": "CAMO CAN’T HELP YOU",
+          "y": "2013",
+          "m": "Acrylic on canvas",
+          "note": "First shown at Kaikai Kiki Gallery in Tokyo. A cartoon face cropped and broken into flat camouflage-like shapes (<a href=\"https://www.christies.com.cn/en/lot/lot-6603892\">Christie’s</a>)."
+        }
+      ],
+      "quotes": [
+        {
+          "q": "“I think no matter what I put on canvas, people don’t think of me as a painter.”",
+          "who": "KAWS, <a href=\"https://brooklynrail.org/2021/06/art/KAWS-with-Jason-Rosenfeld/\">The Brooklyn Rail</a>, June 2021"
+        }
+      ],
+      "milestones": [
+        [
+          "1974",
+          "Born"
+        ],
+        [
+          "1997",
+          "Altered adverts such as <i>Untitled (Haring)</i>"
+        ],
+        [
+          "1999",
+          "First COMPANION toy"
+        ],
+        [
+          "2006",
+          "ORIGINALFAKE COMPANION for his Tokyo shop"
+        ],
+        [
+          "2012",
+          "COMPANION balloon, Macy’s Thanksgiving parade"
+        ],
+        [
+          "2014",
+          "CAC Málaga, his first sculpture-only show"
+        ],
+        [
+          "2019",
+          "<i>KAWS: HOLIDAY</i>, Victoria Harbour, Hong Kong"
+        ],
+        [
+          "2021",
+          "<i>KAWS: WHAT PARTY</i>, Brooklyn Museum"
+        ]
+      ],
+      "explore": [
+        "banksy",
+        "shepard-fairey",
+        "eko-nugroho"
+      ],
+      "sources": [
+        [
+          "Christie’s, 10 things to know about KAWS (28 March 2026)",
+          "https://www.christies.com.cn/zh-cn/stories/kaws-artist-guide-1266ae90d08c4aba926e0e3309aeafaa"
+        ],
+        [
+          "The Brooklyn Rail, KAWS with Jason Rosenfeld (June 2021)",
+          "https://brooklynrail.org/2021/06/art/KAWS-with-Jason-Rosenfeld/"
+        ],
+        [
+          "The Art Newspaper, Paddy Johnson, The Big Review: Kaws at the Brooklyn Museum (9 April 2021)",
+          "https://www.theartnewspaper.com/review/the-big-review-kaws-what-party-at-the-brooklyn-museum"
+        ],
+        [
+          "Brooklyn Museum, KAWS: WHAT PARTY (2021)",
+          "https://www.brooklynmuseum.org/exhibitions/kaws_what_party"
+        ],
+        [
+          "Christie’s, KAWS, CAMO CAN’T HELP YOU, lot 233 (September 2026)",
+          "https://www.christies.com.cn/en/lot/lot-6603892"
         ]
       ]
     },
@@ -369,6 +931,95 @@
           "In collections",
           "Singapore Art Museum"
         ]
+      ],
+      "story": "<p>Eko Nugroho was born in 1977 and lives and works in Yogyakarta, Indonesia (<a href=\"https://danyszgallery.com/artists/10977-eko-nugroho/biography/\">DANYSZ</a>; <a href=\"https://singaporeartmuseum.sg/About/Our-Collection/Illusion\">Singapore Art Museum</a>). He was 20 when President Suharto’s government fell in 1998 after 32 years (<a href=\"https://danyszgallery.com/artists/10977-eko-nugroho/biography/\">DANYSZ</a>). He studied at the Indonesian Institute of the Arts in Yogyakarta, graduating in 2006, and once worked as a primary school teacher (<a href=\"https://www.thejakartapost.com/news/2017/01/14/getting-personal-eko-nugroho-recording-history-through-art.html\">The Jakarta Post</a>).</p><p>He started with comics. In 2000, still a student, he founded <i>Daging Tumbuh</i>, a comic magazine whose first issue came out in June that year, and he was part of the Apotik Komik group in Yogyakarta (<a href=\"https://artandaustralia.com/A_A/p255/reality-in-the-world-of-eko-nugroho\">Art + Australia</a>). His first solo show, <i>Bercerobong</i> (Like a Chimney), was at Cemeti Art House in 2002 (<a href=\"https://www.thejakartapost.com/news/2017/01/14/getting-personal-eko-nugroho-recording-history-through-art.html\">The Jakarta Post</a>).</p><p>Museums followed: the Asia Pacific Triennial in Brisbane in 2006, a solo show at the Musée d’Art Moderne de Paris in 2012 and the Indonesian Pavilion at the Venice Biennale in 2013 (<a href=\"https://artandaustralia.com/A_A/p255/reality-in-the-world-of-eko-nugroho\">Art + Australia</a>). In 2013 he also designed scarves for Louis Vuitton. Only 500 were made (<a href=\"https://www.thejakartapost.com/news/2017/01/14/getting-personal-eko-nugroho-recording-history-through-art.html\">The Jakarta Post</a>).</p>",
+      "method": "<p>His figures are masked or hooded, sometimes with extra limbs, and often carry slogans in English or Indonesian. The masks are a choice. ‘I don’t want to pass judgment on somebody,’ he told The Jakarta Post (<a href=\"https://www.thejakartapost.com/news/2017/01/14/getting-personal-eko-nugroho-recording-history-through-art.html\">The Jakarta Post</a>). The Singapore Art Museum says he avoids stereotyped faces that could lead to discrimination (<a href=\"https://singaporeartmuseum.sg/About/Our-Collection/Illusion\">Singapore Art Museum</a>).</p><p>The same drawing style moves between murals, paintings and large embroideries. Finding tailors who could stitch what he wanted was hard at first (<a href=\"https://artandaustralia.com/A_A/p255/reality-in-the-world-of-eko-nugroho\">Art + Australia</a>). Before painting a mural he studies the place it will be in. Since 2008 he has also made performances with the puppet company Wayang Bocor (<a href=\"https://www.thejakartapost.com/news/2017/01/14/getting-personal-eko-nugroho-recording-history-through-art.html\">The Jakarta Post</a>).</p>",
+      "works": [
+        {
+          "t": "Illusion",
+          "y": "2007",
+          "m": "Embroidery, 296 x 148 cm",
+          "note": "In the Singapore Art Museum: a stripped landscape with monster-like machines and a masked figure (<a href=\"https://singaporeartmuseum.sg/About/Our-Collection/Illusion\">Singapore Art Museum</a>)."
+        },
+        {
+          "t": "Creamy policy",
+          "y": "2010",
+          "m": "Acrylic on canvas, 200 x 150 cm",
+          "note": "A painting whose title, like many of his, reads as a sideways comment on politics (<a href=\"https://artandaustralia.com/A_A/p255/reality-in-the-world-of-eko-nugroho\">Art + Australia</a>). That reading is ours."
+        },
+        {
+          "t": "Menghasut Badai-badai (Instigator of storms)",
+          "y": "2012",
+          "m": "Installation, about 400 x 400 x 400 cm",
+          "note": "A room-sized work shown around the time of his Paris and Melbourne exhibitions (<a href=\"https://artandaustralia.com/A_A/p255/reality-in-the-world-of-eko-nugroho\">Art + Australia</a>)."
+        }
+      ],
+      "quotes": [
+        {
+          "q": "“I must understand the overall situation of the place where the mural will be.”",
+          "who": "Eko Nugroho on making murals, quoted by <a href=\"https://artandaustralia.com/A_A/p255/reality-in-the-world-of-eko-nugroho\">Art + Australia</a>"
+        }
+      ],
+      "milestones": [
+        [
+          "1977",
+          "Born"
+        ],
+        [
+          "2000",
+          "Founds the comic <i>Daging Tumbuh</i>"
+        ],
+        [
+          "2002",
+          "First solo show, Cemeti Art House"
+        ],
+        [
+          "2006",
+          "Asia Pacific Triennial, Brisbane"
+        ],
+        [
+          "2008",
+          "First performance with Wayang Bocor"
+        ],
+        [
+          "2009",
+          "Lyon Biennale"
+        ],
+        [
+          "2012",
+          "Solo show, Musée d’Art Moderne de Paris"
+        ],
+        [
+          "2013",
+          "Indonesian Pavilion, Venice Biennale; Louis Vuitton scarves"
+        ],
+        [
+          "2018",
+          "Shown at M+, Hong Kong"
+        ]
+      ],
+      "explore": [
+        "osgemeos",
+        "faith-xlvii",
+        "kaws"
+      ],
+      "sources": [
+        [
+          "DANYSZ, Eko Nugroho biography",
+          "https://danyszgallery.com/artists/10977-eko-nugroho/biography/"
+        ],
+        [
+          "The Jakarta Post, Bambang Muryanto, Eko Nugroho: Recording History through Art (14 January 2017)",
+          "https://www.thejakartapost.com/news/2017/01/14/getting-personal-eko-nugroho-recording-history-through-art.html"
+        ],
+        [
+          "Art + Australia, Rifky Effendy, Reality in the World of Eko Nugroho (c. 2013)",
+          "https://artandaustralia.com/A_A/p255/reality-in-the-world-of-eko-nugroho"
+        ],
+        [
+          "Singapore Art Museum, Illusion (2007) by Eko Nugroho",
+          "https://singaporeartmuseum.sg/About/Our-Collection/Illusion"
+        ]
       ]
     },
     {
@@ -390,6 +1041,99 @@
           "Landmark",
           "Capax Infiniti, Portland (2014)"
         ]
+      ],
+      "story": "<p>Faith XLVII was born in 1979 and began writing graffiti as Faith47 on South African streets in 1997 (<a href=\"https://www.straussart.co.za/artists/faith-xlvii\">Strauss &amp; Co</a>). She was born in Cape Town and sprayed her first wall at the old Clovelly train station, with the graffiti writer Wealz130 beside her (<a href=\"https://www.dailymaverick.co.za/article/2020-04-22-chant-faith-xlviis-public-practice/\">Daily Maverick</a>). Through the late 1990s and early 2000s she was one of the most prolific names on the South African scene (<a href=\"https://www.dailymaverick.co.za/article/2020-04-22-chant-faith-xlviis-public-practice/\">Daily Maverick</a>).</p><p>From 2006 she travelled to paint murals, and by Strauss &amp; Co’s count she has painted them in 39 countries (<a href=\"https://www.straussart.co.za/artists/faith-xlvii\">Strauss &amp; Co</a>). By 2020 she had been based in Los Angeles for three years (<a href=\"https://www.dailymaverick.co.za/article/2020-04-22-chant-faith-xlviis-public-practice/\">Daily Maverick</a>). Her work has been shown at the Calais Museum of Fine Art, the Bernard Magrez Foundation and the Brooklyn Museum (<a href=\"https://www.straussart.co.za/artists/faith-xlvii\">Strauss &amp; Co</a>), and in 2025 the STRAAT Museum in Amsterdam gave her a show and added a work to its collection (<a href=\"https://artdaily.com/news/182027/STRAAT-Museum-offers-a-unique-insight-into-the-artistic-journey-of-South-African-street-artist-Faith-XLVII-\">Artdaily</a>).</p>",
+      "method": "<p>Her murals are often animals or quiet figures set beside old phrases: a zebra in central Johannesburg, horses on a Los Angeles facade, swans on a Brooklyn rooftop (<a href=\"https://www.dailymaverick.co.za/article/2020-04-22-chant-faith-xlviis-public-practice/\">Daily Maverick</a>). Lettering still matters to her. ‘Fonts, alphabets, this is the stuff of human evolution, of consciousness and articulation,’ she told Daily Maverick.</p><p>Away from walls she makes new media installations, hand-sewn hangings, bronzes, paintings and prints (<a href=\"https://www.straussart.co.za/artists/faith-xlvii\">Strauss &amp; Co</a>). The studio work of 2020, made for <i>CHANT</i> at the Everard Read gallery in Cape Town, used flags: white flags in <i>The Unbound</i> and redrawn national flags in <i>Entanglement</i> (<a href=\"https://www.dailymaverick.co.za/article/2020-04-22-chant-faith-xlviis-public-practice/\">Daily Maverick</a>).</p>",
+      "works": [
+        {
+          "t": "Capax Infiniti",
+          "y": "2014",
+          "m": "Mural, Carlyle building, Portland, Oregon",
+          "note": "The Latin phrase means ‘holding the infinite’. The wall was later turned into a lithograph with the same title (<a href=\"https://www.straussart.co.za/auctions/lot/25-oct-2022/93\">Strauss &amp; Co</a>)."
+        },
+        {
+          "t": "The Silent Watcher",
+          "y": "2019",
+          "m": "Mural, 3901 Market Street, Philadelphia",
+          "note": "Painted with the City of Philadelphia Mural Arts Program (<a href=\"https://www.dailymaverick.co.za/article/2020-04-22-chant-faith-xlviis-public-practice/\">Daily Maverick</a>)."
+        },
+        {
+          "t": "Entanglement",
+          "y": "2020",
+          "m": "Studio work for <i>CHANT</i>",
+          "note": "National flags drawn by hand, taken apart and overlaid with a circular symbol. The show itself was postponed by lockdown (<a href=\"https://www.dailymaverick.co.za/article/2020-04-22-chant-faith-xlviis-public-practice/\">Daily Maverick</a>)."
+        }
+      ],
+      "quotes": [
+        {
+          "q": "“These are not works made to be pretty or decorative; these are works made to consider, to dismantle, to question.”",
+          "who": "Faith XLVII on <i>CHANT</i>, <a href=\"https://www.dailymaverick.co.za/article/2020-04-22-chant-faith-xlviis-public-practice/\">Daily Maverick</a>, April 2020"
+        },
+        {
+          "q": "“One can’t stop the clouds from moving. Nothing is permanent.”",
+          "who": "Faith XLVII, <a href=\"https://brooklynstreetart.com/2018/04/25/faithxlvii-x-moniker-x-bsa\">Brooklyn Street Art</a>, 2018"
+        }
+      ],
+      "milestones": [
+        [
+          "1979",
+          "Born in Cape Town"
+        ],
+        [
+          "1997",
+          "Starts writing graffiti as Faith47"
+        ],
+        [
+          "2006",
+          "Begins painting murals abroad"
+        ],
+        [
+          "2011",
+          "Monograph <i>Faith 47</i>"
+        ],
+        [
+          "2014",
+          "<i>Capax Infiniti</i>, Portland"
+        ],
+        [
+          "2019",
+          "<i>The Silent Watcher</i>, Philadelphia; book <i>Ex Animo</i>"
+        ],
+        [
+          "2020",
+          "<i>CHANT</i>, Everard Read, Cape Town, postponed by lockdown"
+        ],
+        [
+          "2025",
+          "<i>ORIGINS: Family &amp; Legacy</i>, STRAAT Museum, Amsterdam"
+        ]
+      ],
+      "explore": [
+        "osgemeos",
+        "mohamed-l-ghacham",
+        "eko-nugroho"
+      ],
+      "sources": [
+        [
+          "Strauss & Co, Faith XLVII",
+          "https://www.straussart.co.za/artists/faith-xlvii"
+        ],
+        [
+          "Daily Maverick, Dave Mann, CHANT: Faith XLVII’s public practice (22 April 2020)",
+          "https://www.dailymaverick.co.za/article/2020-04-22-chant-faith-xlviis-public-practice/"
+        ],
+        [
+          "Brooklyn Street Art, FaithXLVII x Moniker x BSA (25 April 2018)",
+          "https://brooklynstreetart.com/2018/04/25/faithxlvii-x-moniker-x-bsa"
+        ],
+        [
+          "Strauss & Co, Faith XLVII, CAPAX INFINITI, lot 93 (October 2022)",
+          "https://www.straussart.co.za/auctions/lot/25-oct-2022/93"
+        ],
+        [
+          "Artdaily, STRAAT Museum and Faith XLVII (2025)",
+          "https://artdaily.com/news/182027/STRAAT-Museum-offers-a-unique-insight-into-the-artistic-journey-of-South-African-street-artist-Faith-XLVII-"
+        ]
       ]
     },
     {
@@ -410,6 +1154,99 @@
         [
           "Landmark",
           "Casa Paquita, Can Picafort (2017)"
+        ]
+      ],
+      "story": "<p>Mohamed L’Ghacham was born in Tangier in 1993. A few months later his parents moved to Spain, and he grew up in Mataró, outside Barcelona (<a href=\"https://la.juxtapoz.com/news/magazine/features/mohamed-l-ghacham-the-time-traveler/\">Juxtapoz</a>). He started painting graffiti with school friends and began painting in the street in earnest in 2008, the year factories in the town closed in the financial crisis (<a href=\"https://la.juxtapoz.com/news/magazine/features/mohamed-l-ghacham-the-time-traveler/\">Juxtapoz</a>).</p><p>Classical painting pulled him in the other direction. He names Antonio López and Pere Llobera among his influences, alongside muralists such as Axel Void and Aryz (<a href=\"https://streetartunitedstates.com/interview-mohamed-lghacham/\">Street Art United States</a>). His first murals were painted in abandoned or demolished places and on the edges of towns (<a href=\"https://www.thisiscolossal.com/2021/04/mohamed-lghacham-photo-murals/\">Colossal</a>). Festival walls followed in Mallorca, Belgium, Switzerland, Scotland and Austria.</p>",
+      "method": "<p>He paints from real photographs, usually family snapshots from the late 20th century. ‘I almost never depict acted scenes with people posing,’ he told Street Art United States (<a href=\"https://streetartunitedstates.com/interview-mohamed-lghacham/\">Street Art United States</a>). Many walls show the families or towns where they are painted, so the picture belonged to someone who can still walk past it.</p><p>A wall is a race. ‘When I’m on a wall it’s a fight against the clock,’ he told Juxtapoz, comparing it with the slower pace of the studio (<a href=\"https://la.juxtapoz.com/news/magazine/features/mohamed-l-ghacham-the-time-traveler/\">Juxtapoz</a>). Our reading: the loose, quick brushwork that deadline forces on him suits the subject, because memory is blurry too.</p>",
+      "works": [
+        {
+          "t": "Casa Paquita",
+          "y": "2017",
+          "m": "Mural, Can Picafort, Mallorca",
+          "note": "Painted for Saladina Art Fest from a photograph of the owner’s children taken about forty years earlier in the same place (<a href=\"https://streetartunitedstates.com/mohamed-lghacham-in-can-picafort-mallorca/\">Street Art United States</a>)."
+        },
+        {
+          "t": "Matança do porco",
+          "y": "2019",
+          "m": "Mural, Figueiró dos Vinhos, Portugal",
+          "note": "A village pig slaughter from an old photograph, an everyday ritual painted at the scale of a building (<a href=\"https://www.thisiscolossal.com/2021/04/mohamed-lghacham-photo-murals/\">Colossal</a>)."
+        },
+        {
+          "t": "the table is set",
+          "y": "2025",
+          "m": "Mural, Vienna",
+          "note": "Painted for Calle Libre in the Meidling district: a family meal, partly overgrown with plants (<a href=\"https://www.callelibre.at/walls-2025/mohamed-lghacham\">Calle Libre</a>)."
+        }
+      ],
+      "quotes": [
+        {
+          "q": "“My paintings usually represent moments of calm and reunion.”",
+          "who": "Mohamed L’Ghacham, <a href=\"https://la.juxtapoz.com/news/magazine/features/mohamed-l-ghacham-the-time-traveler/\">Juxtapoz</a>"
+        },
+        {
+          "q": "“Until now my intention was to pay tribute and give visibility to situations that we all live in.”",
+          "who": "Mohamed L’Ghacham, <a href=\"https://www.thisiscolossal.com/2021/04/mohamed-lghacham-photo-murals/\">Colossal</a>, 2021"
+        }
+      ],
+      "milestones": [
+        [
+          "1993",
+          "Born in Tangier"
+        ],
+        [
+          "2008",
+          "Starts painting in the street, Mataró"
+        ],
+        [
+          "2017",
+          "<i>Casa Paquita</i>, Saladina Art Fest, Mallorca"
+        ],
+        [
+          "2019",
+          "<i>Matança do porco</i>, Portugal; <i>La Fondue</i>, Switzerland"
+        ],
+        [
+          "2021",
+          "Solo show with PDP Gallery"
+        ],
+        [
+          "2022",
+          "Nuart Aberdeen"
+        ],
+        [
+          "2025",
+          "<i>the table is set</i>, Calle Libre, Vienna"
+        ]
+      ],
+      "explore": [
+        "vhils",
+        "faith-xlvii",
+        "osgemeos"
+      ],
+      "sources": [
+        [
+          "Juxtapoz, Mohamed l’Ghacham: The Time Traveller, interview by Evan Pricco",
+          "https://la.juxtapoz.com/news/magazine/features/mohamed-l-ghacham-the-time-traveler/"
+        ],
+        [
+          "Street Art United States, Sami Wakim, Interview: Mohamed L’Ghacham (1 August 2017)",
+          "https://streetartunitedstates.com/interview-mohamed-lghacham/"
+        ],
+        [
+          "Colossal, Grace Ebert, Candid moments captured in vintage photos (13 April 2021)",
+          "https://www.thisiscolossal.com/2021/04/mohamed-lghacham-photo-murals/"
+        ],
+        [
+          "Street Art United States, Mohamed L’Ghacham in Can Picafort, Mallorca (11 October 2017)",
+          "https://streetartunitedstates.com/mohamed-lghacham-in-can-picafort-mallorca/"
+        ],
+        [
+          "Calle Libre, the table is set (2025)",
+          "https://www.callelibre.at/walls-2025/mohamed-lghacham"
+        ],
+        [
+          "Nuart Aberdeen, Mohamed L’Ghacham (2022)",
+          "https://2022.nuartaberdeen.co.uk/artists/mohamed-lghacham-ma/"
         ]
       ]
     },

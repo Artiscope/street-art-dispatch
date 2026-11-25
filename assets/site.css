@@ -546,3 +546,11 @@ section[id],footer[id]{scroll-margin-top:88px}
 .r-body{padding-top:36px}
 /* two plain sections in a row share one gap rather than doubling it */
 .sec:not(.on-pine)+.sec:not(.on-pine){padding-top:0}
+
+/* Fuller artist profiles */
+.r-body h3 .yr{font-weight:400}
+.r-body .wmed{margin-top:.3em;font:400 1rem/1.5 var(--sans);color:var(--pine-2)}
+.aq{margin-block:1.6em}
+.aq .pull{margin-block:0}
+.aq figcaption{margin-top:10px;padding-left:28px;font:400 .9375rem/1.45 var(--sans);color:var(--pine-2)}
+.srcs{font-size:1rem}
