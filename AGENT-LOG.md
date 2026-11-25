@@ -2,6 +2,11 @@
 
 A record of what the website agent did on each run, newest first.
 
+## Wednesday 25 November 2026, fuller artist profiles (draft)
+Drafted on the owner's request to write more about every artist so readers have more to explore.
+Changed: the nine profiles with public sources (Banksy, Invader, Shepard Fairey, OSGEMEOS, Vhils, KAWS, Eko Nugroho, Faith XLVII, Mohamed L’Ghacham) now have Life and career, How the work is made, Key works, In their own words (short quotes from published interviews, each named and linked), Milestones and exhibitions, Explore more (links to related artist profiles) and a Sources list. The artist page layout in assets/render.js draws these sections, and site.css styles them. Konn Artiss and the Grove Gallery roster card are unchanged, as the brief requires.
+Checked: every fact and quote against the page it links to; the site builds; the profiles hold at 390 and 1280 pixels; no long dashes; the CNAME file is unchanged.
+
 ## Wednesday 25 November 2026, Mohamed L’Ghacham (draft)
 Drafted on the owner's go ahead to add Mohamed L’Ghacham from the emerging artists research.
 Changed: new dispatch "Mohamed L’Ghacham: Family Photographs on the Scale of a Street", an artist profile, and four archive entries (2017 to 2025, all festival walls). The Dispatches page now says nine features.
