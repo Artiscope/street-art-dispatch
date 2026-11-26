@@ -559,3 +559,27 @@ section[id],footer[id]{scroll-margin-top:88px}
 /* Contact form: the box only spam robots fill in stays off screen, and the button rests while a message is sending */
 .hp{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
 form[aria-busy="true"] [type="submit"]{opacity:.6;cursor:progress}
+
+/* ==========================================================
+   Tighter spacing, 26 November 2026
+   A second pass: less empty space between sections, around article
+   headings and pictures, and in the footer, on desktop and phone.
+   ========================================================== */
+:root{--sec:clamp(36px,4.2vw,60px)}
+.hero{padding-block:clamp(24px,3vw,44px)}
+.sec--top{padding-top:clamp(24px,3.2vw,40px)}
+.sec-head{margin-bottom:clamp(16px,2vw,24px)}
+.dgrid{gap:28px 24px}
+.agrid{gap:24px 18px}
+.side{gap:22px}
+.primer{margin-top:clamp(28px,3.5vw,44px)}
+.lcard{padding:20px 20px 22px}
+.foot{padding-block:36px 24px}
+.foot-grid{gap:24px}
+.legal{margin-top:24px}
+.r-head{padding-top:clamp(24px,3.5vw,44px);padding-bottom:20px}
+.r-body{padding-top:28px}
+.r-body h2{margin-top:1.5em}
+.r-foot{padding-top:32px}
+.next{margin-top:32px;padding:22px}
+.nameplate{padding-top:clamp(16px,2.2vw,28px)}
