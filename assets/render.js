@@ -590,10 +590,13 @@
       if ((x.milestones || []).length) prof += '<h2>' + W("item.milestones", "Milestones and exhibitions") + '</h2><ul class="plain">' + x.milestones.map(function (m) { return '<li><strong>' + m[0] + '</strong>: ' + m[1] + '</li>'; }).join("") + '</ul>';
       var rel = (x.explore || []).map(function (r) { return (D.artists || []).filter(function (a) { return a.slug === r && hasPage(a); })[0]; }).filter(Boolean);
       var expl = rel.length ? '<h2>' + W("item.explore", "Explore more") + '</h2><ul class="plain">' + rel.map(function (a) { return '<li><a href="@@artists/' + a.slug + '/">' + a.name + '</a>: ' + a.role + '</li>'; }).join("") + '</ul>' : "";
+      // the same artist on the other Artiscope sites
+      var ew = (elsewhereFor("sad", "artists/" + s + "/")[0] || { links: [] }).links;
+      var elsew = ew.length ? '<h2>' + esc(elsewhereHeading("sad", plainText(x.name))) + '</h2><ul class="plain">' + ew.map(function (l) { return '<li><a href="' + esc(l.href) + '">' + esc(l.text) + '</a> ' + l.on + ' ' + esc(l.site) + '</li>'; }).join("") + '</ul>' : "";
       var srcs = (x.sources || []).length ? '<h2>' + W("item.sources", "Sources") + '</h2><ul class="plain srcs">' + x.sources.map(function (r) { return '<li><a href="' + r[1] + '">' + r[0] + '</a></li>'; }).join("") + '</ul>' : "";
       var main = '<article>\n    ' + M('<header class="r-head"><p class="crumb"><a href="@@artists/">' + W("item.crumb-artists", "Artists") + '</a></p><p class="kicker">' + W("item.kicker-artist", "Artist") + '</p><h1>' + x.name + '</h1><p class="r-stand">' + x.role + '</p></header>', "words") + '\n' +
         '    ' + M(rFigure(x, ART_PHOTO_FILES[x.name], ART_PHOTOS[x.name] || x.name), "picture") + '\n' +
-        '    ' + M('<div class="r-body"><p>' + x.summary + '</p><p>' + (x.note || "") + '</p>\n      <dl class="kfacts">' + facts + '</dl>' + prof + arch + expl + srcs + '</div>', "about") + '\n' +
+        '    ' + M('<div class="r-body"><p>' + x.summary + '</p><p>' + (x.note || "") + '</p>\n      <dl class="kfacts">' + facts + '</dl>' + prof + arch + expl + elsew + srcs + '</div>', "about") + '\n' +
         (feat ? '    <footer class="r-foot"><div class="next"><p class="kicker">' + W("item.read-more", "Read more") + '</p><h2>' + feat.title + '</h2><a class="btn" href="@@' + pathOf(feat.slug) + '">' + W("btn.read-story", "Read the story") + '</a></div></footer>\n' : "") + '  </article>';
       main = tplWrap("artist", s, main); AO_KIND = "artist";
       var face = fileOk(ART_PHOTO_FILES[x.name]) ? ART_PHOTO_FILES[x.name].image : "";
@@ -637,6 +640,32 @@
     };
   }
 
-  var SAD = { fromFiles: fromFiles, Site: Site, slug: slug, SITE_URL: SITE_URL };
+  // Links to the same artist on the other Artiscope sites. The list is data/artiscope-links.json,
+  // the same file in all five repositories; tools/build.mjs hands it over with setElsewhere().
+  var ELSEWHERE = null;
+  function setElsewhere(x) { ELSEWHERE = x && typeof x === "object" && x.artists && x.sites ? x : null; }
+  // here is this site's key, path this page's address (such as "artists/banksy/").
+  // Gives one entry per artist on the page: { name, links: [{ href, text, site, on }] }, where on is "in" for a magazine.
+  function elsewhereFor(here, path) {
+    if (!ELSEWHERE) return [];
+    var sites = ELSEWHERE.sites, out = [];
+    Object.keys(ELSEWHERE.artists).forEach(function (k) {
+      var e = ELSEWHERE.artists[k] || {}, mine = e[here];
+      var on = Array.isArray(mine) ? mine.some(function (t) { return t && t.path === path; }) : mine === path;
+      if (!on) return;
+      var links = [];
+      ["war", "gam", "tac", "sad", "tawr"].forEach(function (s) {
+        var site = sites[s] || {}, base = String(site.url || "");
+        if (s === here || !e[s] || !/^https:\/\/[a-z0-9.-]+\/$/.test(base)) return;
+        (Array.isArray(e[s]) ? e[s] : [{ path: e[s], title: site.link }]).forEach(function (t) {
+          if (t && /^[a-z0-9-]+\/[a-z0-9-]+\/$/.test(String(t.path || "")) && t.title) links.push({ href: base + t.path, text: String(t.title), site: String(site.name || ""), on: s === "tac" || s === "tawr" ? "in" : "on" });
+        });
+      });
+      if (links.length) out.push({ name: String(e.name || ""), links: links });
+    });
+    return out;
+  }
+  function elsewhereHeading(here, name) { return String(((ELSEWHERE || {}).sites || {})[here] && ELSEWHERE.sites[here].heading || "Elsewhere").split("{name}").join(name); }
+  var SAD = { fromFiles: fromFiles, setElsewhere: setElsewhere, Site: Site, slug: slug, SITE_URL: SITE_URL };
   if (typeof module !== "undefined" && module.exports) module.exports = SAD; else root.SAD = SAD;
 })(typeof window !== "undefined" ? window : this);
