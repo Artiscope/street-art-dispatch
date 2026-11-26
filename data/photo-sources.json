@@ -153,6 +153,96 @@
       "licence": "CC BY-SA 3.0",
       "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
       "checked": "2026-11-26"
+    },
+    {
+      "file": "takashi-murakami-geisai-2006.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/4/48/Takashi_Murakami_o.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Takashi_Murakami_o.jpg",
+      "author": "Yamashita Yohei",
+      "licence": "CC BY 2.0",
+      "licence_url": "https://creativecommons.org/licenses/by/2.0",
+      "checked": "2026-11-26"
+    },
+    {
+      "file": "ai-weiwei-2011.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/Ai_Weiwei_in_the_Machine_%285497364202%29.jpg/1920px-Ai_Weiwei_in_the_Machine_%285497364202%29.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Ai_Weiwei_in_the_Machine_(5497364202).jpg",
+      "author": "Steve Jurvetson",
+      "licence": "CC BY 2.0",
+      "licence_url": "https://creativecommons.org/licenses/by/2.0",
+      "checked": "2026-11-26"
+    },
+    {
+      "file": "william-kentridge-2025.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/2/2c/William_Kentridge_%282025%29_%28cropped%29.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:William_Kentridge_(2025)_(cropped).jpg",
+      "author": "Mozamaniac",
+      "licence": "CC BY-SA 4.0",
+      "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "checked": "2026-11-26"
+    },
+    {
+      "file": "william-kentridge-melbourne-2012.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/6/69/William_Kentridge_DSC_2685_%28cropped%29.JPG",
+      "source": "https://commons.wikimedia.org/wiki/File:William_Kentridge_DSC_2685_(cropped).JPG",
+      "author": "Peter Campbell",
+      "licence": "CC BY-SA 3.0",
+      "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "checked": "2026-11-26"
+    },
+    {
+      "file": "zanele-muholi-2011.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Zanele_Muholi._Festival_%C2%ABSide_by_Side%C2%BB.JPG",
+      "source": "https://commons.wikimedia.org/wiki/File:Zanele_Muholi._Festival_%C2%ABSide_by_Side%C2%BB.JPG",
+      "author": "Side by Side LGBT Film Festival",
+      "licence": "CC BY-SA 3.0",
+      "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "checked": "2026-11-26"
+    },
+    {
+      "file": "jenny-holzer-leipzig-1996.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/5/52/Oliver_Mark_-_Jenny_Holzer%2C_Leipzig_1996.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Oliver_Mark_-_Jenny_Holzer,_Leipzig_1996.jpg",
+      "author": "Oliver Mark",
+      "licence": "CC BY-SA 4.0",
+      "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "checked": "2026-11-26"
+    },
+    {
+      "file": "mona-hatoum-ivam-2021.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Mona_Hatoum.jpg/1920px-Mona_Hatoum.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Mona_Hatoum.jpg",
+      "author": "Miguel Lorenzo",
+      "licence": "CC BY-SA 4.0",
+      "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "checked": "2026-11-26"
+    },
+    {
+      "file": "mona-hatoum-fundacio-miro-2012.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/Mona_Hatoum_at_Fundaci%C3%B3_Mir%C3%B3.JPG/1920px-Mona_Hatoum_at_Fundaci%C3%B3_Mir%C3%B3.JPG",
+      "source": "https://commons.wikimedia.org/wiki/File:Mona_Hatoum_at_Fundaci%C3%B3_Mir%C3%B3.JPG",
+      "author": "Kippelboy",
+      "licence": "CC BY-SA 3.0",
+      "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "checked": "2026-11-26"
+    },
+    {
+      "file": "frida-kahlo-frissell-1937.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/Toni_Frissell_-_Frida_Kahlo%2C_seated_next_to_an_agave.jpg/1920px-Toni_Frissell_-_Frida_Kahlo%2C_seated_next_to_an_agave.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Toni_Frissell_-_Frida_Kahlo,_seated_next_to_an_agave.jpg",
+      "author": "Toni Frissell, 1937 (Library of Congress)",
+      "licence": "Public domain",
+      "licence_url": "",
+      "checked": "2026-11-26"
+    },
+    {
+      "file": "mai-trung-thu-and-father.png",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/3/34/Mai_Trung_Thu_%281906-1980%29_and_his_father_Mai_Trung_Cat_%281857-1945%29.png",
+      "source": "https://commons.wikimedia.org/wiki/File:Mai_Trung_Thu_(1906-1980)_and_his_father_Mai_Trung_Cat_(1857-1945).png",
+      "author": "Unknown photographer, before 1945",
+      "licence": "Public domain",
+      "licence_url": "",
+      "checked": "2026-11-26"
     }
   ]
 }
