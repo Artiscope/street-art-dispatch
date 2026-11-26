@@ -226,7 +226,7 @@
     "dispatches": {
       "title": "Dispatches | Street Art Dispatch",
       "path": "dispatches/index.html",
-      "description": "Twelve commissioned features from Street Art Dispatch, with more added as they are published.",
+      "description": "Thirteen commissioned features from Street Art Dispatch, with more added as they are published.",
       "sections": [
         {
           "id": "dispatches",
@@ -234,7 +234,7 @@
           "visible": true,
           "settings": {
             "heading": "Dispatches",
-            "intro": "Twelve commissioned features so far, with more to come.",
+            "intro": "Thirteen commissioned features so far, with more to come.",
             "which": "dispatches",
             "look": "grid",
             "top": true,
