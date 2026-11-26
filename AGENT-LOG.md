@@ -122,3 +122,7 @@ Published: the site rebuilt as real pages (23 in all) from the single page proto
 Drafts waiting: none.
 Checked: every internal link, phone and desktop widths, the archive search and the phone menu.
 Needs you: photos for every "Photo to come" frame; confirmed facts for the Konn Artiss profile and his Venice archive entry; a working mailbox for editor@ and archive@streetartdispatch.com.
+
+## Thursday 26 November 2026
+Drafts waiting: new colour palette, chosen by the owner (https://github.com/Artiscope/street-art-dispatch/pull/26).
+Checked: build, homepage and inner pages at desktop and phone widths, text contrast (WCAG AA).
