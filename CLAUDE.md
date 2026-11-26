@@ -40,8 +40,9 @@ change builds. Do not commit `_site`. Do not edit `.github/workflows/pages.yml` 
 owner asks.
 
 ## The look of this site
-- Colours: Vanilla Linen #EFE6D3 (60%), Pine Lacquer #163A30 (30%),
-  Ruby Red #F0283C (10%, buttons only).
+- Colours (the owner's choice, 26 November 2026): concrete grey #D9D6D0
+  pages, pine green #1F3B32 bands, black #111111 type, poster red #D0301F
+  for buttons and a deeper red #AD2318 for small red text.
 - Typefaces: Gloock for headings, Source Serif 4 for reading text,
   Libre Franklin for labels and buttons.
 - An image spot without a photo shows a quiet "Photo to come" frame, except

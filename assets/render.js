@@ -184,7 +184,7 @@
         '<title>' + esc(title) + '</title>\n<meta name="description" content="' + esc(desc) + '">\n<link rel="canonical" href="' + SITE_URL + urlPath + '">\n' +
         '<meta property="og:type" content="' + (home ? "website" : "article") + '">\n<meta property="og:site_name" content="' + name + '">\n' +
         '<meta property="og:title" content="' + esc(title) + '">\n<meta property="og:description" content="' + esc(desc) + '">\n<meta property="og:url" content="' + SITE_URL + urlPath + '">\n' +
-        '<meta name="twitter:card" content="summary_large_image">\n<meta name="theme-color" content="#163A30">\n' +
+        '<meta name="twitter:card" content="summary_large_image">\n<meta name="theme-color" content="#1F3B32">\n' +
         '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n' +
         '<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Libre+Franklin:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">\n' +
         (o.head || "") + (iconOk() ? '<link rel="icon" href="' + r + opts.favicon + '">\n' : '<link rel="icon" href="' + r + 'assets/brand/favicon.svg" type="image/svg+xml">\n<link rel="icon" href="' + r + 'assets/brand/favicon-32.png" sizes="32x32" type="image/png">\n') +
