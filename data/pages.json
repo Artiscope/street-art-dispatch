@@ -135,7 +135,7 @@
             "columns": [
               {
                 "title": "Artists",
-                "text": "The people taking art beyond the gallery. We start with Konn Artiss and add a new profile from the Grove Gallery roster every week.",
+                "text": "The people taking art beyond the gallery. From Konn Artiss to Banksy, Invader, JR and more, each with their public work on record.",
                 "link": "Meet the artists",
                 "href": "artists/"
               },
@@ -147,7 +147,7 @@
               },
               {
                 "title": "Exhibitions",
-                "text": "Where the street meets the gallery. Listings are provisional until venues confirm dates.",
+                "text": "Current shows by artists we cover, with dates from each venue.",
                 "link": "See the listings",
                 "href": "exhibitions/"
               },
@@ -177,7 +177,7 @@
           "visible": false,
           "settings": {
             "heading": "Artists",
-            "intro": "The people taking art beyond the gallery. We start with Konn Artiss and add a new profile from the Grove Gallery roster every week.",
+            "intro": "The people taking art beyond the gallery. From Konn Artiss to Banksy, Invader, JR and more, each with their public work on record.",
             "artists": [],
             "top": false,
             "flush": true
@@ -202,7 +202,7 @@
           "visible": false,
           "settings": {
             "heading": "Exhibitions",
-            "intro": "Where the street meets the gallery. Listings are provisional until venues confirm dates.",
+            "intro": "Where the street meets the gallery: current shows by artists we cover, with dates from the venue. We take a listing down when the show closes.",
             "top": false,
             "flush": true
           }
@@ -274,7 +274,7 @@
           "visible": true,
           "settings": {
             "heading": "Artists",
-            "intro": "The people taking art beyond the gallery. We start with Konn Artiss and add a new profile from the Grove Gallery roster every week.",
+            "intro": "The people taking art beyond the gallery. From Konn Artiss to Banksy, Invader, JR and more, each with their public work on record.",
             "artists": [],
             "top": true,
             "flush": false
@@ -310,7 +310,7 @@
     "exhibitions": {
       "title": "Exhibitions | Street Art Dispatch",
       "path": "exhibitions/index.html",
-      "description": "Exhibition listings from Street Art Dispatch. Listings are provisional until venues confirm dates.",
+      "description": "Current exhibitions by street and urban artists covered by Street Art Dispatch, with dates from each venue.",
       "sections": [
         {
           "id": "exhibitions",
@@ -318,7 +318,7 @@
           "visible": true,
           "settings": {
             "heading": "Exhibitions",
-            "intro": "Where the street meets the gallery. Listings are provisional until venues confirm dates.",
+            "intro": "Where the street meets the gallery: current shows by artists we cover, with dates from the venue. We take a listing down when the show closes.",
             "top": true,
             "flush": false
           }
