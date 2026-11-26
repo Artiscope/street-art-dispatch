@@ -454,6 +454,24 @@
             "end_heading": "",
             "end_text": ""
           }
+        },
+        {
+          "id": "form",
+          "type": "contact-form",
+          "visible": true,
+          "settings": {
+            "eyebrow": "",
+            "heading": "Send us a message",
+            "text": "Use the form, or email us at the addresses above. Either way it reaches the same desk.",
+            "topics": [
+              "A pitch or tip",
+              "A correction",
+              "An intervention for the archive",
+              "Suggest an artist",
+              "Something else"
+            ],
+            "button": "Send message"
+          }
         }
       ]
     }

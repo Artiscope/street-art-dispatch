@@ -554,3 +554,7 @@ section[id],footer[id]{scroll-margin-top:88px}
 .aq .pull{margin-block:0}
 .aq figcaption{margin-top:10px;padding-left:28px;font:400 .9375rem/1.45 var(--sans);color:var(--pine-2)}
 .srcs{font-size:1rem}
+
+/* Contact form: the box only spam robots fill in stays off screen, and the button rests while a message is sending */
+.hp{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
+form[aria-busy="true"] [type="submit"]{opacity:.6;cursor:progress}

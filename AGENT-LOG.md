@@ -2,6 +2,11 @@
 
 A record of what the website agent did on each run, newest first.
 
+## Thursday 26 November 2026, contact form saves messages (draft)
+Published: nothing. The owner asked for an enquiry form on every site, stored in Supabase. The Contact page gets a form under the list of email addresses. Messages are saved to the enquiries table in the Artiscope Digital Home project on Supabase, which visitors can add to but never read. A hidden box catches spam robots. The privacy wording says where messages are kept and how to have them deleted.
+Checked: the site builds; the form shows its sending, thank you and error messages; the layout holds at 390 pixels and desktop width.
+Needs you: a yes on the pull request.
+
 ## Thursday 26 November 2026, Exhibitions page matched to the site brief (draft)
 Published: nothing. The three placeholder listings (a Konn Artiss show with no dates, Across the Roster and Dispatch Live) are replaced with three current museum shows by artists we cover, each with dates from the venue's own page: Basquiat at Pérez Art Museum Miami and at Princeton, and Andy Warhol at the Musée du Luxembourg. The "new profile every week" promise is gone from the Artists text.
 Checked: the site builds, Exhibitions holds at 390 pixels and desktop width.
