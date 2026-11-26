@@ -330,6 +330,7 @@
       var items = (get(st, "items", []) || []).filter(function (x) { return x && x.hidden !== true && (x.term || x.text); });
       var lh = get(st, "list_heading", ""), anchor = get(st, "list_anchor", "");
       if (items.length) body += (lh ? '<h2' + (anchor ? ' id="' + esc(anchor) + '"' : "") + '>' + txt(lh) + '</h2>' : "") + '<dl class="stds">' + items.map(function (x) { return '<div><dt>' + x.term + '</dt><dd>' + x.text + '</dd></div>'; }).join("") + '</dl>';
+      if (get(st, "html", "")) body += String(st.html);
       if (get(st, "end_heading", "") || get(st, "end_text", "")) body += (get(st, "end_heading", "") ? '<h2>' + txt(st.end_heading) + '</h2>' : "") + (get(st, "end_text", "") ? '<p>' + st.end_text + '</p>' : "");
       return '<article><header class="r-head"><h1>' + txt(get(st, "heading", "")) + '</h1>' + (get(st, "stand", "") ? '<p class="r-stand">' + st.stand + '</p>' : "") + '</header><div class="r-body r-body--page">' + body.split("{root}").join("@@") + '</div></article>';
     };
