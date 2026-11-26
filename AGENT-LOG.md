@@ -2,6 +2,11 @@
 
 A record of what the website agent did on each run, newest first.
 
+## Thursday 26 November 2026, Exhibitions page matched to the site brief (draft)
+Published: nothing. The three placeholder listings (a Konn Artiss show with no dates, Across the Roster and Dispatch Live) are replaced with three current museum shows by artists we cover, each with dates from the venue's own page: Basquiat at Pérez Art Museum Miami and at Princeton, and Andy Warhol at the Musée du Luxembourg. The "new profile every week" promise is gone from the Artists text.
+Checked: the site builds, Exhibitions holds at 390 pixels and desktop width.
+Needs you: a yes on the pull request. The Konn Artiss listing comes back as soon as you have a venue and dates.
+
 ## Wednesday 25 November 2026, gallery artist list (draft)
 Drafted after the owner sent the gallery's artist list and asked for full research on all five sites.
 Changed: new artist profiles for Keith Haring (the subway chalk drawings, murals in New York and Pisa) and Jean-Michel Basquiat (SAMO© graffiti, the move to canvas), each with Life and career, How the work is made, Key works, Milestones, Explore more and Sources. Both link to the Warhol dispatch. Public domain and Creative Commons photos of each, listed in data/photo-sources.json.
