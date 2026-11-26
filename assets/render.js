@@ -158,7 +158,7 @@
       // a page with its own layout has no menu bar, footer or shared sections; popups show on every page
       o.top = o.own ? "" : [groupHtml("top", true), o.top || ""].filter(Boolean).join("\n");
       main = (o.own ? [main, groupHtml("popups"), ao.fixed] : [groupHtml("top", false), main, ao.share, groupHtml("bottom"), groupHtml("popups"), ao.fixed]).filter(Boolean).join("\n  ");
-      var depth = (urlPath.match(/\//g) || []).length, r = o.file ? "" : new Array(depth + 1).join("../");
+      var depth = (urlPath.match(/\//g) || []).length, r = o.file ? (o.root || "") : new Array(depth + 1).join("../");
       var home = !!o.home, name = esc(NAME()), st = hd(), hon = shared("header")[1];
       main = String(main).split("@@").join(r);
       var links = navLinks().map(function (l) { return '<li><a href="' + r + l[1] + '"' + (urlPath.indexOf(l[1]) === 0 ? ' aria-current="page"' : "") + '>' + txt(l[0]) + '</a></li>'; }).join("");
@@ -601,9 +601,12 @@
         { head: ldTag({ "@context": "https://schema.org", "@type": "ProfilePage", name: plainText(x.name), url: SITE_URL + "artists/" + s + "/", mainEntity: who, isPartOf: { "@type": "WebSite", name: plainText(NAME()), url: SITE_URL } }) + shareTag(face) });
     }
     function notFound() {
-      var base = "<script>document.write('<base href=\"'+(location.hostname.slice(-9)==='github.io'?'/street-art-dispatch/':'/')+'\">')</script>\n";
-      var main = '<article><header class="r-head"><p class="kicker">' + W("nf.eyebrow", "Page not found") + '</p><h1>' + W("nf.title", "That page isn’t here.") + '</h1><p class="r-stand">' + W("nf.lede", "It may have moved, or the address may be mistyped.") + '</p></header><div class="r-body r-body--page"><p><a href="./">' + W("nf.home", "Go to the front page") + '</a> ' + W("nf.or", "or") + ' <a href="interventions/">' + W("nf.archive", "search the archive") + '</a>.</p></div></article>';
-      return page("", "Page not found | " + NAME(), "That page is not here.", main, { file: "404.html", head: base });
+      var main = '<article><header class="r-head"><p class="kicker">' + W("nf.eyebrow", "Page not found") + '</p><h1>' + W("nf.title", "That page isn’t here.") + '</h1><p class="r-stand">' + W("nf.lede", "It may have moved, or the address may be mistyped.") + '</p></header><div class="r-body r-body--page"><p><a href="/">' + W("nf.home", "Go to the front page") + '</a> ' + W("nf.or", "or") + ' <a href="/interventions/">' + W("nf.archive", "search the archive") + '</a>.</p></div></article>';
+      var pg = page("", "Page not found | " + NAME(), "That page is not here.", main, { file: "404.html", root: "/" });
+      // A missing page should never be indexed or point search engines at another address.
+      pg.html = pg.html.replace(/<link rel="canonical"[^>]*>\n/, "").replace(/<meta property="og:url"[^>]*>\n/, "");
+      if (!/<meta name="robots"/.test(pg.html)) pg.html = pg.html.replace("<head>\n", "<head>\n<meta name=\"robots\" content=\"noindex\">\n");
+      return pg;
     }
     var LIST_ORDER = ["home", "dispatches", "urban-culture", "artists", "interventions", "exhibitions", "collecting", "about", "contact"];
     // Every published page: the pages from the page list, then each article and artist, then the page for a wrong address.
