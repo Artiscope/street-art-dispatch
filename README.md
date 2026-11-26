@@ -27,7 +27,7 @@ Copy an entry under `archive` in `data/content.json` and fill it in. Use `"y": "
 
 ## Colours and typefaces
 
-Vanilla Linen #EFE6D3 (60%), Pine Lacquer #163A30 (30%), Ruby Red #F0283C (10%, buttons only). Gloock for headings, Source Serif 4 for reading text, Libre Franklin for labels and buttons.
+Concrete grey #D9D6D0, pine green #1F3B32, black #111111 type, poster red #D0301F for buttons (#AD2318 for small red text). Gloock for headings, Source Serif 4 for reading text, Libre Franklin for labels and buttons.
 
 ## Logo
 
