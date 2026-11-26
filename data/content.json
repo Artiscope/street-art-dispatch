@@ -1,6 +1,21 @@
 {
   "features": [
     {
+      "slug": "ben-eine",
+      "kicker": "Artists · Lettering",
+      "cover": "ben-eine",
+      "title": "Ben Eine: The Alphabet on the Shutters",
+      "standfirst": "How a London graffiti writer turned shop shutters into giant letters, what goes into each one, and how a word painting ended up as a gift from Downing Street to the White House.",
+      "tags": [
+        "Ben Eine",
+        "Typography",
+        "Shutters",
+        "London",
+        "Artist technique"
+      ],
+      "body": "<p class=\"dropcap\">In 2010 Ben Eine took the shop shutters of Middlesex Street, on the edge of the City of London, and painted the alphabet along them, one letter to a shutter, with the shopkeepers’ agreement. The letters became the thing he is known for: big, bright, fairground-style capitals that turn a steel roller door into a sign with no message except its own letter.</p>\n<h2>From tags to type</h2>\n<p>Eine was born Benjamin Flynn in London in 1970 (<a href=\"https://en.wikipedia.org/wiki/Ben_Eine\" rel=\"noopener\">Wikipedia</a>) and grew up in south London. He told the Observer he started writing graffiti at about 14 and had been arrested 15 to 20 times (<a href=\"https://www.dawn.com/news/548500\" rel=\"noopener\">The Guardian, 2010</a>). He later told the Big Issue that the book <em>Subway Art</em>, by Martha Cooper and Henry Chalfant, set him off, and that graffiti eventually cost him a £7,000 fine and about 180 hours of community service (<a href=\"https://bigissue.com/culture/art/rise-up-stand-up-speak-up-with-guest-editor-ben-eine\" rel=\"noopener\">Big Issue, 2020</a>).</p>\n<p>The way out ran through a print studio. He met Banksy at a party at the Dragon Bar near Old Street, and the two set up Pictures on Walls to sell affordable screenprints (<a href=\"https://bigissue.com/culture/art/rise-up-stand-up-speak-up-with-guest-editor-ben-eine\" rel=\"noopener\">Big Issue</a>). Eine became its principal screenprinter, pulling editions for Banksy, David Shrigley and others before he went solo (<a href=\"https://www.interviewmagazine.com/art/ben-eine-innocence\" rel=\"noopener\">Interview Magazine, 2013</a>; <a href=\"https://ocula.com/artists/ben-eine/\" rel=\"noopener\">Ocula</a>). That work matters for what came next. Screenprinting is all about flat colour, clean edges and letters that read at a glance.</p>\n<h2>How the letters are made</h2>\n<p>Eine has no training in art or typography, and says so (<a href=\"https://www.interviewmagazine.com/art/ben-eine-innocence\" rel=\"noopener\">Interview Magazine</a>). He draws a letter, scans it, prints it out and cuts the stencil by hand with a scalpel rather than using design software or a laser cutter (same source). On the street the shutter itself does some of the work. His letters are usually painted in a solid colour with an offset shadow in a second colour, so they seem to stand off the metal.</p>\n<p>Our reading of the photographs on this page: the horizontal slats of a shutter break each letter into stripes, and Eine leans into it, often adding stripes or bands of his own. The look borrows from circus posters and old shop signs, and he has given his lettering styles names such as Shutter, Neon, Tenderloin and New Circus (<a href=\"https://en.wikipedia.org/wiki/Ben_Eine\" rel=\"noopener\">Wikipedia</a>). In 2012 he released Tenderloin as a free font with the type designer Chank Diesel (same source), and in 2019 he set up OurTypes, a platform for licensing his typography (<a href=\"https://www.creativeboom.com/inspiration/ben-eine/\" rel=\"noopener\">Creative Boom, 2019</a>).</p>\n<blockquote class=\"pull\">“Typography guides you around a city without you being aware of it.” Ben Eine, Big Issue, 2020</blockquote>\n<h2>Words, then sentences</h2>\n<p>Single letters gave way to words. Eine has painted words such as GREAT ADVENTURE in Beijing, Dallas, San Francisco, Copenhagen and Japan (<a href=\"https://www.interviewmagazine.com/art/ben-eine-innocence\" rel=\"noopener\">Interview Magazine</a>). A later wall in Zürich spells out LOVE AT FIRST SIGHT in stacked, striped capitals across the side of a building (photograph below). The words are short and mostly cheerful. The point is the shape of the letters as much as what they say.</p>\n<p>The best known canvas is a word piece too. In July 2010 the new prime minister, David Cameron, gave President Obama Eine’s painting <em>Twenty First Century City</em> as an official gift (<a href=\"https://www.dawn.com/news/548500\" rel=\"noopener\">The Guardian, 22 July 2010</a>). Brooklyn Street Art reported that Samantha Cameron picked the artist (<a href=\"https://www.brooklynstreetart.com/2010/07/21/ben-aine-street-art-and-the-white-house\" rel=\"noopener\">Brooklyn Street Art</a>). The Obamas gave back a signed lithograph by Ed Ruscha, another artist who paints words (<a href=\"https://www.dawn.com/news/548500\" rel=\"noopener\">The Guardian</a>).</p>\n<h2>Where it sits now</h2>\n<p>Eine’s work hangs in the Victoria and Albert Museum’s collection (<a href=\"https://ocula.com/artists/ben-eine/\" rel=\"noopener\">Ocula</a>), and he was included in <em>Art in the Streets</em> at the Museum of Contemporary Art, Los Angeles, in 2011 (<a href=\"https://en.wikipedia.org/wiki/Ben_Eine\" rel=\"noopener\">Wikipedia</a>). He uses his name for causes as well. In March 2020 he guest-edited the Big Issue and made the cover for its 200 millionth copy (<a href=\"https://bigissue.com/culture/art/rise-up-stand-up-speak-up-with-guest-editor-ben-eine\" rel=\"noopener\">Big Issue</a>). He accepts that what he paints outside will not last. “Things we paint on the street are painted with the understanding that they’re not going to be there forever,” he told Creative Boom (<a href=\"https://www.creativeboom.com/inspiration/ben-eine/\" rel=\"noopener\">Creative Boom</a>).</p>\n<p>At auction his market is mostly prints. MutualArt lists 172 Eine lots offered in 2025 and 2026, and the recent ones that sold mostly made a few hundred pounds or less, with prices given including buyer’s premium where the auction house says so (<a href=\"https://www.mutualart.com/Artist/Ben-Eine/AAEF07BB447196D3/auction-results\" rel=\"noopener\">MutualArt</a>; <a href=\"https://www.tateward.com/auction/search/?st=Ben+Eine\" rel=\"noopener\">Tate Ward</a>).</p>"
+    },
+    {
       "slug": "warhol-and-the-street",
       "kicker": "Street Art History",
       "cover": "world",
@@ -1251,6 +1266,132 @@
       ]
     },
     {
+      "name": "Ben Eine",
+      "role": "Lettering · Shutters · Screenprint",
+      "cover": "a-eine",
+      "read": "ben-eine",
+      "summary": "The London artist who paints giant circus-style capitals on shop shutters. He painted the whole alphabet along Middlesex Street, and in 2010 one of his canvases went from Downing Street to the White House.",
+      "facts": [
+        [
+          "Born",
+          "Benjamin Flynn, London, 1970"
+        ],
+        [
+          "Medium",
+          "Spray paint and hand-cut stencils, screenprints"
+        ],
+        [
+          "Landmarks",
+          "Middlesex Street alphabet (2010) · Twenty First Century City (2010)"
+        ]
+      ],
+      "story": "<p>Ben Eine grew up in south London and started writing graffiti at about 14. By his own count to the Observer he was arrested 15 to 20 times (<a href=\"https://www.dawn.com/news/548500\" rel=\"noopener\">The Guardian, 2010</a>). He has said a £7,000 fine and around 180 hours of community service were part of what pushed him from graffiti towards street art (<a href=\"https://bigissue.com/culture/art/rise-up-stand-up-speak-up-with-guest-editor-ben-eine\" rel=\"noopener\">Big Issue, 2020</a>).</p><p>He met Banksy at a party at the Dragon Bar near Old Street, and together they started Pictures on Walls to sell cheap screenprints (<a href=\"https://bigissue.com/culture/art/rise-up-stand-up-speak-up-with-guest-editor-ben-eine\" rel=\"noopener\">Big Issue</a>). Eine ran the printing, making editions for Banksy and David Shrigley among others (<a href=\"https://www.interviewmagazine.com/art/ben-eine-innocence\" rel=\"noopener\">Interview Magazine, 2013</a>). His own letters went up on shutters around east London, and in 2010 he painted A to Z on the shutters of Middlesex Street, known since as Alphabet Street (<a href=\"https://en.wikipedia.org/wiki/Ben_Eine\" rel=\"noopener\">Wikipedia</a>).</p><p>That July, David Cameron gave Barack Obama Eine’s canvas <em>Twenty First Century City</em> as an official gift (<a href=\"https://www.dawn.com/news/548500\" rel=\"noopener\">The Guardian</a>). The Victoria and Albert Museum holds his work (<a href=\"https://ocula.com/artists/ben-eine/\" rel=\"noopener\">Ocula</a>).</p>",
+      "method": "<p>Each letter starts as a drawing. Eine scans it, prints it and cuts the stencil with a scalpel, and says he prefers that to drawing on a computer or using a laser cutter (<a href=\"https://www.interviewmagazine.com/art/ben-eine-innocence\" rel=\"noopener\">Interview Magazine</a>). The letters are fat display capitals in strong colour with an offset shadow, close to old circus and fairground lettering.</p><p>Our reading: the shutter is part of the design. Its slats cut every letter into bands, and he often adds stripes so the pattern looks deliberate. He has named his letter styles, among them Shutter, Neon, Tenderloin and New Circus, and released Tenderloin as a free font in 2012 (<a href=\"https://en.wikipedia.org/wiki/Ben_Eine\" rel=\"noopener\">Wikipedia</a>).</p>",
+      "works": [
+        {
+          "t": "The Middlesex Street alphabet",
+          "y": "2010",
+          "m": "Spray paint on shop shutters, London",
+          "note": "All 26 letters, one to a shutter, painted with the shopkeepers’ agreement (<a href=\"https://bigissue.com/culture/art/rise-up-stand-up-speak-up-with-guest-editor-ben-eine\" rel=\"noopener\">Big Issue</a>; <a href=\"https://streetartlondon.co.uk/artists/eine/\" rel=\"noopener\">Street Art London</a>)."
+        },
+        {
+          "t": "Twenty First Century City",
+          "y": "2010",
+          "m": "Painting",
+          "note": "Given by David Cameron to Barack Obama in July 2010. The Guardian put its value at £2,500 (<a href=\"https://www.dawn.com/news/548500\" rel=\"noopener\">The Guardian</a>)."
+        },
+        {
+          "t": "LOVE AT FIRST SIGHT",
+          "y": "To confirm",
+          "m": "Mural, Ausstellungsstrasse, Zürich",
+          "note": "A whole end wall of stacked, striped capitals. Photographed in August 2023 (Wikimedia Commons)."
+        }
+      ],
+      "quotes": [
+        {
+          "q": "“Typography guides you around a city without you being aware of it.”",
+          "who": "Ben Eine, <a href=\"https://bigissue.com/culture/art/rise-up-stand-up-speak-up-with-guest-editor-ben-eine\" rel=\"noopener\">Big Issue</a>, 2020"
+        },
+        {
+          "q": "“Spraypainting a shop shutter turns an ugly, boring thing into something interesting and colourful.”",
+          "who": "Ben Eine, <a href=\"https://streetartlondon.co.uk/artists/eine/\" rel=\"noopener\">Street Art London</a>, 2011"
+        }
+      ],
+      "milestones": [
+        [
+          "1970",
+          "Born Benjamin Flynn in London"
+        ],
+        [
+          "Age 14",
+          "Starts writing graffiti"
+        ],
+        [
+          "2010",
+          "Paints A to Z along Middlesex Street"
+        ],
+        [
+          "2010",
+          "<i>Twenty First Century City</i> goes to the White House"
+        ],
+        [
+          "2011",
+          "<i>Art in the Streets</i>, MOCA, Los Angeles"
+        ],
+        [
+          "2012",
+          "Releases the Tenderloin font"
+        ],
+        [
+          "2019",
+          "Launches OurTypes"
+        ],
+        [
+          "2020",
+          "Guest-edits the Big Issue"
+        ]
+      ],
+      "explore": [
+        "banksy",
+        "shepard-fairey",
+        "invader"
+      ],
+      "sources": [
+        [
+          "The Guardian via Dawn, Patrick Wintour, Cameron’s gifts for Obama (22 July 2010)",
+          "https://www.dawn.com/news/548500"
+        ],
+        [
+          "Big Issue, Maeve Doyle, Rise up, stand up, speak up with guest editor Ben Eine (11 March 2020)",
+          "https://bigissue.com/culture/art/rise-up-stand-up-speak-up-with-guest-editor-ben-eine"
+        ],
+        [
+          "Interview Magazine, Georgia Frances King, Ben Eine’s Age of Innocence (14 June 2013)",
+          "https://www.interviewmagazine.com/art/ben-eine-innocence"
+        ],
+        [
+          "Street Art London, Eine (20 January 2011)",
+          "https://streetartlondon.co.uk/artists/eine/"
+        ],
+        [
+          "Creative Boom, Katy Cowan, interview with Ben Eine (31 July 2019)",
+          "https://www.creativeboom.com/inspiration/ben-eine/"
+        ],
+        [
+          "Ocula, Ben Eine",
+          "https://ocula.com/artists/ben-eine/"
+        ],
+        [
+          "Brooklyn Street Art, Street Art and the White House (21 July 2010)",
+          "https://www.brooklynstreetart.com/2010/07/21/ben-aine-street-art-and-the-white-house"
+        ],
+        [
+          "Wikipedia, Ben Eine",
+          "https://en.wikipedia.org/wiki/Ben_Eine"
+        ]
+      ]
+    },
+    {
       "name": "Keith Haring",
       "role": "Subway drawing · Mural · Print",
       "cover": "a-haring",
@@ -1777,6 +1918,16 @@
       "type": "Chalk drawings",
       "note": "Chalk drawings on blank advertising panels across the subway, through the early 1980s.",
       "read": "beyond-gallery-walls"
+    },
+    {
+      "y": 2010,
+      "title": "The Middlesex Street alphabet",
+      "artist": "Ben Eine",
+      "city": "London",
+      "country": "UK",
+      "type": "Shutter lettering",
+      "note": "A to Z across 26 shop shutters on the edge of the City, painted with the shopkeepers’ agreement.",
+      "read": "ben-eine"
     }
   ],
   "exhibitions": [
@@ -1848,7 +1999,8 @@
     "banksy-style": "A stencilled figure on a wall",
     "street-artists-world-style": "Painted walls in five cities",
     "mohamed-lghacham": "A Mohamed L’Ghacham mural",
-    "warhol-and-the-street": "Andy Warhol at the White House, 1977"
+    "warhol-and-the-street": "Andy Warhol at the White House, 1977",
+    "ben-eine": "Ben Eine’s LOVE AT FIRST SIGHT, Zürich"
   },
   "artist_photos": {
     "Konn Artiss": "Konn Artiss in the studio",
@@ -1878,7 +2030,8 @@
     "Faith XLVII": "Born 1979. Began as a graffiti writer in South Africa in 1997.",
     "Mohamed L’Ghacham": "Born 1993 in Tangier, Morocco. Lives and works in Mataró, near Barcelona.",
     "Keith Haring": "Born 1958 in Reading, Pennsylvania. Drew in the New York subway from 1981. Died 1990.",
-    "Jean-Michel Basquiat": "Born 1960 in Brooklyn. Wrote SAMO© graffiti in the late 1970s. Died 1988."
+    "Jean-Michel Basquiat": "Born 1960 in Brooklyn. Wrote SAMO© graffiti in the late 1970s. Died 1988.",
+    "Ben Eine": "Born 1970 in London as Benjamin Flynn. Ran the screenprinting at Pictures on Walls before going solo."
   },
   "desk": "The Dispatch Desk",
   "date": "November 2026",
@@ -1909,6 +2062,13 @@
       "credit": "Photo: Jack Kightlinger, White House, public domain, via Wikimedia Commons.",
       "credit_href": "https://commons.wikimedia.org/wiki/File:Andy_Warhol_1977.jpg",
       "focus": "50% 20%"
+    },
+    "ben-eine": {
+      "image": "ben-eine-love-at-first-sight-zurich.jpg",
+      "alt": "The end wall of a city building painted black and covered in stacked capital letters in pink, yellow, green and blue, each striped and outlined, spelling LOVE AT FIRST SIGHT.",
+      "caption": "LOVE AT FIRST SIGHT, a lettering mural by Ben Eine on Ausstellungsstrasse, Zürich, photographed in August 2023.",
+      "credit": "Photo: Balise42, CC BY 4.0, via Wikimedia Commons.",
+      "credit_href": "https://commons.wikimedia.org/wiki/File:Ben_Eine_Love_At_First_Sight_mural_in_Z%C3%BCrich.jpg"
     }
   },
   "artist_photo_files": {
@@ -1989,6 +2149,14 @@
       "credit": "Photo: Galerie Bruno Bischofberger, CC BY-SA 4.0, via Wikimedia Commons.",
       "credit_href": "https://commons.wikimedia.org/wiki/File:Basquiat1984.tif",
       "focus": "50% 25%"
+    },
+    "Ben Eine": {
+      "image": "ben-eine-naschmarkt-vienna.jpg",
+      "alt": "A shop shutter at a market painted with a large orange capital D, striped by the shutter’s slats, with a turquoise shadow on its right side.",
+      "caption": "A letter D by Ben Eine on a shutter at the Naschmarkt, Vienna, photographed in February 2014.",
+      "credit": "Photo: Ungry Young Man, CC BY 2.0, via Wikimedia Commons.",
+      "credit_href": "https://commons.wikimedia.org/wiki/File:Naschmarkt_Letter_by_Ben_Eine.jpg",
+      "focus": "55% 50%"
     }
   }
 }
