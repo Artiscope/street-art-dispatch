@@ -91,6 +91,10 @@ function checkPages() {
   if (!pages.pages || !pages.pages.home) fail("data/pages.json must have the home page.");
 }
 
+// Who may read the site. Everyone is welcome; the search engines and the AI search tools that
+// link back to their sources are also named, so there is no doubt they are allowed in.
+const ROBOTS = "User-agent: *\nAllow: /\n\nUser-agent: Googlebot\nUser-agent: Bingbot\nUser-agent: OAI-SearchBot\nUser-agent: ChatGPT-User\nUser-agent: PerplexityBot\nUser-agent: Perplexity-User\nUser-agent: Claude-SearchBot\nUser-agent: Claude-User\nUser-agent: Applebot\nUser-agent: DuckDuckBot\nAllow: /\n";
+const LLMS_SECTIONS = [["artists", "Artist profiles"], ["dispatches", "Dispatches"], ["urban-culture", "Urban culture"]];
 checkPages();
 const site = SAD.Site(SAD.fromFiles(content), pages, themeHead(), themeExtras());
 const written = [];
@@ -101,7 +105,24 @@ for (const pg of pagesOut) write(pg.path, pg.html);
 write("search-index.json", JSON.stringify(site.searchIndex()));
 const urls = pagesOut.filter((p) => p.path !== "404.html").map((p) => p.url);
 write("sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + urls.map((u) => "<url><loc>" + SAD.SITE_URL + u + "</loc></url>\n").join("") + "</urlset>\n");
-write("robots.txt", "User-agent: *\nAllow: /\nSitemap: " + SAD.SITE_URL + "sitemap.xml\n");
+write("robots.txt", ROBOTS + "\nSitemap: " + SAD.SITE_URL + "sitemap.xml\n");
+const listed = pagesOut.filter((p) => p.path !== "404.html");
+// llms.txt: a plain guide to the site for AI search tools, built from the finished pages so it always matches them.
+{
+  const meta = (html, re) => { const m = re.exec(html); return m ? m[1].replace(/&amp;/g, "&").replace(/&#x27;|&#39;/g, "'").replace(/&quot;/g, '"').replace(/\s+/g, " ").trim() : ""; };
+  const titleOf = (h) => meta(h, /<title>([^<]*)<\/title>/).replace(/ \| [^|]*$/, "");
+  const descOf = (h) => meta(h, /<meta name="description" content="([^"]*)"/);
+  const home = pagesOut.find((p) => p.path === "index.html");
+  const lines = ["# " + titleOf(home.html), "", "> " + descOf(home.html), ""];
+  for (const [folder, heading] of LLMS_SECTIONS) {
+    const items = listed.filter((p) => p.path.startsWith(folder + "/") && p.path !== folder + "/index.html" && !/<meta name="robots" content="noindex/.test(p.html));
+    if (!items.length) continue;
+    lines.push("## " + heading, "");
+    for (const p of items) { const d = descOf(p.html); lines.push("- [" + titleOf(p.html) + "](" + SAD.SITE_URL + p.url + ")" + (d ? ": " + d : "")); }
+    lines.push("");
+  }
+  write("llms.txt", lines.join("\n"));
+}
 if (OUT !== ROOT) {
   fs.cpSync(path.join(ROOT, "assets"), path.join(OUT, "assets"), { recursive: true });
   write("CNAME", "streetartdispatch.com\n");

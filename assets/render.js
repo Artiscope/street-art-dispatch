@@ -149,7 +149,11 @@
       // Google wants a full date and time with a time zone in structured data.
       if (isoDate(date)) o.datePublished = isoDate(date) + "T00:00:00+00:00";
       if (/^[A-Za-z0-9._-]{1,120}\.(png|jpe?g)$/.test(String(file || ""))) o.image = SITE_URL + "assets/images/" + file;
-      if (about && about.length) o.about = about.map(function (n) { return { "@type": "Thing", name: plainText(n) }; });
+      // a tag that names an artist with a profile here becomes that Person, with a link to the profile
+      if (about && about.length) o.about = about.map(function (n) {
+        var x = (D.artists || []).filter(function (y) { return hasPage(y) && plainName(y.name) === plainName(n); })[0];
+        return x ? { "@type": "Person", name: plainText(x.name), url: SITE_URL + "artists/" + x.slug + "/" } : { "@type": "Thing", name: plainText(n) };
+      });
       return ldTag(o);
     }
     function listLd(urlPath, name, desc) { return ldTag({ "@context": "https://schema.org", "@type": "CollectionPage", name: plainText(name), description: plainText(desc), url: SITE_URL + urlPath, isPartOf: { "@type": "WebSite", name: plainText(NAME()), url: SITE_URL } }); }
@@ -650,9 +654,18 @@
       }
       main = tplWrap("artist", s, main); AO_KIND = "artist";
       var face = fileOk(ART_PHOTO_FILES[x.name]) ? ART_PHOTO_FILES[x.name].image : "";
-      var who = { "@type": "Person", name: plainText(x.name), description: plainText(x.summary) };
+      var here = SITE_URL + "artists/" + s + "/";
+      var who = { "@type": "Person", "@id": here + "#artist", name: plainText(x.name), description: plainText(x.summary), url: here };
+      if (face) who.image = SITE_URL + "assets/images/" + face;
+      // the key works named on the page, each as an artwork by this artist
+      var worksLd = (x.works || []).map(function (w) {
+        var o = { "@context": "https://schema.org", "@type": "VisualArtwork", name: plainText(w.t), creator: { "@type": "Person", "@id": here + "#artist", name: plainText(x.name) }, url: here };
+        if (/^\d{4}$/.test(plainText(w.y))) o.dateCreated = plainText(w.y);
+        if (w.m) o.artMedium = plainText(w.m);
+        return ldTag(o);
+      }).join("");
       return page("artists/" + s + "/index.html", x.name + " | " + NAME(), stripTags(x.summary), main,
-        { head: ldTag({ "@context": "https://schema.org", "@type": "ProfilePage", name: plainText(x.name), url: SITE_URL + "artists/" + s + "/", mainEntity: who, isPartOf: { "@type": "WebSite", name: plainText(NAME()), url: SITE_URL } }) + shareTag(face) });
+        { head: ldTag({ "@context": "https://schema.org", "@type": "ProfilePage", name: plainText(x.name), url: here, mainEntity: who, isPartOf: { "@type": "WebSite", name: plainText(NAME()), url: SITE_URL } }) + worksLd + shareTag(face) });
     }
     function notFound() {
       var main = '<article><header class="r-head"><p class="kicker">' + W("nf.eyebrow", "Page not found") + '</p><h1>' + W("nf.title", "That page isn’t here.") + '</h1><p class="r-stand">' + W("nf.lede", "It may have moved, or the address may be mistyped.") + '</p></header><div class="r-body r-body--page"><p><a href="/">' + W("nf.home", "Go to the front page") + '</a> ' + W("nf.or", "or") + ' <a href="/interventions/">' + W("nf.archive", "search the archive") + '</a>.</p></div></article>';
