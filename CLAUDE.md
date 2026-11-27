@@ -35,9 +35,15 @@ in the repository, so there is nothing to edit by hand.
 
 The pages are drawn by `assets/render.js`, the same code the page editor
 in Artiscope Digital Home uses for its preview, so the preview and the
-published page always match. Run `python3 tools/build.py _site` to check a
-change builds. Do not commit `_site`. Do not edit `.github/workflows/pages.yml` unless the
-owner asks.
+published page always match. The site is built with Astro (since 27
+November 2026; see `ASTRO.md`). Run `npm ci` once, then `npx astro build`
+to check a change builds, or `npx astro dev` for a local copy that
+reloads as you edit. The build stops with a plain message if a dispatch,
+column or artist profile in `data/content.json` is malformed (rules in
+`src/content.config.ts`). `python3 tools/build.py _site` still works and
+gives the same pages, without the smoother page changes. Do not commit
+`_site`, `public`, `.site-build` or `node_modules`. Do not edit
+`.github/workflows/pages.yml` unless the owner asks.
 
 ## The look of this site
 - Colours (the owner's choice, 26 November 2026): concrete grey #D9D6D0
