@@ -667,3 +667,18 @@ form[aria-busy="true"] [type="submit"]{opacity:.6;cursor:progress}
 .aname{align-items:center;justify-content:center}
 .aname img{width:34%;height:auto;opacity:.9}
 .news{align-items:start}
+
+/* Menu bar spacing, 27 November 2026: the site name and the section links never touch.
+   The links show only when they all fit with room to spare (1200 pixels and up);
+   below that the Menu button takes over. Search is an icon beside Subscribe on wide screens. */
+.nav-mark,.nav-right{flex:none}
+@media (min-width:1024px){
+  .nav .wrap{gap:24px}
+  .nav-search span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .nav-search{padding:0 10px}
+}
+@media (min-width:1024px) and (max-width:1199px){.nav-links{display:none}.menu-btn{display:inline-flex}}
+@media (min-width:1200px){.nav-links{flex:none;gap:clamp(16px,1.6vw,26px)}}
+/* Narrow screens: Subscribe moves into the menu below 640 pixels, and the name gets smaller on the smallest phones */
+@media (max-width:639px){.nav .btn--sm{display:none}.nav-search span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.nav-search{padding:0 10px}}
+@media (max-width:379px){.nav-mark{font-size:calc(1.0625rem * var(--h-scale, 1));gap:6px}.nav-mark img{width:26px;height:26px}.nav-search{padding:0 6px}.menu-btn{gap:6px;padding:0 2px}}
