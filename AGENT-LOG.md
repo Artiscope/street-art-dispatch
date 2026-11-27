@@ -2,6 +2,9 @@
 
 A record of what the website agent did on each run, newest first.
 
+
+## Friday 27 November 2026
+Draft: related reading on every dispatch, column and artist page ("More like this", "Artists in this story", "More on [artist]", "Artists in the same stories"), built only from the tags already on each story. Pull request: https://github.com/Artiscope/street-art-dispatch/pull/30
 ## Thursday 26 November 2026, contact form saves messages (draft)
 Published: nothing. The owner asked for an enquiry form on every site, stored in Supabase. The Contact page gets a form under the list of email addresses. Messages are saved to the enquiries table in the Artiscope Digital Home project on Supabase, which visitors can add to but never read. A hidden box catches spam robots. The privacy wording says where messages are kept and how to have them deleted.
 Checked: the site builds; the form shows its sending, thank you and error messages; the layout holds at 390 pixels and desktop width.
