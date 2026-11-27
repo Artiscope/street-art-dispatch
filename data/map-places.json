@@ -1,0 +1,46 @@
+{
+  "_about": "Where the street art map puts each place. Every pin sits on the centre of a town or city, never on a wall or a street, because that is as precise as our sources are. The positions come from GeoNames (geonames.org, CC BY 4.0), rounded to two decimal places; the number is the GeoNames record. An archive entry whose city is not listed here stays off the map, and so does anything with no single place (In orbit, Worldwide, Eight cities). Works in the list below come from the artist profiles in content.json and must name their town there.",
+  "places": {
+    "Venice, Italy": { "lat": 45.44, "lon": 12.33, "geonames": 3164603 },
+    "Vienna, Austria": { "lat": 48.21, "lon": 16.37, "geonames": 2761369 },
+    "New York, USA": { "lat": 40.71, "lon": -74.01, "geonames": 5128581 },
+    "Paris, France": { "lat": 48.85, "lon": 2.35, "geonames": 2988507 },
+    "London, UK": { "lat": 51.51, "lon": -0.13, "geonames": 2643743 },
+    "Miami Beach, USA": { "lat": 25.79, "lon": -80.13, "geonames": 4164143 },
+    "Crans-Montana, Switzerland": { "lat": 46.31, "lon": 7.49, "geonames": 2659623 },
+    "Lioni, Italy": { "lat": 40.88, "lon": 15.18, "geonames": 3174697 },
+    "Bethlehem, Palestine": { "lat": 31.70, "lon": 35.20, "geonames": 284315 },
+    "Can Picafort, Spain": { "lat": 39.77, "lon": 3.15, "geonames": 2520229 },
+    "Berlin, Germany": { "lat": 52.52, "lon": 13.41, "geonames": 2950159 },
+    "Weston-super-Mare, UK": { "lat": 51.35, "lon": -2.98, "geonames": 2634308 },
+    "Los Angeles, USA": { "lat": 34.05, "lon": -118.24, "geonames": 5368361 },
+    "Providence, USA": { "lat": 41.82, "lon": -71.41, "geonames": 5224151 },
+    "Rio de Janeiro, Brazil": { "lat": -22.91, "lon": -43.18, "geonames": 3451190 },
+    "Tecate, Mexico": { "lat": 32.57, "lon": -116.63, "geonames": 3982266 },
+    "Rome, Italy": { "lat": 41.89, "lon": 12.51, "geonames": 3169070 },
+    "Potosí, Bolivia": { "lat": -19.58, "lon": -65.75, "geonames": 3907584 },
+    "Portland, USA": { "lat": 45.52, "lon": -122.68, "geonames": 5746545 },
+    "Philadelphia, USA": { "lat": 39.95, "lon": -75.16, "geonames": 4560349 },
+    "Figueiró dos Vinhos, Portugal": { "lat": 39.90, "lon": -8.28, "geonames": 2268188 },
+    "Pisa, Italy": { "lat": 43.71, "lon": 10.40, "geonames": 3170647 },
+    "Florence, Italy": { "lat": 43.78, "lon": 11.25, "geonames": 3176959 },
+    "Zürich, Switzerland": { "lat": 47.37, "lon": 8.55, "geonames": 2657896 },
+    "Miami, USA": { "lat": 25.77, "lon": -80.19, "geonames": 4164138 },
+    "Princeton, USA": { "lat": 40.35, "lon": -74.66, "geonames": 5102922 }
+  },
+  "profile_works": [
+    { "artist": "Invader", "work": "The 4,000th street work", "place": "Potosí, Bolivia", "type": "Ceramic tile mosaic" },
+    { "artist": "Faith XLVII", "work": "Capax Infiniti", "place": "Portland, USA", "type": "Mural", "place_label": "Portland, Oregon" },
+    { "artist": "Faith XLVII", "work": "The Silent Watcher", "place": "Philadelphia, USA", "type": "Mural" },
+    { "artist": "Mohamed L’Ghacham", "work": "Matança do porco", "place": "Figueiró dos Vinhos, Portugal", "type": "Mural" },
+    { "artist": "Keith Haring", "work": "Crack is Wack", "place": "New York, USA", "type": "Mural" },
+    { "artist": "Keith Haring", "work": "Tuttomondo", "place": "Pisa, Italy", "type": "Mural" },
+    { "artist": "Jenny Holzer", "work": "Projection on the Arno, Florence", "place": "Florence, Italy", "type": "Light projection" },
+    { "artist": "Ben Eine", "work": "LOVE AT FIRST SIGHT", "place": "Zürich, Switzerland", "type": "Mural" }
+  ],
+  "exhibitions": {
+    "Basquiat: Figures, Signs, Symbols": { "artist": "Jean-Michel Basquiat", "place": "Miami, USA" },
+    "Basquiat, the Blue Ribbon Paintings, and the Art of Reproduction": { "artist": "Jean-Michel Basquiat", "place": "Princeton, USA" },
+    "Andy Warhol. Line and image": { "artist": "Andy Warhol", "place": "Paris, France" }
+  }
+}

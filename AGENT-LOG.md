@@ -3,6 +3,11 @@
 A record of what the website agent did on each run, newest first.
 
 
+## Friday 27 November 2026, street art map (draft)
+Published: nothing. A new Map page (map/, also in the menu bar and footer) puts the Intervention Archive, the public works named on artist profiles and the shows on now on a world map. One pin per town or city, never a street or a wall, grouped together when zoomed out. A pin opens a card linking to the dispatch or the artist profile. Filters for artist, town and year (by decade), and for street works or shows, kept in the address so a view can be shared. Every place is also listed as text under the map. Positions come from GeoNames, rounded to two decimal places, and are listed with their GeoNames record in data/map-places.json. Country outlines are Natural Earth (public domain), served from this site, so the page makes no calls to outside map services. Three archive entries with no single place (In orbit, Worldwide, Eight cities) and Kelburn Castle, where our profile names no town, stay off the map. React loads on this page only.
+Checked: the site builds, the map, filters, cards and list work with mouse, keyboard and touch, no page errors, the layout holds at 390 pixels and desktop width, and the menu bar still fits at 1200 pixels.
+Needs you: a yes on the pull request.
+
 ## Friday 27 November 2026, menu bar spacing (draft)
 Published: nothing. On mid-width screens the site name ran into "Dispatches" after Search was added to the menu bar. The section links now show only from 1200 pixels, where they all fit with room to spare; narrower screens use the Menu button. Search is an icon on wide screens, Subscribe moves into the menu below 640 pixels, and the name is a little smaller on the smallest phones.
 Checked: the menu bar at every width from 320 to 2000 pixels, ten pixels apart: the name never touches the next item and nothing runs off the screen.

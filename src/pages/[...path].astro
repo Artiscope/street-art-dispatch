@@ -8,7 +8,7 @@ export async function getStaticPaths() {
   // reading the collections runs the content checks in src/content.config.ts
   for (const name of Object.keys(collections)) await getCollection(name);
   return pages()
-    .filter((p) => p !== "404.html")
+    .filter((p) => p !== "404.html" && p !== "map/index.html") // the map has its own page, src/pages/map/index.astro
     .map((p) => ({ params: { path: routeOf(p) }, props: { file: p } }));
 }
 const html = pageHtml(Astro.props.file);

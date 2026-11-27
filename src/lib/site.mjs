@@ -43,6 +43,12 @@ export function buildSite() {
     fs.mkdirSync(path.dirname(to), { recursive: true });
     fs.copyFileSync(path.join(BUILT, rel), to);
   }
+  // for the street art map (map/): Leaflet's styles and the country outlines (Natural Earth, public domain)
+  const MAP = path.join(PUBLIC, "assets", "map");
+  fs.mkdirSync(MAP, { recursive: true });
+  const nm = (f) => path.join(ROOT, "node_modules", f);
+  fs.writeFileSync(path.join(MAP, "leaflet.css"), [nm("leaflet/dist/leaflet.css"), nm("leaflet.markercluster/dist/MarkerCluster.css")].map((f) => fs.readFileSync(f, "utf8")).join("\n"));
+  fs.copyFileSync(nm("world-atlas/countries-50m.json"), path.join(MAP, "countries-50m.json"));
 }
 
 // every page's file name

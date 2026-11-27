@@ -8,6 +8,13 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "astro": "7.4.12"
+    "@astrojs/react": "^7.1.9",
+    "astro": "7.4.12",
+    "leaflet": "^1.9.4",
+    "leaflet.markercluster": "^1.5.3",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "topojson-client": "^3.1.0",
+    "world-atlas": "^2.0.2"
   }
 }

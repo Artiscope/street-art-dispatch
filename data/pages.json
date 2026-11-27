@@ -21,6 +21,10 @@
             "interventions/"
           ],
           [
+            "Map",
+            "map/"
+          ],
+          [
             "Urban Culture",
             "urban-culture/"
           ],
@@ -548,6 +552,21 @@
               "editions"
             ],
             "top": true
+          }
+        }
+      ]
+    },
+    "map": {
+      "title": "The Street Art Map | Street Art Dispatch",
+      "path": "map/index.html",
+      "description": "Every intervention in our archive, the public works on our artist profiles and the shows on now, pinned to the town or city where they happened. Filter by artist, place and year.",
+      "sections": [
+        {
+          "id": "map",
+          "type": "space",
+          "visible": true,
+          "settings": {
+            "size": "S"
           }
         }
       ]
