@@ -64,9 +64,8 @@
       "slug": "konn-artiss",
       "kicker": "Artist Profile",
       "cover": "konn",
-      "draft": true,
       "title": "Konn Artiss: Art, Intervention and Public Attention",
-      "standfirst": "Konn Artiss makes work for the moment a crowd realises something wasn’t supposed to be there. A profile of an artist whose best-known pieces start as public interventions and end up as arguments about who art is for.",
+      "standfirst": "Konn Artiss stages art in public places, where passers-by become part of the audience. This profile starts from one photograph taken in Venice and keeps to what we can show.",
       "tags": [
         "Konn Artiss",
         "Artist profile",
@@ -74,7 +73,8 @@
         "Artwork",
         "Auctions"
       ],
-      "body": "\n<p class=\"dropcap\">When people realise that what they’re looking at wasn’t supposed to be there, a crowd goes quiet for a second or two. Then the phones come out. Konn Artiss makes work for that second, and for what happens after it.</p>\n<p>For Artiss, as for many artists of this generation, the gallery is one stop in an artwork’s life rather than its starting point. The work usually appears first in public, placed or staged somewhere that already means something, and it borrows the attention of people who weren’t looking for art. Exhibition, collection and auction come later, after the piece has been photographed, discussed and argued over.</p>\n<h2>Starting outside the white cube</h2>\n<p>“Street art” covers some of this. The unannounced appearance, the dependence on location and the sense of the city as co-author all come from the street. The strategy owes as much to performance and conceptual art, though. An intervention cares less about how it looks than about what changes when it turns up.</p>\n<p>That changes where the viewer stands. You can admire a mural from across the road. An intervention makes you part of its audience whether you meant to be or not, and your reaction (the double take, the photo, the post) becomes part of how the work travels.</p>\n<h2>Venice as a stage</h2>\n<p>Venice sharpens all of this. The city is already a spectacle, and every other year it hosts the most closely watched exhibition in contemporary art, so its visitors arrive ready to look. Artiss’s Venice intervention used that readiness. The city provided the drama and the work interrupted it.</p>\n<p>Several things make Venice suit this kind of art. Narrow sightlines and routes along the water turn any unexpected object into an event. Nearly every visitor carries a camera. During the Biennale the line between the official programme and unofficial responses to it blurs, and people go looking for the next thing to see. A work placed there gets compared with the pavilions, with the city, and with earlier artists who used Venice the same way. (We cover that history in <a href=\"#read/venice-stage\">Venice as a Stage for Contemporary Art</a>.)</p>\n<blockquote class=\"pull\">The city provided the drama. The work interrupted it.</blockquote>\n<h2>Attention as a material</h2>\n<p>Critics of public interventions often call them stunts. The forms can look alike, so the reflex is understandable, but it misses how carefully serious artists in this field work. Artiss handles attention the way other artists handle paint, steel or light.</p>\n<p>In practice that means planning for documentation, since most people will see the work on a screen and the photograph will outlive the object. It means thinking about timing and about who will be there, and checking that the piece reads at a glance and still holds up on a second look. It also means treating the public’s response, whether enthusiasm, confusion or irritation, as part of what the work means.</p>\n<p>As with any art made in public, the real test comes after the attention moves on. Clever interventions tend to evaporate. The lasting ones leave an idea that people keep coming back to.</p>\n<h2>From the street to the collection</h2>\n<p>Every artist who works in public runs into the same practical problem: how does a temporary gesture become something that can be exhibited, bought and kept? Artiss treats the intervention and the collectable work as related but separate. The public piece makes the argument. Studio works, editions and documentation take it into private and institutional collections.</p>\n<p>Collectors need to understand that separation. Value here depends on provenance and clarity: knowing exactly what an object is, how it relates to the public work, and who vouches for its authenticity. Gallery representation is one link in that chain. <a href=\"#read/spectacle-to-collectable\">From Public Spectacle to Collectable Object</a> explains how it works.</p>\n<h2>Why it matters now</h2>\n<p>Street Art Dispatch exists because this way of working has moved from the edge of contemporary culture to its centre. The artists we follow don’t choose between the street and the gallery. They build practices that move between the two, and they use public space to reach people that institutions rarely reach.</p>\n<p>Artiss is a clear example of that shift. The work asks who decides where art can appear, and makes a good case that the people who own the walls no longer decide alone.</p>"
+      "body": "\n<p class=\"dropcap\">The photograph at the top of this page was taken on the Venice waterfront, with San Giorgio Maggiore across the water. Four performers dressed in black stand with their backs to the camera, and white letters on their jackets spell KONN. Two of them hold black umbrellas, one printed TRUST and the other ME. Beside them a life-size seated figure in a dinner jacket reads a newspaper, with papers scattered on the stone at its feet.</p>\n<p>Nothing in the scene asks permission. It is set on a public quay, among the mooring posts and gondolas, where anyone walking past becomes part of the audience whether they meant to or not.</p>\n<h2>Our reading</h2>\n<p>What follows is our interpretation, not a statement from the artist. The piece borrows the look of a publicity stunt: matching outfits, a name spelled out letter by letter, a slogan split across two umbrellas. Putting TRUST ME directly above the artist’s own name reads to us as a joke about branding, and about how much an audience will believe when something is staged with confidence.</p>\n<p>The setting does a lot of the work. Venice hosts the Biennale, so many of its visitors arrive expecting to look at art, and nearly all of them carry a camera. A staged scene on the waterfront is likely to be photographed and passed on, and the photograph may travel further than the event itself. We look at that history in <a href=\"#read/venice-stage\">Venice as a Stage for Contemporary Art</a>.</p>\n<h2>From the street to the collection</h2>\n<p>Art made in public raises the same practical question for every artist who makes it: how does a temporary event become something that can be shown, bought and kept? <a href=\"#read/spectacle-to-collectable\">From Public Spectacle to Collectable Object</a> explains how that usually works and what collectors should check before they buy.</p>\n<h2>What we will add</h2>\n<p>This profile keeps to what we can show. We will add dates, the titles of works and any auction results once we can source them, and the <a href=\"#interventions\">Intervention Archive</a> entry for Venice will be updated at the same time.</p>",
+      "disclosure": "Street Art Dispatch has a commercial relationship with Grove Gallery, which shows Konn Artiss’s work. See our <a href=\"@@about/\">standards</a>."
     },
     {
       "slug": "mohamed-lghacham",
@@ -245,7 +245,7 @@
       "role": "Intervention · Installation · Collectable works",
       "cover": "a-konn",
       "read": "konn-artiss",
-      "summary": "An artist working across public intervention, installation and collectable work. Our readers know Artiss best for an intervention staged in Venice that made the city’s audience part of the piece.",
+      "summary": "An artist who stages work in public. The piece we know best is a performance on the Venice waterfront, with performers spelling out KONN across their backs.",
       "facts": [
         [
           "Practice",
@@ -258,10 +258,6 @@
         [
           "Gallery",
           "Grove Gallery"
-        ],
-        [
-          "Profile",
-          "Lead feature, Issue 01"
         ]
       ]
     },
@@ -2403,7 +2399,7 @@
   "exhibitions": [
     {
       "t": "Basquiat: Figures, Signs, Symbols",
-      "sub": "Jean-Michel Basquiat, who started out writing SAMO© on the walls of lower Manhattan. Source: <a href=\"https://www.pamm.org/en/exhibition/basquiat-figures-signs-symbols/\" rel=\"noopener\">the venue’s exhibition page</a>.",
+      "sub": "<a href=\"#artist/jean-michel-basquiat\">Jean-Michel Basquiat</a>, who started out writing SAMO© on the walls of lower Manhattan. Source: <a href=\"https://www.pamm.org/en/exhibition/basquiat-figures-signs-symbols/\" rel=\"noopener\">the venue’s exhibition page</a>.",
       "venue": "Pérez Art Museum Miami, Miami",
       "when": "25 June 2026 to 6 June 2027",
       "status": "Museum show"
@@ -2417,7 +2413,7 @@
     },
     {
       "t": "Andy Warhol. Line and image",
-      "sub": "Andy Warhol in Paris. Our dispatch on Warhol and the street covers the paintings he made with Basquiat. Source: <a href=\"https://museeduluxembourg.fr/en/agenda/evenement/andy-warhol\" rel=\"noopener\">the venue’s exhibition page</a>.",
+      "sub": "Andy Warhol in Paris. <a href=\"#read/warhol-and-the-street\">Our dispatch on Warhol and the street</a> covers the paintings he made with Basquiat. Source: <a href=\"https://museeduluxembourg.fr/en/agenda/evenement/andy-warhol\" rel=\"noopener\">the venue’s exhibition page</a>.",
       "venue": "Musée du Luxembourg, Paris",
       "when": "16 September 2026 to 10 January 2027",
       "status": "Museum show"
@@ -2493,7 +2489,7 @@
     "Jenny Holzer": "Jenny Holzer's peace memorial, Erlauf"
   },
   "artist_notes": {
-    "Konn Artiss": "Shown by Grove Gallery. The lead profile in Issue 01; dates and titles are being confirmed with the studio.",
+    "Konn Artiss": "Shown by Grove Gallery. Street Art Dispatch has a commercial relationship with the gallery.",
     "Banksy": "Active in Bristol since the 1990s. Works are authenticated by Pest Control Office.",
     "Invader": "First invasion in Paris, 1998. Works in ceramic tile; the Flash Invaders app followed in 2014.",
     "Shepard Fairey": "Started with a sticker campaign in Providence in 1989. Collectors mostly buy his signed screen-print editions.",

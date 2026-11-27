@@ -64,6 +64,7 @@
     var PHOTOS = D.photos || {}, ART_PHOTOS = D.artist_photos || {}, PHOTO_FILES = D.photo_files || {}, ART_PHOTO_FILES = D.artist_photo_files || {};
     function hasPage(x) { return !!(x.read && BY_SLUG[x.read]) || !!opts.mark; }
     var ARCHIVE = D.archive || [];
+    var NOT_A_CITY = ["Eight cities", "In orbit", "Worldwide"];
 
     function shared(key) { var part = (PAGES.shared || {})[key] || {}; return [part.settings || {}, get(part, "visible", true) !== false]; }
     function hd() { return shared("header")[0]; }
@@ -71,6 +72,8 @@
     function navLinks() { return (get(hd(), "links", []) || []).filter(function (l) { return Array.isArray(l) && l[0]; }); }
     function pathOf(s) { return (COLS[s] ? "urban-culture/" : "dispatches/") + s + "/"; }
     function photo(desc, ratio) {
+      // On the published site an empty photo spot is left out rather than shown as a "Photo to come" frame.
+      if (!opts.mark) return "";
       var st = ratio ? ' style="aspect-ratio:' + ratio + '"' : "";
       return '<div class="ph" role="img" aria-label="' + W("sr.photo", "Photograph to come: {what}", { what: esc(desc) }) + '"' + st + '><span class="ph-t">' + W("missing.photo", "Photo to come") + '</span><span class="ph-d">' + esc(desc) + '</span></div>';
     }
@@ -164,15 +167,16 @@
       main = String(main).split("@@").join(r);
       var links = navLinks().map(function (l) { return '<li><a href="' + r + l[1] + '"' + (urlPath.indexOf(l[1]) === 0 ? ' aria-current="page"' : "") + '>' + txt(l[0]) + '</a></li>'; }).join("");
       var sub = hrefOf(get(st, "subscribe_href", "#newsletter")).split("@@").join(r), subWords = txt(get(st, "subscribe", "Subscribe"));
+      var srch = PAGES.pages && PAGES.pages.search ? '      <a class="nav-search" href="' + r + 'search/"' + (urlPath === "search/" ? ' aria-current="page"' : "") + '><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18"><circle cx="7.5" cy="7.5" r="5.75" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 12l4.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>' + W("menu.search", "Search") + '</span></a>\n' : "";
       var plate = home && !o.own ? '<header class="nameplate"><img class="plate-mark" src="assets/brand/sad-tile.svg" alt="" width="72" height="72"><a href="' + (r || "./") + '">' + name + '<i class="stop"></i></a><p>' + txt(get(st, "tagline", "")) + '</p></header>' +
         '<div id="navSentinel" aria-hidden="true"></div>' : "";
       var nav = !hon || o.own ? "" : '<nav class="nav' + (home ? "" : " nav--inner") + '" id="nav" aria-label="' + W("sr.nav", "Sections") + '">\n  <div class="wrap">\n' +
         '    <a class="nav-mark" href="' + (r || "./") + '"><img src="' + r + 'assets/brand/sad-tile.svg" alt="" width="34" height="34"><span>' + name + '<i class="stop"></i></span></a>\n' +
         (headLogos(st, r, "L") ? '    <span class="hlogos">' + headLogos(st, r, "L") + '</span>\n' : "") +
-        '    <ul class="nav-links">' + links + '</ul>\n' + (headLogos(st, r, "C") ? '    <span class="hlogos">' + headLogos(st, r, "C") + '</span>\n' : "") + '    <div class="nav-right">\n' + (headLogos(st, r, "R") ? '      <span class="hlogos">' + headLogos(st, r, "R") + '</span>\n' : "") + '      <a class="btn btn--sm" href="' + sub + '">' + subWords + '</a>\n' +
+        '    <ul class="nav-links">' + links + '</ul>\n' + (headLogos(st, r, "C") ? '    <span class="hlogos">' + headLogos(st, r, "C") + '</span>\n' : "") + '    <div class="nav-right">\n' + (headLogos(st, r, "R") ? '      <span class="hlogos">' + headLogos(st, r, "R") + '</span>\n' : "") + srch + '      <a class="btn btn--sm" href="' + sub + '">' + subWords + '</a>\n' +
         '      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="sheet"><i aria-hidden="true"></i>' + W("menu.open", "Menu") + '</button>\n    </div>\n  </div>\n</nav>\n' +
         '<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="' + W("sr.menu", "Menu") + '">\n  <div class="sheet-top"><span>' + name + '<i class="stop"></i></span><button class="close-btn" id="sheetClose">' + W("menu.close", "Close") + ' <b aria-hidden="true">×</b></button></div>\n' +
-        '  <ul>' + links + '</ul>\n  <a class="btn" href="' + sub + '">' + subWords + '</a>\n</div>';
+        '  <ul>' + links + (srch ? '<li><a href="' + r + 'search/">' + W("menu.search", "Search") + '</a></li>' : "") + '</ul>\n  <a class="btn" href="' + sub + '">' + subWords + '</a>\n</div>';
       var ft = shared("footer"), f = ft[0];
       var foot = !ft[1] || o.own ? "" : '<footer class="on-pine foot" id="contact">\n  <div class="wrap">\n    <div class="foot-grid">\n' +
         '      <div><img class="foot-mark" src="' + r + 'assets/brand/sad-mark-on-dark.svg" alt="" width="64" height="64"><p class="mark">' + name + '<i class="stop"></i></p><p class="tag">' + txt(get(f, "tagline", "")) + '</p></div>\n' +
@@ -208,7 +212,11 @@
         '<p>' + esc(x.note) + '</p>' + more + '</li>';
     }
     function acard(x) {
-      var inner = picFor(x, ART_PHOTO_FILES[x.name], ART_PHOTOS[x.name] || x.name) + '<h3>' + x.name + '</h3><p>' + x.role + '</p>';
+      var pic = picFor(x, ART_PHOTO_FILES[x.name], ART_PHOTOS[x.name] || x.name);
+      // no free photo yet: a plain pine tile with the site's stamp, never an empty frame
+      if (!pic) pic = '<div class="aname" aria-hidden="true"><img src="@@assets/brand/sad-mark-on-dark.svg" alt="" width="72" height="72"></div>';
+      var inner = pic + '<h3>' + x.name + '</h3><p>' + x.role + '</p>';
+      if (!opts.mark && !(x.read && BY_SLUG[x.read])) return "";
       if (x.read && BY_SLUG[x.read]) return '<li><a class="acard" href="@@artists/' + x.slug + '/">' + inner + '<span class="more">' + W("btn.open-profile", "Open profile") + '</span></a></li>';
       return '<li><div class="acard acard--soon">' + inner + '<span class="soon">' + W("missing.soon", "Coming soon") + '</span></div></li>';
     }
@@ -217,7 +225,7 @@
         '<span class="more" aria-hidden="true">' + (COLS[c.slug] ? W("btn.read-column", "Read the column") : W("btn.read-dispatch", "Read the dispatch")) + '</span></li>';
     }
     function ecard(x) {
-      return '<li class="ecard"><p class="kicker">' + x.venue + '</p><h3>' + x.t + '</h3><p>' + x.sub + '</p><dl><div><dt>' + W("item.dates", "Dates:") + ' </dt><dd>' + x.when + '</dd></div></dl><span class="badge">' + x.status + '</span></li>';
+      return '<li class="ecard"><p class="kicker">' + x.venue + '</p><h3>' + x.t + '</h3><p>' + fixLinks(x.sub, "@@") + '</p><dl><div><dt>' + W("item.dates", "Dates:") + ' </dt><dd>' + x.when + '</dd></div></dl><span class="badge">' + x.status + '</span></li>';
     }
     function dgrid(list) {
       if (!list.length) return "";
@@ -272,30 +280,35 @@
         var b = get(st, "button", ""), more = b && addrOk(get(st, "button_href", "")) ? '\n    <p class="amore"><a class="btn" href="' + hrefOf(st.button_href) + '">' + txt(b).split("{count}").join(String(ARCHIVE.length)) + '</a></p>' : "";
         return wrapSec(st, ctx, '<ul class="cards">' + recent.map(icard).join("") + '</ul>' + more);
       }
-      var names = Array.from(new Set(ARCHIVE.map(function (x) { return x.artist; }))).sort(), cities = Array.from(new Set(ARCHIVE.map(function (x) { return x.city; }))).sort();
+      // entries that are not in one city ("Eight cities", "In orbit", "Worldwide") share one choice at the end of the City list
+      var cityOf = function (x) { return NOT_A_CITY.indexOf(x.city) >= 0 ? "other" : x.city; };
+      var names = Array.from(new Set(ARCHIVE.map(function (x) { return x.artist; }))).sort(), cities = Array.from(new Set(ARCHIVE.map(cityOf))).filter(function (c) { return c !== "other"; }).sort();
+      var hasOther = ARCHIVE.some(function (x) { return cityOf(x) === "other"; });
       var dec = function (x) { return typeof x.y === "number" ? String(Math.floor(x.y / 10) * 10) : "tbc"; };
       var groups = [], at = {};
       newestFirst(ARCHIVE).forEach(function (x) { var k = String(x.y); if (!(k in at)) { at[k] = groups.length; groups.push([k, []]); } groups[at[k]][1].push(x); });
       var card = function (x) {
         var text = esc(["title", "artist", "city", "country", "type", "note", "y"].map(function (k) { return String(x[k]); }).join(" ").toLowerCase());
-        return icard(x).replace('<li class="icard">', '<li class="icard" data-artist="' + slug(x.artist) + '" data-city="' + esc(x.city) + '" data-dec="' + dec(x) + '" data-text="' + text + '">');
+        return icard(x).replace('<li class="icard">', '<li class="icard" data-artist="' + slug(x.artist) + '" data-city="' + esc(cityOf(x)) + '" data-dec="' + dec(x) + '" data-text="' + text + '">');
       };
       var label = function (y) { return y === "TBC" ? W("missing.date", "Date to confirm") : y; };
       var out = groups.map(function (g) { return '<section class="yr" aria-label="' + label(g[0]) + '"><h2>' + label(g[0]) + '</h2><ul class="cards">' + g[1].map(card).join("") + '</ul></section>'; }).join("");
-      var chips = [["", W("archive.all-years", "All years")], ["2020", "2020s"], ["2010", "2010s"], ["2000", "2000s"], ["1990", "1990s"], ["1980", "1980s"], ["tbc", W("missing.date", "Date to confirm")]].map(function (c) {
+      var chips = [["", W("archive.all-years", "All years")], ["2020", "2020s"], ["2010", "2010s"], ["2000", "2000s"], ["1990", "1990s"], ["1980", "1980s"], ["1970", "1970s"]].filter(function (c) { return !c[0] || ARCHIVE.some(function (x) { return dec(x) === c[0]; }); }).map(function (c) {
         return '<button type="button" class="chip" data-dec="' + c[0] + '" aria-pressed="' + (c[0] === "" ? "true" : "false") + '">' + c[1] + '</button>';
       }).join("");
-      var aopts = names.map(function (n) { return '<option value="' + slug(n) + '">' + esc(n) + '</option>'; }).join(""), copts = cities.map(function (c) { return '<option>' + esc(c) + '</option>'; }).join("");
+      var aopts = names.map(function (n) { return '<option value="' + slug(n) + '">' + esc(n) + '</option>'; }).join(""), copts = cities.map(function (c) { return '<option>' + esc(c) + '</option>'; }).join("") + (hasOther ? '<option value="other">' + W("archive.other-places", "Several cities, or no one place") + '</option>' : "");
       var email = get(st, "email", "") || mailTo(), note = get(st, "note", "");
       var inner = '\n    <form class="atools" role="search" onsubmit="return false">\n' +
-        '      <div class="field"><label for="fQ">' + W("archive.search", "Search") + '</label><input id="fQ" type="search" placeholder="' + txt(get(st, "search_hint", "")) + '" autocomplete="off"></div>\n' +
+        '      <div class="field fq"><label for="fQ">' + W("archive.search", "Search the archive") + '</label><input id="fQ" type="search" placeholder="' + txt(get(st, "search_hint", "")) + '" autocomplete="off"></div>\n' +
+        '      <button type="button" class="ftoggle" id="aMoreBtn" aria-expanded="false" aria-controls="aMore">' + W("archive.more", "Artist, city and year") + '</button>\n' +
+        '      <div class="fmore" id="aMore">\n' +
         '      <div class="field"><label for="fArtist">' + W("archive.artist", "Artist") + '</label><select id="fArtist"><option value="">' + W("archive.all-artists", "All artists") + '</option>' + aopts + '</select></div>\n' +
         '      <div class="field"><label for="fCity">' + W("archive.city", "City") + '</label><select id="fCity"><option value="">' + W("archive.all-cities", "All cities") + '</option>' + copts + '</select></div>\n' +
-        '      <div class="field decades" role="group" aria-labelledby="decLbl"><span class="lbl" id="decLbl">' + W("archive.year", "Year") + '</span><div class="chips" id="decades">' + chips + '</div></div>\n    </form>\n' +
+        '      <div class="field decades" role="group" aria-labelledby="decLbl"><span class="lbl" id="decLbl">' + W("archive.year", "Year") + '</span><div class="chips" id="decades">' + chips + '</div></div>\n      </div>\n    </form>\n' +
         '    <div class="astatus"><p id="aCount" aria-live="polite">' + W("archive.count", "{n} interventions, newest first", { n: String(ARCHIVE.length) }) + '</p><button class="tlink" id="aClear" type="button" hidden>' + W("archive.clear", "Clear filters") + '</button></div>\n' +
-        '    <div class="results" id="results">' + out + '</div>\n    <p class="empty" id="aEmpty" hidden>' + W("archive.empty", "Nothing matches those filters yet.") + '</p>\n' +
+        '    <div class="results" id="results">' + out + '</div>\n    <div class="empty" id="aEmpty" hidden><p>' + W("archive.empty", "Nothing in the archive matches that yet.") + '</p><div class="elsewhere" id="aElse" aria-live="polite"></div></div>\n' +
         (note || email ? '    <p class="anote">' + txt(note) + (email && get(st, "note_link", "") ? ' <a class="tlink" href="mailto:' + esc(email) + '" style="min-height:0">' + txt(st.note_link) + '</a>' : "") + '</p>\n  ' : "  ");
-      return wrapSec(st, ctx, inner, { id: "archive", attrs: ' data-total="' + ARCHIVE.length + '"' });
+      return wrapSec(st, ctx, inner, { id: "archive", attrs: ' data-total="' + ARCHIVE.length + '" data-index="@@search-index.json" data-root="@@" data-search="@@search/"' });
     };
     S["exhibition-list"] = function (st, ctx) { return wrapSec(st, ctx, '<ul class="egrid">' + (D.exhibitions || []).map(ecard).join("") + '</ul>'); };
     S.collecting = function (st, ctx) {
@@ -307,15 +320,26 @@
         '      <div class="terms">' + terms + '</div></div>';
       return wrapSec(st, ctx, inner, { pine: true });
     };
+    // The sign-up box. There is no mailing service yet, so the button writes an email for the reader to send, and says so.
     S.signup = function (st, ctx) {
-      var email = get(st, "email", "") || mailTo(), id = ctx.id;
-      return '<section class="sec" id="' + id + '" aria-labelledby="h-' + id + '">\n    <div class="wrap news">\n' +
-        '      <div><h2 id="h-' + id + '">' + txt(get(st, "heading", "")) + '</h2>' + (get(st, "text", "") ? '<p class="dek">' + txt(st.text) + '</p>' : "") + '</div>\n      <div>\n' +
-        '        <form class="nl" id="nl"><label class="sr" for="nlEmail">' + W("form.email", "Email address") + '</label><input id="nlEmail" type="email" required placeholder="' + W("form.placeholder", "you@example.com") + '" autocomplete="email"><button class="btn" type="submit">' + txt(get(st, "button", "Subscribe")) + '</button></form>\n' +
+      var email = get(st, "email", "") || mailTo(), id = ctx.id, top = !!get(st, "top", false), hx = top ? "h1" : "h2";
+      return '<section class="sec' + (top ? " sec--top" : "") + '" id="' + id + '" aria-labelledby="h-' + id + '">\n    <div class="wrap news">\n' +
+        '      <div><' + hx + ' id="h-' + id + '">' + txt(get(st, "heading", "")) + '</' + hx + '>' + (get(st, "text", "") ? '<p class="dek">' + txt(st.text) + '</p>' : "") + '</div>\n      <div>\n' +
+        '        <form class="nl" id="nl"><label class="sr" for="nlEmail">' + W("form.email", "Email address") + '</label><input id="nlEmail" type="email" required placeholder="' + W("form.placeholder", "you@example.com") + '" autocomplete="email"><button class="btn" type="submit">' + txt(get(st, "button", "Email us to sign up")) + '</button></form>\n' +
         '        <p class="nl-msg" id="nlMsg" aria-live="polite"></p>\n' +
-        '        <p class="mf-note">' + W("form.note", "This opens your own email app with a message ready to send to {email}.", { email: esc(mailTo()) }) + '</p>\n' +
-        (get(st, "pitch", "") || email ? '        <p class="pitch">' + txt(get(st, "pitch", "")) + (email ? ' <a class="tlink" style="min-height:0" href="mailto:' + esc(email) + '">' + esc(email) + '</a>' : "") + '</p>\n' : "") +
+        '        <p class="mf-note">' + W("form.note-signup", "The button opens your email app with a short message to {email}. That is the address of Artiscope, who publish Street Art Dispatch. No email app? Write to that address from any account and we will add you.", { email: '<strong>' + esc(mailTo()) + '</strong>' }) + '</p>\n' +
+        (get(st, "pitch", "") ? '        <p class="pitch">' + txt(get(st, "pitch", "")) + (email ? ' <a class="tlink" style="min-height:0" href="mailto:' + esc(email) + '">' + esc(email) + '</a>' : "") + '</p>\n' : "") +
         '      </div>\n    </div>\n  </section>';
+    };
+    // Search across the whole site: dispatches, columns, artists, exhibitions and the archive. The index is search-index.json, written by the build.
+    S.search = function (st, ctx) {
+      var tries = (get(st, "suggestions", []) || []).filter(function (x) { return typeof x === "string" && x.trim(); });
+      var inner = '\n    <form class="sform" id="siteSearch" role="search" method="get" action=""><label for="sQ" class="lbl">' + W("search.label", "Search Street Art Dispatch") + '</label>' +
+        '<div class="sform-row"><input id="sQ" name="q" type="search" autocomplete="off" placeholder="' + txt(get(st, "hint", "")) + '"><button class="btn" type="submit">' + W("search.button", "Search") + '</button></div></form>\n' +
+        (tries.length ? '    <p class="stry">' + W("search.try", "Try") + ' ' + tries.map(function (t) { return '<a href="?q=' + encodeURIComponent(t.trim()) + '">' + txt(t.trim()) + '</a>'; }).join(", ") + '</p>\n' : "") +
+        '    <p class="scount" id="sCount" aria-live="polite"></p>\n    <ol class="sresults" id="sResults"></ol>\n' +
+        '    <noscript><p>' + W("search.noscript", "Search needs JavaScript. You can still browse the Dispatches, Artists and Interventions pages from the menu.") + '</p></noscript>\n  ';
+      return wrapSec(st, ctx, inner, { id: "search", attrs: ' data-index="@@search-index.json"' });
     };
     // A sign-up box that pops up once a visit; drawn hidden, and shown by the site's script.
     S["signup-popup"] = function (st, ctx) {
@@ -552,6 +576,7 @@
     // ----- articles, columns and artists, each on its own page -----
     // The photo at the top of an article or artist page: the photo with its credit, or the Photo to come frame.
     function rFigure(x, lic, desc) {
+      if (!x.image && !fileOk(lic) && !opts.mark) return "";
       if (!x.image && fileOk(lic)) return '<figure class="r-fig">' + slotPic(lic, desc) + '<figcaption>' + slotCap(lic, "") + '</figcaption></figure>';
       var credit = String(x.credit || "").trim();
       return '<figure class="r-fig">' + picOf(x, desc) + '<figcaption>' + (x.image ? txt(credit) : W("missing.commission", "Photograph to be commissioned.")) + '</figcaption></figure>';
@@ -576,7 +601,8 @@
       var nxt = pool[(pool.indexOf(a) + 1) % pool.length];
       var sect = isCol ? ["Urban Culture", "urban-culture/"] : ["Dispatches", "dispatches/"];
       var fig = PHOTOS[a.slug] || a.image || fileOk(PHOTO_FILES[a.slug]) || opts.mark ? M(rFigure(a, PHOTO_FILES[a.slug], PHOTOS[a.slug] || a.title), "picture") : "";
-      var draft = a.draft ? '<p class="note"><b>' + W("item.draft", "Draft") + '</b>Biographical details, dates, titles and market data in this profile are being confirmed with the artist’s studio and Grove Gallery before publication.</p>' : "";
+      // a gallery the publication works with is named at the top of the story (see About and standards)
+      var draft = a.disclosure ? '<p class="note"><b>' + W("item.disclosure", "Disclosure") + '</b>' + a.disclosure + '</p>' : "";
       var main = '<article>\n    ' + M('<header class="r-head"><p class="crumb"><a href="@@' + sect[1] + '">' + sect[0] + '</a></p><p class="kicker">' + a.kicker + '</p><h1>' + a.title + '</h1><p class="r-stand">' + a.standfirst + '</p><p class="byline">By ' + SITE.desk + ' · ' + W("item.min-read", "{n} min read", { n: String(mins(a)) }) + '</p></header>', "words") + '\n    ' +
         fig + '\n    ' + M('<div class="r-body">' + draft + fixLinks(a.body, "@@") + '</div>', "body") + '\n' +
         '    <footer class="r-foot"><p class="filed">' + W("item.filed", "Filed under {tags}.", { tags: (a.tags || []).join(", ") }) + '</p>\n' +
@@ -636,7 +662,17 @@
       if (!/<meta name="robots"/.test(pg.html)) pg.html = pg.html.replace("<head>\n", "<head>\n<meta name=\"robots\" content=\"noindex\">\n");
       return pg;
     }
-    var LIST_ORDER = ["home", "dispatches", "urban-culture", "artists", "interventions", "exhibitions", "collecting", "about", "contact"];
+    var LIST_ORDER = ["home", "dispatches", "urban-culture", "artists", "interventions", "exhibitions", "collecting", "search", "newsletter", "about", "contact"];
+    // Everything the site search looks through, one row per page or entry: kind, title, address, a short line and the words to match.
+    function searchIndex() {
+      var low = function (a) { return plainText(a.filter(Boolean).join(" ")).toLowerCase(); }, rows = [];
+      ALL.forEach(function (a) { rows.push({ k: COLS[a.slug] ? "Column" : "Dispatch", t: plainText(a.title), u: pathOf(a.slug), d: plainText(a.standfirst, 180), x: low([a.title, a.kicker, (a.tags || []).join(" "), a.standfirst, String(a.body || "").replace(/<[^>]+>/g, " ")]) }); });
+      (D.artists || []).forEach(function (x) { if (x.read && BY_SLUG[x.read]) rows.push({ k: "Artist", t: plainText(x.name), u: "artists/" + x.slug + "/", d: plainText(x.summary, 180), x: low([x.name, x.role, x.summary, (x.facts || []).map(function (f) { return f.join(" "); }).join(" "), x.story, x.method]) }); });
+      (D.exhibitions || []).forEach(function (x) { rows.push({ k: "Exhibition", t: plainText(x.t), u: "exhibitions/", d: plainText(x.venue + ". " + x.when), x: low([x.t, x.sub, x.venue, x.when]) }); });
+      ARCHIVE.forEach(function (x) { rows.push({ k: "Archive entry", t: plainText(x.title), u: "interventions/?q=" + encodeURIComponent(String(x.title).toLowerCase()), d: plainText(x.artist + ", " + x.city + (typeof x.y === "number" ? ", " + x.y : "")), x: low([x.title, x.artist, x.city, x.country, x.type, x.note, String(x.y)]) }); });
+      if (PAGES.pages.collecting) rows.push({ k: "Page", t: "Collecting Street Art", u: "collecting/", d: "Originals, editions and auction results, and what to check before you buy.", x: low(["collecting collect buy buying editions prints originals auction", (D.glossary || []).map(function (g) { return g.join(" "); }).join(" "), (D.stats || []).map(function (g) { return g.join(" "); }).join(" ")]) });
+      return rows;
+    }
     // Every published page: the pages from the page list, then each article and artist, then the page for a wrong address.
     function all() {
       var out = [], done = {};
@@ -648,7 +684,7 @@
       return out;
     }
     return {
-      all: all, sectionsPage: sectionsPage, notFound: notFound,
+      all: all, sectionsPage: sectionsPage, notFound: notFound, searchIndex: searchIndex,
       articlePage: function (s) { return BY_SLUG[s] ? articlePage(BY_SLUG[s]) : null; },
       featurePage: function (s) { return BY_SLUG[s] ? articlePage(BY_SLUG[s]) : null; },
       artistPage: function (s) { var x = (D.artists || []).find(function (a) { return a.slug === s && hasPage(a); }); return x ? artistPage(x) : null; },

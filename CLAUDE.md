@@ -45,9 +45,13 @@ owner asks.
   for buttons and a deeper red #AD2318 for small red text.
 - Typefaces: Gloock for headings, Source Serif 4 for reading text,
   Libre Franklin for labels and buttons.
-- An image spot without a photo shows a quiet "Photo to come" frame, except
-  on story cards other than the lead, which are text-led until a photo
-  arrives.
+- An image spot without a photo is left out on the published site (27
+  November 2026). Artist cards without a free photo show a plain pine tile
+  with the stamp. The "Photo to come" frame now appears only in the page
+  editor.
+- Site search: the search/ page reads search-index.json, which the build
+  writes from the same data. The newsletter has its own page,
+  newsletter/, and stays email-based until the owner chooses a service.
 - One card style everywhere (filled, no outlines). On wide screens the
   home page section names sit in a side column, and the home page opens
   on a pine band.
@@ -78,8 +82,11 @@ question in plain language with UK spellings and no jargon.
 ## Facts, sources and honesty
 - Never invent a fact, price, date, title, quote or exhibition.
 - Every factual claim needs a source you have opened and read.
-- What is written about Konn Artiss is deliberately general. The Draft
-  note on his profile and "Date to confirm" on his Venice entry stay
+- What is written about Konn Artiss keeps to what can be shown: the
+  owner's Venice photograph and the Grove Gallery relationship, with any
+  reading of the work labelled as ours. The public Draft note was taken
+  off at the owner's request on 27 November 2026; a gallery disclosure
+  sits in its place. "Date to confirm" on his Venice archive entry stays
   until the owner supplies confirmed facts. Never fill them in yourself.
 - These are living artists. Write nothing about their private lives.
 - Never copy text from a source. Keep any quotation short and named.

@@ -3,6 +3,11 @@
 A record of what the website agent did on each run, newest first.
 
 
+## Friday 27 November 2026, usability fixes (draft)
+Published: nothing. Fixes for every issue in the usability walkthrough of 27 November. The Konn Artiss profile loses its public Draft box and now keeps to what we can show (the Venice photograph and the Grove Gallery disclosure), with our reading labelled. A Search page covers dispatches, columns, artists, exhibitions and the archive, linked from the menu bar on every page. The archive keeps its filters in the address, points to other pages when it has nothing, groups "Eight cities", "In orbit" and "Worldwide" under one choice, drops the "Date to confirm" chip and folds its filters on phones. The sign-up box says plainly that it writes an email, the newsletter has its own page, and the header Subscribe goes there. "Read Issue 01" is now "Read the dispatches". Contact leads with the form and gives the address once. The Warhol exhibition listing links to our dispatch. No more "Photo to come" frames or "Coming soon" cards. The cookie bar sits in the corner on wide screens. No publish dates were added, by the owner's rule.
+Checked: the site builds, every internal link resolves, search and filters work, the layout holds at 390 pixels and desktop width.
+Needs you: a yes on the pull request.
+
 ## Friday 27 November 2026
 Draft: related reading on every dispatch, column and artist page ("More like this", "Artists in this story", "More on [artist]", "Artists in the same stories"), built only from the tags already on each story. Pull request: https://github.com/Artiscope/street-art-dispatch/pull/30
 ## Thursday 26 November 2026, contact form saves messages (draft)

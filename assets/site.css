@@ -583,3 +583,87 @@ form[aria-busy="true"] [type="submit"]{opacity:.6;cursor:progress}
 .r-foot{padding-top:32px}
 .next{margin-top:32px;padding:22px}
 .nameplate{padding-top:clamp(16px,2.2vw,28px)}
+
+/* ==========================================================
+   Usability fixes, 27 November 2026
+   Site search, the archive filters on phones, artist cards
+   without a photo, the sign-up box and the cookie bar.
+   ========================================================== */
+/* Search in the menu bar */
+.nav-search{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 6px;font:500 1rem/1 var(--sans);text-decoration:none;font-size:calc(1rem * var(--nav-scale, 1))}
+.nav-search svg{flex:none}
+.nav-search:hover span,.nav-search[aria-current="page"] span{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px}
+@media (max-width:479px){.nav-search span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.nav-search{padding:0 10px}}
+
+/* The search page */
+.sform{background:var(--linen-2);border-radius:6px;padding:clamp(20px,3vw,32px);display:grid;gap:10px}
+.sform .lbl{font:600 .9375rem/1.3 var(--sans)}
+.sform-row{display:flex;flex-wrap:wrap;gap:12px}
+.sform input{flex:1 1 260px;min-height:56px;padding:0 18px;border:1.5px solid var(--type);border-radius:4px;background:var(--linen);font:400 1.125rem var(--sans);color:var(--type)}
+.sform input::placeholder{color:var(--pine-2)}
+.stry{margin-top:14px;font:400 1rem/1.5 var(--sans);color:var(--pine-2)}
+.stry a{color:var(--type);text-underline-offset:4px}
+.scount{margin-top:28px;font:500 1rem/1.4 var(--sans)}
+.scount:empty{display:none}
+.sresults{margin-top:16px;display:grid;gap:12px;max-width:860px}
+.sresults a{display:grid;gap:4px;padding:18px 22px;background:var(--linen-2);border-radius:6px;text-decoration:none;transition:background-color .15s ease}
+.sresults a:hover{background:#EFEDE9}
+.sresults a:hover .st{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px}
+.sk{font:600 .8125rem/1.3 var(--sans);color:var(--ruby-dk);letter-spacing:.02em}
+.st{font-family:var(--display);font-size:calc(1.375rem * var(--h-scale, 1));line-height:1.15}
+.sd{font-size:1rem;line-height:1.5;color:var(--pine-2)}
+
+/* The archive: on phones, artist, city and year fold away behind one button so the entries come first */
+.ftoggle{display:none}
+@media (min-width:860px){.fmore{display:contents}}
+@media (max-width:859px){
+  .ftoggle{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:48px;padding:0 16px;border:1.5px solid var(--type);border-radius:4px;background:transparent;font:600 1rem var(--sans);color:var(--type);cursor:pointer}
+  .ftoggle::after{content:"Show";font-weight:500;color:var(--pine-2)}
+  .ftoggle[aria-expanded="true"]::after{content:"Hide"}
+  .fmore{display:none;gap:20px}
+  .atools.open .fmore{display:grid}
+}
+.empty p{margin:0}
+.elsewhere{margin-top:16px;font-size:1.0625rem}
+.elsewhere .hits{margin-top:10px;display:grid;gap:8px}
+.elsewhere .hits a{font-weight:600}
+.elsewhere .hits span{font:500 .875rem var(--sans);color:var(--pine-2)}
+.elsewhere p+p,.elsewhere ul+p{margin-top:12px}
+
+/* Artist cards without a free photo: a plain name tile instead of an empty frame */
+.aname{display:flex;align-items:flex-end;aspect-ratio:4/5;padding:20px;background:var(--pine);color:var(--linen);border-radius:3px;transition:transform .25s ease,box-shadow .25s ease}
+.aname span{font-family:var(--display);font-size:calc(clamp(1.75rem,3vw,2.5rem) * var(--h-scale, 1));line-height:1.02}
+.acard:hover .aname{transform:translateY(-3px);box-shadow:0 14px 28px -18px rgba(22,58,48,.55)}
+
+/* The sign-up box says what the button does, and shows the address plainly */
+.news .mf-note strong{font-weight:600;color:var(--type);user-select:all}
+.sec--top .news h1{font-size:calc(clamp(2.5rem,5vw,4rem) * var(--h-scale, 1))}
+
+/* The gallery note at the top of a story */
+.r-body > .note:first-child{margin-bottom:1.4em}
+.r-body > .note a{text-underline-offset:3px}
+
+/* The cookie bar sits in the corner on wide screens, clear of the buttons in the opening section */
+@media (min-width:900px){html body .stats-consent{left:auto;right:24px;bottom:24px;margin:0;max-width:440px}}
+/* the menu bar keeps every name on one line with Search added */
+.nav-links a{white-space:nowrap}
+@media (min-width:1024px) and (max-width:1439px){
+  .nav-links{gap:clamp(14px,1.6vw,26px)}
+  .nav-search span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .nav-search{padding:0 10px}
+}
+@media (max-width:479px){
+  .nav .wrap{gap:8px}
+  .nav-right{gap:0}
+  .nav-mark{font-size:calc(1.1875rem * var(--h-scale, 1));gap:8px}
+  .nav-mark img{width:30px;height:30px}
+  .menu-btn{gap:8px}
+}
+/* Contact: the page heading leads straight into the form */
+.r-body--page:empty{display:none}
+.aname span{font-size:calc(clamp(1.25rem,1.9vw,1.75rem) * var(--h-scale, 1));line-height:1.05;overflow-wrap:break-word;hyphens:none}
+.sec--top .news{align-items:start}
+.sec--top .news .nl{margin-top:8px}
+.aname{align-items:center;justify-content:center}
+.aname img{width:34%;height:auto;opacity:.9}
+.news{align-items:start}

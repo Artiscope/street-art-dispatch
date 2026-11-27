@@ -49,7 +49,7 @@
       e.preventDefault();
       var em=$('#nlEmail').value;
       location.href='mailto:info@artiscope.co.uk?subject='+encodeURIComponent(SW('form.subject','Subscribe to the Dispatch'))+'&body='+encodeURIComponent('Please add '+em+' to the weekly dispatch.');
-      $('#nlMsg').textContent=SW('form.sent-box','Your email app should open with a subscription request. Send it and we’ll add you.');
+      $('#nlMsg').textContent=SW('form.sent-signup','Your email app should now be open with the message ready. Press send and we will add you. If nothing opened, write to info@artiscope.co.uk from any account.');
     });
   }
 
@@ -58,8 +58,27 @@
     var box=document.getElementById('archive');if(!box)return;
     var one=function(s){return box.querySelector(s)},all=function(s){return [].slice.call(box.querySelectorAll(s))};
     var total=+box.dataset.total,st={q:'',artist:'',city:'',dec:''};
-    var q=one('#fQ'),fa=one('#fArtist'),fc=one('#fCity'),count=one('#aCount'),clear=one('#aClear'),empty=one('#aEmpty');
+    var q=one('#fQ'),fa=one('#fArtist'),fc=one('#fCity'),count=one('#aCount'),clear=one('#aClear'),empty=one('#aEmpty'),also=one('#aElse'),more=one('#aMoreBtn'),tools=one('.atools');
     if(!q||!fa||!fc)return;
+    if(more&&tools)more.addEventListener('click',function(){var o=!tools.classList.contains('open');tools.classList.toggle('open',o);more.setAttribute('aria-expanded',o)});
+    /* the filters are kept in the address, so a filtered list can be shared or bookmarked */
+    function toUrl(){
+      if(html.classList.contains('adh')||!history.replaceState)return;
+      var u=new URLSearchParams();if(st.q.trim())u.set('q',st.q.trim());if(st.artist)u.set('artist',st.artist);if(st.city)u.set('city',st.city);if(st.dec)u.set('decade',st.dec);
+      var qs=u.toString();history.replaceState(null,'',location.pathname+(qs?'?'+qs:'')+location.hash);
+    }
+    /* when the archive has nothing, look through the rest of the site for the same words */
+    var lastLook='';
+    function elsewhere(term){
+      if(!also)return;if(!term){also.innerHTML='';lastLook='';return}
+      if(term===lastLook)return;lastLook=term;
+      siteIndex(box.dataset.index,function(rows){
+        if(term!==lastLook)return;
+        var hits=searchRows(rows,term).filter(function(r){return r.k!=='Archive entry'}).slice(0,5);
+        var link='<a href="'+esc(box.dataset.search||'../search/')+'?q='+encodeURIComponent(term)+'">'+SWh('archive.search-site','Search the whole site')+'</a>';
+        also.innerHTML=hits.length?'<p>'+SWh('archive.elsewhere','We do have these on other pages:')+'</p><ul class="hits">'+hits.map(function(r){return '<li><a href="'+esc(box.dataset.root+r.u)+'">'+esc(r.t)+'</a> <span>'+esc(r.k)+'</span></li>'}).join('')+'</ul><p>'+link+'</p>':'<p>'+link+'</p>';
+      });
+    }
     function render(){
       var term=st.q.toLowerCase().trim(),shown=0;
       all('.icard').forEach(function(c){
@@ -70,6 +89,7 @@
       var active=st.q||st.artist||st.city||st.dec;
       count.textContent=active?SW('archive.showing','Showing {shown} of {total} interventions',{shown:String(shown),total:String(total)}):SW('archive.count','{n} interventions, newest first',{n:String(total)});
       clear.hidden=!active;empty.hidden=shown>0;
+      if(!shown)elsewhere(term);toUrl();
       q.value=st.q;fa.value=st.artist;fc.value=st.city;
       all('.chip').forEach(function(c){c.setAttribute('aria-pressed',c.dataset.dec===st.dec)});
     }
@@ -82,8 +102,55 @@
       var a=e.target.closest('.who a');if(!a||html.classList.contains('adh'))return;
       e.preventDefault();st.artist=(a.getAttribute('href').split('artist=')[1]||'');render();box.scrollIntoView();
     });
-    var m=location.search.match(/[?&]artist=([\w-]+)/);
-    if(m&&fa.querySelector('option[value="'+m[1]+'"]')){st.artist=m[1];render()}
+    var u=new URLSearchParams(location.search),ok=function(sel,v){return v&&sel.querySelector('option[value="'+v.replace(/"/g,'')+'"]')};
+    var go=false;
+    if(u.get('q')){st.q=u.get('q');go=true}
+    if(ok(fa,u.get('artist'))){st.artist=u.get('artist');go=true}
+    if(u.get('city')&&[].some.call(fc.options,function(o){return o.value===u.get('city')})){st.city=u.get('city');go=true}
+    if(u.get('decade')&&one('.chip[data-dec="'+u.get('decade').replace(/"/g,'')+'"]')){st.dec=u.get('decade');go=true}
+    if(go){if((st.artist||st.city||st.dec)&&tools){tools.classList.add('open');if(more)more.setAttribute('aria-expanded','true')}render()}
+  }
+
+  function esc(v){return String(v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+  /* The site search list (search-index.json, written by the build), fetched once and only when needed. */
+  var IDX=null,IDX_WAIT=[];
+  function siteIndex(url,done){
+    if(IDX){done(IDX);return}
+    IDX_WAIT.push(done);if(IDX_WAIT.length>1)return;
+    fetch(url).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(rows){IDX=rows;IDX_WAIT.splice(0).forEach(function(f){f(rows)})}).catch(function(){IDX_WAIT.splice(0).forEach(function(f){f([])})});
+  }
+  /* Every word typed must appear somewhere in the entry. A match in the title counts most, then artists and stories. */
+  function searchRows(rows,term){
+    var words=term.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').split(/\s+/).filter(Boolean);if(!words.length)return [];
+    var plain=function(t){return String(t).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')};
+    var rank={'Artist':3,'Dispatch':2,'Column':2,'Exhibition':1,'Page':1,'Archive entry':0};
+    return rows.map(function(r,i){
+      var x=plain(r.x+' '+r.t),t=plain(r.t);
+      if(!words.every(function(w){return x.indexOf(w)>-1}))return null;
+      var sc=rank[r.k]||0;words.forEach(function(w){if(t.indexOf(w)>-1)sc+=10});
+      return {r:r,s:sc,i:i};
+    }).filter(Boolean).sort(function(a,b){return b.s-a.s||a.i-b.i}).map(function(o){return o.r});
+  }
+  function setupSearch(){
+    var box=document.getElementById('search');if(!box||!box.dataset.index)return;
+    var form=box.querySelector('#siteSearch'),q=box.querySelector('#sQ'),out=box.querySelector('#sResults'),count=box.querySelector('#sCount');if(!form||!q||!out)return;
+    var root=box.dataset.index.replace(/search-index\.json$/,'');
+    var kinds={'Artist':SW('search.k-artist','Artist'),'Dispatch':SW('search.k-dispatch','Dispatch'),'Column':SW('search.k-column','Column'),'Exhibition':SW('search.k-exhibition','Exhibition'),'Archive entry':SW('search.k-archive','Archive entry'),'Page':SW('search.k-page','Page')};
+    function run(push){
+      var term=q.value.trim();
+      if(!html.classList.contains('adh')&&history.replaceState)history.replaceState(null,'',location.pathname+(term?'?q='+encodeURIComponent(term):''));
+      if(!term){out.innerHTML='';count.textContent='';return}
+      siteIndex(box.dataset.index,function(rows){
+        if(q.value.trim()!==term)return;
+        var hits=searchRows(rows,term);
+        count.textContent=hits.length?SW('search.count','{n} results for “{q}”',{n:String(hits.length),q:term}).replace(/^1 results/,'1 result'):SW('search.none','Nothing on the site matches “{q}” yet. Try a shorter word, or an artist’s surname.',{q:term});
+        out.innerHTML=hits.slice(0,60).map(function(r){return '<li><a href="'+esc(root+r.u)+'"><span class="sk">'+esc(kinds[r.k]||r.k)+'</span><span class="st">'+esc(r.t)+'</span>'+(r.d?'<span class="sd">'+esc(r.d)+'</span>':'')+'</a></li>'}).join('');
+      });
+    }
+    var t;q.addEventListener('input',function(){clearTimeout(t);t=setTimeout(run,150)});
+    form.addEventListener('submit',function(e){e.preventDefault();run()});
+    var start=new URLSearchParams(location.search).get('q');
+    if(start){q.value=start;run()}else if(!html.classList.contains('adh'))q.focus({preventScroll:true});
   }
 
   /* Announcement bars with more than one message show them in turn, pausing while the pointer is over them. */
@@ -200,7 +267,7 @@
     }
     tick();
   }
-  function refresh(){timers.forEach(clearInterval);timers=[];aoWire();setupNav();setupMenu();setupSignup();setupArchive();setupAnnounce();setupSlides();setupGalleries();setupMailForms();setupPopups()}
+  function refresh(){timers.forEach(clearInterval);timers=[];aoWire();setupNav();setupMenu();setupSignup();setupArchive();setupSearch();setupAnnounce();setupSlides();setupGalleries();setupMailForms();setupPopups()}
   window.SADSite={refresh:refresh};
   refresh();
 })();

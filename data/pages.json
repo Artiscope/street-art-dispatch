@@ -34,7 +34,7 @@
           ]
         ],
         "subscribe": "Subscribe",
-        "subscribe_href": "#newsletter",
+        "subscribe_href": "newsletter/",
         "logos": []
       }
     },
@@ -63,8 +63,12 @@
             "terms/"
           ],
           [
-            "Subscribe",
-            "#newsletter"
+            "Search the site",
+            "search/"
+          ],
+          [
+            "Newsletter",
+            "newsletter/"
           ]
         ],
         "legal": "© 2026 Street Art Dispatch · Published by Artiscope · streetartdispatch.com"
@@ -86,10 +90,10 @@
             "eyebrow": "From the editors",
             "headline": "Art Doesn’t Always Wait for an Invitation.",
             "intro": "Street Art Dispatch follows artists taking their work beyond conventional gallery spaces. From public interventions and urban installations to experimental materials and collectable artworks, we document the evolving relationship between contemporary art, the city and its audience.",
-            "button": "Read Issue 01",
+            "button": "Read the dispatches",
             "button_href": "dispatches/",
-            "link": "Search the archive",
-            "link_href": "interventions/",
+            "link": "Search the site",
+            "link_href": "search/",
             "photo": "Four performers in black, seen from behind on the Venice waterfront, spell out KONN in white letters across their backs. Two hold umbrellas reading TRUST and ME. Beside them a life-size seated figure reads a newspaper, with San Giorgio Maggiore across the water.",
             "caption": "On the cover: Konn Artiss in Venice.",
             "caption_link": "Read the profile",
@@ -103,7 +107,7 @@
           "visible": true,
           "settings": {
             "heading": "Dispatches",
-            "intro": "Three to start with. The rest of the issue is on the Dispatches page.",
+            "intro": "Three to start with. The rest are on the Dispatches page.",
             "which": "dispatches",
             "look": "grid",
             "top": false,
@@ -174,8 +178,8 @@
           "visible": true,
           "settings": {
             "heading": "Get the Dispatch",
-            "text": "One email a week with new interventions, artist profiles and collecting news.",
-            "button": "Subscribe",
+            "text": "We are getting a newsletter ready, with new interventions, artist profiles and collecting news. Leave your address and we will send you the first one.",
+            "button": "Email us to sign up",
             "pitch": "Pitches, tips and press:"
           }
         },
@@ -242,7 +246,7 @@
           "visible": true,
           "settings": {
             "heading": "Dispatches",
-            "intro": "Thirteen commissioned features so far, with more to come.",
+            "intro": "Every feature we have published, from artist profiles to collecting guides.",
             "which": "dispatches",
             "look": "grid",
             "top": true,
@@ -437,28 +441,7 @@
             "intro": [],
             "list_heading": "",
             "list_anchor": "",
-            "items": [
-              {
-                "term": "Pitches, tips and press",
-                "text": "<a href=\"mailto:info@artiscope.co.uk\">info@artiscope.co.uk</a>"
-              },
-              {
-                "term": "Corrections",
-                "text": "Send the page address and the correction to <a href=\"mailto:info@artiscope.co.uk\">info@artiscope.co.uk</a>."
-              },
-              {
-                "term": "The Intervention Archive",
-                "text": "Know of an intervention we’ve missed? Send it, with a source, to <a href=\"mailto:info@artiscope.co.uk\">info@artiscope.co.uk</a>."
-              },
-              {
-                "term": "Suggest an artist",
-                "text": "Tell us who we should cover at <a href=\"mailto:info@artiscope.co.uk\">info@artiscope.co.uk</a>."
-              },
-              {
-                "term": "The weekly email",
-                "text": "<a href=\"{root}#newsletter\">Subscribe to the Dispatch</a>."
-              }
-            ],
+            "items": [],
             "end_heading": "",
             "end_text": ""
           }
@@ -469,8 +452,8 @@
           "visible": true,
           "settings": {
             "eyebrow": "",
-            "heading": "Send us a message",
-            "text": "Use the form, or email us at the addresses above. Either way it reaches the same desk.",
+            "heading": "",
+            "text": "Everything comes to the same desk, and we reply by email. If you would rather write directly, our address is info@artiscope.co.uk.\n\nFor a correction, tell us the page and what needs fixing. For the archive, include a source we can check, such as a news report or the artist’s own post.",
             "topics": [
               "A pitch or tip",
               "A correction",
@@ -521,6 +504,50 @@
             "list_anchor": "",
             "items": [],
             "html": "<p>These terms cover your use of Street Art Dispatch. By using the site you accept them, so please read them. They are short.</p>\n<h2 id=\"who-we-are\">Who we are</h2>\n<p>Street Art Dispatch is published by Artiscope Ltd, registered in England and Wales, company number 16048878. You can reach us at <a href=\"mailto:info@artiscope.co.uk\">info@artiscope.co.uk</a>.</p>\n<h2 id=\"what-our-pages-are-for\">What our pages are for</h2>\n<p>Our articles are general information. They are not financial, legal, tax or investment advice, and nothing here is a valuation. An auction result is a past price and does not tell you what a work will fetch next time. Before you buy, sell or insure a work of art, take advice from someone who knows your circumstances.</p>\n<p>Artiscope has a commercial interest in some of the artists we cover, and we say so on our <a href=\"../about/\">About page</a>. Please read what we publish with that in mind.</p>\n<h2 id=\"accuracy\">Accuracy</h2>\n<p>We take every fact and figure from a published source and show where it came from. Sources can be wrong, and things change after we write about them. If you spot a mistake, please <a href=\"../contact/\">tell us</a> and we will look into it.</p>\n<h2 id=\"using-our-content\">Using our content</h2>\n<p>The writing on Street Art Dispatch belongs to Artiscope Ltd. You are welcome to quote short passages, as long as you name Street Art Dispatch and link to the page. Please ask us before copying whole articles or republishing them anywhere else.</p>\n<p>Pictures belong to the artists and photographers named with them. Some are used under a licence, such as Creative Commons, and where that is so the licence is named in the credit. Check it before you reuse a picture. A licence for a photograph of an artwork covers the photograph, not the artwork, which may still be protected by the artist's copyright.</p>\n<p>Names of artists, galleries, auction houses and other businesses belong to their owners. Mentioning them does not mean they endorse us or are connected with us.</p>\n<h2 id=\"writing-to-us\">Writing to us</h2>\n<p>Please do not send us anything unlawful, or anything confidential you would not want us to keep. If you send a correction, we may use it to fix the page, without naming you unless you agree. <a href=\"../privacy/\">Our privacy page</a> explains what happens to your message.</p>\n<h2 id=\"links-to-other-sites\">Links to other sites</h2>\n<p>We link to our sources so you can check them. We do not run those sites and are not responsible for what they publish. A link is not an endorsement.</p>\n<h2 id=\"our-responsibility\">Our responsibility</h2>\n<p>We work hard to keep the site accurate and available, but we provide it as it is, and we cannot promise it will always be free of mistakes or interruptions. As far as the law allows, we are not responsible for any loss caused by relying on it.</p>\n<p>Nothing in these terms limits any responsibility that cannot be limited by law, such as for death or personal injury caused by negligence, or for fraud.</p>\n<h2 id=\"changes\">Changes</h2>\n<p>We may update these terms. The date at the top shows when they last changed.</p>\n<h2 id=\"law\">Law</h2>\n<p>These terms are governed by the law of England and Wales, and the courts of England and Wales deal with any dispute.</p>"
+          }
+        }
+      ]
+    },
+    "newsletter": {
+      "title": "Newsletter | Street Art Dispatch",
+      "path": "newsletter/index.html",
+      "description": "Sign up for the Street Art Dispatch newsletter: new interventions, artist profiles and collecting news.",
+      "sections": [
+        {
+          "id": "signup",
+          "type": "signup",
+          "visible": true,
+          "settings": {
+            "heading": "Get the Dispatch",
+            "text": "We are getting a newsletter ready, with new interventions, artist profiles and collecting news. Leave your address and we will send you the first one.",
+            "button": "Email us to sign up",
+            "pitch": "",
+            "top": true
+          }
+        }
+      ]
+    },
+    "search": {
+      "title": "Search | Street Art Dispatch",
+      "path": "search/index.html",
+      "description": "Search every dispatch, column, artist profile, exhibition listing and archive entry on Street Art Dispatch.",
+      "sections": [
+        {
+          "id": "search",
+          "type": "search",
+          "visible": true,
+          "settings": {
+            "heading": "Search",
+            "intro": "Dispatches, columns, artist profiles, exhibitions and the Intervention Archive, all in one place.",
+            "hint": "An artist, a city or a word",
+            "suggestions": [
+              "Banksy",
+              "Basquiat",
+              "Venice",
+              "mosaic",
+              "editions"
+            ],
+            "top": true
           }
         }
       ]
