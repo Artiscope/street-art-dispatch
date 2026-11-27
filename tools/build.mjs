@@ -44,7 +44,7 @@ const KINDS = ["hero", "features", "profiles", "archive", "exhibition-list", "co
   "announcement", "columns", "space", "quote", "faq", "button",
   "picture-banner", "slideshow", "gallery", "logo-row", "picture", "text-picture",
   "artworks", "exhibitions", "career", "press",
-  "visit", "contact-form", "signup-popup"];
+  "visit", "contact-form", "signup-popup", "search"];
 function checkPages() {
   for (const key of ["header", "footer"]) {
     const part = (pages.shared || {})[key];
@@ -97,6 +97,8 @@ const written = [];
 const write = (p, text) => { const out = path.join(OUT, p); fs.mkdirSync(path.dirname(out), { recursive: true }); fs.writeFileSync(out, text); written.push(p); };
 const pagesOut = site.all();
 for (const pg of pagesOut) write(pg.path, pg.html);
+// the list the site search reads (see the search section in assets/render.js)
+write("search-index.json", JSON.stringify(site.searchIndex()));
 const urls = pagesOut.filter((p) => p.path !== "404.html").map((p) => p.url);
 write("sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + urls.map((u) => "<url><loc>" + SAD.SITE_URL + u + "</loc></url>\n").join("") + "</urlset>\n");
 write("robots.txt", "User-agent: *\nAllow: /\nSitemap: " + SAD.SITE_URL + "sitemap.xml\n");
