@@ -196,7 +196,7 @@
         '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n' +
         '<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Libre+Franklin:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">\n' +
         (o.head || "") + (iconOk() ? '<link rel="icon" href="' + r + opts.favicon + '">\n' : '<link rel="icon" href="' + r + 'assets/brand/favicon.svg" type="image/svg+xml">\n<link rel="icon" href="' + r + 'assets/brand/favicon-32.png" sizes="32x32" type="image/png">\n') +
-        '<link rel="apple-touch-icon" href="' + r + 'assets/brand/sad-tile-180.png">\n<link rel="stylesheet" href="' + r + 'assets/site.css">\n' + (THEME || "") + secCssTag() + wordsTag() +
+        '<link rel="apple-touch-icon" href="' + r + 'assets/brand/sad-tile-180.png">\n<link rel="stylesheet" href="' + r + 'assets/site.css">\n<link rel="stylesheet" href="' + r + 'assets/finish.css">\n' + (THEME || "") + secCssTag() + wordsTag() +
         '</head>\n<body>\n<a class="skip" href="#main">' + W("menu.skip", "Skip to content") + '</a>\n' + plate + '\n' + (o.top ? String(o.top).split("@@").join(r) + "\n" : "") + nav + '\n<main id="main">\n' + main + '\n</main>\n' + foot + '\n' +
         '<script src="' + r + 'assets/analytics.js" defer></script>\n<script src="' + r + 'assets/site.js" defer></script>\n</body>\n</html>\n';
       return { path: o.file || path, url: urlPath, html: html };
