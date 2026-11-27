@@ -32,6 +32,7 @@ in the repository, so there is nothing to edit by hand.
 | Colours, fonts, spacing | `assets/site.css` |
 | Menu, sign-up box, archive search | `assets/site.js` |
 | Page layouts | `assets/render.js` (run by `tools/build.mjs`, which `python3 tools/build.py` runs) |
+| The street art map (map/) | `src/components/StreetMap.jsx` and `assets/map.css`; where each town sits is in `data/map-places.json` |
 
 The pages are drawn by `assets/render.js`, the same code the page editor
 in Artiscope Digital Home uses for its preview, so the preview and the

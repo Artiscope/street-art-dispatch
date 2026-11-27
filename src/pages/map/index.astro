@@ -1,0 +1,26 @@
+---
+// The street art map. The page around it (menu, footer, head) is made like every other page,
+// from data/pages.json by tools/build.mjs; its one section is a small space that marks where the
+// map goes. The map is a React island, so React and Leaflet load on this page and no other.
+import { pageHtml } from "../../lib/site.mjs";
+import { mapData } from "../../lib/map-data.mjs";
+import StreetMap from "../../components/StreetMap.jsx";
+
+const MARK = '<div class="space space--s" aria-hidden="true"></div>';
+const html = pageHtml("map/index.html").replace("</head>",
+  '<link rel="stylesheet" href="/assets/map/leaflet.css">\n<link rel="stylesheet" href="/assets/map.css">\n</head>');
+const at = html.indexOf(MARK);
+if (at < 0) throw new Error("The map page in data/pages.json must keep its one small space section: that is where the map goes.");
+const before = html.slice(0, at), after = html.slice(at + MARK.length);
+const data = mapData();
+const today = new Date().toISOString();
+---
+<Fragment set:html={before} />
+<section class="sec sec--top" id="street-map"><div class="wrap">
+  <div class="sec-head">
+    <h1>The Street Art Map</h1>
+    <p class="dek">Every intervention in our archive, the public works on our artist profiles and the shows on now, pinned to the town or city where they happened.</p>
+  </div>
+  <StreetMap client:load items={data.items} cities={data.cities} off={data.off} today={today} />
+</div></section>
+<Fragment set:html={after} />

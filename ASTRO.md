@@ -20,6 +20,16 @@ pages, their addresses or how they are edited has changed.
   page as before.
 - `src/pages/` hands out the pages at the same addresses as before.
 
+- The street art map (map/) is the one page with its own Astro file,
+  `src/pages/map/index.astro`. Its section in `data/pages.json` is a
+  small space that marks where the map goes; keep it. The map is a React
+  island (`src/components/StreetMap.jsx`), so React and Leaflet load on
+  that page and no other. Its places come from `src/lib/map-data.mjs`,
+  which reads the archive, the artist profiles, the exhibitions and
+  `data/map-places.json` (one GeoNames position per town). A new archive
+  entry in a town not listed there simply stays off the map until its
+  town is added.
+
 Commands: `npm ci` once, then `npx astro dev` for a local copy that
 reloads as you edit (data files and assets included), or
 `npx astro build` to build into `_site`.
