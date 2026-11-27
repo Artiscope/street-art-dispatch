@@ -557,6 +557,20 @@
       return '<figure class="r-fig">' + picOf(x, desc) + '<figcaption>' + (x.image ? txt(credit) : W("missing.commission", "Photograph to be commissioned.")) + '</figcaption></figure>';
     }
     function M(h, id) { return opts.mark ? h.replace(/^(\s*<[a-z]+)/, '$1 data-adh="' + id + '"') : h; }
+    // ----- related reading, all from the site's own tags -----
+    function plainName(t) { return String(t).replace(/<[^>]*>/g, "").trim(); }
+    function artistsTagged(tags) {
+      return (D.artists || []).filter(function (x) { return hasPage(x) && !opts.mark && (tags || []).some(function (t) { return plainName(t) === plainName(x.name); }); });
+    }
+    // other stories, the ones sharing the most tags first, then the newest
+    function likeThis(a, n) {
+      var mine = (a.tags || []).map(plainName);
+      return ALL.filter(function (b) { return b !== a; }).map(function (b, i) { return [b, (b.tags || []).filter(function (t) { return mine.indexOf(plainName(t)) >= 0; }).length, i]; })
+        .filter(function (r) { return r[1] > 0; }).sort(function (x, y) { return y[1] - x[1] || x[2] - y[2]; }).slice(0, n).map(function (r) { return r[0]; });
+    }
+    function relBlock(id, heading, inner) {
+      return inner ? '\n  ' + wrapSec({ heading: heading }, { id: id }, inner, { attrs: ' data-related' }) : "";
+    }
     function articlePage(a) {
       var p = pathOf(a.slug), isCol = !!COLS[a.slug], pool = isCol ? COLUMNS : FEATURES;
       var nxt = pool[(pool.indexOf(a) + 1) % pool.length];
@@ -567,6 +581,11 @@
         fig + '\n    ' + M('<div class="r-body">' + draft + fixLinks(a.body, "@@") + '</div>', "body") + '\n' +
         '    <footer class="r-foot"><p class="filed">' + W("item.filed", "Filed under {tags}.", { tags: (a.tags || []).join(", ") }) + '</p>\n' +
         '      <div class="next"><p class="kicker">' + (isCol ? W("item.next-column", "Next column") : W("item.next-dispatch", "Next dispatch")) + '</p><h2>' + nxt.title + '</h2><a class="btn" href="@@' + pathOf(nxt.slug) + '">' + W("btn.read-next", "Read next") + '</a></div></footer>\n  </article>';
+      if (!opts.mark) {
+        var who = artistsTagged(a.tags), like = likeThis(a, 3);
+        main += relBlock("more-like-this", W("rel.like", "More like this"), like.length ? '<ul class="cgrid">' + like.map(ccard).join("") + '</ul>' : "") +
+          relBlock("artists-in-story", W("rel.in-story", "Artists in this story"), who.length ? '<ul class="agrid">' + who.map(acard).join("") + '</ul>' : "");
+      }
       main = tplWrap("article", a.slug, main); AO_KIND = "article";
       var pic = fileOk(PHOTO_FILES[a.slug]) ? PHOTO_FILES[a.slug].image : "";
       return page(p + "index.html", a.title + " | " + NAME(), stripTags(a.standfirst), main,
@@ -596,6 +615,13 @@
         '    ' + M(rFigure(x, ART_PHOTO_FILES[x.name], ART_PHOTOS[x.name] || x.name), "picture") + '\n' +
         '    ' + M('<div class="r-body"><p>' + x.summary + '</p><p>' + (x.note || "") + '</p>\n      <dl class="kfacts">' + facts + '</dl>' + prof + arch + expl + srcs + '</div>', "about") + '\n' +
         (feat ? '    <footer class="r-foot"><div class="next"><p class="kicker">' + W("item.read-more", "Read more") + '</p><h2>' + feat.title + '</h2><a class="btn" href="@@' + pathOf(feat.slug) + '">' + W("btn.read-story", "Read the story") + '</a></div></footer>\n' : "") + '  </article>';
+      if (!opts.mark) {
+        var about = ALL.filter(function (b) { return (b.tags || []).some(function (t) { return plainName(t) === plainName(x.name); }); });
+        var near = [];
+        about.forEach(function (b) { artistsTagged(b.tags).forEach(function (y) { if (y !== x && near.indexOf(y) < 0) near.push(y); }); });
+        main += relBlock("more-on-artist", W("rel.more-on", "More on {name}", { name: x.name }), about.length ? '<ul class="cgrid">' + about.slice(0, 4).map(ccard).join("") + '</ul>' : "") +
+          relBlock("same-stories", W("rel.same-stories", "Artists in the same stories"), near.length ? '<ul class="agrid">' + near.slice(0, 4).map(acard).join("") + '</ul>' : "");
+      }
       main = tplWrap("artist", s, main); AO_KIND = "artist";
       var face = fileOk(ART_PHOTO_FILES[x.name]) ? ART_PHOTO_FILES[x.name].image : "";
       var who = { "@type": "Person", name: plainText(x.name), description: plainText(x.summary) };
